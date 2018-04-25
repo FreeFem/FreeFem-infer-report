@@ -1,0 +1,12 @@
+src/bamglib/MeshGeom.cpp:448: error: DEAD_STORE
+  The value written to &k (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshGeom.cpp:448:7: Write of unused value
+446.         Gh.edges[i].ref  = edges[i].ref;
+447.         
+448.         k = edge4->addtrie(i0,i1);
+             ^
+449.         
+450.         assert(k == i);

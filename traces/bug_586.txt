@@ -1,0 +1,12 @@
+examples++-hpddm/hpddm.cpp:706: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/hpddm.cpp:706:21: Write of unused value
+704.                   }
+705.                   virtual AnyType operator()(Stack stack)  const {
+706.                       int ret = -1;
+                           ^
+707.                       try {
+708.                           Kn& x = *GetAny<Kn*>((*X)(stack));

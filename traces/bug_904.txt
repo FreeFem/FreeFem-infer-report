@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:4977: error: DEAD_STORE
+  The value written to &it (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:4977:4: Write of unused value
+4975.   	  }
+4976.   	if ( tt->link ) { // if good triangles store the value 
+4977.   	  int it = Number(tt);
+           ^
+4978.   	  assert(it < nt);
+4979.   	  (*tt)(kv)= vv; //   Change the vertex of triangle 

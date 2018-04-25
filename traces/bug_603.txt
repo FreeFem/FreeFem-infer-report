@@ -1,0 +1,12 @@
+src/fflib/lgmat.cpp:863: error: DEAD_STORE
+  The value written to &nbkU (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgmat.cpp:863:12: Write of unused value
+861.   	      if (samemesh)
+862.   	        {
+863.   	          nbkU = 1; 
+                  ^
+864.   	          PV = PtHatU;
+865.   	          itV = it;

@@ -1,0 +1,12 @@
+examples++-load/Element_P1ncdc.cpp:52: error: DEAD_STORE
+  The value written to &l2 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_P1ncdc.cpp:52:6: Write of unused value
+50.   	if (op==0)
+51.   	  {
+52.   	    R l0=1-PHat.x-PHat.y,l1=PHat.x,l2=PHat.y;
+           ^
+53.                 R ll0 = 1-l0*2,ll1=1-l1*2,ll2=1-l1*2;
+54.   	    r = u0*ll0+u1*ll1+ll2*u2;

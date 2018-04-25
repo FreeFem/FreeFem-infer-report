@@ -1,0 +1,30 @@
+examples++-load/ff-Ipopt.cpp:1748: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/ff-Ipopt.cpp:1748:1: initialization of callDoLoadInit
+1746.    enum AssumptionG {undefg,without_constraints, no_assumption_g, P1_g, mv_P1_g, linear_g};
+1747.    */
+1748. > LOADFUNC(Load_Init)
+1749.   
+
+examples++-load/ff-Ipopt.cpp:1748:1: call to DoLoadInit
+1746.    enum AssumptionG {undefg,without_constraints, no_assumption_g, P1_g, mv_P1_g, linear_g};
+1747.    */
+1748. > LOADFUNC(Load_Init)
+1749.   
+
+examples++-load/ff-Ipopt.cpp:1748:1: call to addInitFunct
+  1746.    enum AssumptionG {undefg,without_constraints, no_assumption_g, P1_g, mv_P1_g, linear_g};
+  1747.    */
+  1748. > LOADFUNC(Load_Init)
+  1749.   
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

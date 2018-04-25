@@ -1,0 +1,261 @@
+src/medit/inmsh2.c:39: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 24, column 9 is not released after line 39, column 10.
+Showing all 35 steps of the trace
+
+
+src/medit/inmsh2.c:6:1: start of procedure inmsh2()
+4.   
+5.   
+6. > int inmsh2(pMesh mesh) {
+7.     FILE      *inp,*inf;
+8.     pPoint     ppt,pp0,pp1,pp2,pp3;
+
+src/medit/inmsh2.c:16:3: 
+14.   
+15.     /* check for .points */
+16. >   strcpy(data,mesh->name);
+17.     strcat(data,".points");
+18.     inp = fopen(data,"r");
+
+src/medit/inmsh2.c:17:3: 
+15.     /* check for .points */
+16.     strcpy(data,mesh->name);
+17. >   strcat(data,".points");
+18.     inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+
+src/medit/inmsh2.c:18:3: 
+16.     strcpy(data,mesh->name);
+17.     strcat(data,".points");
+18. >   inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+20.   
+
+src/medit/inmsh2.c:19:9: Taking false branch
+17.     strcat(data,".points");
+18.     inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+              ^
+20.   
+21.     /* check for .faces */
+
+src/medit/inmsh2.c:22:3: 
+20.   
+21.     /* check for .faces */
+22. >   strcpy(data,mesh->name);
+23.     strcat(data,".faces");
+24.     inf = fopen(data,"r");
+
+src/medit/inmsh2.c:23:3: 
+21.     /* check for .faces */
+22.     strcpy(data,mesh->name);
+23. >   strcat(data,".faces");
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+
+src/medit/inmsh2.c:24:3: 
+22.     strcpy(data,mesh->name);
+23.     strcat(data,".faces");
+24. >   inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+
+src/medit/inmsh2.c:25:9: Taking false branch
+23.     strcat(data,".faces");
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+              ^
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+27.   
+
+src/medit/inmsh2.c:26:9: Taking true branch
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+              ^
+27.   
+28.     /* get number of elements */
+
+src/medit/inmsh2.c:26:18: 
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+26. >   if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+27.   
+28.     /* get number of elements */
+
+src/medit/inmsh2.c:31:3: 
+29.     /*fgets(data,255,inp);
+30.       sscanf(data,"%d",&mesh->np);*/
+31. >   fscanf(inp,"%d",&mesh->np);
+32.     EatLine(inp);
+33.     
+
+src/medit/inmsh2.c:32:3: 
+30.       sscanf(data,"%d",&mesh->np);*/
+31.     fscanf(inp,"%d",&mesh->np);
+32. >   EatLine(inp);
+33.     
+34.     /*fgets(data,255,inf);
+
+src/medit/bbfile.c:5:1: start of procedure EatLine()
+  3.   #include "sproto.h"
+  4.   
+  5. > int EatLine(FILE  *in) {
+  6.     int    k,c;  
+  7.     
+
+src/medit/bbfile.c:8:3: 
+  6.     int    k,c;  
+  7.     
+  8. >   k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+
+src/medit/bbfile.c:9:11: Loop condition is true. Entering loop body
+  7.     
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+                  ^
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+
+src/medit/bbfile.c:10:5: 
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10. >     k++;
+  11.       if ( c==10 || c== 13)  return(1);
+  12.     }
+
+src/medit/bbfile.c:11:10: Taking false branch
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+                 ^
+  12.     }
+  13.     return(0);
+
+src/medit/bbfile.c:11:19: Taking false branch
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+                          ^
+  12.     }
+  13.     return(0);
+
+src/medit/bbfile.c:9:11: Loop condition is false. Leaving loop
+  7.     
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+                  ^
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+
+src/medit/bbfile.c:13:3: 
+  11.       if ( c==10 || c== 13)  return(1);
+  12.     }
+  13. >   return(0);
+  14.   }
+  15.   
+
+src/medit/bbfile.c:14:1: return from a call to EatLine
+  12.     }
+  13.     return(0);
+  14. > }
+  15.   
+  16.   
+
+src/medit/inmsh2.c:36:3: 
+34.     /*fgets(data,255,inf);
+35.     sscanf(data,"%d",&mesh->ne);*/
+36. >   fscanf(inf,"%d",&mesh->ne);
+37.     EatLine(inf);
+38.     if ( !mesh->np ) { /*|| (mesh->dim == 3 && !mesh->ne) ) {*/
+
+src/medit/inmsh2.c:37:3: 
+35.     sscanf(data,"%d",&mesh->ne);*/
+36.     fscanf(inf,"%d",&mesh->ne);
+37. >   EatLine(inf);
+38.     if ( !mesh->np ) { /*|| (mesh->dim == 3 && !mesh->ne) ) {*/
+39.   	fprintf(stdout,"  ## No vertex.\n");
+
+src/medit/bbfile.c:5:1: start of procedure EatLine()
+  3.   #include "sproto.h"
+  4.   
+  5. > int EatLine(FILE  *in) {
+  6.     int    k,c;  
+  7.     
+
+src/medit/bbfile.c:8:3: 
+  6.     int    k,c;  
+  7.     
+  8. >   k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+
+src/medit/bbfile.c:9:11: Loop condition is true. Entering loop body
+  7.     
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+                  ^
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+
+src/medit/bbfile.c:10:5: 
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10. >     k++;
+  11.       if ( c==10 || c== 13)  return(1);
+  12.     }
+
+src/medit/bbfile.c:11:10: Taking false branch
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+                 ^
+  12.     }
+  13.     return(0);
+
+src/medit/bbfile.c:11:19: Taking false branch
+  9.     while ( (c=fgetc(in)) != EOF ) {
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+                          ^
+  12.     }
+  13.     return(0);
+
+src/medit/bbfile.c:9:11: Loop condition is false. Leaving loop
+  7.     
+  8.     k = 0;
+  9.     while ( (c=fgetc(in)) != EOF ) {
+                  ^
+  10.       k++;
+  11.       if ( c==10 || c== 13)  return(1);
+
+src/medit/bbfile.c:13:3: 
+  11.       if ( c==10 || c== 13)  return(1);
+  12.     }
+  13. >   return(0);
+  14.   }
+  15.   
+
+src/medit/bbfile.c:14:1: return from a call to EatLine
+  12.     }
+  13.     return(0);
+  14. > }
+  15.   
+  16.   
+
+src/medit/inmsh2.c:38:9: Taking true branch
+36.     fscanf(inf,"%d",&mesh->ne);
+37.     EatLine(inf);
+38.     if ( !mesh->np ) { /*|| (mesh->dim == 3 && !mesh->ne) ) {*/
+              ^
+39.   	fprintf(stdout,"  ## No vertex.\n");
+40.       fclose(inp);
+
+src/medit/inmsh2.c:39:2: 
+37.     EatLine(inf);
+38.     if ( !mesh->np ) { /*|| (mesh->dim == 3 && !mesh->ne) ) {*/
+39. > 	fprintf(stdout,"  ## No vertex.\n");
+40.       fclose(inp);
+41.       return(-1);

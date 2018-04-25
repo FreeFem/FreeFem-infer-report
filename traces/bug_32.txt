@@ -1,0 +1,12 @@
+src/medit/util.c:21: error: DEAD_STORE
+  The value written to &font_style (type void*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/util.c:21:3: Write of unused value
+19.   /* set font style and size */
+20.   void setFont(char* name,int size) {
+21.     GLvoid *font_style = GLUT_BITMAP_HELVETICA_10;
+        ^
+22.   
+23.     if ( !strcmp(name,"helvetica") ) {

@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:829: error: DEAD_STORE
+  The value written to &d (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:829:3: Write of unused value
+827.     double xmin,xmax,ymin,ymax;
+828.     win->getcadre(xmin,xmax,ymin,ymax);
+829.     double d= Max(ymax-ymin,xmax-xmin);
+         ^
+830.     R kk = 4*win->hpixel;
+831.     if(plot.ArrowSize>0) kk=win->hpixel*max(win->width*plot.ArrowSize/100.,1.);

@@ -1,0 +1,12 @@
+src/femlib/mshptg.cpp:1862: error: DEAD_STORE
+  The value written to &i_2 (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/mshptg.cpp:1862:13: Write of unused value
+1860.     for (i = 1; i <= i_1; ++i)
+1861.        {
+1862.          a = (i_2 = sd[(i << 1) + 1], aabs (i_2));
+                    ^
+1863.   /* Computing MIN */
+1864.          i_2 = arete[(a << 1) + 1], i_3 = arete[(a << 1) + 2];

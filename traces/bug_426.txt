@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:555: error: DEAD_STORE
+  The value written to &hseuil (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:555:3: Write of unused value
+553.     int nbt = 0; 
+554.     hseuil = hmin/10.;
+555.     hseuil = hseuil/4.;
+         ^
+556.     for (int ii=0;ii<Th3.nt;ii++){
+557.       if(Elem_ok[ii] == 0) continue; 

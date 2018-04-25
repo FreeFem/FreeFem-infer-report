@@ -1,0 +1,12 @@
+src/fflib/AFunction.cpp:1849: error: DEAD_STORE
+  The value written to &bb (type _Bool) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/AFunction.cpp:1849:9: Write of unused value
+1847.       if ( ! p->EvaluableWithOutStack() )
+1848.       {
+1849.           bool bb=p->EvaluableWithOutStack();
+                ^
+1850.           //cout << bb << " " <<  * p <<  endl;
+1851.           CompileError(" [...][p], The p must be a constant , sorry");

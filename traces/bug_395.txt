@@ -1,0 +1,28 @@
+examples++-load/Element_P2bulle3.cpp:356: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P2Bulle3_3d accesses global variable from a different translation unit: std::cout|.
+Showing all 3 steps of the trace
+
+
+examples++-load/Element_P2bulle3.cpp:356:5: initialization of Fem2D::P2Bulle3_3d
+354.       }
+355.       
+356.       static TypeOfFE_P2_bulle3_3d  P2Bulle3_3d;
+           ^
+357.       GTypeOfFE<Mesh3> & Elm_P2Bulle3_3d(P2Bulle3_3d);
+358.       
+
+examples++-load/Element_P2bulle3.cpp:356:35: call to Fem2D::TypeOfFE_P2_bulle3_3d_TypeOfFE_P2_bulle3_3d
+354.       }
+355.       
+356.       static TypeOfFE_P2_bulle3_3d  P2Bulle3_3d;
+                                         ^
+357.       GTypeOfFE<Mesh3> & Elm_P2Bulle3_3d(P2Bulle3_3d);
+358.       
+
+examples++-load/Element_P2bulle3.cpp:43:13: access to std::cout|
+41.           const int d= E::Rd::d;
+42.           if(verbosity>9)
+43.               cout << "\n +++ P2 3bulle : ndof : "<< n <<endl;
+                  ^
+44.           R3 *Pt= this->PtInterpolation;
+45.           // construction of interpolation ppoint

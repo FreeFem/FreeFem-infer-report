@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:5692: error: DEAD_STORE
+  The value written to &nbe (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:5692:2: Write of unused value
+5690.   	int nbv=Th.nv; // nombre de sommet 
+5691.   	int nbt=Th.nt; // nombre de triangles
+5692.   	int nbe=Th.neb; // nombre d'aretes fontiere
+         ^
+5693.   	
+5694.   	KN<long> zzempty(0);

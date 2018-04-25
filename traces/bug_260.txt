@@ -1,0 +1,122 @@
+examples++-load/libff-mmap-semaphore.c:234: error: RESOURCE_LEAK
+  resource acquired by call to `open()` at line 217, column 13 is not released after line 234, column 13.
+Showing all 16 steps of the trace
+
+
+examples++-load/libff-mmap-semaphore.c:211:1: start of procedure ffmmap_init()
+209.   }
+210.   
+211. > void ffmmap_init(ff_Pmmap p,const char *nm,long len)
+212.   {
+213.       void *addr=0;
+
+examples++-load/libff-mmap-semaphore.c:213:5: 
+211.   void ffmmap_init(ff_Pmmap p,const char *nm,long len)
+212.   {
+213. >     void *addr=0;
+214.       p->len=len;
+215.       p->nm= newstringcpy(nm);//shm_unlink
+
+examples++-load/libff-mmap-semaphore.c:214:5: 
+212.   {
+213.       void *addr=0;
+214. >     p->len=len;
+215.       p->nm= newstringcpy(nm);//shm_unlink
+216.       p->map=0;
+
+examples++-load/libff-mmap-semaphore.c:215:5: Skipping newstringcpy(): function or method not found
+213.       void *addr=0;
+214.       p->len=len;
+215.       p->nm= newstringcpy(nm);//shm_unlink
+           ^
+216.       p->map=0;
+217.       p->fd = open(p->nm, O_RDWR | O_CREAT , (mode_t)0666);
+
+examples++-load/libff-mmap-semaphore.c:216:5: 
+214.       p->len=len;
+215.       p->nm= newstringcpy(nm);//shm_unlink
+216. >     p->map=0;
+217.       p->fd = open(p->nm, O_RDWR | O_CREAT , (mode_t)0666);
+218.       if (p->fd == -1)
+
+examples++-load/libff-mmap-semaphore.c:217:5: 
+215.       p->nm= newstringcpy(nm);//shm_unlink
+216.       p->map=0;
+217. >     p->fd = open(p->nm, O_RDWR | O_CREAT , (mode_t)0666);
+218.       if (p->fd == -1)
+219.       {
+
+examples++-load/libff-mmap-semaphore.c:218:9: Taking false branch
+216.       p->map=0;
+217.       p->fd = open(p->nm, O_RDWR | O_CREAT , (mode_t)0666);
+218.       if (p->fd == -1)
+               ^
+219.       {
+220.           printf( " Error opening file mmap  %s  len =  %zu \n",p->nm,p->len);
+
+examples++-load/libff-mmap-semaphore.c:225:5: 
+223.           ffDoError("opening mmap",2001);
+224.       }
+225. >     off_t size =lseek(p->fd, 0, SEEK_END); // seek to end of file
+226.       p->isnew=(size==0);
+227.       printf(" len %ld size %lld \n",len,size);
+
+examples++-load/libff-mmap-semaphore.c:226:15: Condition is false
+224.       }
+225.       off_t size =lseek(p->fd, 0, SEEK_END); // seek to end of file
+226.       p->isnew=(size==0);
+                     ^
+227.       printf(" len %ld size %lld \n",len,size);
+228.       if(size< len)
+
+examples++-load/libff-mmap-semaphore.c:226:5: 
+224.       }
+225.       off_t size =lseek(p->fd, 0, SEEK_END); // seek to end of file
+226. >     p->isnew=(size==0);
+227.       printf(" len %ld size %lld \n",len,size);
+228.       if(size< len)
+
+examples++-load/libff-mmap-semaphore.c:227:5: 
+225.       off_t size =lseek(p->fd, 0, SEEK_END); // seek to end of file
+226.       p->isnew=(size==0);
+227. >     printf(" len %ld size %lld \n",len,size);
+228.       if(size< len)
+229.       {
+
+examples++-load/libff-mmap-semaphore.c:228:8: Taking true branch
+226.       p->isnew=(size==0);
+227.       printf(" len %ld size %lld \n",len,size);
+228.       if(size< len)
+              ^
+229.       {
+230.           if(ftruncate(p->fd,len)==-1)
+
+examples++-load/libff-mmap-semaphore.c:230:12: Taking true branch
+228.       if(size< len)
+229.       {
+230.           if(ftruncate(p->fd,len)==-1)
+                  ^
+231.           {
+232.                perror("ftruncate");
+
+examples++-load/libff-mmap-semaphore.c:232:14: 
+230.           if(ftruncate(p->fd,len)==-1)
+231.           {
+232. >              perror("ftruncate");
+233.               printf( "Error ftrucated the file %s  len =  %zu \n",p->nm,p->len);
+234.               ffmmap_destroy(p);
+
+examples++-load/libff-mmap-semaphore.c:233:13: 
+231.           {
+232.                perror("ftruncate");
+233. >             printf( "Error ftrucated the file %s  len =  %zu \n",p->nm,p->len);
+234.               ffmmap_destroy(p);
+235.               ffDoError("Error ftrucated ",2002);
+
+examples++-load/libff-mmap-semaphore.c:234:13: Skipping ffmmap_destroy(): function or method not found
+232.                perror("ftruncate");
+233.               printf( "Error ftrucated the file %s  len =  %zu \n",p->nm,p->len);
+234.               ffmmap_destroy(p);
+                   ^
+235.               ffDoError("Error ftrucated ",2002);
+236.           }

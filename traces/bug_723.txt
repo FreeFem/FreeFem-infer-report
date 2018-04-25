@@ -1,0 +1,12 @@
+src/fflib/array_tlp.hpp:1256: error: DEAD_STORE
+  The value written to &knlp (type basicForEachType const *) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/array_tlp.hpp:1256:6: Write of unused value
+1254.       // fin add 
+1255.       // ----
+1256.        aType knlp=  aaaa_knlp ;
+             ^
+1257.        
+1258.        atype<KN<K>* >()->Add("[","",new OneOperator2_<K*,KN<K>*,Z >(get_elementp_<K,KN<K>*,Z>));

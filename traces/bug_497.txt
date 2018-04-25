@@ -1,0 +1,12 @@
+src/Eigen/eigenvalue.cpp:515: error: DEAD_STORE
+  The value written to &driver (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Eigen/eigenvalue.cpp:515:5: Write of unused value
+513.       long maxit=0;  // the maximum number of Arnoldi iterations
+514.       double sigma=0;
+515.       int driver = 4; //
+           ^
+516.       int mymode = -1;// unset
+517.       KN<double> * evalue=0;

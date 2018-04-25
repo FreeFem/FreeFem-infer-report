@@ -1,0 +1,79 @@
+examples++-mpi/parms_FreeFem.cpp:285: error: NULL_DEREFERENCE
+  pointer `ipar` last assigned on line 271 could be null and is dereferenced at line 285, column 6.
+Showing all 10 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:265:11: start of procedure parm_param
+263.   	}
+264.   
+265.     public: parm_param(string datafile,DistMatrix dm)
+                 ^
+266.   	{
+267.   	  FILE *fp;
+
+examples++-mpi/parms_FreeFem.cpp:270:4: 
+268.   	  char buf[BUFLEN], meth_buf[BUFLEN];
+269.   	  int num;
+270. > 	  PARMS_malloc(prepar,1,_PrePar);
+271.     	  PARMS_malloc(ipar,1,_IterPar);  
+272.   
+
+examples++-mpi/parms_FreeFem.cpp:271:6: 
+269.   	  int num;
+270.   	  PARMS_malloc(prepar,1,_PrePar);
+271. >   	  PARMS_malloc(ipar,1,_IterPar);  
+272.   
+273.             parm_param();
+
+examples++-mpi/parms_FreeFem.cpp:273:11: Skipping parm_param: function or method not found
+271.     	  PARMS_malloc(ipar,1,_IterPar);  
+272.   
+273.             parm_param();
+                 ^
+274.   
+275.   	  char * filename=new char[datafile.length()+1]; 
+
+examples++-mpi/parms_FreeFem.cpp:275:4: 
+273.             parm_param();
+274.   
+275. > 	  char * filename=new char[datafile.length()+1]; 
+276.                   strcpy(filename,datafile.c_str()); 
+277.    	 /* read parameters for preconditioner and iteration from file  'filename' */
+
+examples++-mpi/parms_FreeFem.cpp:276:17: Skipping c_str: function or method not found
+274.   
+275.   	  char * filename=new char[datafile.length()+1]; 
+276.                   strcpy(filename,datafile.c_str()); 
+                       ^
+277.    	 /* read parameters for preconditioner and iteration from file  'filename' */
+278.     /*  ---- start modification by MS
+
+examples++-mpi/parms_FreeFem.cpp:280:8: Taking false branch
+278.     /*  ---- start modification by MS
+279.      */
+280.    	 if( (fp = fopen(filename, "r")) == NULL ){
+              ^
+281.             fprintf(stderr, "Cannot open file inputs\n");
+282.       	  PARMS_Final();exit(1);
+
+examples++-mpi/parms_FreeFem.cpp:284:9: 
+282.       	  PARMS_Final();exit(1);
+283.       	}
+284. > 	  for (num=0; num< 18; num++)
+285.   	    ipar->ipar[num] = 0; 
+286.   
+
+examples++-mpi/parms_FreeFem.cpp:284:16: Loop condition is true. Entering loop body
+282.       	  PARMS_Final();exit(1);
+283.       	}
+284.   	  for (num=0; num< 18; num++)
+                      ^
+285.   	    ipar->ipar[num] = 0; 
+286.   
+
+examples++-mpi/parms_FreeFem.cpp:285:6: 
+283.       	}
+284.   	  for (num=0; num< 18; num++)
+285. > 	    ipar->ipar[num] = 0; 
+286.   
+287.     	num = 1;

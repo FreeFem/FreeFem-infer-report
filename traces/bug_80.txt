@@ -1,0 +1,12 @@
+src/femlib/FESpacen.cpp:75: error: DEAD_STORE
+  The value written to &nnode (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FESpacen.cpp:75:3: Write of unused value
+73.     //    cout << " nitem="<< nitem<< endl;
+74.     const int ndf = nbdf_d(ndfitem,nd);
+75.     const int nnode=nbnode_d(ndfitem,nd);
+        ^
+76.     int lgdata= ndf*5+N;
+77.     int * data = new int[lgdata];

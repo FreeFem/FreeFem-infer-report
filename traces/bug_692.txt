@@ -1,0 +1,12 @@
+examples++-load/medit.cpp:1089: error: DEAD_STORE
+  The value written to &nbetmp (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/medit.cpp:1089:5: Write of unused value
+1087.       int nvtmp  = iv;
+1088.       int nttmp  = it;
+1089.       int nbetmp = ibe;
+            ^
+1090.         
+1091.       const Mesh &Thtmp =l[i].evalm(0,stack);

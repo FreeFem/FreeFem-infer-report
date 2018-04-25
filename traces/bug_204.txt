@@ -1,0 +1,44 @@
+examples++-load/Element_P1bl.cpp:160: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::stP1Bulle2 accesses global variable from a different translation unit: map_type|.
+Showing all 5 steps of the trace
+
+
+examples++-load/Element_P1bl.cpp:160:5: initialization of Fem2D::stP1Bulle2
+158.       static TypeOfFE_P1Bubble2 P1Bulle2;
+159.       // a static variable to add the finite element to freefem++
+160.       static AddNewFE  stP1Bulle2("P1bl",&P1Bulle2);
+           ^
+161.   } // FEM2d namespace
+162.   
+
+examples++-load/Element_P1bl.cpp:160:22: call to AddNewFE_AddNewFE
+158.       static TypeOfFE_P1Bubble2 P1Bulle2;
+159.       // a static variable to add the finite element to freefem++
+160.       static AddNewFE  stP1Bulle2("P1bl",&P1Bulle2);
+                            ^
+161.   } // FEM2d namespace
+162.   
+
+src/fflib/AddNewFE.h:52:34: call to atype<Fem2D::TypeOfFE_*>
+  50.     {
+  51.       ffassert(tfe); // check 
+  52.       Global.New(FEname, Type_Expr(atype<Fem2D::TypeOfFE*>() ,new  EConstantTypeOfFE(tfe)));
+                                         ^
+  53.     }
+  54.   };
+
+src/fflib/AFunction.hpp:339:14: call to ShowType
+    337.    // basicForEachType * r=map_type[];
+    338.     if (ir == map_type.end()) { cerr << "Error: aType  '" << typeid(T).name() << "', doesn't exist\n";
+    339.                ShowType(cerr);
+                        ^
+    340.               throw(ErrorExec("exit",1));}
+    341.     return ir->second;}
+
+src/fflib/AFunction2.cpp:708:10: access to map_type|
+    706.    
+    707.      map<const string,basicForEachType *>::const_iterator i;
+    708.      for(i=map_type.begin();i!=map_type.end();i++)
+                    ^
+    709.        {
+    710.          f << " --"<< i->first <<" = " ; 

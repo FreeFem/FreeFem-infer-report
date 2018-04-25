@@ -1,0 +1,12 @@
+src/femlib/GQuadTree.cpp:617: error: DEAD_STORE
+  The value written to &d (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/GQuadTree.cpp:617:3: Write of unused value
+615.     typedef  typename Mesh::Rd Rd;
+616.     const int nkv=Element::nv;
+617.     const int d=Rd::d;
+         ^
+618.     R dP=DBL_MAX, nddd=0;
+619.     Rd PPhat,Delta;

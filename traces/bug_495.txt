@@ -1,0 +1,12 @@
+src/bamglib/MeshRead.cpp:510: error: DEAD_STORE
+  The value written to &l (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshRead.cpp:510:2: Write of unused value
+508.    
+509.    Int4  l,i,j;
+510.    l=f_in.Record(); 
+        ^
+511.    l=f_in.Record();
+512.    f_in >> i;

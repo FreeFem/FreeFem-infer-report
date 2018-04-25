@@ -1,0 +1,12 @@
+src/fflib/lgmesh.cpp:1828: error: DEAD_STORE
+  The value written to &A (type Fem2D::TVertex<Fem2D::R2>&) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgmesh.cpp:1828:13: Write of unused value
+1826.           {
+1827.               const Triangle & K(Th[k]);
+1828.               const Vertex & A(K[0]), &B(K[1]),&C(K[2]);
+                    ^
+1829.               int iK[3]={Th(k,0),Th(k,1),Th(k,2)};
+1830.               R  fk[3]={phi[iK[0]]-phi0,phi[iK[1]]-phi0,phi[iK[2]]-phi0 };

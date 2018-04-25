@@ -1,0 +1,213 @@
+src/medit/image.c:239: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 212, column 9 is not released after line 239, column 3.
+Showing all 29 steps of the trace
+
+
+src/medit/image.c:203:1: start of procedure saveTGA()
+201.   
+202.   
+203. > int saveTGA(const char *imgname,GLubyte *img,int w,int h) {
+204.     TGAheader  tga;
+205.     int        i;
+
+src/medit/image.c:209:3: 
+207.     FILE      *out;
+208.     
+209. >   strcpy(data,imgname);
+210.     ptr  = (char*)strstr(data,".tga");
+211.     if ( !ptr ) strcat(data,".tga");
+
+src/medit/image.c:210:3: 
+208.     
+209.     strcpy(data,imgname);
+210. >   ptr  = (char*)strstr(data,".tga");
+211.     if ( !ptr ) strcat(data,".tga");
+212.     out = fopen(data,"wb");
+
+src/medit/image.c:211:9: Taking true branch
+209.     strcpy(data,imgname);
+210.     ptr  = (char*)strstr(data,".tga");
+211.     if ( !ptr ) strcat(data,".tga");
+               ^
+212.     out = fopen(data,"wb");
+213.     if ( !out ) {
+
+src/medit/image.c:211:15: 
+209.     strcpy(data,imgname);
+210.     ptr  = (char*)strstr(data,".tga");
+211. >   if ( !ptr ) strcat(data,".tga");
+212.     out = fopen(data,"wb");
+213.     if ( !out ) {
+
+src/medit/image.c:212:3: 
+210.     ptr  = (char*)strstr(data,".tga");
+211.     if ( !ptr ) strcat(data,".tga");
+212. >   out = fopen(data,"wb");
+213.     if ( !out ) {
+214.       fprintf(stderr,"  ## UNABLE TO OPEN FILE %s.\n",data);
+
+src/medit/image.c:213:9: Taking false branch
+211.     if ( !ptr ) strcat(data,".tga");
+212.     out = fopen(data,"wb");
+213.     if ( !out ) {
+               ^
+214.       fprintf(stderr,"  ## UNABLE TO OPEN FILE %s.\n",data);
+215.       exit(1);
+
+src/medit/image.c:218:3: 
+216.     }
+217.   
+218. >   tga.idfield_len = 0;
+219.     tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+
+src/medit/image.c:219:3: 
+217.   
+218.     tga.idfield_len = 0;
+219. >   tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+221.     for (i=0; i<5; i++)
+
+src/medit/image.c:220:3: 
+218.     tga.idfield_len = 0;
+219.     tga.cmap_type   = 0;
+220. >   tga.image_type  = 2;
+221.     for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+
+src/medit/image.c:221:8: 
+219.     tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+221. >   for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+
+src/medit/image.c:221:13: Loop condition is true. Entering loop body
+219.     tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+221.     for (i=0; i<5; i++)
+                   ^
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+
+src/medit/image.c:222:5: 
+220.     tga.image_type  = 2;
+221.     for (i=0; i<5; i++)
+222. >     tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+224.       tga.x_orig[i] = 0;
+
+src/medit/image.c:221:18: 
+219.     tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+221. >   for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+
+src/medit/image.c:221:13: Loop condition is false. Leaving loop
+219.     tga.cmap_type   = 0;
+220.     tga.image_type  = 2;
+221.     for (i=0; i<5; i++)
+                   ^
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+
+src/medit/image.c:223:8: 
+221.     for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223. >   for (i=0; i<2; i++) {
+224.       tga.x_orig[i] = 0;
+225.       tga.y_orig[i] = 0;
+
+src/medit/image.c:223:13: Loop condition is true. Entering loop body
+221.     for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+                   ^
+224.       tga.x_orig[i] = 0;
+225.       tga.y_orig[i] = 0;
+
+src/medit/image.c:224:5: 
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+224. >     tga.x_orig[i] = 0;
+225.       tga.y_orig[i] = 0;
+226.     }
+
+src/medit/image.c:225:5: 
+223.     for (i=0; i<2; i++) {
+224.       tga.x_orig[i] = 0;
+225. >     tga.y_orig[i] = 0;
+226.     }
+227.     /* Lo bits */
+
+src/medit/image.c:223:18: 
+221.     for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223. >   for (i=0; i<2; i++) {
+224.       tga.x_orig[i] = 0;
+225.       tga.y_orig[i] = 0;
+
+src/medit/image.c:223:13: Loop condition is false. Leaving loop
+221.     for (i=0; i<5; i++)
+222.       tga.cmap_spec[i] = 0;
+223.     for (i=0; i<2; i++) {
+                   ^
+224.       tga.x_orig[i] = 0;
+225.       tga.y_orig[i] = 0;
+
+src/medit/image.c:228:3: 
+226.     }
+227.     /* Lo bits */
+228. >   tga.width[0] = w & 0xFF;
+229.     /* Hi bits */
+230.     tga.width[1] = (w >> 8) & 0xFF;
+
+src/medit/image.c:230:3: 
+228.     tga.width[0] = w & 0xFF;
+229.     /* Hi bits */
+230. >   tga.width[1] = (w >> 8) & 0xFF;
+231.     tga.height[0] = h & 0xFF;
+232.     tga.height[1] = (h >> 8) & 0xFF;
+
+src/medit/image.c:231:3: 
+229.     /* Hi bits */
+230.     tga.width[1] = (w >> 8) & 0xFF;
+231. >   tga.height[0] = h & 0xFF;
+232.     tga.height[1] = (h >> 8) & 0xFF;
+233.     tga.pixel_size = 24;
+
+src/medit/image.c:232:3: 
+230.     tga.width[1] = (w >> 8) & 0xFF;
+231.     tga.height[0] = h & 0xFF;
+232. >   tga.height[1] = (h >> 8) & 0xFF;
+233.     tga.pixel_size = 24;
+234.     tga.image_desc = 0;
+
+src/medit/image.c:233:3: 
+231.     tga.height[0] = h & 0xFF;
+232.     tga.height[1] = (h >> 8) & 0xFF;
+233. >   tga.pixel_size = 24;
+234.     tga.image_desc = 0;
+235.     /* Output header */
+
+src/medit/image.c:234:3: 
+232.     tga.height[1] = (h >> 8) & 0xFF;
+233.     tga.pixel_size = 24;
+234. >   tga.image_desc = 0;
+235.     /* Output header */
+236.     fwrite(&tga,sizeof(TGAheader),1,out);
+
+src/medit/image.c:236:3: 
+234.     tga.image_desc = 0;
+235.     /* Output header */
+236. >   fwrite(&tga,sizeof(TGAheader),1,out);
+237.     
+238.     /* Output image */
+
+src/medit/image.c:239:3: 
+237.     
+238.     /* Output image */
+239. >   fwrite(img, sizeof(unsigned char),w*h*3,out);
+240.     return(1);
+241.   }

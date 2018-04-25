@@ -1,0 +1,56 @@
+src/medit/image.c:27: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 20, column 10 is not released after line 27, column 13.
+Showing all 7 steps of the trace
+
+
+src/medit/image.c:6:1: start of procedure loadPPM()
+4.   
+5.   
+6. > PPMimage *loadPPM(const char *imgname,int *type) {
+7.     pPPMimage  result;
+8.     FILE      *fp;
+
+src/medit/image.c:13:3: 
+11.   
+12.     /* search for image */
+13. >   ptr = strstr(imgname,".ppm");
+14.     if ( !ptr ) {
+15.       strcpy(data,imgname);
+
+src/medit/image.c:14:9: Taking false branch
+12.     /* search for image */
+13.     ptr = strstr(imgname,".ppm");
+14.     if ( !ptr ) {
+              ^
+15.       strcpy(data,imgname);
+16.       strcat(data,".ppm");
+
+src/medit/image.c:20:5: 
+18.     } 
+19.     else
+20. >     fp = fopen(imgname,"rb");
+21.     if ( !fp ) {
+22.       fprintf(stderr,"  ## Unable to open file %s.\n",imgname);
+
+src/medit/image.c:21:9: Taking false branch
+19.     else
+20.       fp = fopen(imgname,"rb");
+21.     if ( !fp ) {
+              ^
+22.       fprintf(stderr,"  ## Unable to open file %s.\n",imgname);
+23.       return(0);
+
+src/medit/image.c:26:9: Taking true branch
+24.     }
+25.   
+26.     if ( !fgets(buff,sizeof(buff),fp) ) {
+              ^
+27.       fprintf(stderr,"  ## Invalid file header.\n");
+28.       return(0);
+
+src/medit/image.c:27:5: 
+25.   
+26.     if ( !fgets(buff,sizeof(buff),fp) ) {
+27. >     fprintf(stderr,"  ## Invalid file header.\n");
+28.       return(0);
+29.     }

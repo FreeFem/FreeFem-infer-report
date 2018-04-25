@@ -1,0 +1,41 @@
+examples++-mpi/ffsuperludistoption.hpp:336: error: NULL_DEREFERENCE
+  pointer `pfile` last assigned on line 332 could be null and is dereferenced by call to `fgets()` at line 336, column 3.
+Showing all 5 steps of the trace
+
+
+examples++-mpi/ffsuperludistoption.hpp:327:1: start of procedure read_nprow_npcol_matrixdist_superlu_datafile()
+325.   // }
+326.   
+327. > void read_nprow_npcol_matrixdist_superlu_datafile(string *data_option, int_t *nprow, int_t *npcol, int *matrixdist){
+328.    
+329.     char datafile[data_option->size()+1];  
+
+examples++-mpi/ffsuperludistoption.hpp:329:3: Skipping size: function or method not found
+327.   void read_nprow_npcol_matrixdist_superlu_datafile(string *data_option, int_t *nprow, int_t *npcol, int *matrixdist){
+328.    
+329.     char datafile[data_option->size()+1];  
+         ^
+330.     strcpy( datafile, data_option->c_str()); 
+331.     
+
+examples++-mpi/ffsuperludistoption.hpp:330:3: Skipping c_str: function or method not found
+328.    
+329.     char datafile[data_option->size()+1];  
+330.     strcpy( datafile, data_option->c_str()); 
+         ^
+331.     
+332.     FILE* pfile= fopen( datafile,"rt");
+
+examples++-mpi/ffsuperludistoption.hpp:332:3: 
+330.     strcpy( datafile, data_option->c_str()); 
+331.     
+332. >   FILE* pfile= fopen( datafile,"rt");
+333.     char data[256];
+334.     char *tictac;
+
+examples++-mpi/ffsuperludistoption.hpp:336:3: 
+334.     char *tictac;
+335.     
+336. >   fgets(data,256,pfile);
+337.     if(verbosity>4)
+338.     cout << "data=" << data << endl;

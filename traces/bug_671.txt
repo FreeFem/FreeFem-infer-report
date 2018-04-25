@@ -1,0 +1,12 @@
+examples++-load/cmaes.cpp:940: error: DEAD_STORE
+  The value written to &keystart (type char const *) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/cmaes.cpp:940:3: Write of unused value
+938.     if (key == 0)
+939.       key = s; 
+940.     keystart = key; /* for debugging purpose */ 
+         ^
+941.     keyend = key + strlen(key);
+942.   

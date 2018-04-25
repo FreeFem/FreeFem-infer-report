@@ -1,0 +1,20 @@
+examples++-load/Element_P2pnc.cpp:13: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::QFE accesses global variable from a different translation unit: Fem2D::QF_GaussLegendre3|.
+Showing all 2 steps of the trace
+
+
+examples++-load/Element_P2pnc.cpp:13:5: initialization of Fem2D::QFE
+11.   namespace  Fem2D {
+12.   
+13.       static const QuadratureFormular1d &QFE=QF_GaussLegendre3;
+          ^
+14.       static const GQuadratureFormular<R2> & QFK=QuadratureFormular_T_5;
+15.     
+
+examples++-load/Element_P2pnc.cpp:13:5: access to Fem2D::QF_GaussLegendre3|
+11.   namespace  Fem2D {
+12.   
+13.       static const QuadratureFormular1d &QFE=QF_GaussLegendre3;
+          ^
+14.       static const GQuadratureFormular<R2> & QFK=QuadratureFormular_T_5;
+15.     

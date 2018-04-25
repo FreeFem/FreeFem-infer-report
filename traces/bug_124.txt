@@ -1,0 +1,12 @@
+src/femlib/fem.cpp:320: error: DEAD_STORE
+  The value written to &k100 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/fem.cpp:320:10: Write of unused value
+318.   					    //    if  ((linkd[i] != -1) || (linkd[i] != -1))   =>   i is on mortars 
+319.   					    //    make a link for all triangles contening a  mortars
+320.   					    const int k100=100;
+                ^
+321.   		    SubMortar  bmortars[k100];
+322.   		    int k3j=0;

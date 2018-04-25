@@ -1,0 +1,12 @@
+src/fflib/lgfem.cpp:4362: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgfem.cpp:4362:54: Write of unused value
+4360.   	     int k=0; 
+4361.   	     if (isovalue) {PlotValue(Viso,k,"IsoValue");k+= Viso.N()+3;}
+4362.   	     if (vecvalue) {PlotValue(Varrow,k,"Vec Value");k+= Varrow.N()+3;}
+                                                             ^
+4363.   	 } 
+4364.   	 // value=false;

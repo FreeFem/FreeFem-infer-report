@@ -1,0 +1,12 @@
+examples++-load/distance.cpp:488: error: DEAD_STORE
+  The value written to &nbve (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/distance.cpp:488:5: Write of unused value
+486.       
+487.       typedef Mesh3::Element Elem;
+488.       const int nbve=4;
+           ^
+489.       
+490.       const Elem & K = Th[k];

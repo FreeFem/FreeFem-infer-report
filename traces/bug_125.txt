@@ -1,0 +1,12 @@
+examples++-load/MUMPS_seq.cpp:107: error: DEAD_STORE
+  The value written to &ierr (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/MUMPS_seq.cpp:107:2: Write of unused value
+105.   	id.job=JOB_END;
+106.   	mumps_c(&id); /* Terminate instance */
+107.   	int ierr = MPI_Finalize();
+        ^
+108.   	ErrorExec(msg,INFO(1) ); 
+109.         }

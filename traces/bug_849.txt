@@ -1,0 +1,12 @@
+examples++-load/tetgen.cpp:2550: error: DEAD_STORE
+  The value written to &Th3 (type Fem2D::Mesh3*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/tetgen.cpp:2550:5: Write of unused value
+2548.       //======================================
+2549.       
+2550.       Mesh3 *Th3 =new Mesh3;
+            ^
+2551.       
+2552.       Th3 = Convexhull_3Dpoints( switch_tetgen, nbv, cxx, cyy, czz, label_tet, label_face );

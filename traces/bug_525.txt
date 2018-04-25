@@ -1,0 +1,143 @@
+src/fflib/problem.hpp:559: error: NULL_DEREFERENCE
+  pointer `ll` last assigned on line 557 could be null and is dereferenced by call to `LinearComb` at line 559, column 13.
+Showing all 18 steps of the trace
+
+
+src/fflib/problem.hpp:551:3: start of procedure FormLinear
+549.     Ftest * l;
+550.      
+551.     FormLinear(const basicAC_F0 & args) {
+         ^
+552.       di= dynamic_cast<A>(CastTo<A>(args[0]));
+553.       assert(di);
+
+src/fflib/problem.hpp:562:5: Skipping E_F0mps: function or method not found
+560.       // delete ll; // il ne faut pas detruire car ll peut etre dans une variable
+561.       assert(l);
+562.       ffassert(di && l); 
+           ^
+563.     }
+564.     bool VF() const { return MaxOp(l) >= last_operatortype;}
+
+src/fflib/problem.hpp:552:5: Skipping operator[]: function or method not found
+550.      
+551.     FormLinear(const basicAC_F0 & args) {
+552.       di= dynamic_cast<A>(CastTo<A>(args[0]));
+           ^
+553.       assert(di);
+554.       Expression a1=CastTo<B>(args[1]);
+
+src/fflib/lgmesh3.hpp:28:1: start of procedure CastTo<const_CDomainOfIntegration_*>()
+  26.   
+  27.   template<class Result>
+  28. > inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:44: Skipping operator_E_F0_*: function or method not found
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                   ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:78: return from a call to CastTo<const_CDomainOfIntegration_*>
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                                                     ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/problem.hpp:554:5: Skipping operator[]: function or method not found
+552.       di= dynamic_cast<A>(CastTo<A>(args[0]));
+553.       assert(di);
+554.       Expression a1=CastTo<B>(args[1]);
+           ^
+555.       assert(a1);
+556.      // cout << "  ---FormLinear: "<< a1 << "  " << typeid(*a1).name() << *a1 <<endl;
+
+src/fflib/lgmesh3.hpp:28:1: start of procedure CastTo<const_LinearComb<MDroit,_C_F0>_*>()
+  26.   
+  27.   template<class Result>
+  28. > inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:44: Skipping operator_E_F0_*: function or method not found
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                   ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:78: return from a call to CastTo<const_LinearComb<MDroit,_C_F0>_*>
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                                                     ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/problem.hpp:557:5: 
+555.       assert(a1);
+556.      // cout << "  ---FormLinear: "<< a1 << "  " << typeid(*a1).name() << *a1 <<endl;
+557. >     B ll= dynamic_cast<B>(a1);
+558.       assert(ll);
+559.       l = new Ftest(*ll); // FH1004 ->Optimize(currentblock);  same as bilinear
+
+src/fflib/problem.hpp:559:5: 
+557.       B ll= dynamic_cast<B>(a1);
+558.       assert(ll);
+559. >     l = new Ftest(*ll); // FH1004 ->Optimize(currentblock);  same as bilinear
+560.       // delete ll; // il ne faut pas detruire car ll peut etre dans une variable
+561.       assert(l);
+
+src/femlib/DOperator.hpp:80:4: start of procedure LinearComb
+  78.      }
+  79.      
+  80.      LinearComb(const LinearComb &l) 
+           ^
+  81.         :v(l.v),
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+
+src/femlib/DOperator.hpp:84:69: Skipping E_F0mps: function or method not found
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+  83.           mesh_indep_stack_opt(l.mesh_indep_stack_opt),
+  84.           optiexp0(l.optiexp0),optiexpK(l.optiexpK),isoptimize(false){}  
+                                                                            ^
+  85.           
+  86.      int nbtrue(bool *ok) const 
+
+src/femlib/DOperator.hpp:81:8: Skipping vector: function or method not found
+  79.      
+  80.      LinearComb(const LinearComb &l) 
+  81.         :v(l.v),
+               ^
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+  83.           mesh_indep_stack_opt(l.mesh_indep_stack_opt),
+
+src/femlib/DOperator.hpp:82:9: Skipping vector: function or method not found
+  80.      LinearComb(const LinearComb &l) 
+  81.         :v(l.v),
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+                ^
+  83.           mesh_indep_stack_opt(l.mesh_indep_stack_opt),
+  84.           optiexp0(l.optiexp0),optiexpK(l.optiexpK),isoptimize(false){}  
+
+src/femlib/DOperator.hpp:83:9: Skipping vector: function or method not found
+  81.         :v(l.v),
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+  83.           mesh_indep_stack_opt(l.mesh_indep_stack_opt),
+                ^
+  84.           optiexp0(l.optiexp0),optiexpK(l.optiexpK),isoptimize(false){}  
+  85.           
+
+src/femlib/DOperator.hpp:84:9: 
+  82.           where_in_stack_opt(l.where_in_stack_opt),
+  83.           mesh_indep_stack_opt(l.mesh_indep_stack_opt),
+  84. >         optiexp0(l.optiexp0),optiexpK(l.optiexpK),isoptimize(false){}  
+  85.           
+  86.      int nbtrue(bool *ok) const 

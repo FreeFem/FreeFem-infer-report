@@ -1,0 +1,12 @@
+src/femlib/fem.cpp:1221: error: DEAD_STORE
+  The value written to &pk (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/fem.cpp:1221:6: Write of unused value
+1219.   	if(ddp > lgp2) {
+1220.   	    ddp=lgp2;
+1221.   	    pk=k;
+             ^
+1222.   	    
+1223.   	}

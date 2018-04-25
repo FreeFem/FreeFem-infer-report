@@ -1,0 +1,71 @@
+src/fflib/lgmat.cpp:1372: error: NULL_DEREFERENCE
+  pointer `mi` last assigned on line 1370 could be null and is dereferenced at line 1372, column 36.
+Showing all 9 steps of the trace
+
+
+src/fflib/lgmat.cpp:1365:1: start of procedure SetMatrixInterpolation1()
+1363.   
+1364.   
+1365. > AnyType SetMatrixInterpolation1(Stack stack,Expression emat,Expression einter,int init)
+1366.   {
+1367.     using namespace Fem2D;
+
+src/fflib/lgmat.cpp:1369:3: Skipping operator(): function or method not found
+1367.     using namespace Fem2D;
+1368.     
+1369.     Matrice_Creuse<R> * sparse_mat =GetAny<Matrice_Creuse<R>* >((*emat)(stack));
+          ^
+1370.     const MatrixInterpolation<pfes>::Op * mi(dynamic_cast<const MatrixInterpolation<pfes>::Op *>(einter));
+1371.     ffassert(einter);
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<Matrice_Creuse<double>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<Matrice_Creuse<double>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+src/fflib/lgmat.cpp:1370:3: 
+1368.     
+1369.     Matrice_Creuse<R> * sparse_mat =GetAny<Matrice_Creuse<R>* >((*emat)(stack));
+1370. >   const MatrixInterpolation<pfes>::Op * mi(dynamic_cast<const MatrixInterpolation<pfes>::Op *>(einter));
+1371.     ffassert(einter);
+1372.     pfes * pUh = GetAny< pfes * >((* mi->a)(stack));
+
+src/fflib/lgmat.cpp:1371:3: Condition is true
+1369.     Matrice_Creuse<R> * sparse_mat =GetAny<Matrice_Creuse<R>* >((*emat)(stack));
+1370.     const MatrixInterpolation<pfes>::Op * mi(dynamic_cast<const MatrixInterpolation<pfes>::Op *>(einter));
+1371.     ffassert(einter);
+          ^
+1372.     pfes * pUh = GetAny< pfes * >((* mi->a)(stack));
+1373.     FESpace * Uh = **pUh;
+
+src/fflib/lgmat.cpp:1372:3: 
+1370.     const MatrixInterpolation<pfes>::Op * mi(dynamic_cast<const MatrixInterpolation<pfes>::Op *>(einter));
+1371.     ffassert(einter);
+1372. >   pfes * pUh = GetAny< pfes * >((* mi->a)(stack));
+1373.     FESpace * Uh = **pUh;
+1374.     int NUh =Uh->N;

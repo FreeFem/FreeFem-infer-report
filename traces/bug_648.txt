@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:844: error: DEAD_STORE
+  The value written to &SegI (type bamg::ListofIntersectionTriangles::SegInterpolation*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:844:3: Write of unused value
+842.     R2 x,y,xy;
+843.     
+844.     SegInterpolation *SegI=lSegsI;
+         ^
+845.     SegI=lSegsI;
+846.     lSegsI[NbSeg].last=Size;// improvement 

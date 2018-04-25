@@ -1,0 +1,28 @@
+examples++-load/Element_Mixte.cpp:1418: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::Elm_TD_NNS1 accesses global variable from a different translation unit: Fem2D::QF_GaussLegendre2|.
+Showing all 3 steps of the trace
+
+
+examples++-load/Element_Mixte.cpp:1418:5: initialization of Fem2D::Elm_TD_NNS1
+1416.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2dOrtho(true);// BDM1ortho  
+1417.       static TypeOfFE_TD_NNS0 Elm_TD_NNS;
+1418.       static TypeOfFE_TD_NNS1 Elm_TD_NNS1;
+            ^
+1419.       static AddNewFE FE__TD_NNS("TDNNS0",&Elm_TD_NNS); 
+1420.       static AddNewFE FE__TD_NNS1("TDNNS1",&Elm_TD_NNS1);     
+
+examples++-load/Element_Mixte.cpp:1418:29: call to Fem2D::TypeOfFE_TD_NNS1_TypeOfFE_TD_NNS1
+1416.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2dOrtho(true);// BDM1ortho  
+1417.       static TypeOfFE_TD_NNS0 Elm_TD_NNS;
+1418.       static TypeOfFE_TD_NNS1 Elm_TD_NNS1;
+                                    ^
+1419.       static AddNewFE FE__TD_NNS("TDNNS0",&Elm_TD_NNS); 
+1420.       static AddNewFE FE__TD_NNS1("TDNNS1",&Elm_TD_NNS1);     
+
+examples++-load/Element_Mixte.cpp:185:16: access to Fem2D::QF_GaussLegendre2|
+183.   				     2,
+184.   				     1,
+185.   				     3+6*3*QF_GaussLegendre2.n, // nb coef to build interpolation
+                      ^
+186.   				     QuadratureFormular_T_1.n+3*QF_GaussLegendre2.n, // np point to build interpolation
+187.   				     0),

@@ -1,0 +1,12 @@
+src/medit/inout_popenbinaire.c:925: error: DEAD_STORE
+  The value written to &natureread (type char*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/inout_popenbinaire.c:925:2: Write of unused value
+923.       if( mesh->dim == 3 && mesh->ntet ){
+924.         if( KwdCod == GmfSolAtTetrahedra ){
+925.   	natureread = "SolAtTetrahedra";
+        ^
+926.   	fread( (unsigned char *)&NulPos ,WrdSiz, 1, stdin);
+927.   	fread( (unsigned char *)&nel ,WrdSiz, 1, stdin);

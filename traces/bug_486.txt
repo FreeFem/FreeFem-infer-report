@@ -1,0 +1,12 @@
+src/femlib/P012_3d.cpp:499: error: DEAD_STORE
+  The value written to &d14 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/P012_3d.cpp:499:3: Write of unused value
+497.   	 const R d1=d+1.;
+498.   	 const R d13=d1*d1*d1;
+499.   	 const R d14=d13*d1;
+         ^
+500.   	 R ll[]={1.-P.sum(),P.x,P.y,P.z}; 
+501.   	 R lb4= (ll[0]*ll[1]*ll[2]*ll[3])*d13; // d1^-4 d1^3 = 1/d1 in G

@@ -1,0 +1,12 @@
+src/femlib/FESpace.cpp:826: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FESpace.cpp:826:30: Write of unused value
+824.                lne += tm->NbOfNodes(Th,Th.mortars[im]);
+825.               }
+826.             FirstNodeOfElement[k++]=lne;           
+                                    ^
+827.           }       
+828.           

@@ -1,0 +1,12 @@
+examples++-load/tetgen.cpp:273: error: DEAD_STORE
+  The value written to &rTh (type Fem2D::Mesh&) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/tetgen.cpp:273:5: Write of unused value
+271.           takemesh[ii]=0;
+272.       
+273.       Mesh &rTh = Th;
+           ^
+274.       for (int it=0; it<nbt; ++it){
+275.           for( int iv=0; iv<3; ++iv){

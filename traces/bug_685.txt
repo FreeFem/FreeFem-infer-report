@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1219: error: DEAD_STORE
+  The value written to &label (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1219:7: Write of unused value
+1217.         int type=TypeCells[i];
+1218.         int iv[3];
+1219.         int label=1;
+              ^
+1220.         switch(type){
+1221.         case 1:  // Vertex

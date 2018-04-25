@@ -1,0 +1,25 @@
+examples++-load/libff-mmap-semaphore.c:67: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 66 could be null and is dereferenced at line 67, column 5.
+Showing all 3 steps of the trace
+
+
+examples++-load/libff-mmap-semaphore.c:64:1: start of procedure ffsem_malloc()
+62.   }
+63.   
+64. > ff_Psem ffsem_malloc()
+65.   {
+66.       ff_Psem p = (ff_Psem) malloc(sizeof(struct FF_P_sem));
+
+examples++-load/libff-mmap-semaphore.c:66:5: 
+64.   ff_Psem ffsem_malloc()
+65.   {
+66. >     ff_Psem p = (ff_Psem) malloc(sizeof(struct FF_P_sem));
+67.       p->sem=0;
+68.       p->nm=0;
+
+examples++-load/libff-mmap-semaphore.c:67:5: 
+65.   {
+66.       ff_Psem p = (ff_Psem) malloc(sizeof(struct FF_P_sem));
+67. >     p->sem=0;
+68.       p->nm=0;
+69.       p->creat=0;

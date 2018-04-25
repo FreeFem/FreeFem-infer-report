@@ -1,0 +1,12 @@
+src/medit/parsop.c:298: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/parsop.c:298:7: Write of unused value
+296.       }
+297.       else if ( !strcmp(key,"time") ) {
+298.         ret = fscanf(in,"%f %f %f",&sc->par.maxtime,&sc->par.pertime,&sc->par.dt);
+             ^
+299.         if ( !EatSpace(in) ) {
+300.           fscanf(in,"%c",&ub);

@@ -1,0 +1,12 @@
+src/femlib/Mesh3dn.cpp:676: error: DEAD_STORE
+  The value written to &nt (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/Mesh3dn.cpp:676:5: Write of unused value
+674.       }
+675.       
+676.       int nv=-1,nt=-1,neb=-1;
+           ^
+677.       nv = GmfStatKwd(inm,GmfVertices);
+678.       nt = GmfStatKwd(inm,GmfTetrahedra);

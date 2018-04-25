@@ -1,0 +1,100 @@
+examples++-load/cmaes.cpp:2276: error: MEMORY_LEAK
+  memory dynamically allocated by call to `new_void()` at line 2270, column 24 is not reachable after line 2276, column 10.
+Showing all 13 steps of the trace
+
+
+examples++-load/cmaes.cpp:2264:1: start of procedure random_init()
+2262.   /* --------------------------------------------------------- */
+2263.   
+2264. > long 
+2265.   random_init( random_t *t, long unsigned inseed)
+2266.   {
+
+examples++-load/cmaes.cpp:2267:3: 
+2265.   random_init( random_t *t, long unsigned inseed)
+2266.   {
+2267. >   clock_t cloc = clock();
+2268.   
+2269.     t->flgstored = 0;
+
+examples++-load/cmaes.cpp:2269:3: 
+2267.     clock_t cloc = clock();
+2268.   
+2269. >   t->flgstored = 0;
+2270.     t->rgrand = (long *) new_void(32, sizeof(long));
+2271.     if (inseed < 1) {
+
+examples++-load/cmaes.cpp:2270:3: 
+2268.   
+2269.     t->flgstored = 0;
+2270. >   t->rgrand = (long *) new_void(32, sizeof(long));
+2271.     if (inseed < 1) {
+2272.       while ((long) (cloc - clock()) == 0)
+
+examples++-load/cmaes.cpp:2837:1: start of procedure new_void()
+  2835.   #endif 
+  2836.   
+  2837. > static void * new_void(int n, size_t size)
+  2838.   {
+  2839.     static char s[70];
+
+examples++-load/cmaes.cpp:2840:3: 
+  2838.   {
+  2839.     static char s[70];
+  2840. >   void *p = calloc((unsigned) n, size);
+  2841.     if (p == 0) {
+  2842.       sprintf(s, "new_void(): calloc(%ld,%ld) failed",(long)n,(long)size);
+
+examples++-load/cmaes.cpp:2841:7: Taking false branch
+  2839.     static char s[70];
+  2840.     void *p = calloc((unsigned) n, size);
+  2841.     if (p == 0) {
+                ^
+  2842.       sprintf(s, "new_void(): calloc(%ld,%ld) failed",(long)n,(long)size);
+  2843.       FATAL(s,0,0,0);
+
+examples++-load/cmaes.cpp:2845:3: 
+  2843.       FATAL(s,0,0,0);
+  2844.     }
+  2845. >   return p;
+  2846.   }
+  2847.   
+
+examples++-load/cmaes.cpp:2846:1: return from a call to new_void
+  2844.     }
+  2845.     return p;
+  2846. > }
+  2847.   
+  2848.   double * 
+
+examples++-load/cmaes.cpp:2271:7: Taking true branch
+2269.     t->flgstored = 0;
+2270.     t->rgrand = (long *) new_void(32, sizeof(long));
+2271.     if (inseed < 1) {
+              ^
+2272.       while ((long) (cloc - clock()) == 0)
+2273.         ; /* TODO: remove this for time critical applications? */
+
+examples++-load/cmaes.cpp:2272:12: Loop condition is false. Leaving loop
+2270.     t->rgrand = (long *) new_void(32, sizeof(long));
+2271.     if (inseed < 1) {
+2272.       while ((long) (cloc - clock()) == 0)
+                   ^
+2273.         ; /* TODO: remove this for time critical applications? */
+2274.       inseed = (long unsigned)abs((long)(100L*time(0)+clock()));
+
+examples++-load/cmaes.cpp:2274:5: Skipping abs(): function or method not found
+2272.       while ((long) (cloc - clock()) == 0)
+2273.         ; /* TODO: remove this for time critical applications? */
+2274.       inseed = (long unsigned)abs((long)(100L*time(0)+clock()));
+            ^
+2275.     }
+2276.     return random_Start(t, inseed);
+
+examples++-load/cmaes.cpp:2276:3: Skipping random_Start(): function or method not found
+2274.       inseed = (long unsigned)abs((long)(100L*time(0)+clock()));
+2275.     }
+2276.     return random_Start(t, inseed);
+          ^
+2277.   }
+2278.   

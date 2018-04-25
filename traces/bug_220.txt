@@ -1,0 +1,12 @@
+src/medit/items.c:198: error: DEAD_STORE
+  The value written to &zd (type float) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/items.c:198:3: Write of unused value
+196.     xd = cube->cma[0] - cube->cmi[0];
+197.     yd = cube->cma[1] - cube->cmi[1];
+198.     zd = cube->cma[2] - cube->cmi[2];
+         ^
+199.     
+200.     glBegin(GL_QUADS);

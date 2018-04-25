@@ -1,0 +1,12 @@
+examples++-load/DxWriter.cpp:207: error: DEAD_STORE
+  The value written to &ddim (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/DxWriter.cpp:207:5: Write of unused value
+205.   		evct=0;
+206.       int nbofsol;
+207.       int ddim=2;
+           ^
+208.       int stsize=3;
+209.   		//There's no named parameter

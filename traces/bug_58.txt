@@ -1,0 +1,12 @@
+src/bamglib/MeshGeom.cpp:356: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshGeom.cpp:356:13: Write of unused value
+354.         if((j=colorV[i])>=0)
+355.   	{
+356.               int k=Gh.vertices[j].cas;
+                   ^
+357.               Gh.vertices[j].Set(vertices[i]);
+358.   	//  Vertex & v = Gh.vertices[j];

@@ -1,0 +1,12 @@
+src/femlib/gibbs.cpp:1107: error: DEAD_STORE
+  The value written to &nt (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/gibbs.cpp:1107:5: Write of unused value
+1105.     if (cdef->NodesOfElement==0) return -2;
+1106.       int nv = NbOfNodes;
+1107.       int nt = NbOfElements;// ;Th.nt;
+            ^
+1108.       long  pfold =0, pfnew=0;
+1109.       long* ptvois=NULL;

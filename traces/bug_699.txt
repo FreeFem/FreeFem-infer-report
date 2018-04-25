@@ -1,0 +1,59 @@
+src/fflib/lex.cpp:1051: error: USE_AFTER_FREE
+  pointer `*returned by top` was freed by call to `delete[]()` at line 1051, column 7 and is dereferenced or freed at line 1051, column 7.
+Showing all 7 steps of the trace
+
+
+src/fflib/lex.cpp:1046:2: start of procedure __infer_inner_destructor_~mylex
+1044.   }
+1045.     
+1046.    mylex::~mylex()
+         ^
+1047.   {
+1048.     delete listMacroDef;
+
+src/fflib/lex.cpp:1048:3: 
+1046.    mylex::~mylex()
+1047.   {
+1048. >   delete listMacroDef;
+1049.     while( ! strdata.empty()) 
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+
+src/fflib/lex.cpp:1049:12: Loop condition is true. Entering loop body
+1047.   {
+1048.     delete listMacroDef;
+1049.     while( ! strdata.empty()) 
+                   ^
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+1051.         delete [] strdata.top(); // bug  ????? FH  25032005 
+
+src/fflib/lex.cpp:1051:7: Skipping top: function or method not found
+1049.     while( ! strdata.empty()) 
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+1051.         delete [] strdata.top(); // bug  ????? FH  25032005 
+              ^
+1052.         strdata.pop();
+1053.      }
+
+src/fflib/lex.cpp:1052:7: Skipping pop: function or method not found
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+1051.         delete [] strdata.top(); // bug  ????? FH  25032005 
+1052.         strdata.pop();
+              ^
+1053.      }
+1054.   }
+
+src/fflib/lex.cpp:1049:12: Loop condition is true. Entering loop body
+1047.   {
+1048.     delete listMacroDef;
+1049.     while( ! strdata.empty()) 
+                   ^
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+1051.         delete [] strdata.top(); // bug  ????? FH  25032005 
+
+src/fflib/lex.cpp:1051:7: Skipping top: function or method not found
+1049.     while( ! strdata.empty()) 
+1050.      {  //  commente july 2005 FH ???. a test plus finement. 
+1051.         delete [] strdata.top(); // bug  ????? FH  25032005 
+              ^
+1052.         strdata.pop();
+1053.      }

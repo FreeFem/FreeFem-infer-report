@@ -1,0 +1,12 @@
+src/fflib/lgfem.cpp:1200: error: DEAD_STORE
+  The value written to &ie1 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgfem.cpp:1200:19: Write of unused value
+1198.   			  cout << "Abscisse: s0 = "<< xx0 << " <==> s1 " << xx1  <<endl; 
+1199.   			  ExecError("periodic: Sorry one vertex of edge is losted "); }
+1200.                     int ie1=-1;
+                          ^
+1201.                    if      (((ie1=im0->second[0])==im1->second[1]) && (ie1>=0)) ;
+1202.                    else if (((ie1=im0->second[0])==im1->second[1]) && (ie1>=0)) ;

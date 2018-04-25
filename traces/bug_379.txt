@@ -1,0 +1,12 @@
+examples++-load/isoline.cpp:423: error: DEAD_STORE
+  The value written to &Uvp (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isoline.cpp:423:13: Write of unused value
+421.               
+422.               if(ddd1) cout << " ** " << i<< " " << "ui =" << Ui << endl;
+423.               double Uvp=Ui;
+                   ^
+424.               while (!pqv.empty())
+425.               {

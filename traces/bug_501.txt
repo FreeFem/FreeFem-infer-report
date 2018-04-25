@@ -1,0 +1,12 @@
+examples++-load/distance.cpp:519: error: DEAD_STORE
+  The value written to &distneginf (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/distance.cpp:519:5: Write of unused value
+517.       double unset= -std::numeric_limits<double>::max();
+518.       double distinf = std::numeric_limits<double>::max();
+519.       double distneginf = std::numeric_limits<double>::min();
+           ^
+520.       
+521.       MeshPoint *mp(MeshPointStack(stack)) , mps=*mp;

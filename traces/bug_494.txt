@@ -1,0 +1,12 @@
+src/femlib/fem.hpp:502: error: DEAD_STORE
+  The value written to &p2 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/fem.hpp:502:2: Write of unused value
+500.         {
+501.   	// be: border index, i and j index of vertex of be, i index of common vertex
+502.   	int p2=-1;
+        ^
+503.   	for (int p=BoundaryAdjacencesHead[i];p>=0;p=BoundaryAdjacencesLink[p])
+504.   	  { 

@@ -1,0 +1,77 @@
+examples++-load/ff-Ipopt.cpp:1541: error: NULL_DEREFERENCE
+  pointer `M_b` last assigned on line 1540 could be null and is dereferenced at line 1541, column 8.
+Showing all 10 steps of the trace
+
+
+examples++-load/ff-Ipopt.cpp:1537:1: start of procedure FitnessFunctionDatas
+1535.   
+1536.   
+1537. > template<> FitnessFunctionDatas<mv_P2_f>::FitnessFunctionDatas(const basicAC_F0 &args,Expression const *nargs,const C_F0 &theparam,const C_F0 &objfact,const C_F0 &L_m)
+1538.   : GenericFitnessFunctionDatas()
+1539.   {
+
+examples++-load/ff-Ipopt.cpp:1538:3: 
+1536.   
+1537.   template<> FitnessFunctionDatas<mv_P2_f>::FitnessFunctionDatas(const basicAC_F0 &args,Expression const *nargs,const C_F0 &theparam,const C_F0 &objfact,const C_F0 &L_m)
+1538. > : GenericFitnessFunctionDatas()
+1539.   {
+1540.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[0].LeftValue());
+
+examples++-load/ff-Ipopt.cpp:880:5: start of procedure GenericFitnessFunctionDatas
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880.       GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+             ^
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:880:37: 
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880. >     GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:880:74: 
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880. >     GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:880:80: 
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880. >     GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:880:89: 
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880. >     GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:880:101: return from a call to GenericFitnessFunctionDatas_GenericFitnessFunctionDatas
+  878.       bool CompletelyNonLinearConstraints;
+  879.       Expression JJ,GradJ,Hessian;
+  880.       GenericFitnessFunctionDatas() : CompletelyNonLinearConstraints(true),JJ(0),GradJ(0),Hessian(0) {}
+                                                                                                             ^
+  881.       virtual const AssumptionF A() const {return undeff;}
+  882.       virtual void operator()(Stack,const C_F0&,const C_F0&,const C_F0&,Expression const *,ScalarFunc *&,VectorFunc *&,SparseMatFunc *&,bool) const = 0; //Build the functions
+
+examples++-load/ff-Ipopt.cpp:1540:5: Skipping LeftValue: function or method not found
+1538.   : GenericFitnessFunctionDatas()
+1539.   {
+1540.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[0].LeftValue());
+            ^
+1541.       if(M_b->nbitem() != 2) CompileError("\nSorry, we were expecting an array with two componants, either [M,b] or [b,M] for the affine constraints expression." );
+1542.       bool order = true;
+
+examples++-load/ff-Ipopt.cpp:1541:8: 
+1539.   {
+1540.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[0].LeftValue());
+1541. >     if(M_b->nbitem() != 2) CompileError("\nSorry, we were expecting an array with two componants, either [M,b] or [b,M] for the affine constraints expression." );
+1542.       bool order = true;
+1543.       if(CheckMatrixVectorPair(M_b,order))

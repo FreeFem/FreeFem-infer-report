@@ -1,0 +1,12 @@
+examples++-load/gmsh.cpp:163: error: DEAD_STORE
+  The value written to &minVertex (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/gmsh.cpp:163:4: Write of unused value
+161.   	  vff = new Mesh::Vertex[nv]; 
+162.   
+163.   	  int minVertex = nv + 1, maxVertex = -1;
+          ^
+164.   	  for(int i = 0; i < nv; i++) {
+165.   	    int num;	

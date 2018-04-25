@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:1388: error: DEAD_STORE
+  The value written to &scode (type unsigned long) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:1388:9: Write of unused value
+1386.   	ffassert(chunk==rM.nbcoef);
+1387.           uint64_t rcode = CodeIJ(&rM);
+1388.           uint64_t scode = ( &sM != &rM) ? CodeIJ(&sM) : rcode;
+                ^
+1389.   	return MPI_Reduce( (void *)  sM.a,(void *)  rM.a, chunk , MPI_TYPE<R>::TYPE(),op,root.who,root.comm);
+1390.       }

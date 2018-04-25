@@ -1,0 +1,166 @@
+src/fflib/problem.hpp:130: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 129 could be null and is dereferenced at line 130, column 47.
+Showing all 21 steps of the trace
+
+
+src/fflib/problem.hpp:122:3: start of procedure C_args
+120.     C_args() :largs(){}
+121.     C_args(C_F0 c) : largs() { if(!c.Zero() )largs.push_back(c);}
+122.     C_args(  const basicAC_F0 & args) :largs(){ 
+         ^
+123.       int n=args.size();
+124.       for (int i=0;i< n;i++)
+
+src/fflib/problem.hpp:136:8: Skipping E_F0mps: function or method not found
+134.           else 
+135.             largs.push_back(args[i]);
+136.         };}
+              ^
+137.     static ArrayOfaType  typeargs() { return ArrayOfaType(true);}
+138.     AnyType operator()(Stack ) const  { return SetAny<const C_args *>(this);}
+
+src/fflib/problem.hpp:122:38: Skipping list: function or method not found
+120.     C_args() :largs(){}
+121.     C_args(C_F0 c) : largs() { if(!c.Zero() )largs.push_back(c);}
+122.     C_args(  const basicAC_F0 & args) :largs(){ 
+                                            ^
+123.       int n=args.size();
+124.       for (int i=0;i< n;i++)
+
+src/fflib/problem.hpp:123:5: Skipping size: function or method not found
+121.     C_args(C_F0 c) : largs() { if(!c.Zero() )largs.push_back(c);}
+122.     C_args(  const basicAC_F0 & args) :largs(){ 
+123.       int n=args.size();
+           ^
+124.       for (int i=0;i< n;i++)
+125.         {
+
+src/fflib/problem.hpp:124:10: 
+122.     C_args(  const basicAC_F0 & args) :largs(){ 
+123.       int n=args.size();
+124. >     for (int i=0;i< n;i++)
+125.         {
+126.          if(args[i].Zero()) ; //  skip zero term ...
+
+src/fflib/problem.hpp:124:18: Loop condition is true. Entering loop body
+122.     C_args(  const basicAC_F0 & args) :largs(){ 
+123.       int n=args.size();
+124.       for (int i=0;i< n;i++)
+                        ^
+125.         {
+126.          if(args[i].Zero()) ; //  skip zero term ...
+
+src/fflib/problem.hpp:126:11: Skipping operator[]: function or method not found
+124.       for (int i=0;i< n;i++)
+125.         {
+126.          if(args[i].Zero()) ; //  skip zero term ...
+                 ^
+127.          else  if (args[i].left() == atype<const C_args *>())
+128.             {
+
+src/fflib/AFunction.hpp:682:3: start of procedure Zero
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682.     bool Zero() const { return !f || f->Zero();}
+           ^
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:682:31: Condition is false
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682.     bool Zero() const { return !f || f->Zero();}
+                                       ^
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:682:36: 
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682. >   bool Zero() const { return !f || f->Zero();}
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:382:5: start of procedure Zero
+    380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+    381.       virtual bool MeshIndependent() const {return true;} // 
+    382.       virtual bool Zero() const {return false;} //
+               ^
+    383.       virtual E_F0 * right_E_F0() const { return 0;}
+    384.       virtual bool ReadOnly() const { return true;} // the expression do not change the memory     
+
+src/fflib/AFunction.hpp:382:32: 
+    380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+    381.       virtual bool MeshIndependent() const {return true;} // 
+    382. >     virtual bool Zero() const {return false;} //
+    383.       virtual E_F0 * right_E_F0() const { return 0;}
+    384.       virtual bool ReadOnly() const { return true;} // the expression do not change the memory     
+
+src/fflib/AFunction.hpp:382:45: return from a call to E_F0_Zero
+    380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+    381.       virtual bool MeshIndependent() const {return true;} // 
+    382.       virtual bool Zero() const {return false;} //
+                                                       ^
+    383.       virtual E_F0 * right_E_F0() const { return 0;}
+    384.       virtual bool ReadOnly() const { return true;} // the expression do not change the memory     
+
+src/fflib/AFunction.hpp:682:36: Condition is false
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682.     bool Zero() const { return !f || f->Zero();}
+                                            ^
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:682:30: 
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682. >   bool Zero() const { return !f || f->Zero();}
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:682:23: 
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682. >   bool Zero() const { return !f || f->Zero();}
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/AFunction.hpp:682:46: return from a call to C_F0_Zero
+  680.     int  nbitem() const { return f ? f->nbitem() : 0;}
+  681.     bool EvaluableWithOutStack() const { return f && f->EvaluableWithOutStack();}
+  682.     bool Zero() const { return !f || f->Zero();}
+                                                      ^
+  683.     Expression Destroy() {  return r->Destroy(*this);}
+  684.       
+
+src/fflib/problem.hpp:126:11: Taking false branch
+124.       for (int i=0;i< n;i++)
+125.         {
+126.          if(args[i].Zero()) ; //  skip zero term ...
+                 ^
+127.          else  if (args[i].left() == atype<const C_args *>())
+128.             {
+
+src/fflib/problem.hpp:127:18: Taking true branch
+125.         {
+126.          if(args[i].Zero()) ; //  skip zero term ...
+127.          else  if (args[i].left() == atype<const C_args *>())
+                        ^
+128.             {
+129.               const C_args * a = dynamic_cast<const C_args *>(args[i].LeftValue());
+
+src/fflib/problem.hpp:129:13: Skipping LeftValue: function or method not found
+127.          else  if (args[i].left() == atype<const C_args *>())
+128.             {
+129.               const C_args * a = dynamic_cast<const C_args *>(args[i].LeftValue());
+                   ^
+130.               for (list<C_F0>::const_iterator i=a->largs.begin();i!=a->largs.end();i++)
+131.                 if( ! i->Zero()) // skip Zero term
+
+src/fflib/problem.hpp:130:18: 
+128.             {
+129.               const C_args * a = dynamic_cast<const C_args *>(args[i].LeftValue());
+130. >             for (list<C_F0>::const_iterator i=a->largs.begin();i!=a->largs.end();i++)
+131.                 if( ! i->Zero()) // skip Zero term
+132.                 largs.push_back(*i);                   

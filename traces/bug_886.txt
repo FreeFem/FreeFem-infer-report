@@ -1,0 +1,12 @@
+src/fflib/lgfem.cpp:4322: error: DEAD_STORE
+  The value written to &colored (type _Bool) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgfem.cpp:4322:26: Write of unused value
+4320.                            if (l[i].e[3]) { v.set(l[i].evalt(3,s));}
+4321.                            long k= Min(x.N(),y.N());
+4322.                            bool colored= (v.N()==k);
+                                 ^
+4323.                           // if(colored)
+4324.                            NewSetColorTable(Viso.N()+4,colors,nbcolors,hsv);

@@ -1,0 +1,12 @@
+src/Eigen/eigenvalue.cpp:508: error: DEAD_STORE
+  The value written to &tol (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/Eigen/eigenvalue.cpp:508:5: Write of unused value
+506.   {
+507.       dddd = (verbosity>=200);
+508.       double tol=1e-6;
+           ^
+509.       long nconv=0;
+510.       long nbev=1;

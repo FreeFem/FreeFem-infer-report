@@ -1,0 +1,12 @@
+examples++-load/MetricKuate.cpp:611: error: DEAD_STORE
+  The value written to &hmx2 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/MetricKuate.cpp:611:3: Write of unused value
+609.     const Mesh & Th (*pTh);
+610.     cout << " MetricKuate " << np << " hmin = "<< hmin << " hmax = " << hmax  << " nv = " << Th.nv <<  endl;
+611.     R hmx2=1./(hmax*hmax);
+         ^
+612.     R hmn2=1./(hmin*hmin);
+613.   

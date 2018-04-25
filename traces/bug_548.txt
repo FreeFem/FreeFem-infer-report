@@ -1,0 +1,12 @@
+src/femlib/GQuadTree.cpp:711: error: DEAD_STORE
+  The value written to &dP (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/GQuadTree.cpp:711:4: Write of unused value
+709.         if(itt!=it && itt >=0)  
+710.   	{
+711.   	  dP=DBL_MAX;
+          ^
+712.   	  it=itt;
+713.   	  continue;

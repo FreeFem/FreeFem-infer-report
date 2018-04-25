@@ -1,0 +1,121 @@
+src/medit/clip.c:279: error: NULL_DEREFERENCE
+  pointer `cclip` last assigned on line 276 could be null and is dereferenced by call to `memcpy()` at line 279, column 18.
+Showing all 16 steps of the trace
+
+
+src/medit/clip.c:274:1: start of procedure copyClip()
+272.   
+273.   
+274. > void copyClip(pClip clip) {
+275.     if ( !cclip ) {
+276.       cclip = (pClip)M_calloc(1,sizeof(struct clip),"clip");
+
+src/medit/clip.c:275:9: Taking true branch
+273.   
+274.   void copyClip(pClip clip) {
+275.     if ( !cclip ) {
+               ^
+276.       cclip = (pClip)M_calloc(1,sizeof(struct clip),"clip");
+277.       if ( !clip )  exit(2);
+
+src/medit/clip.c:276:5: 
+274.   void copyClip(pClip clip) {
+275.     if ( !cclip ) {
+276. >     cclip = (pClip)M_calloc(1,sizeof(struct clip),"clip");
+277.       if ( !clip )  exit(2);
+278.     }
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+  128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130. >     for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is false. Leaving loop
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+                       ^
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:132:5: 
+  130.       for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132. >     cur   = 1;
+  133.       stack = 0;
+  134.     }
+
+src/libMesh/memory.c:133:5: 
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+  133. >     stack = 0;
+  134.     }
+  135.   
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+src/medit/clip.c:277:11: Taking false branch
+275.     if ( !cclip ) {
+276.       cclip = (pClip)M_calloc(1,sizeof(struct clip),"clip");
+277.       if ( !clip )  exit(2);
+                 ^
+278.     }
+279.     cclip = (pClip)memcpy(cclip,clip,sizeof(struct clip));
+
+src/medit/clip.c:279:3: 
+277.       if ( !clip )  exit(2);
+278.     }
+279. >   cclip = (pClip)memcpy(cclip,clip,sizeof(struct clip));
+280.     if ( !cclip )  exit(2);
+281.     curclip = 1;

@@ -1,0 +1,12 @@
+examples++-hpddm/hpddm_substructuring.cpp:592: error: DEAD_STORE
+  The value written to &ds (type char) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/hpddm_substructuring.cpp:592:5: Write of unused value
+590.       Global.Add("buildSkeleton", "(", new Substructuring::Skeleton);
+591.   #if defined(DSUITESPARSE) || defined(DHYPRE)
+592.       const char ds = 'G';
+           ^
+593.   #else
+594.       const char ds = 'S';

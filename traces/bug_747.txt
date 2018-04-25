@@ -1,0 +1,52 @@
+examples++-load/Element_Mixte.cpp:1411: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::Elm_TypeOfFE_RT1_2dOrtho accesses global variable from a different translation unit: std::cout|.
+Showing all 6 steps of the trace
+
+
+examples++-load/Element_Mixte.cpp:1411:5: initialization of Fem2D::Elm_TypeOfFE_RT1_2dOrtho
+1409.       // a static variable to add the finite element to freefem++
+1410.       static TypeOfFE_RT1_2d Elm_TypeOfFE_RT1_2d(false);// RT1    
+1411.       static TypeOfFE_RT1_2d Elm_TypeOfFE_RT1_2dOrtho(true);// RT1ortho
+            ^
+1412.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2d(false);// RT1
+1413.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2dOrtho(true);// RT1ortho
+
+examples++-load/Element_Mixte.cpp:1411:28: call to Fem2D::TypeOfFE_RT1_2d_TypeOfFE_RT1_2d
+1409.       // a static variable to add the finite element to freefem++
+1410.       static TypeOfFE_RT1_2d Elm_TypeOfFE_RT1_2d(false);// RT1    
+1411.       static TypeOfFE_RT1_2d Elm_TypeOfFE_RT1_2dOrtho(true);// RT1ortho
+                                   ^
+1412.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2d(false);// RT1
+1413.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2dOrtho(true);// RT1ortho
+
+examples++-load/Element_Mixte.cpp:497:5: call to Fem2D::InitTypeOfRTk_2d_InitTypeOfRTk_2d
+  495.   	
+  496.   	TypeOfFE_RT1_2d(bool ortho)
+  497.   	:  InitTypeOfRTk_2d(1),
+             ^
+  498.   	TypeOfFE(ndf,2,Data,2,1,
+  499.   		 2*2*3*QFE.n+QFK.n*4,// nb coef mat interpole
+
+examples++-load/Element_Mixte.cpp:451:5: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+    449.       InitTypeOfRTk_2d(int KK) 
+    450.       :k(KK),ndfi((k+1)*(k)), npe(k+1),ndf(3*npe+ndfi),Data( 5*ndf+6),
+    451.       QFE(-1+2*npe,npe,GaussLegendre(npe),true), QFK(QuadratureFormular_T_5)
+               ^
+    452.       {
+    453.         int j=0;
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+      83.     void Verification(); // for verification 
+      84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+      85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                              ^
+      86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+      87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+      663.         if (err>tol)
+      664.   	{
+      665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+                ^
+      666.   	  for(int l=0;l<=d;++l)
+      667.   	    cerr << sa[l] << " ";

@@ -1,0 +1,48 @@
+src/libMesh/memory.c:102: error: MEMORY_LEAK
+  memory dynamically allocated by call to `malloc()` at line 96, column 24 is not reachable after line 102, column 5.
+Showing all 6 steps of the trace
+
+
+src/libMesh/memory.c:81:1: start of procedure M_malloc()
+79.   /* Allocates space for a block of at least size bytes,
+80.      but does not initialize the space. */
+81. > void *M_malloc(size_t size,char *call) {
+82.     int   i;
+83.   
+
+src/libMesh/memory.c:85:9: Taking false branch
+83.   
+84.     /* check if first call */
+85.     if ( !mstack ) {
+              ^
+86.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+87.       assert(mstack);
+
+src/libMesh/memory.c:95:8: Taking true branch
+93.   
+94.     /* store pointer, size */
+95.     if ( stack < MAXMEM ) {
+             ^
+96.       mstack[cur].ptr  = malloc(size);
+97.       assert(mstack[cur].ptr);
+
+src/libMesh/memory.c:96:5: 
+94.     /* store pointer, size */
+95.     if ( stack < MAXMEM ) {
+96. >     mstack[cur].ptr  = malloc(size);
+97.       assert(mstack[cur].ptr);
+98.       mstack[cur].size = size;
+
+src/libMesh/memory.c:98:5: 
+96.       mstack[cur].ptr  = malloc(size);
+97.       assert(mstack[cur].ptr);
+98. >     mstack[cur].size = size;
+99.       /* i.e. mstack[cur].call = strdup(call) */
+100.       /* mstack[cur].call = (char*)malloc((strlen(call)+1) * sizeof(char));
+
+src/libMesh/memory.c:102:5: 
+100.       /* mstack[cur].call = (char*)malloc((strlen(call)+1) * sizeof(char));
+101.       assert(mstack[cur].call); */
+102. >     strncpy(mstack[cur].call,call,19);
+103.       i = cur;
+104.       cur = mstack[cur].nxt;

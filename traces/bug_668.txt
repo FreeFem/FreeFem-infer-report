@@ -1,0 +1,12 @@
+src/Eigen/eigenvalue.cpp:929: error: DEAD_STORE
+  The value written to &driver (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/Eigen/eigenvalue.cpp:929:5: Write of unused value
+927.       long ncv =0;  // the number of Arnoldi vectors generated
+928.       long maxit=0;  // the maximum number of Arnoldi iterations
+929.       long driver=4;
+           ^
+930.       K sigma=0;
+931.       KN<K> * evalue=0;

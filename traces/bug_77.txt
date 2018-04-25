@@ -1,0 +1,12 @@
+src/femlib/GenericMesh.hpp:65: error: DEAD_STORE
+  The value written to &b (type long long const ) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/GenericMesh.hpp:65:9: Write of unused value
+63.   inline int  randwalk(int ncas)
+64.   {
+65.           const long long a = 314125421, b =1, m=  777777;
+              ^
+66.           static long xn = 19999999%m;
+67.           if(ncas <=0) xn=19999999%m;

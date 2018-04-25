@@ -1,0 +1,246 @@
+src/medit/hash.c:303: error: NULL_DEREFERENCE
+  pointer `hcode` last assigned on line 293 could be null and is dereferenced at line 303, column 5.
+Showing all 33 steps of the trace
+
+
+src/medit/hash.c:274:1: start of procedure hashTria()
+272.   
+273.   /* very sioux! (09/2002) */
+274. > int hashTria(pMesh mesh) {
+275.     pTriangle pt,pt1;
+276.     int       k,kk,l,ll,mins,maxs,mins1,maxs1,hsize;
+
+src/medit/hash.c:283:8: Taking false branch
+281.   
+282.     /* avoid building again! */
+283.     if ( mesh->adja )  return(1);
+              ^
+284.     if ( 4*sizeof(char) != sizeof(int) )  exit(1);
+285.   
+
+src/medit/hash.c:284:8: Taking false branch
+282.     /* avoid building again! */
+283.     if ( mesh->adja )  return(1);
+284.     if ( 4*sizeof(char) != sizeof(int) )  exit(1);
+              ^
+285.   
+286.     /* default */
+
+src/medit/hash.c:287:8: Taking true branch
+285.   
+286.     /* default */
+287.     if ( ddebug) {
+              ^
+288.       fprintf(stdout,"  Setting topology.");
+289.       fflush(stdout);
+
+src/medit/hash.c:288:5: 
+286.     /* default */
+287.     if ( ddebug) {
+288. >     fprintf(stdout,"  Setting topology.");
+289.       fflush(stdout);
+290.     }
+
+src/medit/hash.c:289:5: 
+287.     if ( ddebug) {
+288.       fprintf(stdout,"  Setting topology.");
+289. >     fflush(stdout);
+290.     }
+291.   
+
+src/medit/hash.c:293:26: Condition is false
+291.   
+292.     /* memory alloc */
+293.     hcode = (int*)M_calloc(max(1,3*mesh->nt/4)+1,sizeof(int),"hash.tria");
+                                ^
+294.     link  = (int*)M_calloc(3*mesh->nt+1,sizeof(int),"hash.tria");
+295.     hsize = max(2,3*mesh->nt/4-1);
+
+src/medit/hash.c:293:3: 
+291.   
+292.     /* memory alloc */
+293. >   hcode = (int*)M_calloc(max(1,3*mesh->nt/4)+1,sizeof(int),"hash.tria");
+294.     link  = (int*)M_calloc(3*mesh->nt+1,sizeof(int),"hash.tria");
+295.     hsize = max(2,3*mesh->nt/4-1);
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+  128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130. >     for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is false. Leaving loop
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+                       ^
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:132:5: 
+  130.       for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132. >     cur   = 1;
+  133.       stack = 0;
+  134.     }
+
+src/libMesh/memory.c:133:5: 
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+  133. >     stack = 0;
+  134.     }
+  135.   
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+src/medit/hash.c:294:3: 
+292.     /* memory alloc */
+293.     hcode = (int*)M_calloc(max(1,3*mesh->nt/4)+1,sizeof(int),"hash.tria");
+294. >   link  = (int*)M_calloc(3*mesh->nt+1,sizeof(int),"hash.tria");
+295.     hsize = max(2,3*mesh->nt/4-1);
+296.     assert(hcode);
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking false branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+src/medit/hash.c:295:11: Condition is false
+293.     hcode = (int*)M_calloc(max(1,3*mesh->nt/4)+1,sizeof(int),"hash.tria");
+294.     link  = (int*)M_calloc(3*mesh->nt+1,sizeof(int),"hash.tria");
+295.     hsize = max(2,3*mesh->nt/4-1);
+                 ^
+296.     assert(hcode);
+297.     assert(link);
+
+src/medit/hash.c:295:3: 
+293.     hcode = (int*)M_calloc(max(1,3*mesh->nt/4)+1,sizeof(int),"hash.tria");
+294.     link  = (int*)M_calloc(3*mesh->nt+1,sizeof(int),"hash.tria");
+295. >   hsize = max(2,3*mesh->nt/4-1);
+296.     assert(hcode);
+297.     assert(link);
+
+src/medit/hash.c:298:3: 
+296.     assert(hcode);
+297.     assert(link);
+298. >   hvoy = (char*)hcode;
+299.   
+300.     /* init */
+
+src/medit/hash.c:301:3: 
+299.   
+300.     /* init */
+301. >   inival = 2 << 30;
+302.     for (k=0; k<=3*mesh->nt/4; k++)
+303.       hcode[k] = -inival;
+
+src/medit/hash.c:302:8: 
+300.     /* init */
+301.     inival = 2 << 30;
+302. >   for (k=0; k<=3*mesh->nt/4; k++)
+303.       hcode[k] = -inival;
+304.   
+
+src/medit/hash.c:302:13: Loop condition is true. Entering loop body
+300.     /* init */
+301.     inival = 2 << 30;
+302.     for (k=0; k<=3*mesh->nt/4; k++)
+                   ^
+303.       hcode[k] = -inival;
+304.   
+
+src/medit/hash.c:303:5: 
+301.     inival = 2 << 30;
+302.     for (k=0; k<=3*mesh->nt/4; k++)
+303. >     hcode[k] = -inival;
+304.   
+305.     /* build hash table */

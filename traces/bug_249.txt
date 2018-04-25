@@ -1,0 +1,43 @@
+examples++-load/Element_P3dc.cpp:202: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P3dcLagrange accesses global variable from a different translation unit: map_type|.
+Showing all 5 steps of the trace
+
+
+examples++-load/Element_P3dc.cpp:202:1: initialization of Fem2D::P3dcLagrange
+200.   static TypeOfFE_P3dcLagrange P3dcLagrangeP3dc;
+201.   // a static variable to add the finite element to freefem++
+202. > static AddNewFE  P3dcLagrange("P3dc",&P3dcLagrangeP3dc); 
+203.   } // FEM2d namespace 
+204.   
+
+examples++-load/Element_P3dc.cpp:202:18: call to AddNewFE_AddNewFE
+200.   static TypeOfFE_P3dcLagrange P3dcLagrangeP3dc;
+201.   // a static variable to add the finite element to freefem++
+202.   static AddNewFE  P3dcLagrange("P3dc",&P3dcLagrangeP3dc); 
+                        ^
+203.   } // FEM2d namespace 
+204.   
+
+src/fflib/AddNewFE.h:52:34: call to atype<Fem2D::TypeOfFE_*>
+  50.     {
+  51.       ffassert(tfe); // check 
+  52.       Global.New(FEname, Type_Expr(atype<Fem2D::TypeOfFE*>() ,new  EConstantTypeOfFE(tfe)));
+                                         ^
+  53.     }
+  54.   };
+
+src/fflib/AFunction.hpp:339:14: call to ShowType
+    337.    // basicForEachType * r=map_type[];
+    338.     if (ir == map_type.end()) { cerr << "Error: aType  '" << typeid(T).name() << "', doesn't exist\n";
+    339.                ShowType(cerr);
+                        ^
+    340.               throw(ErrorExec("exit",1));}
+    341.     return ir->second;}
+
+src/fflib/AFunction2.cpp:708:10: access to map_type|
+    706.    
+    707.      map<const string,basicForEachType *>::const_iterator i;
+    708.      for(i=map_type.begin();i!=map_type.end();i++)
+                    ^
+    709.        {
+    710.          f << " --"<< i->first <<" = " ; 

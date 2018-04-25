@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:2703: error: DEAD_STORE
+  The value written to &pa (type double*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:2703:5: Write of unused value
+2701.       long npi;
+2702.       R *a=mat.a;
+2703.       R *pa=a;
+            ^
+2704.       long i,j;
+2705.       long n= mat.n,m=mat.m,nx=n*(m+1)/2;

@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:2495: error: DEAD_STORE
+  The value written to &rTh (type Fem2D::Mesh const &) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:2495:5: Write of unused value
+2493.       KN<int> takemesh(nbv);  
+2494.       takemesh=0;  
+2495.       const Mesh &rTh = Th;
+            ^
+2496.       for (int it=0; it<nbt; ++it){
+2497.         for( int iv=0; iv<3; ++iv){

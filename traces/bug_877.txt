@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:3667: error: DEAD_STORE
+  The value written to &Lcurve (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:3667:7: Write of unused value
+3665.   		    Int4 NbSegOnCurve = Max((Int4)(L+0.5),(Int4) 1);// nb of seg
+3666.   		    Lstep = L/NbSegOnCurve; 
+3667.   		    Lcurve = L;
+              ^
+3668.   		    NbCreatePointOnCurve = NbSegOnCurve-1;
+3669.   		    

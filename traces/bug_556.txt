@@ -1,0 +1,12 @@
+src/femlib/QuadratureFormular.cpp:658: error: DEAD_STORE
+  The value written to &see (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/QuadratureFormular.cpp:658:7: Write of unused value
+656.         for (int i=1;i<=k;i++) 
+657.   	se *= (R) i / (R) (i+d);
+658.         see=se;
+             ^
+659.         
+660.         for(int l=0;l<=d;++l)

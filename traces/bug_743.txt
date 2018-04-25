@@ -1,0 +1,12 @@
+examples++-mpi/MUMPS_FreeFem.cpp:1427: error: DEAD_STORE
+  The value written to &ierr (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/MUMPS_FreeFem.cpp:1427:5: Write of unused value
+1425.          INITIALIZE THE MUMPS PROCESS GRID. 
+1426.          ------------------------------------------------------------*/
+1427.       ierr = MPI_Comm_rank(comm, &myid);
+            ^
+1428.       if( myid ==0){
+1429.         n    = AA.n;

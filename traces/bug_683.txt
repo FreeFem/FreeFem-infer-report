@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1215: error: DEAD_STORE
+  The value written to &bbff (type Fem2D::TBoundaryEdge<Fem2D::R2>*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1215:5: Write of unused value
+1213.       Mesh::BorderElement *bff;
+1214.       if(nbe>0) bff= new Mesh::BorderElement[nbe];
+1215.       Mesh::BorderElement *bbff = bff;
+            ^
+1216.       for(unsigned int i = 0; i < numElements; i++){
+1217.         int type=TypeCells[i];

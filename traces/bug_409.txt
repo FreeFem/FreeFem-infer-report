@@ -1,0 +1,12 @@
+src/femlib/FESpacen.cpp:381: error: DEAD_STORE
+  The value written to &t (type KN<Fem2D::GTypeOfFE<Fem2D::Mesh1> const *>&) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FESpacen.cpp:381:5: Write of unused value
+379.       bool debug=verbosity>5;;
+380.     {
+381.       const KN< GTypeOfFE<Mesh> const *> & t=teb;
+           ^
+382.       map<const GTypeOfFE<Mesh> *,int> m;
+383.       int i=k,j;    

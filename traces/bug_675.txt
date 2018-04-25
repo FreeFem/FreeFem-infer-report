@@ -1,0 +1,12 @@
+src/fflib/AFunction.cpp:973: error: DEAD_STORE
+  The value written to &ppe (type char*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/AFunction.cpp:973:5: Write of unused value
+971.       const char *pp=p->c_str();
+972.       long r = strtol(pp,&pe,10);
+973.       const char *ppe = pe, *pppe= pp+p->size();
+           ^
+974.      // cout << " .ffstrtol. " << pppe - pe << endl;
+975.       assert(ppe <= pppe);

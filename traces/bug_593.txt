@@ -1,0 +1,12 @@
+src/fflib/lgmesh.cpp:873: error: DEAD_STORE
+  The value written to &miss (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgmesh.cpp:873:12: Write of unused value
+871.         //if ( (m11[iv]+m22[iv]) > ch2) // modif FH (Thank to J-F Remacle 07/2010), correct 03/2011 FH. 
+872.          Th[iv].m.IntersectWith(MetricAnIso(m11[iv],m12[iv],m22[iv]));// add inters ..
+873.         else miss++;
+                  ^
+874.     //if(miss && verbosity>1) cout << "   -- Warning: Missing metric on vertices (too large) " <<  miss << " " << ch2 << endl;
+875.     if ( givenmetric)

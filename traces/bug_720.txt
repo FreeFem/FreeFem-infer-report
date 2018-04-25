@@ -1,0 +1,493 @@
+src/fflib/lgmesh3.cpp:1225: error: NULL_DEREFERENCE
+  pointer `fes` last assigned on line 1225 could be null and is dereferenced at line 1225, column 33.
+Showing all 65 steps of the trace
+
+
+src/fflib/lgmesh3.cpp:1223:1: start of procedure pVh3_nt()
+1221.    { throwassert(p && *p);
+1222.      FESpace3 *fes=**p; ;  return fes->NbOfDF ;}
+1223. > long pVh3_nt(pfes3 * p)
+1224.    { throwassert(p && *p);
+1225.      FESpace3 *fes=**p; ;  return fes->NbOfElements ;}
+
+src/fflib/lgmesh3.cpp:1225:4: 
+1223.   long pVh3_nt(pfes3 * p)
+1224.    { throwassert(p && *p);
+1225. >    FESpace3 *fes=**p; ;  return fes->NbOfElements ;}
+1226.   long pVh3_ndofK(pfes3 * p)
+1227.    { throwassert(p && *p);
+
+src/fflib/lgfem.hpp:211:3: start of procedure operator_Fem2D::GFESpace<Fem2D::Mesh3>_*
+  209.     
+  210.     
+  211.     operator FESpace3 * ()  { 
+           ^
+  212.       throwassert( d==3);
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+
+src/fflib/lgfem.hpp:213:11: 
+  211.     operator FESpace3 * ()  { 
+  212.       throwassert( d==3);
+  213. >     if  ( !pVh || *ppTh !=  &pVh->Th )
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+
+src/femlib/RefCounter.hpp:99:2: start of procedure operator!
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99.    bool operator!() const { return !c;}
+            ^
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+
+src/femlib/RefCounter.hpp:99:35: Condition is true
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99.    bool operator!() const { return !c;}
+                                             ^
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+
+src/femlib/RefCounter.hpp:99:34: 
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99. >  bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+
+src/femlib/RefCounter.hpp:99:27: 
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99. >  bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+
+src/femlib/RefCounter.hpp:99:37: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_operator!
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99.    bool operator!() const { return !c;}
+                                               ^
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+
+src/fflib/lgfem.hpp:213:11: Taking false branch
+  211.     operator FESpace3 * ()  { 
+  212.       throwassert( d==3);
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+                   ^
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+
+src/fflib/lgfem.hpp:213:19: 
+  211.     operator FESpace3 * ()  { 
+  212.       throwassert( d==3);
+  213. >     if  ( !pVh || *ppTh !=  &pVh->Th )
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+
+src/femlib/RefCounter.hpp:96:3: start of procedure operator->
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+    96.     T* operator->() const {return c;}
+            ^
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:26: 
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+    96. >   T* operator->() const {return c;}
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:35: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_operator->
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+    96.     T* operator->() const {return c;}
+                                            ^
+    97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/fflib/lgfem.hpp:213:19: Taking true branch
+  211.     operator FESpace3 * ()  { 
+  212.       throwassert( d==3);
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+                           ^
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+
+src/fflib/lgfem.hpp:214:7: 
+  212.       throwassert( d==3);
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+  214. >       pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+  216.     FESpace3 * update() ;
+
+src/fflib/lgfem.hpp:558:1: start of procedure update
+    556.   
+    557.   
+    558. > inline FESpace3 * v_fes3::update() {     
+    559.     assert(d==3);
+    560.     if(!*ppTh) return 0;
+
+src/fflib/lgfem.hpp:560:7: Taking false branch
+    558.   inline FESpace3 * v_fes3::update() {     
+    559.     assert(d==3);
+    560.     if(!*ppTh) return 0;
+                 ^
+    561.     if (nbcperiodic ) {
+    562.       assert(periodic);
+
+src/fflib/lgfem.hpp:561:7: Taking false branch
+    559.     assert(d==3);
+    560.     if(!*ppTh) return 0;
+    561.     if (nbcperiodic ) {
+                 ^
+    562.       assert(periodic);
+    563.       //const Mesh3 &Th(**ppTh);
+
+src/fflib/lgfem.hpp:571:8: 
+    569.         }
+    570.        else 
+    571. >        return  buildupdate();
+    572.   }
+    573.   
+
+src/fflib/lgfem.hpp:228:3: start of procedure buildupdate
+      226.     bool buildperiodic(Stack stack, KN<int> & ndfe)  ;
+      227.     virtual  FESpace3 * buildupdate( KN<int> & ndfe) {  return 0;}
+      228.     virtual  FESpace3 * buildupdate() {return 0;};
+               ^
+      229.     
+      230.   };  
+
+src/fflib/lgfem.hpp:228:38: 
+      226.     bool buildperiodic(Stack stack, KN<int> & ndfe)  ;
+      227.     virtual  FESpace3 * buildupdate( KN<int> & ndfe) {  return 0;}
+      228. >   virtual  FESpace3 * buildupdate() {return 0;};
+      229.     
+      230.   };  
+
+src/fflib/lgfem.hpp:228:47: return from a call to v_fes3_buildupdate
+      226.     bool buildperiodic(Stack stack, KN<int> & ndfe)  ;
+      227.     virtual  FESpace3 * buildupdate( KN<int> & ndfe) {  return 0;}
+      228.     virtual  FESpace3 * buildupdate() {return 0;};
+                                                           ^
+      229.     
+      230.   };  
+
+src/fflib/lgfem.hpp:572:1: return from a call to v_fes3_update
+    570.        else 
+    571.          return  buildupdate();
+    572. > }
+    573.   
+    574.   template<class A,class B>  A Build(B b) {  return A(b);}
+
+src/femlib/RefCounter.hpp:87:2: start of procedure CountPointer
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+           ^
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:87:67: 
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87. >  CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:45:7: start of procedure baseCountPointer
+      43.   // ruse pour utiliser le prive c RefCounter de 
+      44.   //  pas de syntaxe pour des friends template 
+      45.   class baseCountPointer { protected:
+                  ^
+      46.    void  add(const  RefCounter * c)  const; 
+      47.    void  destroyPtr(const RefCounter *  c)  const;
+
+src/femlib/RefCounter.hpp:45:7: return from a call to baseCountPointer_baseCountPointer
+      43.   // ruse pour utiliser le prive c RefCounter de 
+      44.   //  pas de syntaxe pour des friends template 
+      45.   class baseCountPointer { protected:
+                  ^
+      46.    void  add(const  RefCounter * c)  const; 
+      47.    void  destroyPtr(const RefCounter *  c)  const;
+
+src/femlib/RefCounter.hpp:87:43: 
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87. >  CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:87:54: Taking false branch
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+                                                               ^
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:87:50: 
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87. >  CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:87:70: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_CountPointer
+    85.    public: 
+    86.    CountPointer() : c(0) {}
+    87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+                                                                               ^
+    88.    CountPointer(  T & a) :c(&a) { add(c);}
+    89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+
+src/femlib/RefCounter.hpp:100:2: start of procedure operator=
+    98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+    99.    bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+            ^
+    101.     if(*this != n) { destroyPtr(c); 
+    102.                   c=n.c;
+
+src/femlib/RefCounter.hpp:101:6: 
+    99.    bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101. >   if(*this != n) { destroyPtr(c); 
+    102.                   c=n.c;
+    103.                   add(c);               
+
+src/femlib/RefCounter.hpp:98:2: start of procedure operator!=
+      96.     T* operator->() const {return c;}
+      97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+      98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+              ^
+      99.    bool operator!() const { return !c;}
+      100.    void operator=(const  CountPointer & n) {
+
+src/femlib/RefCounter.hpp:98:58: Condition is true
+      96.     T* operator->() const {return c;}
+      97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+      98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+                                                                      ^
+      99.    bool operator!() const { return !c;}
+      100.    void operator=(const  CountPointer & n) {
+
+src/femlib/RefCounter.hpp:98:50: 
+      96.     T* operator->() const {return c;}
+      97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+      98. >  bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+      99.    bool operator!() const { return !c;}
+      100.    void operator=(const  CountPointer & n) {
+
+src/femlib/RefCounter.hpp:98:66: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_operator!=
+      96.     T* operator->() const {return c;}
+      97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+      98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+                                                                              ^
+      99.    bool operator!() const { return !c;}
+      100.    void operator=(const  CountPointer & n) {
+
+src/femlib/RefCounter.hpp:101:6: Taking true branch
+    99.    bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+                ^
+    102.                   c=n.c;
+    103.                   add(c);               
+
+src/femlib/RefCounter.hpp:101:20: 
+    99.    bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101. >   if(*this != n) { destroyPtr(c); 
+    102.                   c=n.c;
+    103.                   add(c);               
+
+src/femlib/RefCounter.hpp:79:1: start of procedure destroyPtr
+      77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+      78.      { if (c) c->count++;}    
+      79. > inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+      81.    
+
+src/femlib/RefCounter.hpp:80:10: Taking true branch
+      78.      { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+                     ^
+      81.    
+      82.   template<class T>
+
+src/femlib/RefCounter.hpp:80:13: 
+      78.      { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80. >    { if (c) c->destroy();}    
+      81.    
+      82.   template<class T>
+
+src/femlib/RefCounter.hpp:58:3: start of procedure destroy
+        56.     RefCounter() : count(0) {}
+        57.     public:
+        58.     int destroy() const { 
+                ^
+        59.         if(this!=tnull) {throwassert(count>=0);
+        60.           if ( count--==0) {
+
+src/femlib/RefCounter.hpp:59:10: Taking true branch
+        57.     public:
+        58.     int destroy() const { 
+        59.         if(this!=tnull) {throwassert(count>=0);
+                       ^
+        60.           if ( count--==0) {
+        61.   	            SHOWVERB( cout << "True  destruction of " << this <<  endl);
+
+src/femlib/RefCounter.hpp:60:14: Taking true branch
+        58.     int destroy() const { 
+        59.         if(this!=tnull) {throwassert(count>=0);
+        60.           if ( count--==0) {
+                           ^
+        61.   	            SHOWVERB( cout << "True  destruction of " << this <<  endl);
+        62.                delete this;
+
+src/femlib/RefCounter.hpp:62:14: 
+        60.           if ( count--==0) {
+        61.   	            SHOWVERB( cout << "True  destruction of " << this <<  endl);
+        62. >              delete this;
+        63.                return true;} 
+        64.           else{ SHOWVERB(cout << " no destruction count=" << count+1 << " " << this <<  endl);
+
+src/femlib/RefCounter.hpp:63:14: 
+        61.   	            SHOWVERB( cout << "True  destruction of " << this <<  endl);
+        62.                delete this;
+        63. >              return true;} 
+        64.           else{ SHOWVERB(cout << " no destruction count=" << count+1 << " " << this <<  endl);
+        65.                 return false;}}
+
+src/femlib/RefCounter.hpp:66:22: return from a call to RefCounter_destroy
+        64.           else{ SHOWVERB(cout << " no destruction count=" << count+1 << " " << this <<  endl);
+        65.                 return false;}}
+        66.      else return false;} 
+                                   ^
+        67.      void increment() const {count++;SHOWVERB( cout << "increment  of " << this << " "<< count <<  endl);}
+        68.       void decrement() const {destroy();}// count--;SHOWVERB( cout << "decrement  of " << this << " "<< count <<  endl);ffassert(count>=0);}
+
+src/femlib/RefCounter.hpp:80:6: 
+      78.      { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80. >    { if (c) c->destroy();}    
+      81.    
+      82.   template<class T>
+
+src/femlib/RefCounter.hpp:80:26: return from a call to baseCountPointer_destroyPtr
+      78.      { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+                                     ^
+      81.    
+      82.   template<class T>
+
+src/femlib/RefCounter.hpp:102:17: 
+    100.    void operator=(const  CountPointer & n) {
+    101.     if(*this != n) { destroyPtr(c); 
+    102. >                 c=n.c;
+    103.                   add(c);               
+    104.                 }}
+
+src/femlib/RefCounter.hpp:103:17: 
+    101.     if(*this != n) { destroyPtr(c); 
+    102.                   c=n.c;
+    103. >                 add(c);               
+    104.                 }}
+    105.                              
+
+src/femlib/RefCounter.hpp:77:1: start of procedure add
+      75.   };
+      76.   
+      77. > inline void baseCountPointer::add(const RefCounter * c)  const 
+      78.      { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+
+src/femlib/RefCounter.hpp:78:10: Taking false branch
+      76.   
+      77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+      78.      { if (c) c->count++;}    
+                     ^
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:78:6: 
+      76.   
+      77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+      78. >    { if (c) c->count++;}    
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:78:24: return from a call to baseCountPointer_add
+      76.   
+      77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+      78.      { if (c) c->count++;}    
+                                   ^
+      79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+      80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:101:3: 
+    99.    bool operator!() const { return !c;}
+    100.    void operator=(const  CountPointer & n) {
+    101. >   if(*this != n) { destroyPtr(c); 
+    102.                   c=n.c;
+    103.                   add(c);               
+
+src/femlib/RefCounter.hpp:104:16: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_operator=
+    102.                   c=n.c;
+    103.                   add(c);               
+    104.                 }}
+                          ^
+    105.                              
+    106.    void operator=( T * t) {
+
+src/fflib/lgfem.hpp:215:5: 
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215. >     return  pVh   ;} 
+  216.     FESpace3 * update() ;
+  217.     
+
+src/femlib/RefCounter.hpp:93:2: start of procedure operator_Fem2D::GFESpace<Fem2D::Mesh3>_*
+    91.    //void destroy() const { destroyPtr(c);}
+    92.    void destroy()  { destroyPtr(c);c=0;}
+    93.    operator  T * ()   const { return c;}
+           ^
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:29: 
+    91.    //void destroy() const { destroyPtr(c);}
+    92.    void destroy()  { destroyPtr(c);c=0;}
+    93. >  operator  T * ()   const { return c;}
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:38: return from a call to CountPointer<Fem2D::GFESpace<Fem2D::Mesh3>>_operator_Fem2D::GFESpace<Fem2D::Mesh3>_*
+    91.    //void destroy() const { destroyPtr(c);}
+    92.    void destroy()  { destroyPtr(c);c=0;}
+    93.    operator  T * ()   const { return c;}
+                                               ^
+    94.    operator   T & () const  {return *c;}
+    95.     T& operator*() const {return *c;}
+
+src/fflib/lgfem.hpp:215:20: return from a call to v_fes3_operator_Fem2D::GFESpace<Fem2D::Mesh3>_*
+  213.       if  ( !pVh || *ppTh !=  &pVh->Th )
+  214.         pVh=CountPointer<FESpace3>(update(),true);
+  215.       return  pVh   ;} 
+                            ^
+  216.     FESpace3 * update() ;
+  217.     
+
+src/fflib/lgmesh3.cpp:1225:26: 
+1223.   long pVh3_nt(pfes3 * p)
+1224.    { throwassert(p && *p);
+1225. >    FESpace3 *fes=**p; ;  return fes->NbOfElements ;}
+1226.   long pVh3_ndofK(pfes3 * p)
+1227.    { throwassert(p && *p);

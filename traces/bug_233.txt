@@ -1,0 +1,12 @@
+src/fflib/environment.cpp:276: error: DEAD_STORE
+  The value written to &c1 (type char) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/environment.cpp:276:6: Write of unused value
+274.   			  invalue=true;
+275.   			  add=true;
+276.   			  c1=f.get();
+            ^
+277.   			}
+278.   		      else if (! isspace(c) ) 

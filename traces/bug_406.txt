@@ -1,0 +1,35 @@
+src/femlib/QuadratureFormular.cpp:363: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::QF_GaussLegendre10 accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+src/femlib/QuadratureFormular.cpp:363:1: initialization of Fem2D::QF_GaussLegendre10
+361.   const QuadratureFormular1d QF_GaussLegendre8(-1+2*8,8,GaussLegendre(8),true);
+362.   const QuadratureFormular1d QF_GaussLegendre9(-1+2*9,9,GaussLegendre(9),true);
+363. > const QuadratureFormular1d QF_GaussLegendre10(-1+2*10,10,GaussLegendre(10),true);
+364.   
+365.   
+
+src/femlib/QuadratureFormular.cpp:363:28: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+361.   const QuadratureFormular1d QF_GaussLegendre8(-1+2*8,8,GaussLegendre(8),true);
+362.   const QuadratureFormular1d QF_GaussLegendre9(-1+2*9,9,GaussLegendre(9),true);
+363.   const QuadratureFormular1d QF_GaussLegendre10(-1+2*10,10,GaussLegendre(10),true);
+                                  ^
+364.   
+365.   
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+  83.     void Verification(); // for verification 
+  84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+  85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                          ^
+  86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+  87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

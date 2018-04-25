@@ -1,0 +1,12 @@
+src/femlib/fem.cpp:1307: error: DEAD_STORE
+  The value written to &lmx (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/fem.cpp:1307:31: Write of unused value
+1305.       R lmx=lambda[0];
+1306.       if (lmx<lambda[1])  jj=1, lmx=lambda[1];
+1307.       if (lmx<lambda[2])  jj=2, lmx=lambda[2];
+                                      ^
+1308.       if(lambda[0]<0) lambda[jj] += lambda[0],lambda[0]=0;
+1309.       if(lambda[1]<0) lambda[jj] += lambda[1],lambda[1]=0;

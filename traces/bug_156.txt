@@ -1,0 +1,12 @@
+examples++-mpi/hips_FreeFem.cpp:149: error: DEAD_STORE
+  The value written to &j (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/hips_FreeFem.cpp:149:3: Write of unused value
+147.   	if (nrm == 0) {
+148.   	    for (k=pr[i]; k<pr[i+1]; k++) {
+149.   		j = pr[i];
+         ^
+150.   		if (fabs(AAv[k]) > scaletmpc[p[k]]) scaletmpc[p[k]] = fabs(AAv[k]);
+151.   	    }

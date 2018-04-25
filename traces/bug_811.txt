@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:2048: error: DEAD_STORE
+  The value written to &NbSwp (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:2048:3: Write of unused value
+2046.     
+2047.     
+2048.     NbSwp = NbSwapf;
+          ^
+2049.     for (i=0;i<nbv;i++)
+2050.       NbSwapf += vertices[i].Optim(0);

@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:1477: error: DEAD_STORE
+  The value written to &chunk (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:1477:2: Write of unused value
+1475.       static long  f(Stack, R *  const  & s, R *  const  &r,  fMPI_Comm const & comm,fMPI_Op const &op)  
+1476.       { 
+1477.   	int chunk = 1;
+         ^
+1478.   	return MPI_Allreduce( (void *) (R*) s,(void *) (R*) r, 1 , MPI_TYPE<R>::TYPE(),op,comm);	
+1479.       }

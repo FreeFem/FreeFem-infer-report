@@ -1,0 +1,12 @@
+examples++-load/gmsh.cpp:587: error: DEAD_STORE
+  The value written to &physical (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/gmsh.cpp:587:23: Write of unused value
+585.   		    int tag;
+586.   		    fscanf(fp, "%d", &tag);       
+587.   		    if(j == 0)      physical = tag;
+                             ^
+588.   		    else if(j == 1) elementary = tag;
+589.   		    else if(j == 2) partition = tag;

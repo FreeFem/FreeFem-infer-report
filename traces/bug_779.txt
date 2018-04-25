@@ -1,0 +1,71 @@
+examples++-load/ff-Ipopt.cpp:1653: error: NULL_DEREFERENCE
+  pointer `M_b` last assigned on line 1652 could be null and is dereferenced at line 1653, column 8.
+Showing all 9 steps of the trace
+
+
+examples++-load/ff-Ipopt.cpp:1648:1: start of procedure ConstraintFunctionDatas
+1646.   }
+1647.   
+1648. > template<> ConstraintFunctionDatas<mv_P1_g>::ConstraintFunctionDatas(const basicAC_F0 &args,Expression const *nargs,const C_F0 &theparam)
+1649.   : GenericConstraintFunctionDatas() 
+1650.   {
+
+examples++-load/ff-Ipopt.cpp:1649:3: 
+1647.   
+1648.   template<> ConstraintFunctionDatas<mv_P1_g>::ConstraintFunctionDatas(const basicAC_F0 &args,Expression const *nargs,const C_F0 &theparam)
+1649. > : GenericConstraintFunctionDatas() 
+1650.   {
+1651.       int nbj = args.size()-1;
+
+examples++-load/ff-Ipopt.cpp:899:5: start of procedure GenericConstraintFunctionDatas
+  897.       static GenericConstraintFunctionDatas* New(AssumptionG,const basicAC_F0 &,Expression const *,const C_F0 &);
+  898.       Expression Constraints,GradConstraints;
+  899.       GenericConstraintFunctionDatas() : Constraints(0),GradConstraints(0) {}
+             ^
+  900.       virtual const AssumptionG A() const {return undefg;}
+  901.       virtual const bool WC() const =0;//with constraints
+
+examples++-load/ff-Ipopt.cpp:899:40: 
+  897.       static GenericConstraintFunctionDatas* New(AssumptionG,const basicAC_F0 &,Expression const *,const C_F0 &);
+  898.       Expression Constraints,GradConstraints;
+  899. >     GenericConstraintFunctionDatas() : Constraints(0),GradConstraints(0) {}
+  900.       virtual const AssumptionG A() const {return undefg;}
+  901.       virtual const bool WC() const =0;//with constraints
+
+examples++-load/ff-Ipopt.cpp:899:55: 
+  897.       static GenericConstraintFunctionDatas* New(AssumptionG,const basicAC_F0 &,Expression const *,const C_F0 &);
+  898.       Expression Constraints,GradConstraints;
+  899. >     GenericConstraintFunctionDatas() : Constraints(0),GradConstraints(0) {}
+  900.       virtual const AssumptionG A() const {return undefg;}
+  901.       virtual const bool WC() const =0;//with constraints
+
+examples++-load/ff-Ipopt.cpp:899:75: return from a call to GenericConstraintFunctionDatas_GenericConstraintFunctionDatas
+  897.       static GenericConstraintFunctionDatas* New(AssumptionG,const basicAC_F0 &,Expression const *,const C_F0 &);
+  898.       Expression Constraints,GradConstraints;
+  899.       GenericConstraintFunctionDatas() : Constraints(0),GradConstraints(0) {}
+                                                                                   ^
+  900.       virtual const AssumptionG A() const {return undefg;}
+  901.       virtual const bool WC() const =0;//with constraints
+
+examples++-load/ff-Ipopt.cpp:1651:5: Skipping size: function or method not found
+1649.   : GenericConstraintFunctionDatas() 
+1650.   {
+1651.       int nbj = args.size()-1;
+            ^
+1652.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[nbj-1].LeftValue());
+1653.       if(M_b->nbitem() != 2) CompileError("\nSorry, we were expecting an array with two componants, either [M,b] or [b,M] for the affine constraints expression." );
+
+examples++-load/ff-Ipopt.cpp:1652:5: Skipping LeftValue: function or method not found
+1650.   {
+1651.       int nbj = args.size()-1;
+1652.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[nbj-1].LeftValue());
+            ^
+1653.       if(M_b->nbitem() != 2) CompileError("\nSorry, we were expecting an array with two componants, either [M,b] or [b,M] for the affine constraints expression." );
+1654.       bool order=true;
+
+examples++-load/ff-Ipopt.cpp:1653:8: 
+1651.       int nbj = args.size()-1;
+1652.       const E_Array *M_b = dynamic_cast<const E_Array *>(args[nbj-1].LeftValue());
+1653. >     if(M_b->nbitem() != 2) CompileError("\nSorry, we were expecting an array with two componants, either [M,b] or [b,M] for the affine constraints expression." );
+1654.       bool order=true;
+1655.       if(CheckMatrixVectorPair(M_b,order))

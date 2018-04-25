@@ -1,0 +1,12 @@
+examples++-load/funcTemplate.cpp:128: error: DEAD_STORE
+  The value written to &ppui (type FEbase<double,v_fes>**) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/funcTemplate.cpp:128:9: Write of unused value
+126.       for(int i=0; i<N; ++i)
+127.       {
+128.           FEbase<K,v_fes>** ppui=(*pa)[i]; // DATA elememt FINI
+               ^
+129.           KN<K>* pui=pa->get(i);
+130.           ret+= (*pui)[0];

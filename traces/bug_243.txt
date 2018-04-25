@@ -1,0 +1,35 @@
+examples++-load/Element_P3dc.cpp:200: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P3dcLagrangeP3dc accesses global variable from a different translation unit: Fem2D::TypeOfFE_P3dcLagrange::G|.
+Showing all 4 steps of the trace
+
+
+examples++-load/Element_P3dc.cpp:200:1: initialization of Fem2D::P3dcLagrangeP3dc
+198.   
+199.   // link with FreeFem++ 
+200. > static TypeOfFE_P3dcLagrange P3dcLagrangeP3dc;
+201.   // a static variable to add the finite element to freefem++
+202.   static AddNewFE  P3dcLagrange("P3dc",&P3dcLagrangeP3dc); 
+
+examples++-load/Element_P3dc.cpp:200:30: call to Fem2D::TypeOfFE_P3dcLagrange_TypeOfFE_P3dcLagrange
+198.   
+199.   // link with FreeFem++ 
+200.   static TypeOfFE_P3dcLagrange P3dcLagrangeP3dc;
+                                    ^
+201.   // a static variable to add the finite element to freefem++
+202.   static AddNewFE  P3dcLagrange("P3dc",&P3dcLagrangeP3dc); 
+
+examples++-load/Element_P3dc.cpp:50:18: call to Fem2D::TypeOfFE_P3dcLagrange_Shrink
+  48.        for (int i=0;i<NbDoF;i++) {
+  49.          pij_alpha[i]= IPJ(i,i,0);
+  50.          P_Pi_h[i]=Shrink(Pt[i]); }
+                         ^
+  51.   
+  52.      }
+
+examples++-load/Element_P3dc.cpp:31:42: access to Fem2D::TypeOfFE_P3dcLagrange::G|
+  29.      //  (1 -1/3)*
+  30.       
+  31.      static R2 Shrink(const R2& P){ return (P-G)*cshrink+G;}
+                                                 ^
+  32.      static R2 Shrink1(const R2& P){ return (P-G)*cshrink1+G;}
+  33.      

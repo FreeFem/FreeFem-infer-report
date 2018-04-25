@@ -1,0 +1,12 @@
+examples++-mpi/dSuperLU_DIST.cpp:243: error: DEAD_STORE
+  The value written to &infobcast (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/dSuperLU_DIST.cpp:243:6: Write of unused value
+241.   	    dallocateA_dist(n, nnz, &a, &asub, &xa);
+242.   	    
+243.   	    int infobcast=MPI_Bcast( a, nnz, MPI_DOUBLE, 0, grid.comm );
+            ^
+244.   	    MPI_Bcast( asub, nnz, mpi_int_t,  0, grid.comm );
+245.   	    MPI_Bcast( xa,   n+1, mpi_int_t,  0, grid.comm );

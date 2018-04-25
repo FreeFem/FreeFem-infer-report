@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:2085: error: DEAD_STORE
+  The value written to &color (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:2085:3: Write of unused value
+2083.     Int4 *first_np_or_next_t = new Int4[nbtx];
+2084.     Int4 ColorEdge[3];
+2085.     Int4 color=-1;
+          ^
+2086.     Triangle *t;
+2087.     // generation of the list of next Triangle 

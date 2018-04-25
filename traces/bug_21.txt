@@ -1,0 +1,116 @@
+src/medit/gisfil.c:45: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 23, column 8 is not released after line 45, column 13.
+Showing all 15 steps of the trace
+
+
+src/medit/gisfil.c:7:1: start of procedure loadGIS()
+5.   #define FLOAT_MAX  1.e20
+6.   
+7. > int loadGIS(pMesh mesh) {
+8.     pQuad      pq;
+9.     pPoint     ppt;
+
+src/medit/gisfil.c:20:3: 
+18.   
+19.     /* default */
+20. >   strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+
+src/medit/gisfil.c:21:3: 
+19.     /* default */
+20.     strcpy(data,mesh->name);
+21. >   ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+
+src/medit/gisfil.c:22:9: Taking true branch
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+              ^
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:22:16: 
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22. >   if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:23:3: 
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23. >   fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25.     fprintf(stdout,"  Reading %s\n",data);
+
+src/medit/gisfil.c:24:9: Taking false branch
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+              ^
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+
+src/medit/gisfil.c:25:3: 
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25. >   fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+
+src/medit/gisfil.c:27:9: Taking false branch
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+              ^
+28.       fprintf(stderr,"  ## Invalid header.\n");
+29.       return(0);
+
+src/medit/gisfil.c:33:3: 
+31.   
+32.     /* remove leading spaces */
+33. >   pos = 0;
+34.     while ( (buf[0] == ' ') && (buf[0] != 0x0d) && (buf[0] != 0x0a) )
+35.       memmove(&buf[0],&buf[1],strlen(buf));
+
+src/medit/gisfil.c:34:12: Loop condition is false. Leaving loop
+32.     /* remove leading spaces */
+33.     pos = 0;
+34.     while ( (buf[0] == ' ') && (buf[0] != 0x0d) && (buf[0] != 0x0a) )
+                 ^
+35.       memmove(&buf[0],&buf[1],strlen(buf));
+36.   
+
+src/medit/gisfil.c:38:8: Taking false branch
+36.   
+37.     /* check header file */
+38.     if ( buf[0] != 'G' ) {
+             ^
+39.       fprintf(stderr,"  ## Invalid format.\n");
+40.       return(0);
+
+src/medit/gisfil.c:42:8: Taking false branch
+40.       return(0);
+41.     }
+42.     if ( buf[1] == '1' )       ityp = 1;
+             ^
+43.     else if ( buf[1] == '2' )  ityp = 2;
+44.     else {
+
+src/medit/gisfil.c:43:13: Taking false branch
+41.     }
+42.     if ( buf[1] == '1' )       ityp = 1;
+43.     else if ( buf[1] == '2' )  ityp = 2;
+                  ^
+44.     else {
+45.       fprintf(stderr,"  ## Invalid format ('G?' expected).\n");
+
+src/medit/gisfil.c:45:5: 
+43.     else if ( buf[1] == '2' )  ityp = 2;
+44.     else {
+45. >     fprintf(stderr,"  ## Invalid format ('G?' expected).\n");
+46.       return(0);
+47.     }

@@ -1,0 +1,218 @@
+src/fflib/lgmesh.cpp:306: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 304 could be null and is dereferenced at line 306, column 17.
+Showing all 28 steps of the trace
+
+
+src/fflib/lgmesh.cpp:294:4: start of procedure SaveMesh
+292.      Expression filename; 
+293.      Expression xx,yy,zz;  
+294.      SaveMesh(const basicAC_F0 & args) 
+          ^
+295.       {   
+296.         xx=0;
+
+src/fflib/lgmesh.cpp:312:32: Skipping E_F0: function or method not found
+310.             yy=to<double>( (*a)[1]);
+311.             if(k==3)
+312.              zz=to<double>( (*a)[2]);
+                                      ^
+313.            }
+314.         
+
+src/fflib/lgmesh.cpp:296:7: 
+294.      SaveMesh(const basicAC_F0 & args) 
+295.       {   
+296. >       xx=0;
+297.         yy=0;
+298.         zz=0;
+
+src/fflib/lgmesh.cpp:297:7: 
+295.       {   
+296.         xx=0;
+297. >       yy=0;
+298.         zz=0;
+299.         args.SetNameParam();
+
+src/fflib/lgmesh.cpp:298:7: 
+296.         xx=0;
+297.         yy=0;
+298. >       zz=0;
+299.         args.SetNameParam();
+300.         getmesh=to<pmesh>(args[0]); 
+
+src/fflib/lgmesh.cpp:299:7: 
+297.         yy=0;
+298.         zz=0;
+299. >       args.SetNameParam();
+300.         getmesh=to<pmesh>(args[0]); 
+301.         filename=to<string*>(args[1]); 
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking true branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1004:14: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                       ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+src/fflib/lgmesh.cpp:300:7: Skipping operator_E_F0_*: function or method not found
+298.         zz=0;
+299.         args.SetNameParam();
+300.         getmesh=to<pmesh>(args[0]); 
+             ^
+301.         filename=to<string*>(args[1]); 
+302.         if (args.size() >2) 
+
+src/fflib/lgmesh.cpp:301:7: Skipping operator_E_F0_*: function or method not found
+299.         args.SetNameParam();
+300.         getmesh=to<pmesh>(args[0]); 
+301.         filename=to<string*>(args[1]); 
+             ^
+302.         if (args.size() >2) 
+303.           {
+
+src/fflib/lgmesh.cpp:302:11: Taking true branch
+300.         getmesh=to<pmesh>(args[0]); 
+301.         filename=to<string*>(args[1]); 
+302.         if (args.size() >2) 
+                 ^
+303.           {
+304.             const E_Array * a = dynamic_cast<const E_Array *>(args[2].LeftValue());
+
+src/fflib/lgmesh.cpp:304:11: Skipping LeftValue: function or method not found
+302.         if (args.size() >2) 
+303.           {
+304.             const E_Array * a = dynamic_cast<const E_Array *>(args[2].LeftValue());
+                 ^
+305.             if (!a) CompileError("savemesh(Th,\"filename\",[u,v,w],...");
+306.             int k=a->size() ;
+
+src/fflib/lgmesh.cpp:305:16: Taking true branch
+303.           {
+304.             const E_Array * a = dynamic_cast<const E_Array *>(args[2].LeftValue());
+305.             if (!a) CompileError("savemesh(Th,\"filename\",[u,v,w],...");
+                      ^
+306.             int k=a->size() ;
+307.            // cout << k << endl;
+
+src/fflib/lgmesh.cpp:305:19: Skipping CompileError(): function or method not found
+303.           {
+304.             const E_Array * a = dynamic_cast<const E_Array *>(args[2].LeftValue());
+305.             if (!a) CompileError("savemesh(Th,\"filename\",[u,v,w],...");
+                         ^
+306.             int k=a->size() ;
+307.            // cout << k << endl;
+
+src/fflib/lgmesh.cpp:306:11: 
+304.             const E_Array * a = dynamic_cast<const E_Array *>(args[2].LeftValue());
+305.             if (!a) CompileError("savemesh(Th,\"filename\",[u,v,w],...");
+306. >           int k=a->size() ;
+307.            // cout << k << endl;
+308.             if ( k!=2 && k !=3) CompileError("savemesh(Th,\"filename\",[u,v,w]) need 2 or 3  componate in array ",atype<pmesh>());

@@ -1,0 +1,62 @@
+src/medit/inout.c:577: error: NULL_DEREFERENCE
+  pointer `ptr` last assigned on line 576 could be null and is dereferenced at line 577, column 5.
+Showing all 8 steps of the trace
+
+
+src/medit/inout.c:563:1: start of procedure loadSol()
+561.   
+562.   /* load solution (metric) */
+563. > int loadSol(pMesh mesh,char *filename,int numsol) {
+564.     pSolution    sol;
+565.     double       dbuf[ GmfMaxTyp ];
+
+src/medit/inout.c:571:3: 
+569.     char        *ptr,data[128];
+570.   
+571. >   strcpy(data,filename);
+572.     ptr = strstr(data,".mesh");
+573.     if ( ptr )  *ptr = '\0';
+
+src/medit/inout.c:572:3: 
+570.   
+571.     strcpy(data,filename);
+572. >   ptr = strstr(data,".mesh");
+573.     if ( ptr )  *ptr = '\0';
+574.     strcat(data,".solb");
+
+src/medit/inout.c:573:8: Taking false branch
+571.     strcpy(data,filename);
+572.     ptr = strstr(data,".mesh");
+573.     if ( ptr )  *ptr = '\0';
+              ^
+574.     strcat(data,".solb");
+575.     if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) ) {
+
+src/medit/inout.c:574:3: 
+572.     ptr = strstr(data,".mesh");
+573.     if ( ptr )  *ptr = '\0';
+574. >   strcat(data,".solb");
+575.     if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) ) {
+576.       ptr  = strstr(data,".sol");
+
+src/medit/inout.c:575:9: Taking true branch
+573.     if ( ptr )  *ptr = '\0';
+574.     strcat(data,".solb");
+575.     if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) ) {
+               ^
+576.       ptr  = strstr(data,".sol");
+577.       *ptr = '\0';
+
+src/medit/inout.c:576:5: 
+574.     strcat(data,".solb");
+575.     if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) ) {
+576. >     ptr  = strstr(data,".sol");
+577.       *ptr = '\0';
+578.       strcat(data,".sol");
+
+src/medit/inout.c:577:5: 
+575.     if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) ) {
+576.       ptr  = strstr(data,".sol");
+577. >     *ptr = '\0';
+578.       strcat(data,".sol");
+579.       if (!(inm = GmfOpenMesh(data,GmfRead,&ver,&dim)) )

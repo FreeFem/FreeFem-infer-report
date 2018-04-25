@@ -1,0 +1,35 @@
+examples++-load/qf11to25.cpp:1577: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of QuadratureFormular_Tet_P13 accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/qf11to25.cpp:1577:1: initialization of QuadratureFormular_Tet_P13
+1575.   };
+1576.   
+1577. > PQF3 const QuadratureFormular_Tet_P13(13,149, QF_TET_P13);
+1578.   //  QUAD QUAD_3D_P14_ = { 194 776
+1579.   
+
+examples++-load/qf11to25.cpp:1577:12: call to Fem2D::GQuadratureFormular<Fem2D::R3>_GQuadratureFormular
+1575.   };
+1576.   
+1577.   PQF3 const QuadratureFormular_Tet_P13(13,149, QF_TET_P13);
+                   ^
+1578.   //  QUAD QUAD_3D_P14_ = { 194 776
+1579.   
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R3>_Verification
+  83.     void Verification(); // for verification 
+  84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+  85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                          ^
+  86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+  87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

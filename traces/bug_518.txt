@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:770: error: DEAD_STORE
+  The value written to &ilast (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:770:7: Write of unused value
+768.         ba[j] = -deti/dij;
+769.         ba[3-i-j ] = 0;
+770.         ilast=NewItem(t, ba[0],ba[1],ba[2]);      
+             ^
+771.         
+772.         TriangleAdjacent ta =t->Adj(ocut);

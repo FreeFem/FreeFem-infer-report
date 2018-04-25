@@ -1,0 +1,12 @@
+src/fflib/AFunction2.cpp:860: error: DEAD_STORE
+  The value written to &s1 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/AFunction2.cpp:860:5: Write of unused value
+858.       AnyType r;
+859.       int i;
+860.       double s0=CPUtime(),s1=s0,ss0=s0;
+           ^
+861.       StackOfPtr2Free * sptr = WhereStackOfPtr2Free(s);
+862.       try { // modif FH oct 2006

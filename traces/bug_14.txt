@@ -1,0 +1,12 @@
+src/medit/scissor.c:16: error: DEAD_STORE
+  The value written to &mesh (type mesh*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/scissor.c:16:3: Write of unused value
+14.     if ( ddebug ) printf("enable scissoring\n");
+15.     sc   = cv.scene[currentScene()];
+16.     mesh = cv.mesh[sc->idmesh];
+        ^
+17.     view = sc->view;
+18.     p    = sc->persp; 

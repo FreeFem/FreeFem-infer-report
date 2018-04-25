@@ -1,0 +1,186 @@
+src/fflib/lgmat.cpp:2312: error: NULL_DEREFERENCE
+  pointer `eMij` last assigned on line 2311 could be null and is dereferenced at line 2312, column 7.
+Showing all 24 steps of the trace
+
+
+src/fflib/lgmat.cpp:2304:23: start of procedure BlockMatrix
+2302.       
+2303.   }
+2304.   template<typename R>  BlockMatrix<R>::BlockMatrix(const basicAC_F0 & args,int iinit)
+                              ^
+2305.   : init(iinit)
+2306.   {   
+
+src/fflib/AFunction.hpp:115:42: Skipping E_F0: function or method not found
+113.    int  FindType(const char * name) ; 
+114.     void lgerror (const char* s) ;  
+115.    void CompileError(string msg="",aType r=0);
+                                                ^
+116.    void ExecError(string msg="");
+117.    
+
+src/fflib/lgmat.cpp:2305:3: 
+2303.   }
+2304.   template<typename R>  BlockMatrix<R>::BlockMatrix(const basicAC_F0 & args,int iinit)
+2305. > : init(iinit)
+2306.   {   
+2307.       N=0;
+
+src/fflib/lgmat.cpp:2307:5: 
+2305.   : init(iinit)
+2306.   {   
+2307. >     N=0;
+2308.       M=0;
+2309.       args.SetNameParam();
+
+src/fflib/lgmat.cpp:2308:5: 
+2306.   {   
+2307.       N=0;
+2308. >     M=0;
+2309.       args.SetNameParam();
+2310.       emat = args[0];
+
+src/fflib/lgmat.cpp:2309:5: 
+2307.       N=0;
+2308.       M=0;
+2309. >     args.SetNameParam();
+2310.       emat = args[0];
+2311.       const E_Array & eMij= *dynamic_cast<const E_Array*>((Expression) args[1]);
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking true branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1004:14: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                       ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+src/fflib/lgmat.cpp:2310:5: Skipping operator_E_F0_*: function or method not found
+2308.       M=0;
+2309.       args.SetNameParam();
+2310.       emat = args[0];
+            ^
+2311.       const E_Array & eMij= *dynamic_cast<const E_Array*>((Expression) args[1]);
+2312.       N=eMij.size();
+
+src/fflib/lgmat.cpp:2311:5: Skipping operator_E_F0_*: function or method not found
+2309.       args.SetNameParam();
+2310.       emat = args[0];
+2311.       const E_Array & eMij= *dynamic_cast<const E_Array*>((Expression) args[1]);
+            ^
+2312.       N=eMij.size();
+2313.       int err =0;
+
+src/fflib/lgmat.cpp:2312:5: 
+2310.       emat = args[0];
+2311.       const E_Array & eMij= *dynamic_cast<const E_Array*>((Expression) args[1]);
+2312. >     N=eMij.size();
+2313.       int err =0;
+2314.       for (int i=0;i<N;i++)

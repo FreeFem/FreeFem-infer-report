@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:1116: error: DEAD_STORE
+  The value written to &tv (type Fem2D::TTriangle<Fem2D::R2> const *) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:1116:8: Write of unused value
+1114.   			if(same)
+1115.   			{
+1116.   			    tv=tu;
+               ^
+1117.   			    outsidev=outsideu;
+1118.   			    Ptv=Ptu;

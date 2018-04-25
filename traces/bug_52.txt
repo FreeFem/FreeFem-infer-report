@@ -1,0 +1,12 @@
+src/medit/bbfile.c:56: error: DEAD_STORE
+  The value written to &bigbb (type unsigned char) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/bbfile.c:56:5: Write of unused value
+54.     }  
+55.     if ( !in ) {
+56.       bigbb = 1;
+          ^
+57.       sprintf(data,"%s.BB",tmp);
+58.       in = fopen(data,"r");  

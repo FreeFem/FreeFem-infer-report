@@ -1,0 +1,12 @@
+examples++-load/mshmet.cpp:657: error: DEAD_STORE
+  The value written to &nbe (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/mshmet.cpp:657:3: Write of unused value
+655.     int nv=Th.nv;
+656.     int nt=Th.nt;
+657.     int nbe=Th.neb;
+         ^
+658.   
+659.    

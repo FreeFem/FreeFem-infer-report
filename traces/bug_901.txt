@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:5084: error: DEAD_STORE
+  The value written to &umn (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:5084:21: Write of unused value
+5082.   
+5083.                   {
+5084.                       double umx=std::numeric_limits<double>::min(),umn=std::numeric_limits<double>::max();
+                            ^
+5085.                       for(int i=0;i<4;++i)
+5086.                       {

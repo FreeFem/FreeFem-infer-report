@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.h:1285: error: DEAD_STORE
+  The value written to &nbv (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.h:1285:3: Write of unused value
+1283.   inline  Triangle::Triangle(Triangles *Th,Int4 i,Int4 j,Int4 k) {
+1284.     Vertex *v=Th->vertices;
+1285.     Int4 nbv = Th->nbv;
+          ^
+1286.     assert(i >=0 && j >=0 && k >=0);
+1287.     assert(i < nbv && j < nbv && k < nbv);

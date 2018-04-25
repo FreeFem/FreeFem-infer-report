@@ -1,0 +1,12 @@
+src/medit/inout_morice.c:970: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/inout_morice.c:970:7: Write of unused value
+968.         assert(mesh->extra->nt);
+969.   	
+970.         k=1;
+             ^
+971.         getline_popen_elemnoref(natureread, 3, tvatn);
+972.         //GmfGetLin(inm,GmfNormalAtTriangleVertices,&nt,&is,&nn);

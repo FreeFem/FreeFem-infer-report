@@ -1,0 +1,90 @@
+src/fflib/problem.cpp:6286: error: NULL_DEREFERENCE
+  pointer `bc` last assigned on line 6285 could be null and is dereferenced at line 6286, column 15.
+Showing all 11 steps of the trace
+
+
+src/fflib/problem.cpp:6261:1: start of procedure FieldOfForm()
+6259.   
+6260.       }*/
+6261. > bool FieldOfForm( list<C_F0> & largs ,bool complextype)  // true => complex problem 
+6262.   {
+6263.     //  bool   iscomplextype=complextype;
+
+src/fflib/problem.cpp:6264:3: Skipping _List_iterator: function or method not found
+6262.   {
+6263.     //  bool   iscomplextype=complextype;
+6264.     list<C_F0>::iterator ii,ib=largs.begin(),
+          ^
+6265.       ie=largs.end();
+6266.    // bool complextype =false;   
+
+src/fflib/problem.cpp:6267:8: Skipping operator=: function or method not found
+6265.       ie=largs.end();
+6266.    // bool complextype =false;   
+6267.     for (ii=ib;ii != ie;ii++)
+               ^
+6268.       {
+6269.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:6267:14: Loop condition is true. Entering loop body
+6265.       ie=largs.end();
+6266.    // bool complextype =false;   
+6267.     for (ii=ib;ii != ie;ii++)
+                     ^
+6268.       {
+6269.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:6269:7: Skipping LeftValue: function or method not found
+6267.     for (ii=ib;ii != ie;ii++)
+6268.       {
+6269.         Expression e=ii->LeftValue();
+              ^
+6270.         aType r = ii->left();
+6271.         if (r==atype<const  FormBilinear *>()) 
+
+src/fflib/problem.cpp:6270:7: Skipping left: function or method not found
+6268.       {
+6269.         Expression e=ii->LeftValue();
+6270.         aType r = ii->left();
+              ^
+6271.         if (r==atype<const  FormBilinear *>()) 
+6272.           {
+
+src/fflib/problem.cpp:6271:11: Taking false branch
+6269.         Expression e=ii->LeftValue();
+6270.         aType r = ii->left();
+6271.         if (r==atype<const  FormBilinear *>()) 
+                  ^
+6272.           {
+6273.             const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+
+src/fflib/problem.cpp:6277:16: Taking false branch
+6275.               complextype=true;
+6276.             }
+6277.         else if (r==atype<const  FormLinear *>())
+                       ^
+6278.           {
+6279.             const  FormLinear * ll=dynamic_cast<const  FormLinear *>(e);
+
+src/fflib/problem.cpp:6283:16: Taking true branch
+6281.               complextype=true;
+6282.           }
+6283.         else if (r == atype<const  BC_set *>())
+                       ^
+6284.          {
+6285.             const  BC_set * bc=dynamic_cast<const  BC_set *>(e);
+
+src/fflib/problem.cpp:6285:11: 
+6283.         else if (r == atype<const  BC_set *>())
+6284.          {
+6285. >           const  BC_set * bc=dynamic_cast<const  BC_set *>(e);
+6286.             if (bc->complextype)  complextype=true;
+6287.   
+
+src/fflib/problem.cpp:6286:15: Taking false branch
+6284.          {
+6285.             const  BC_set * bc=dynamic_cast<const  BC_set *>(e);
+6286.             if (bc->complextype)  complextype=true;
+                      ^
+6287.   
+6288.          }

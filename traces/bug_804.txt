@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:2045: error: DEAD_STORE
+  The value written to &cell_lab (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:2045:3: Write of unused value
+2043.     fprintf(fp, "CELL_DATA %d\n", numElements);
+2044.     int cell_fd=1;
+2045.     int cell_lab=1;
+          ^
+2046.     /*
+2047.     fprintf(fp, "COLOR_SCALARS Label 4\n");

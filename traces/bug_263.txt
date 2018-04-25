@@ -1,0 +1,12 @@
+src/fflib/lex.cpp:299: error: DEAD_STORE
+  The value written to &cc (type char) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lex.cpp:299:15: Write of unused value
+297.             if ( cc == '\\')  //   escape 
+298.               {
+299.                 cc= source().get();
+                     ^
+300.                 cc= source().get(); 
+301.   	      ccc= source().peek(); 

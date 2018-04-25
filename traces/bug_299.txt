@@ -1,0 +1,12 @@
+examples++-load/Element_QF.cpp:304: error: DEAD_STORE
+  The value written to &m (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_QF.cpp:304:17: Write of unused value
+302.                   const GQuadratureFormular<R3> * qf =  GetAny< const GQuadratureFormular<R3> *>((*efq)(0));
+303.                   if(verbosity>9) cout << " \t " << sqfv << " " << qf->n << " " << qf->exact << ",  EF : " << EFsqfv << endl;
+304.                   int m=5;
+                       ^
+305.                    TypeOfFE_QF3d *FEqf = new TypeOfFE_QF3d(*qf);
+306.                   pAddNewFE3[i]=new AddNewFE3(EFsqfv,FEqf);

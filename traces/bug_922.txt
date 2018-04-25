@@ -1,0 +1,254 @@
+src/fflib/problem.cpp:6359: error: NULL_DEREFERENCE
+  pointer `op` last assigned on line 6357 could be null and is dereferenced at line 6359, column 16.
+Showing all 33 steps of the trace
+
+
+src/fflib/problem.cpp:6337:1: start of procedure Problem
+6335.   
+6336.   
+6337. > Problem::Problem(const C_args * ca,const ListOfId &l,size_t & top) :
+6338.     op(new C_args(*ca)),
+6339.     var(l.size()),
+
+src/fflib/problem.cpp:6368:75: 
+6366.       CompileError("Error: Problem  a complex problem with no complex FE function ");
+6367.    if( verbosity > 1)
+6368. >     cout << "  -- Problem type  ( complex : " << complextype << " )  "  <<endl;  
+6369.   }
+6370.   
+
+src/fflib/AFunction.hpp:593:3: start of procedure Polymorphic
+  591.      Expression e; // default expression
+  592.   public:    
+  593.     Polymorphic() : m(),e(0) {}
+           ^
+  594.     
+  595.   //  by default Empty and do nothing      
+
+src/fflib/AFunction.hpp:593:29: Skipping E_F0mps: function or method not found
+  591.      Expression e; // default expression
+  592.   public:    
+  593.     Polymorphic() : m(),e(0) {}
+                                     ^
+  594.     
+  595.   //  by default Empty and do nothing      
+
+src/fflib/AFunction.hpp:593:19: Skipping map: function or method not found
+  591.      Expression e; // default expression
+  592.   public:    
+  593.     Polymorphic() : m(),e(0) {}
+                           ^
+  594.     
+  595.   //  by default Empty and do nothing      
+
+src/fflib/AFunction.hpp:593:23: 
+  591.      Expression e; // default expression
+  592.   public:    
+  593. >   Polymorphic() : m(),e(0) {}
+  594.     
+  595.   //  by default Empty and do nothing      
+
+src/fflib/AFunction.hpp:593:29: return from a call to Polymorphic_Polymorphic
+  591.      Expression e; // default expression
+  592.   public:    
+  593.     Polymorphic() : m(),e(0) {}
+                                     ^
+  594.     
+  595.   //  by default Empty and do nothing      
+
+src/fflib/problem.cpp:6342:3: 
+6340.     VF(false), 
+6341.     offset(align8(top)),
+6342. >   dim(dimProblem(l))
+6343.   {
+6344.     // cout << "Problem : -----------------------------" << top << " dim = " << dim<< endl;
+
+src/fflib/problem.cpp:6113:1: start of procedure dimProblem()
+  6111.   
+  6112.   
+  6113. > int dimProblem(const ListOfId &l)
+  6114.   {
+  6115.       int dim=2;
+
+src/fflib/problem.cpp:6115:5: 
+  6113.   int dimProblem(const ListOfId &l)
+  6114.   {
+  6115. >     int dim=2;
+  6116.       int nb=l.size();//,nbarray=0;//,n=0,
+  6117.       //const UnId *p1;
+
+src/fflib/problem.cpp:6116:5: Skipping size: function or method not found
+  6114.   {
+  6115.       int dim=2;
+  6116.       int nb=l.size();//,nbarray=0;//,n=0,
+              ^
+  6117.       //const UnId *p1;
+  6118.       if(nb>0) 
+
+src/fflib/problem.cpp:6118:8: Taking false branch
+  6116.       int nb=l.size();//,nbarray=0;//,n=0,
+  6117.       //const UnId *p1;
+  6118.       if(nb>0) 
+                 ^
+  6119.         {
+  6120.   	  if (l[0].array) 
+
+src/fflib/problem.cpp:6142:5: 
+  6140.   	  
+  6141.         }
+  6142. >     return dim;
+  6143.       
+  6144.   }
+
+src/fflib/problem.cpp:6144:1: return from a call to dimProblem
+  6142.       return dim;
+  6143.       
+  6144. > }
+  6145.   template<class pfer,class pfec>
+  6146.   bool GetBilinearParam(const ListOfId &l,basicAC_F0::name_and_type *name_param,int n_name_param,
+
+src/fflib/problem.cpp:6338:3: 
+6336.   
+6337.   Problem::Problem(const C_args * ca,const ListOfId &l,size_t & top) :
+6338. >   op(new C_args(*ca)),
+6339.     var(l.size()),
+6340.     VF(false), 
+
+src/fflib/problem.hpp:115:7: start of procedure C_args
+  113.   
+  114.   
+  115.   class C_args: public E_F0mps  {public:
+               ^
+  116.     typedef const C_args *  Result;
+  117.     list<C_F0> largs;
+
+src/fflib/AFunction.hpp:409:7: start of procedure E_F0mps
+    407.   /// <<E_F0mps>> Specialization of [[E_F0]] where MeshIndependent() always returns false instead of true.  
+    408.   
+    409.   class E_F0mps : public E_F0 { public:
+                 ^
+    410.     virtual bool MeshIndependent() const {return false;} // 
+    411.   };
+
+src/fflib/AFunction.hpp:363:7: start of procedure E_F0
+      361.   /// [[file:../lglib/lg.ypp::evaluate_parsed_FF_script]] (see \ref index). No internal data member.
+      362.   
+      363.   class E_F0 :public CodeAlloc 
+                   ^
+      364.      {
+      365.      public:
+
+src/fflib/CodeAlloc.hpp:29:7: start of procedure CodeAlloc
+        27.    */
+        28.   
+        29.   class CodeAlloc { public:
+                    ^
+        30.   
+        31.     static size_t nb,nbt,lg, nbdl,nbpx, chunk ;   
+
+src/fflib/CodeAlloc.hpp:29:7: return from a call to CodeAlloc_CodeAlloc
+        27.    */
+        28.   
+        29.   class CodeAlloc { public:
+                    ^
+        30.   
+        31.     static size_t nb,nbt,lg, nbdl,nbpx, chunk ;   
+
+src/fflib/AFunction.hpp:363:7: return from a call to E_F0_E_F0
+      361.   /// [[file:../lglib/lg.ypp::evaluate_parsed_FF_script]] (see \ref index). No internal data member.
+      362.   
+      363.   class E_F0 :public CodeAlloc 
+                   ^
+      364.      {
+      365.      public:
+
+src/fflib/AFunction.hpp:409:7: return from a call to E_F0mps_E_F0mps
+    407.   /// <<E_F0mps>> Specialization of [[E_F0]] where MeshIndependent() always returns false instead of true.  
+    408.   
+    409.   class E_F0mps : public E_F0 { public:
+                 ^
+    410.     virtual bool MeshIndependent() const {return false;} // 
+    411.   };
+
+src/fflib/problem.hpp:115:7: return from a call to C_args_C_args
+  113.   
+  114.   
+  115.   class C_args: public E_F0mps  {public:
+               ^
+  116.     typedef const C_args *  Result;
+  117.     list<C_F0> largs;
+
+src/fflib/problem.cpp:6339:3: Skipping vector: function or method not found
+6337.   Problem::Problem(const C_args * ca,const ListOfId &l,size_t & top) :
+6338.     op(new C_args(*ca)),
+6339.     var(l.size()),
+          ^
+6340.     VF(false), 
+6341.     offset(align8(top)),
+
+src/fflib/problem.cpp:6340:3: 
+6338.     op(new C_args(*ca)),
+6339.     var(l.size()),
+6340. >   VF(false), 
+6341.     offset(align8(top)),
+6342.     dim(dimProblem(l))
+
+src/fflib/problem.cpp:6341:3: Skipping align8(): function or method not found
+6339.     var(l.size()),
+6340.     VF(false), 
+6341.     offset(align8(top)),
+          ^
+6342.     dim(dimProblem(l))
+6343.   {
+
+src/fflib/problem.cpp:6345:3: 
+6343.   {
+6344.     // cout << "Problem : -----------------------------" << top << " dim = " << dim<< endl;
+6345. >   top = offset + max(sizeof(Data<FESpace>),sizeof(Data<FESpace>));
+6346.       
+6347.       bool iscomplex;
+
+src/fflib/problem.cpp:6348:8: Taking true branch
+6346.       
+6347.       bool iscomplex;
+6348.       if(dim==2)
+               ^
+6349.   	iscomplex=GetBilinearParam<pfer,pfec>(l,name_param,n_name_param,nargs, Nitem,Mitem,var);
+6350.       else if (dim==3) 
+
+src/fflib/problem.cpp:6349:2: Skipping GetBilinearParam<f658de8e151a3db6>(): function or method not found
+6347.       bool iscomplex;
+6348.       if(dim==2)
+6349.   	iscomplex=GetBilinearParam<pfer,pfec>(l,name_param,n_name_param,nargs, Nitem,Mitem,var);
+         ^
+6350.       else if (dim==3) 
+6351.    	iscomplex=GetBilinearParam<pf3r,pf3c>(l,name_param,n_name_param,nargs, Nitem,Mitem,var);
+
+src/fflib/problem.cpp:6354:3: 
+6352.       else ffassert(0); // bug 
+6353.           
+6354. >   precon = 0; //  a changer 
+6355.     if ( nargs[3+3])
+6356.       {
+
+src/fflib/problem.cpp:6355:8: Taking true branch
+6353.           
+6354.     precon = 0; //  a changer 
+6355.     if ( nargs[3+3])
+               ^
+6356.       {
+6357.         const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3+3]);
+
+src/fflib/problem.cpp:6357:7: 
+6355.     if ( nargs[3+3])
+6356.       {
+6357. >       const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3+3]);
+6358.         assert(op);
+6359.         precon = op->Find("(",ArrayOfaType(atype<KN<R>* >(),false));
+
+src/fflib/problem.cpp:6359:7: 
+6357.         const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3+3]);
+6358.         assert(op);
+6359. >       precon = op->Find("(",ArrayOfaType(atype<KN<R>* >(),false));
+6360.      }
+6361.   

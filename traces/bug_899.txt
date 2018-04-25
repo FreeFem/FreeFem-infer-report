@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:4512: error: DEAD_STORE
+  The value written to &m (type Fem2D::Mesh*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:4512:3: Write of unused value
+4510.     ffassert(pTh && nlayer>0);
+4511.     Mesh &Th=*pTh;
+4512.     Mesh *m= pTh;   // question a quoi sert *m ??
+          ^
+4513.     int nbv=Th.nv; // nombre de sommet 
+4514.     int nbt=Th.nt; // nombre de triangles

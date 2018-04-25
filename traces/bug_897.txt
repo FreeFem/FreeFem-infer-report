@@ -1,0 +1,96 @@
+src/fflib/problem.cpp:4430: error: NULL_DEREFERENCE
+  pointer `bf` last assigned on line 4429 could be null and is dereferenced at line 4430, column 43.
+Showing all 12 steps of the trace
+
+
+src/fflib/problem.cpp:4408:3: start of procedure Fem2D::AssembleVarForm<21871b11c7f68811>()
+4406.   
+4407.     template<class R,typename MC,class FESpace >
+4408.     bool AssembleVarForm(Stack stack,const typename FESpace::Mesh & Th,const FESpace & Uh,const FESpace & Vh,bool sym,
+          ^
+4409.                          MC  * A,KN_<R> * B,const list<C_F0> &largs)
+4410.     { // return true if BC 
+
+src/fflib/problem.cpp:4413:5: 
+4411.       typedef typename FESpace::Mesh Mesh ;
+4412.       typedef Mesh * pmesh;
+4413. >     bool ret=false; 
+4414.       typedef DotStar_KN_<R> DotStar;
+4415.       typedef DotSlash_KN_<R> DotSlash;
+
+src/fflib/problem.cpp:4416:5: Skipping _List_const_iterator: function or method not found
+4414.       typedef DotStar_KN_<R> DotStar;
+4415.       typedef DotSlash_KN_<R> DotSlash;
+4416.       list<C_F0>::const_iterator ii,ib=largs.begin(),
+            ^
+4417.         ie=largs.end();
+4418.        using namespace FreeFempp;  
+
+src/fflib/problem.cpp:4419:6: 
+4417.         ie=largs.end();
+4418.        using namespace FreeFempp;  
+4419. >      TypeVarForm<R> *tvf=TypeVarForm<R>::Global;
+4420.        assert( tvf);
+4421.       for (ii=ib;ii != ie;ii++)
+
+src/fflib/problem.cpp:4421:10: Skipping operator=: function or method not found
+4419.        TypeVarForm<R> *tvf=TypeVarForm<R>::Global;
+4420.        assert( tvf);
+4421.       for (ii=ib;ii != ie;ii++)
+                 ^
+4422.         {
+4423.           Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:4421:16: Loop condition is true. Entering loop body
+4419.        TypeVarForm<R> *tvf=TypeVarForm<R>::Global;
+4420.        assert( tvf);
+4421.       for (ii=ib;ii != ie;ii++)
+                       ^
+4422.         {
+4423.           Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:4423:9: Skipping LeftValue: function or method not found
+4421.       for (ii=ib;ii != ie;ii++)
+4422.         {
+4423.           Expression e=ii->LeftValue();
+                ^
+4424.           aType r = ii->left();
+4425.         //  if(A)        cout << "AssembleVarForm " <<  * r << " " <<  (*A)(0,3) << endl;
+
+src/fflib/problem.cpp:4424:9: Skipping left: function or method not found
+4422.         {
+4423.           Expression e=ii->LeftValue();
+4424.           aType r = ii->left();
+                ^
+4425.         //  if(A)        cout << "AssembleVarForm " <<  * r << " " <<  (*A)(0,3) << endl;
+4426.           if (r==  tvf->tFB) 
+
+src/fflib/problem.cpp:4426:13: Taking true branch
+4424.           aType r = ii->left();
+4425.         //  if(A)        cout << "AssembleVarForm " <<  * r << " " <<  (*A)(0,3) << endl;
+4426.           if (r==  tvf->tFB) 
+                    ^
+4427.             { if (A)
+4428.              { 
+
+src/fflib/problem.cpp:4427:17: Taking true branch
+4425.         //  if(A)        cout << "AssembleVarForm " <<  * r << " " <<  (*A)(0,3) << endl;
+4426.           if (r==  tvf->tFB) 
+4427.             { if (A)
+                        ^
+4428.              { 
+4429.               const  FormBilinear * bf =dynamic_cast<const  FormBilinear *>(e);
+
+src/fflib/problem.cpp:4429:13: 
+4427.             { if (A)
+4428.              { 
+4429. >             const  FormBilinear * bf =dynamic_cast<const  FormBilinear *>(e);
+4430.               pmesh  Thbf = GetAny<pmesh>((*bf->di->Th)(stack));
+4431.               if(Thbf)AssembleBilinearForm<R>( stack,*Thbf,Uh,Vh,sym,*A,bf);
+
+src/fflib/problem.cpp:4430:13: 
+4428.              { 
+4429.               const  FormBilinear * bf =dynamic_cast<const  FormBilinear *>(e);
+4430. >             pmesh  Thbf = GetAny<pmesh>((*bf->di->Th)(stack));
+4431.               if(Thbf)AssembleBilinearForm<R>( stack,*Thbf,Uh,Vh,sym,*A,bf);
+4432.              }

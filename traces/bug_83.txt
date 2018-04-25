@@ -1,0 +1,12 @@
+examples++-load/bmo.cpp:187: error: DEAD_STORE
+  The value written to &costsave0 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/bmo.cpp:187:4: Write of unused value
+185.   	    
+186.   	  
+187.   	  costsave0 = costsave;
+          ^
+188.   	  xsave0 = xsave;
+189.   	  

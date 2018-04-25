@@ -1,0 +1,52 @@
+examples++-load/Element_PkEdge.cpp:315: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::PkEdgeP3 accesses global variable from a different translation unit: std::cout|.
+Showing all 6 steps of the trace
+
+
+examples++-load/Element_PkEdge.cpp:315:5: initialization of Fem2D::PkEdgeP3
+313.       static TypeOfFE_PkEdge PkEdgeP1(1);
+314.       static TypeOfFE_PkEdge PkEdgeP2(2);
+315.       static TypeOfFE_PkEdge PkEdgeP3(3);
+           ^
+316.       static TypeOfFE_PkEdge PkEdgeP4(4);
+317.       static TypeOfFE_PkEdge PkEdgeP5(5);
+
+examples++-load/Element_PkEdge.cpp:315:28: call to Fem2D::TypeOfFE_PkEdge_TypeOfFE_PkEdge
+313.       static TypeOfFE_PkEdge PkEdgeP1(1);
+314.       static TypeOfFE_PkEdge PkEdgeP2(2);
+315.       static TypeOfFE_PkEdge PkEdgeP3(3);
+                                  ^
+316.       static TypeOfFE_PkEdge PkEdgeP4(4);
+317.       static TypeOfFE_PkEdge PkEdgeP5(5);
+
+examples++-load/Element_PkEdge.cpp:56:10: call to Fem2D::InitTypeOfFE_PkEdge_InitTypeOfFE_PkEdge
+  54.       
+  55.       TypeOfFE_PkEdge(int KK)
+  56.         :  InitTypeOfFE_PkEdge(KK),
+                 ^
+  57.   	 TypeOfFE(ndf,1,Data,-k,1,ndf*2,ndf,0)
+  58.       {  
+
+examples++-load/Element_PkEdge.cpp:24:34: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+    22.       {
+    23.         //Pi_h_coef=1.;
+    24.         const QuadratureFormular1d QF(-1+2*npe,npe,GaussLegendre(npe),true);
+                                           ^
+    25.         for (int i=0;i<npe;++i)
+    26.   	X[i]=QF[i].x;
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+      83.     void Verification(); // for verification 
+      84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+      85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                              ^
+      86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+      87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+      663.         if (err>tol)
+      664.   	{
+      665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+                ^
+      666.   	  for(int l=0;l<=d;++l)
+      667.   	    cerr << sa[l] << " ";

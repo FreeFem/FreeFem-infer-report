@@ -1,0 +1,12 @@
+examples++-load/MetricPk.cpp:102: error: DEAD_STORE
+  The value written to &rmax (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/MetricPk.cpp:102:5: Write of unused value
+100.       const long iterJacobiMetric = arg(3,stack,3L); // The riemannian metric is slightly smoothed before being returned.
+101.       
+102.       const double rmax=arg(5,stack,1.);      //Not used yet. (Lower bound for the metric)
+           ^
+103.       const double mass=arg(6,stack,1000.);   // Mass of the metric returned, i.e. mass = int sqrt(det M). 
+104.       // In practice, bamg produces a mesh with nt=2*mass elements.

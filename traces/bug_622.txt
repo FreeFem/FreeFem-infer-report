@@ -1,0 +1,412 @@
+src/fflib/AFunction.hpp:795: error: DEALLOCATION_MISMATCH
+  memory dynamically allocated using `new()` at line 793, column 8 is deallocated using `free()` by call to `operator_delete()` at line 795, column 3.
+Showing all 56 steps of the trace
+
+
+src/fflib/AFunction.hpp:791:19: start of procedure Initialize<1e225f5c4c57b265>()
+789.          
+790.       
+791.   template<class A> AnyType Initialize(Stack,const AnyType &x){
+                         ^
+792.     A * a=PGetAny<A>(x);
+793.     A *b=new A;// 
+
+src/fflib/AFunction.hpp:792:3: 
+790.       
+791.   template<class A> AnyType Initialize(Stack,const AnyType &x){
+792. >   A * a=PGetAny<A>(x);
+793.     A *b=new A;// 
+794.     memcpy(a,b,sizeof(A));// bitcopy
+
+src/fflib/AnyType.hpp:203:21: start of procedure PGetAny<1e225f5c4c57b265>()
+  201.    { return x.b;} 
+  202.   
+  203.    template<class T>  inline T * PGetAny(const AnyTypeWithOutCheck & x)
+                             ^
+  204.    { return static_cast< T*>(x.p);} 
+  205.    
+
+src/fflib/AnyType.hpp:204:4: 
+  202.   
+  203.    template<class T>  inline T * PGetAny(const AnyTypeWithOutCheck & x)
+  204. >  { return static_cast< T*>(x.p);} 
+  205.    
+  206.    //template<class T>  inline   T * const & GetAny<T*>(const AnyTypeWithOutCheck & x)
+
+src/fflib/AnyType.hpp:204:33: return from a call to PGetAny<1e225f5c4c57b265>
+  202.   
+  203.    template<class T>  inline T * PGetAny(const AnyTypeWithOutCheck & x)
+  204.    { return static_cast< T*>(x.p);} 
+                                         ^
+  205.    
+  206.    //template<class T>  inline   T * const & GetAny<T*>(const AnyTypeWithOutCheck & x)
+
+src/fflib/AFunction.hpp:793:3: 
+791.   template<class A> AnyType Initialize(Stack,const AnyType &x){
+792.     A * a=PGetAny<A>(x);
+793. >   A *b=new A;// 
+794.     memcpy(a,b,sizeof(A));// bitcopy
+795.     ::operator delete(b); // delete with no destruction 
+
+download/include/hpddm/include/BDD.hpp:47:9: start of procedure Bdd
+  45.           underlying_type<K>* _m;
+  46.       public:
+  47.           Bdd() : _m() { }
+                ^
+  48.           ~Bdd() {
+  49.               delete []  _m;
+
+download/include/hpddm/include/BDD.hpp:47:24: 
+  45.           underlying_type<K>* _m;
+  46.       public:
+  47. >         Bdd() : _m() { }
+  48.           ~Bdd() {
+  49.               delete []  _m;
+
+download/include/hpddm/include/schur.hpp:299:9: start of procedure Schur
+    297.   #endif
+    298.       public:
+    299.           Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+                   ^
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:118: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/preconditioner.hpp:160:9: start of procedure Preconditioner
+      158.           }
+      159.       public:
+      160.           Preconditioner() : _co(), _ev(), _uc() { }
+                     ^
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/preconditioner.hpp:160:50: 
+      158.           }
+      159.       public:
+      160. >         Preconditioner() : _co(), _ev(), _uc() { }
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/subdomain.hpp:60:9: start of procedure Subdomain
+        58.           int                        _dof;
+        59.       public:
+        60.           Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+                      ^
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:23: 
+        58.           int                        _dof;
+        59.       public:
+        60. >         Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/option.hpp:437:9: start of procedure OptionsPrefix
+          435.           char* _prefix;
+          436.       public:
+          437.           OptionsPrefix() : _prefix() { };
+                         ^
+          438.           ~OptionsPrefix() {
+          439.               delete [] _prefix;
+
+download/include/hpddm/include/option.hpp:437:27: 
+          435.           char* _prefix;
+          436.       public:
+          437. >         OptionsPrefix() : _prefix() { };
+          438.           ~OptionsPrefix() {
+          439.               delete [] _prefix;
+
+download/include/hpddm/include/option.hpp:437:39: return from a call to HPDDM::OptionsPrefix_OptionsPrefix
+          435.           char* _prefix;
+          436.       public:
+          437.           OptionsPrefix() : _prefix() { };
+                                                       ^
+          438.           ~OptionsPrefix() {
+          439.               delete [] _prefix;
+
+download/include/hpddm/include/subdomain.hpp:60:40: 
+        58.           int                        _dof;
+        59.       public:
+        60. >         Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:46: 
+        58.           int                        _dof;
+        59.       public:
+        60. >         Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:55: Skipping vector: function or method not found
+        58.           int                        _dof;
+        59.       public:
+        60.           Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+                                                                    ^
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:63: 
+        58.           int                        _dof;
+        59.       public:
+        60. >         Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:70: 
+        58.           int                        _dof;
+        59.       public:
+        60. >         Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/subdomain.hpp:60:79: return from a call to HPDDM::Subdomain<std::complex<double>>_Subdomain
+        58.           int                        _dof;
+        59.       public:
+        60.           Subdomain() : OptionsPrefix(), _a(), _buff(), _map(), _rq(), _dof() { }
+                                                                                            ^
+        61.           Subdomain(const Subdomain<K>& s) {
+        62.               _a = nullptr;
+
+download/include/hpddm/include/preconditioner.hpp:160:9: 
+      158.           }
+      159.       public:
+      160. >         Preconditioner() : _co(), _ev(), _uc() { }
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:9: start of procedure SuiteSparseSub
+        254.           K*                    _tmp;
+        255.       public:
+        256.           SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+                       ^
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:28: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:34: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:40: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:46: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:52: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:58: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:64: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:76: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:88: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:100: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:106: 
+        254.           K*                    _tmp;
+        255.       public:
+        256. >         SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/SuiteSparse.hpp:256:115: return from a call to HPDDM::SuiteSparseSub<std::complex<double>>_SuiteSparseSub
+        254.           K*                    _tmp;
+        255.       public:
+        256.           SuiteSparseSub() : _L(), _c(), _b(), _x(), _Y(), _E(), _numeric(), _control(), _pattern(), _W(), _tmp() { }
+                                                                                                                                 ^
+        257.           SuiteSparseSub(const SuiteSparseSub&) = delete;
+        258.           ~SuiteSparseSub() {
+
+download/include/hpddm/include/preconditioner.hpp:160:28: 
+      158.           }
+      159.       public:
+      160. >         Preconditioner() : _co(), _ev(), _uc() { }
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/preconditioner.hpp:160:35: 
+      158.           }
+      159.       public:
+      160. >         Preconditioner() : _co(), _ev(), _uc() { }
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/preconditioner.hpp:160:42: 
+      158.           }
+      159.       public:
+      160. >         Preconditioner() : _co(), _ev(), _uc() { }
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/preconditioner.hpp:160:50: return from a call to HPDDM::Preconditioner<Opaque,HPDDM::CoarseOperator<Opaque,71,std::complex<double>>,std::complex<double>>_Preconditioner
+      158.           }
+      159.       public:
+      160.           Preconditioner() : _co(), _ev(), _uc() { }
+                                                              ^
+      161.           Preconditioner(const Preconditioner&) = delete;
+      162.           ~Preconditioner() {
+
+download/include/hpddm/include/schur.hpp:299:19: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:26: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:33: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:40: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:50: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:59: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:73: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:82: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:91: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:102: 
+    297.   #endif
+    298.       public:
+    299. >         Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/schur.hpp:299:118: return from a call to HPDDM::Schur<Opaque,HPDDM::CoarseOperator<Opaque,71,std::complex<double>>,std::complex<double>>_Schur
+    297.   #endif
+    298.       public:
+    299.           Schur() : _bb(), _ii(), _bi(), _schur(), _work(), _structure(), _pinv(), _mult(), _signed(), _deficiency() { }
+                                                                                                                                ^
+    300.           Schur(const Schur&) = delete;
+    301.           ~Schur() {
+
+download/include/hpddm/include/BDD.hpp:47:17: 
+  45.           underlying_type<K>* _m;
+  46.       public:
+  47. >         Bdd() : _m() { }
+  48.           ~Bdd() {
+  49.               delete []  _m;
+
+download/include/hpddm/include/BDD.hpp:47:24: return from a call to HPDDM::Bdd<Opaque,Opaque,71,std::complex<double>>_Bdd
+  45.           underlying_type<K>* _m;
+  46.       public:
+  47.           Bdd() : _m() { }
+                               ^
+  48.           ~Bdd() {
+  49.               delete []  _m;
+
+src/fflib/AFunction.hpp:794:3: 
+792.     A * a=PGetAny<A>(x);
+793.     A *b=new A;// 
+794. >   memcpy(a,b,sizeof(A));// bitcopy
+795.     ::operator delete(b); // delete with no destruction 
+796.     return  SetPtrAny(a);
+
+src/fflib/AFunction.hpp:795:3: 
+793.     A *b=new A;// 
+794.     memcpy(a,b,sizeof(A));// bitcopy
+795. >   ::operator delete(b); // delete with no destruction 
+796.     return  SetPtrAny(a);
+797.   }

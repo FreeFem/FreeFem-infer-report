@@ -1,0 +1,12 @@
+src/femlib/Mesh3dn.cpp:1326: error: DEAD_STORE
+  The value written to &kn (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/Mesh3dn.cpp:1326:64: Write of unused value
+1324.               if (l[1]<=-eps ) neg[k++]=1,ko+=1+j, j+=4;else nng[kn++]=1;
+1325.               if (l[2]<=-eps ) neg[k++]=2,ko+=2+j, j+=4;else nng[kn++]=2;
+1326.               if (l[3]<=-eps ) neg[k++]=3,ko+=3+j, j+=4;else nng[kn++]=3;
+                                                                       ^
+1327.               
+1328.               //R eps1 = T.mesure()   * 1.e-5;

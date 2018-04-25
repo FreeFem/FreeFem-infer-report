@@ -1,0 +1,12 @@
+examples++-load/MetricKuate.cpp:142: error: DEAD_STORE
+  The value written to &bmax (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/MetricKuate.cpp:142:3: Write of unused value
+140.     
+141.   
+142.     R bmin= 0.,bmax=inf,b1,b2,aik=0.,bik=0.,cik=0.;
+         ^
+143.    R Xk=0.,Yk=0.,Ck=0.,Ak =0.,Bk=0.,Xi=0.,Yi=0.,ri,detXY=0.,Ri,R0,r0;
+144.   

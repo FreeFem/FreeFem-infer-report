@@ -1,0 +1,137 @@
+examples++-load/gmsh.cpp:668: error: NULL_DEREFERENCE
+  pointer `fp` last assigned on line 666 could be null and is dereferenced by call to `feof()` at line 668, column 13.
+Showing all 18 steps of the trace
+
+
+examples++-load/gmsh.cpp:485:1: start of procedure GMSH_Load3()
+483.   };
+484.   
+485. > Mesh3 * GMSH_Load3(const string & filename)
+486.     {
+487.       // variable freefem++
+
+examples++-load/gmsh.cpp:488:5: 
+486.     {
+487.       // variable freefem++
+488. >     int nv, nt=0, nbe=0;
+489.       Vertex3   *vff;
+490.       map<int,int> mapnumv; 
+
+examples++-load/gmsh.cpp:490:5: Skipping map: function or method not found
+488.       int nv, nt=0, nbe=0;
+489.       Vertex3   *vff;
+490.       map<int,int> mapnumv; 
+           ^
+491.   	  
+492.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+
+examples++-load/gmsh.cpp:493:5: 
+491.   	  
+492.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+493. >     char str[256]  = "ZZZ";
+494.       double version = 2.0;
+495.       bool binary = false, swap = false, postpro = false;
+
+examples++-load/gmsh.cpp:494:5: 
+492.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+493.       char str[256]  = "ZZZ";
+494. >     double version = 2.0;
+495.       bool binary = false, swap = false, postpro = false;
+496.       
+
+examples++-load/gmsh.cpp:495:5: 
+493.       char str[256]  = "ZZZ";
+494.       double version = 2.0;
+495. >     bool binary = false, swap = false, postpro = false;
+496.       
+497.       FILE *fp = fopen(filename.c_str(), "rb");
+
+examples++-load/gmsh.cpp:497:5: Skipping c_str: function or method not found
+495.       bool binary = false, swap = false, postpro = false;
+496.       
+497.       FILE *fp = fopen(filename.c_str(), "rb");
+           ^
+498.       if(!fp){
+499.         cerr << "Unable to open file " << filename.c_str() << endl;
+
+examples++-load/gmsh.cpp:498:9: Taking false branch
+496.       
+497.       FILE *fp = fopen(filename.c_str(), "rb");
+498.       if(!fp){
+               ^
+499.         cerr << "Unable to open file " << filename.c_str() << endl;
+500.         exit(1);
+
+examples++-load/gmsh.cpp:503:13: Loop condition is false. Leaving loop
+501.       }
+502.       
+503.       while( !feof(fp) ){
+                   ^
+504.         fgets(str, sizeof(str), fp);  
+505.         if( str[0] == '$'){
+
+examples++-load/gmsh.cpp:655:5: 
+653.         }
+654.       }
+655. >     fclose(fp);
+656.       
+657.      if(verbosity>1)  cout << "closing file " << nt << " " << nbe << endl;
+
+examples++-load/gmsh.cpp:657:7: Taking true branch
+655.       fclose(fp);
+656.       
+657.      if(verbosity>1)  cout << "closing file " << nt << " " << nbe << endl;
+             ^
+658.   
+659.       Tet *tff  = new Tet[nt];
+
+examples++-load/gmsh.cpp:657:21: Skipping operator<<: function or method not found
+655.       fclose(fp);
+656.       
+657.      if(verbosity>1)  cout << "closing file " << nt << " " << nbe << endl;
+                           ^
+658.   
+659.       Tet *tff  = new Tet[nt];
+
+examples++-load/gmsh.cpp:659:5: 
+657.      if(verbosity>1)  cout << "closing file " << nt << " " << nbe << endl;
+658.   
+659. >     Tet *tff  = new Tet[nt];
+660.       Tet *ttff = tff;
+661.   
+
+examples++-load/gmsh.cpp:660:5: 
+658.   
+659.       Tet *tff  = new Tet[nt];
+660. >     Tet *ttff = tff;
+661.   
+662.       Triangle3 *bff  = new Triangle3[nbe];
+
+examples++-load/gmsh.cpp:662:5: 
+660.       Tet *ttff = tff;
+661.   
+662. >     Triangle3 *bff  = new Triangle3[nbe];
+663.       Triangle3 *bbff = bff;
+664.   
+
+examples++-load/gmsh.cpp:663:5: 
+661.   
+662.       Triangle3 *bff  = new Triangle3[nbe];
+663. >     Triangle3 *bbff = bff;
+664.   
+665.       // second reading
+
+examples++-load/gmsh.cpp:666:5: Skipping c_str: function or method not found
+664.   
+665.       // second reading
+666.       fp = fopen(filename.c_str(), "rb");
+           ^
+667.       
+668.       while( !feof(fp) ){
+
+examples++-load/gmsh.cpp:668:13: 
+666.       fp = fopen(filename.c_str(), "rb");
+667.       
+668. >     while( !feof(fp) ){
+669.         fgets(str, sizeof(str), fp);  
+670.         if( str[0] == '$'){

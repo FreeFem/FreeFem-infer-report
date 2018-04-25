@@ -1,0 +1,77 @@
+src/medit/gisfil.c:28: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 23, column 8 is not released after line 28, column 13.
+Showing all 10 steps of the trace
+
+
+src/medit/gisfil.c:7:1: start of procedure loadGIS()
+5.   #define FLOAT_MAX  1.e20
+6.   
+7. > int loadGIS(pMesh mesh) {
+8.     pQuad      pq;
+9.     pPoint     ppt;
+
+src/medit/gisfil.c:20:3: 
+18.   
+19.     /* default */
+20. >   strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+
+src/medit/gisfil.c:21:3: 
+19.     /* default */
+20.     strcpy(data,mesh->name);
+21. >   ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+
+src/medit/gisfil.c:22:9: Taking true branch
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+              ^
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:22:16: 
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22. >   if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:23:3: 
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23. >   fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25.     fprintf(stdout,"  Reading %s\n",data);
+
+src/medit/gisfil.c:24:9: Taking false branch
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+              ^
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+
+src/medit/gisfil.c:25:3: 
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25. >   fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+
+src/medit/gisfil.c:27:9: Taking true branch
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+              ^
+28.       fprintf(stderr,"  ## Invalid header.\n");
+29.       return(0);
+
+src/medit/gisfil.c:28:5: 
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+28. >     fprintf(stderr,"  ## Invalid header.\n");
+29.       return(0);
+30.     }

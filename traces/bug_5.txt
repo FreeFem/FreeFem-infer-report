@@ -1,0 +1,166 @@
+src/medit/image.c:72: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 17, column 10 is not released after line 72, column 13.
+Showing all 22 steps of the trace
+
+
+src/medit/image.c:6:1: start of procedure loadPPM()
+4.   
+5.   
+6. > PPMimage *loadPPM(const char *imgname,int *type) {
+7.     pPPMimage  result;
+8.     FILE      *fp;
+
+src/medit/image.c:13:3: 
+11.   
+12.     /* search for image */
+13. >   ptr = strstr(imgname,".ppm");
+14.     if ( !ptr ) {
+15.       strcpy(data,imgname);
+
+src/medit/image.c:14:9: Taking true branch
+12.     /* search for image */
+13.     ptr = strstr(imgname,".ppm");
+14.     if ( !ptr ) {
+              ^
+15.       strcpy(data,imgname);
+16.       strcat(data,".ppm");
+
+src/medit/image.c:15:5: 
+13.     ptr = strstr(imgname,".ppm");
+14.     if ( !ptr ) {
+15. >     strcpy(data,imgname);
+16.       strcat(data,".ppm");
+17.       fp = fopen(data,"rb");
+
+src/medit/image.c:16:5: 
+14.     if ( !ptr ) {
+15.       strcpy(data,imgname);
+16. >     strcat(data,".ppm");
+17.       fp = fopen(data,"rb");
+18.     } 
+
+src/medit/image.c:17:5: 
+15.       strcpy(data,imgname);
+16.       strcat(data,".ppm");
+17. >     fp = fopen(data,"rb");
+18.     } 
+19.     else
+
+src/medit/image.c:21:9: Taking false branch
+19.     else
+20.       fp = fopen(imgname,"rb");
+21.     if ( !fp ) {
+              ^
+22.       fprintf(stderr,"  ## Unable to open file %s.\n",imgname);
+23.       return(0);
+
+src/medit/image.c:26:9: Taking false branch
+24.     }
+25.   
+26.     if ( !fgets(buff,sizeof(buff),fp) ) {
+              ^
+27.       fprintf(stderr,"  ## Invalid file header.\n");
+28.       return(0);
+
+src/medit/image.c:32:8: Taking false branch
+30.   
+31.     /* check header file */
+32.     if ( buff[0] != 'P' ) {
+             ^
+33.       fprintf(stderr,"  ## Invalid image format.\n");
+34.       return(0);
+
+src/medit/image.c:37:3: 
+35.     }
+36.     
+37. >   switch(buff[1]) {
+38.     case '2': typimg = P2;  break;
+39.     case '3': typimg = P3;  break;
+
+src/medit/image.c:38:3: Switch condition is true. Entering switch case
+36.     
+37.     switch(buff[1]) {
+38.     case '2': typimg = P2;  break;
+        ^
+39.     case '3': typimg = P3;  break;
+40.     case '5': typimg = P5;  break;
+
+src/medit/image.c:38:13: 
+36.     
+37.     switch(buff[1]) {
+38. >   case '2': typimg = P2;  break;
+39.     case '3': typimg = P3;  break;
+40.     case '5': typimg = P5;  break;
+
+src/medit/image.c:48:3: 
+46.     
+47.     /* allocate memory to store imagee */
+48. >   result = malloc(sizeof(PPMimage));
+49.     if ( !result ) {
+50.       fprintf(stderr,"  ## Unable to load image.\n");
+
+src/medit/image.c:49:9: Taking false branch
+47.     /* allocate memory to store imagee */
+48.     result = malloc(sizeof(PPMimage));
+49.     if ( !result ) {
+              ^
+50.       fprintf(stderr,"  ## Unable to load image.\n");
+51.       return(0);
+
+src/medit/image.c:55:5: 
+53.   
+54.     do {
+55. >     ret = fscanf(fp,"%s",buff);
+56.       if ( ret == EOF ) break;
+57.       /* check and strip comments */
+
+src/medit/image.c:56:10: Taking true branch
+54.     do {
+55.       ret = fscanf(fp,"%s",buff);
+56.       if ( ret == EOF ) break;
+               ^
+57.       /* check and strip comments */
+58.       if ( buff[0] == '#' )
+
+src/medit/image.c:67:3: 
+65.   
+66.     /* read columns + lines */
+67. >   ret  = sscanf(buff,"%d",&s);
+68.     result->sizeX = (short)s;
+69.     ret += fscanf(fp,"%d",&s);
+
+src/medit/image.c:68:3: 
+66.     /* read columns + lines */
+67.     ret  = sscanf(buff,"%d",&s);
+68. >   result->sizeX = (short)s;
+69.     ret += fscanf(fp,"%d",&s);
+70.     result->sizeY = (short)s;
+
+src/medit/image.c:69:3: 
+67.     ret  = sscanf(buff,"%d",&s);
+68.     result->sizeX = (short)s;
+69. >   ret += fscanf(fp,"%d",&s);
+70.     result->sizeY = (short)s;
+71.     if ( ret != 2 ) {
+
+src/medit/image.c:70:3: 
+68.     result->sizeX = (short)s;
+69.     ret += fscanf(fp,"%d",&s);
+70. >   result->sizeY = (short)s;
+71.     if ( ret != 2 ) {
+72.       fprintf(stderr,"  ## Error loading image.\n");
+
+src/medit/image.c:71:8: Taking true branch
+69.     ret += fscanf(fp,"%d",&s);
+70.     result->sizeY = (short)s;
+71.     if ( ret != 2 ) {
+             ^
+72.       fprintf(stderr,"  ## Error loading image.\n");
+73.       free(result);
+
+src/medit/image.c:72:5: 
+70.     result->sizeY = (short)s;
+71.     if ( ret != 2 ) {
+72. >     fprintf(stderr,"  ## Error loading image.\n");
+73.       free(result);
+74.       return(0);

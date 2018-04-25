@@ -1,0 +1,12 @@
+src/femlib/mshptg.cpp:581: error: DEAD_STORE
+  The value written to &r_2 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/mshptg.cpp:581:15: Write of unused value
+579.   		 c[(is << 1) + 2] -= depy;
+580.   /* Computing MAX */
+581.   		 r_1 = err, r_2 = aabs (depx), r_1 = amax (r_1, r_2), r_2 = aabs (depy);
+                     ^
+582.   		 err = amax (r_1, r_2);
+583.   	       }

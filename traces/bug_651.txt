@@ -1,0 +1,43 @@
+src/femlib/P012_3d.cpp:839: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P1b_3d accesses global variable from a different translation unit: std::cout|.
+Showing all 5 steps of the trace
+
+
+src/femlib/P012_3d.cpp:839:1: initialization of Fem2D::P1b_3d
+837.   GTypeOfFE<Mesh3> & P2Lagrange3d(P2_3d);
+838.   
+839. > static TypeOfFE_P1bLagrange3d  P1b_3d;
+840.   GTypeOfFE<Mesh3> & P1bLagrange3d(P1b_3d);
+841.   
+
+src/femlib/P012_3d.cpp:839:32: call to Fem2D::TypeOfFE_P1bLagrange3d_TypeOfFE_P1bLagrange3d
+837.   GTypeOfFE<Mesh3> & P2Lagrange3d(P2_3d);
+838.   
+839.   static TypeOfFE_P1bLagrange3d  P1b_3d;
+                                      ^
+840.   GTypeOfFE<Mesh3> & P1bLagrange3d(P1b_3d);
+841.   
+
+src/femlib/P012_3d.cpp:183:29: call to Fem2D::TypeOfFE_Lagrange<Fem2D::Mesh3>_TypeOfFE_Lagrange
+  181.   	 typedef Mesh3 Mesh;
+  182.   	 typedef GFElement<Mesh3> FElement;
+  183.   	 TypeOfFE_P1bLagrange3d(): TypeOfFE_Lagrange<Mesh3>(-1) {  }
+                                     ^
+  184.   	 void FB(const What_d whatd,const Mesh & Th,const Mesh3::Element & K,const Rd &P, RNMK_ & val) const;
+  185.   } ;
+
+src/femlib/PkLagrange.hpp:115:5: call to Fem2D::SetPtPk<Fem2D::R3,_Fem2D::Tet>
+    113.       if(verbosity>9)    
+    114.       cout << "\n +++ P"<<k<<" : ndof : "<< n <<endl;
+    115.       SetPtPk<RdHat,Element> (this->PtInterpolation,this->ndfOn(),this->NbDoF);
+               ^
+    116.       if(verbosity>9)    cout << this->PtInterpolation<< endl;
+    117.       for (int i=0;i<n;i++) 
+
+src/femlib/PkLagrange.hpp:61:2: access to std::cout|
+    59.       if(nn != k)
+    60.         { 
+    61.   	cout << nn << " == " << k << " d = "<< d << " " << dfon[0]<< dfon[1]<<dfon[2]<<dfon[3]<<" "<< E::ne << endl;
+           ^
+    62.   	assert(nn==k); 
+    63.         }  

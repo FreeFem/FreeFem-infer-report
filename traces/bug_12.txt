@@ -1,0 +1,76 @@
+src/medit/inmsh2.c:25: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired to `return` by call to `fopen()` at line 18, column 9 is not released after line 25, column 15.
+Showing all 10 steps of the trace
+
+
+src/medit/inmsh2.c:6:1: start of procedure inmsh2()
+4.   
+5.   
+6. > int inmsh2(pMesh mesh) {
+7.     FILE      *inp,*inf;
+8.     pPoint     ppt,pp0,pp1,pp2,pp3;
+
+src/medit/inmsh2.c:16:3: 
+14.   
+15.     /* check for .points */
+16. >   strcpy(data,mesh->name);
+17.     strcat(data,".points");
+18.     inp = fopen(data,"r");
+
+src/medit/inmsh2.c:17:3: 
+15.     /* check for .points */
+16.     strcpy(data,mesh->name);
+17. >   strcat(data,".points");
+18.     inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+
+src/medit/inmsh2.c:18:3: 
+16.     strcpy(data,mesh->name);
+17.     strcat(data,".points");
+18. >   inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+20.   
+
+src/medit/inmsh2.c:19:9: Taking false branch
+17.     strcat(data,".points");
+18.     inp = fopen(data,"r");
+19.     if ( !inp ) return(0);
+              ^
+20.   
+21.     /* check for .faces */
+
+src/medit/inmsh2.c:22:3: 
+20.   
+21.     /* check for .faces */
+22. >   strcpy(data,mesh->name);
+23.     strcat(data,".faces");
+24.     inf = fopen(data,"r");
+
+src/medit/inmsh2.c:23:3: 
+21.     /* check for .faces */
+22.     strcpy(data,mesh->name);
+23. >   strcat(data,".faces");
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+
+src/medit/inmsh2.c:24:3: 
+22.     strcpy(data,mesh->name);
+23.     strcat(data,".faces");
+24. >   inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+
+src/medit/inmsh2.c:25:9: Taking true branch
+23.     strcat(data,".faces");
+24.     inf = fopen(data,"r");
+25.     if ( !inf ) return(0);
+              ^
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+27.   
+
+src/medit/inmsh2.c:25:15: 
+23.     strcat(data,".faces");
+24.     inf = fopen(data,"r");
+25. >   if ( !inf ) return(0);
+26.     if ( !quiet )  fprintf(stdout,"  Reading %s.{points,.faces}\n",mesh->name);
+27.   

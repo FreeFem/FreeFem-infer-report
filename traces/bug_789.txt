@@ -1,0 +1,12 @@
+src/fflib/lgmesh.cpp:1761: error: DEAD_STORE
+  The value written to &Th1 (type Fem2D::Mesh const &) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgmesh.cpp:1761:5: Write of unused value
+1759.       if( pTh1->nv != pTh2->nv) return 0;
+1760.       if( pTh1->nt != pTh2->nt) return 0;
+1761.       const Mesh & Th1=*pTh1, & Th2 = *pTh2;
+            ^
+1762.       ffassert(0); // a faire..
+1763.       

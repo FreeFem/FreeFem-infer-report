@@ -1,0 +1,31 @@
+src/fflib/lgfem.cpp:6508: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of TheaddingInitFunct accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+src/fflib/lgfem.cpp:6508:1: initialization of TheaddingInitFunct
+6506.   
+6507.   
+6508. > static addingInitFunct TheaddingInitFunct(-20,init_lgfem);
+
+src/fflib/lgfem.cpp:6508:24: call to addingInitFunct_addingInitFunct
+6506.   
+6507.   
+6508.   static addingInitFunct TheaddingInitFunct(-20,init_lgfem);
+                               ^
+
+src/fflib/InitFunct.hpp:42:5: call to addInitFunct
+  40.     addingInitFunct(int i,void  (* f)(),const char *name="") {
+  41.       // [[file:~/ff/src/fflib/InitFunct.cpp::addInitFunct]]
+  42.       addInitFunct(i,f,name);
+            ^
+  43.     }
+  44.   } ;
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

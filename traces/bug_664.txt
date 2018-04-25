@@ -1,0 +1,12 @@
+src/medit/stream.c:920: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/stream.c:920:11: Write of unused value
+918.         if ( mesh->dim == 3 )
+919.           for (k=1; k<=3*st->nbstl; k+=3) {
+920.             ret = fscanf(in,"%f %f %f\n",&x,&y,&z);
+                 ^
+921.   printf("x %f %f %f\n",x,y,z);
+922.             st->listp[k]   = x - mesh->xtra;

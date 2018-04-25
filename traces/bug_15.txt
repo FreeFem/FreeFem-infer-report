@@ -1,0 +1,27 @@
+examples++-hpddm/PETSc-complex.cpp:7: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-hpddm/PETSc-complex.cpp:7:1: initialization of callDoLoadInit
+5.   #include "PETSc-code.hpp"
+6.   #include "SLEPc-code.hpp"
+7. > LOADFUNC(Init)
+
+examples++-hpddm/PETSc-complex.cpp:7:1: call to DoLoadInit
+5.   #include "PETSc-code.hpp"
+6.   #include "SLEPc-code.hpp"
+7. > LOADFUNC(Init)
+
+examples++-hpddm/PETSc-complex.cpp:7:1: call to addInitFunct
+  5.   #include "PETSc-code.hpp"
+  6.   #include "SLEPc-code.hpp"
+  7. > LOADFUNC(Init)
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

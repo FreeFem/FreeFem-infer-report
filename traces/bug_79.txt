@@ -1,0 +1,47 @@
+src/medit/cube.c:74: error: NULL_DEREFERENCE
+  pointer `out` last assigned on line 72 could be null and is dereferenced by call to `fprintf()` at line 74, column 5.
+Showing all 6 steps of the trace
+
+
+src/medit/cube.c:64:1: start of procedure dumpCube()
+62.   
+63.   
+64. > void dumpCube(pScene sc,pMesh mesh,pCube cube) {
+65.     float  *tr,u[4];
+66.     double  v[4];
+
+src/medit/cube.c:70:3: 
+68.     FILE   *out;
+69.   
+70. >   tr = cube->cubetr->matrix;
+71.   
+72.     out = fopen("tr.data","w");
+
+src/medit/cube.c:72:3: 
+70.     tr = cube->cubetr->matrix;
+71.   
+72. >   out = fopen("tr.data","w");
+73.     for (i=0; i<4; i++)
+74.       fprintf(out,"%f %f %f %f\n",tr[i],tr[4+i],tr[8+i],tr[12+i]);
+
+src/medit/cube.c:73:8: 
+71.   
+72.     out = fopen("tr.data","w");
+73. >   for (i=0; i<4; i++)
+74.       fprintf(out,"%f %f %f %f\n",tr[i],tr[4+i],tr[8+i],tr[12+i]);
+75.     
+
+src/medit/cube.c:73:13: Loop condition is true. Entering loop body
+71.   
+72.     out = fopen("tr.data","w");
+73.     for (i=0; i<4; i++)
+                  ^
+74.       fprintf(out,"%f %f %f %f\n",tr[i],tr[4+i],tr[8+i],tr[12+i]);
+75.     
+
+src/medit/cube.c:74:5: 
+72.     out = fopen("tr.data","w");
+73.     for (i=0; i<4; i++)
+74. >     fprintf(out,"%f %f %f %f\n",tr[i],tr[4+i],tr[8+i],tr[12+i]);
+75.     
+76.     u[0] = cube->cmi[0] - mesh->xtra;

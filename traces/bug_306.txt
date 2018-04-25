@@ -1,0 +1,12 @@
+examples++-load/DxWriter.cpp:273: error: DEAD_STORE
+  The value written to &mps (type Fem2D::MeshPoint*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/DxWriter.cpp:273:46: Write of unused value
+271.   AnyType Dxwritesol_Op::operator()(Stack stack)  const 
+272.   { 
+273.     MeshPoint *mp(MeshPointStack(stack)) , mps=*mp;
+                                                    ^
+274.   	DxWriter &dx=*(GetAny<DxWriter *>((*edx)(stack)));
+275.     string &name=*(GetAny<string *>((*ename)(stack)));

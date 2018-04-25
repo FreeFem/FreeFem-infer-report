@@ -1,0 +1,139 @@
+examples++-mpi/ffsuperludistoption.hpp:396: error: NULL_DEREFERENCE
+  pointer `pfile` last assigned on line 392 could be null and is dereferenced by call to `fgets()` at line 396, column 3.
+Showing all 19 steps of the trace
+
+
+examples++-mpi/ffsuperludistoption.hpp:365:1: start of procedure read_options_superlu_datafile()
+363.   
+364.   
+365. > void read_options_superlu_datafile(string *data_option, superlu_options_t *options, int_t *nprow, int_t *npcol, int *matrixdist, DiagScale_t *diag){
+366.     static const yes_no_t  enumyes_no_t[2] = {NO, YES};
+367.     static const fact_t  enumfact_t[4] = {DOFACT, SamePattern, SamePattern_SameRowPerm, FACTORED};
+
+examples++-mpi/ffsuperludistoption.hpp:366:3: 
+364.   
+365.   void read_options_superlu_datafile(string *data_option, superlu_options_t *options, int_t *nprow, int_t *npcol, int *matrixdist, DiagScale_t *diag){
+366. >   static const yes_no_t  enumyes_no_t[2] = {NO, YES};
+367.     static const fact_t  enumfact_t[4] = {DOFACT, SamePattern, SamePattern_SameRowPerm, FACTORED};
+368.     static const colperm_t  enumcolperm_t[6] = {NATURAL, MMD_AT_PLUS_A, MMD_ATA, METIS_AT_PLUS_A,PARMETIS, MY_PERMC};
+
+examples++-mpi/ffsuperludistoption.hpp:367:3: 
+365.   void read_options_superlu_datafile(string *data_option, superlu_options_t *options, int_t *nprow, int_t *npcol, int *matrixdist, DiagScale_t *diag){
+366.     static const yes_no_t  enumyes_no_t[2] = {NO, YES};
+367. >   static const fact_t  enumfact_t[4] = {DOFACT, SamePattern, SamePattern_SameRowPerm, FACTORED};
+368.     static const colperm_t  enumcolperm_t[6] = {NATURAL, MMD_AT_PLUS_A, MMD_ATA, METIS_AT_PLUS_A,PARMETIS, MY_PERMC};
+369.     static const rowperm_t  enumrowperm_t[3] = {NOROWPERM, LargeDiag, MY_PERMR};
+
+examples++-mpi/ffsuperludistoption.hpp:368:3: 
+366.     static const yes_no_t  enumyes_no_t[2] = {NO, YES};
+367.     static const fact_t  enumfact_t[4] = {DOFACT, SamePattern, SamePattern_SameRowPerm, FACTORED};
+368. >   static const colperm_t  enumcolperm_t[6] = {NATURAL, MMD_AT_PLUS_A, MMD_ATA, METIS_AT_PLUS_A,PARMETIS, MY_PERMC};
+369.     static const rowperm_t  enumrowperm_t[3] = {NOROWPERM, LargeDiag, MY_PERMR};
+370.     static const DiagScale_t enumDiagScale_t[4] = {NOEQUIL, ROW, COL, BOTH};
+
+examples++-mpi/ffsuperludistoption.hpp:369:3: 
+367.     static const fact_t  enumfact_t[4] = {DOFACT, SamePattern, SamePattern_SameRowPerm, FACTORED};
+368.     static const colperm_t  enumcolperm_t[6] = {NATURAL, MMD_AT_PLUS_A, MMD_ATA, METIS_AT_PLUS_A,PARMETIS, MY_PERMC};
+369. >   static const rowperm_t  enumrowperm_t[3] = {NOROWPERM, LargeDiag, MY_PERMR};
+370.     static const DiagScale_t enumDiagScale_t[4] = {NOEQUIL, ROW, COL, BOTH};
+371.     static const trans_t  enumtrans_t[3] = {NOTRANS, TRANS, CONJ};
+
+examples++-mpi/ffsuperludistoption.hpp:370:3: 
+368.     static const colperm_t  enumcolperm_t[6] = {NATURAL, MMD_AT_PLUS_A, MMD_ATA, METIS_AT_PLUS_A,PARMETIS, MY_PERMC};
+369.     static const rowperm_t  enumrowperm_t[3] = {NOROWPERM, LargeDiag, MY_PERMR};
+370. >   static const DiagScale_t enumDiagScale_t[4] = {NOEQUIL, ROW, COL, BOTH};
+371.     static const trans_t  enumtrans_t[3] = {NOTRANS, TRANS, CONJ};
+372.     static const IterRefine_t enumIterRefine_t[4] = {NOREFINE, SLU_SINGLE, SLU_DOUBLE, SLU_EXTRA};  
+
+examples++-mpi/ffsuperludistoption.hpp:371:3: 
+369.     static const rowperm_t  enumrowperm_t[3] = {NOROWPERM, LargeDiag, MY_PERMR};
+370.     static const DiagScale_t enumDiagScale_t[4] = {NOEQUIL, ROW, COL, BOTH};
+371. >   static const trans_t  enumtrans_t[3] = {NOTRANS, TRANS, CONJ};
+372.     static const IterRefine_t enumIterRefine_t[4] = {NOREFINE, SLU_SINGLE, SLU_DOUBLE, SLU_EXTRA};  
+373.     //static const MemType enumMemType_t[4] = {LUSUP, UCOL, LSUB, USUB};  
+
+examples++-mpi/ffsuperludistoption.hpp:372:3: 
+370.     static const DiagScale_t enumDiagScale_t[4] = {NOEQUIL, ROW, COL, BOTH};
+371.     static const trans_t  enumtrans_t[3] = {NOTRANS, TRANS, CONJ};
+372. >   static const IterRefine_t enumIterRefine_t[4] = {NOREFINE, SLU_SINGLE, SLU_DOUBLE, SLU_EXTRA};  
+373.     //static const MemType enumMemType_t[4] = {LUSUP, UCOL, LSUB, USUB};  
+374.     //static const stack_end_t enumstack_end_t[2] = {HEAD, TAIL};
+
+examples++-mpi/ffsuperludistoption.hpp:378:3: 
+376.   
+377.    
+378. >   static const char* compyes_no_t[] = {"NO", "YES",0};
+379.     static const char* compfact_t[] = {"DOFACT", "SamePattern", "SamePattern_SameRowPerm", "FACTORED",0};
+380.     static const char* comprowperm_t[] = {"NOROWPERM", "LargeDiag", "MY_PERMR",0};
+
+examples++-mpi/ffsuperludistoption.hpp:379:3: 
+377.    
+378.     static const char* compyes_no_t[] = {"NO", "YES",0};
+379. >   static const char* compfact_t[] = {"DOFACT", "SamePattern", "SamePattern_SameRowPerm", "FACTORED",0};
+380.     static const char* comprowperm_t[] = {"NOROWPERM", "LargeDiag", "MY_PERMR",0};
+381.     static const char* compcolperm_t[] = {"NATURAL", "MMD_AT_PLUS_A", "MMD_ATA", "METIS_AT_PLUS_A", "PARMETIS", "MY_PERMC",0};
+
+examples++-mpi/ffsuperludistoption.hpp:380:3: 
+378.     static const char* compyes_no_t[] = {"NO", "YES",0};
+379.     static const char* compfact_t[] = {"DOFACT", "SamePattern", "SamePattern_SameRowPerm", "FACTORED",0};
+380. >   static const char* comprowperm_t[] = {"NOROWPERM", "LargeDiag", "MY_PERMR",0};
+381.     static const char* compcolperm_t[] = {"NATURAL", "MMD_AT_PLUS_A", "MMD_ATA", "METIS_AT_PLUS_A", "PARMETIS", "MY_PERMC",0};
+382.     static const char* compDiagScale_t[] = {"NOEQUIL", "ROW", "COL", "BOTH",0};
+
+examples++-mpi/ffsuperludistoption.hpp:381:3: 
+379.     static const char* compfact_t[] = {"DOFACT", "SamePattern", "SamePattern_SameRowPerm", "FACTORED",0};
+380.     static const char* comprowperm_t[] = {"NOROWPERM", "LargeDiag", "MY_PERMR",0};
+381. >   static const char* compcolperm_t[] = {"NATURAL", "MMD_AT_PLUS_A", "MMD_ATA", "METIS_AT_PLUS_A", "PARMETIS", "MY_PERMC",0};
+382.     static const char* compDiagScale_t[] = {"NOEQUIL", "ROW", "COL", "BOTH",0};
+383.     static const char* comptrans_t[] = {"NOTRANS", "TRANS", "CONJ",0};
+
+examples++-mpi/ffsuperludistoption.hpp:382:3: 
+380.     static const char* comprowperm_t[] = {"NOROWPERM", "LargeDiag", "MY_PERMR",0};
+381.     static const char* compcolperm_t[] = {"NATURAL", "MMD_AT_PLUS_A", "MMD_ATA", "METIS_AT_PLUS_A", "PARMETIS", "MY_PERMC",0};
+382. >   static const char* compDiagScale_t[] = {"NOEQUIL", "ROW", "COL", "BOTH",0};
+383.     static const char* comptrans_t[] = {"NOTRANS", "TRANS", "CONJ",0};
+384.     static const char* compIterRefine_t[] = {"NOREFINE", "SINGLE", "DOUBLE", "EXTRA",0};
+
+examples++-mpi/ffsuperludistoption.hpp:383:3: 
+381.     static const char* compcolperm_t[] = {"NATURAL", "MMD_AT_PLUS_A", "MMD_ATA", "METIS_AT_PLUS_A", "PARMETIS", "MY_PERMC",0};
+382.     static const char* compDiagScale_t[] = {"NOEQUIL", "ROW", "COL", "BOTH",0};
+383. >   static const char* comptrans_t[] = {"NOTRANS", "TRANS", "CONJ",0};
+384.     static const char* compIterRefine_t[] = {"NOREFINE", "SINGLE", "DOUBLE", "EXTRA",0};
+385.     
+
+examples++-mpi/ffsuperludistoption.hpp:384:3: 
+382.     static const char* compDiagScale_t[] = {"NOEQUIL", "ROW", "COL", "BOTH",0};
+383.     static const char* comptrans_t[] = {"NOTRANS", "TRANS", "CONJ",0};
+384. >   static const char* compIterRefine_t[] = {"NOREFINE", "SINGLE", "DOUBLE", "EXTRA",0};
+385.     
+386.     //int_t ffnprow,ffnpcol;
+
+examples++-mpi/ffsuperludistoption.hpp:389:3: Skipping size: function or method not found
+387.     //int matrixdist;
+388.   
+389.     char datafile[data_option->size()+1];  
+         ^
+390.     strcpy( datafile, data_option->c_str()); 
+391.     
+
+examples++-mpi/ffsuperludistoption.hpp:390:3: Skipping c_str: function or method not found
+388.   
+389.     char datafile[data_option->size()+1];  
+390.     strcpy( datafile, data_option->c_str()); 
+         ^
+391.     
+392.     FILE* pfile= fopen( datafile,"rt");
+
+examples++-mpi/ffsuperludistoption.hpp:392:3: 
+390.     strcpy( datafile, data_option->c_str()); 
+391.     
+392. >   FILE* pfile= fopen( datafile,"rt");
+393.     char data[256];
+394.     char *tictac;
+
+examples++-mpi/ffsuperludistoption.hpp:396:3: 
+394.     char *tictac;
+395.     
+396. >   fgets(data,256,pfile);
+397.     if(verbosity>4)
+398.     cout << "data=" << data << endl;

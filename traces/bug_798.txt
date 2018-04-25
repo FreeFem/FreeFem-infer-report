@@ -1,0 +1,12 @@
+examples++-load/medit.cpp:2344: error: DEAD_STORE
+  The value written to &wait (type _Bool) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/medit.cpp:2344:17: Write of unused value
+2342.     // fermeture du stream pour popen
+2343.     bool wait=TheWait;
+2344.     if (nargs[3]) wait= GetAny<bool>((*nargs[3])(stack));
+                        ^
+2345.     
+2346.     bool plotting = true;   

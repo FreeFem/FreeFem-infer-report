@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:579: error: DEAD_STORE
+  The value written to &i (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:579:3: Write of unused value
+577.     glColor3d(0.,0.,0.);
+578.     cout << " Error plot item empty " << item <<  endl;
+579.     int i = 4;
+         ^
+580.     char s[100];
+581.     sprintf(s,"Warning the item %ld fot the plot is empty",item);

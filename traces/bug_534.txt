@@ -1,0 +1,67 @@
+src/fflib/AFunction2.cpp:583: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 577 could be null and is dereferenced at line 583, column 7.
+Showing all 8 steps of the trace
+
+
+src/fflib/AFunction2.cpp:567:2: start of procedure Add
+565.         return v;
+566.     }
+567.    void  TableOfIdentifier::Add(Key k,Key op,OneOperator *p0,OneOperator *p1,
+        ^
+568.         OneOperator *p2,OneOperator *p3,OneOperator *p4,OneOperator *p5,OneOperator *p6)
+569.     {
+
+src/fflib/AFunction2.cpp:570:7: Skipping _Rb_tree_iterator: function or method not found
+568.         OneOperator *p2,OneOperator *p3,OneOperator *p4,OneOperator *p5,OneOperator *p6)
+569.     {
+570.         iterator i= m.find(k);
+             ^
+571.         if (i==m.end()) // new
+572.   	{
+
+src/fflib/AFunction2.cpp:571:11: Taking false branch
+569.     {
+570.         iterator i= m.find(k);
+571.         if (i==m.end()) // new
+                 ^
+572.   	{
+573.   	    Value poly0=Value(atype<Polymorphic*>(),new Polymorphic(),listofvar);     
+
+src/fflib/AFunction2.cpp:577:7: Skipping operator->: function or method not found
+575.   	    listofvar= &*i;
+576.   	}
+577.         const Polymorphic * p= dynamic_cast<const Polymorphic *>(i->second.second);
+             ^
+578.         if ( !p) { 
+579.   	  if(mpirank==0)
+
+src/fflib/AFunction2.cpp:578:13: Taking true branch
+576.   	}
+577.         const Polymorphic * p= dynamic_cast<const Polymorphic *>(i->second.second);
+578.         if ( !p) { 
+                   ^
+579.   	  if(mpirank==0)
+580.   	      cerr << k << " is not a Polymorphic id " << endl;
+
+src/fflib/AFunction2.cpp:579:7: Taking false branch
+577.         const Polymorphic * p= dynamic_cast<const Polymorphic *>(i->second.second);
+578.         if ( !p) { 
+579.   	  if(mpirank==0)
+             ^
+580.   	      cerr << k << " is not a Polymorphic id " << endl;
+581.   	  CompileError();
+
+src/fflib/AFunction2.cpp:581:4: Skipping CompileError(): function or method not found
+579.   	  if(mpirank==0)
+580.   	      cerr << k << " is not a Polymorphic id " << endl;
+581.   	  CompileError();
+          ^
+582.         }
+583.         p->Add(op,p0,p1,p2,p3,p4,p5,p6);
+
+src/fflib/AFunction2.cpp:583:7: 
+581.   	  CompileError();
+582.         }
+583. >       p->Add(op,p0,p1,p2,p3,p4,p5,p6);
+584.     }
+585.   

@@ -1,0 +1,12 @@
+src/fflib/lgmesh.cpp:836: error: DEAD_STORE
+  The value written to &ss (type double*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgmesh.cpp:836:3: Write of unused value
+834.      
+835.     double * lessol = new double [Th.nbv*ksol];
+836.     double *ss = lessol;
+         ^
+837.     // be careful because renum --
+838.     // the triangle was no renum 

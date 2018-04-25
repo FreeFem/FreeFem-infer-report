@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1264: error: DEAD_STORE
+  The value written to &DataLabel (type std::basic_string<char,std::char_traits<char>,std::allocator<char>>*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1264:18: Write of unused value
+1262.   
+1263.     string *DataLabel;
+1264.     if( nargs[3] ) DataLabel = GetAny<string *>((*nargs[3])(stack));
+                         ^
+1265.   
+1266.     Mesh * Th = VTK_Load( *pffname , swap); 

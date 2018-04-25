@@ -1,0 +1,12 @@
+src/medit/menus.c:1149: error: DEAD_STORE
+  The value written to &trmenu (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/menus.c:1149:5: Write of unused value
+1147.     /* trajectoire menu */
+1148.     if ( mesh->dim == 3 || mesh->nbb ) {
+1149.       trmenu = glutCreateMenu(menuTrajet);
+            ^
+1150.       glutAddMenuEntry("New Ctrl point",'C');
+1151.       glutAddMenuEntry("Toggle path",'S');

@@ -1,0 +1,80 @@
+src/fflib/problem.cpp:5469: error: NULL_DEREFERENCE
+  pointer `bb` last assigned on line 5468 could be null and is dereferenced at line 5469, column 23.
+Showing all 10 steps of the trace
+
+
+src/fflib/problem.cpp:5456:1: start of procedure isVF()
+5454.   
+5455.   
+5456. > bool isVF(const list<C_F0> & largs)  // true => VF type of Matrix   
+5457.   {
+5458.     list<C_F0>::const_iterator ii,ib=largs.begin(),
+
+src/fflib/problem.cpp:5458:3: Skipping _List_const_iterator: function or method not found
+5456.   bool isVF(const list<C_F0> & largs)  // true => VF type of Matrix   
+5457.   {
+5458.     list<C_F0>::const_iterator ii,ib=largs.begin(),
+          ^
+5459.       ie=largs.end();
+5460.       
+
+src/fflib/problem.cpp:5461:3: 
+5459.       ie=largs.end();
+5460.       
+5461. >   bool VVF =false;   
+5462.     for (ii=ib;ii != ie;ii++)
+5463.       {
+
+src/fflib/problem.cpp:5462:8: Skipping operator=: function or method not found
+5460.       
+5461.     bool VVF =false;   
+5462.     for (ii=ib;ii != ie;ii++)
+               ^
+5463.       {
+5464.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:5462:14: Loop condition is true. Entering loop body
+5460.       
+5461.     bool VVF =false;   
+5462.     for (ii=ib;ii != ie;ii++)
+                     ^
+5463.       {
+5464.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:5464:7: Skipping LeftValue: function or method not found
+5462.     for (ii=ib;ii != ie;ii++)
+5463.       {
+5464.         Expression e=ii->LeftValue();
+              ^
+5465.         aType r = ii->left();
+5466.         if (r==atype<const  FormBilinear *>()) 
+
+src/fflib/problem.cpp:5465:7: Skipping left: function or method not found
+5463.       {
+5464.         Expression e=ii->LeftValue();
+5465.         aType r = ii->left();
+              ^
+5466.         if (r==atype<const  FormBilinear *>()) 
+5467.           {
+
+src/fflib/problem.cpp:5466:11: Taking true branch
+5464.         Expression e=ii->LeftValue();
+5465.         aType r = ii->left();
+5466.         if (r==atype<const  FormBilinear *>()) 
+                  ^
+5467.           {
+5468.             const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+
+src/fflib/problem.cpp:5468:11: 
+5466.         if (r==atype<const  FormBilinear *>()) 
+5467.           {
+5468. >           const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+5469.             bool vvf  = bb->VF();
+5470.             if( vvf &&  (bb->di->kind != CDomainOfIntegration::intalledges && bb->di->kind != CDomainOfIntegration::intallVFedges  )
+
+src/fflib/problem.cpp:5469:11: 
+5467.           {
+5468.             const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+5469. >           bool vvf  = bb->VF();
+5470.             if( vvf &&  (bb->di->kind != CDomainOfIntegration::intalledges && bb->di->kind != CDomainOfIntegration::intallVFedges  )
+5471.                &&  (bb->di->kind != CDomainOfIntegration::intallfaces ))

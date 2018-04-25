@@ -1,0 +1,27 @@
+examples++-load/bfstream.cpp:85: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/bfstream.cpp:85:1: initialization of callDoLoadInit
+83.   }
+84.   
+85. > LOADFUNC(inittt);
+
+examples++-load/bfstream.cpp:85:1: call to DoLoadInit
+83.   }
+84.   
+85. > LOADFUNC(inittt);
+
+examples++-load/bfstream.cpp:85:1: call to addInitFunct
+  83.   }
+  84.   
+  85. > LOADFUNC(inittt);
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

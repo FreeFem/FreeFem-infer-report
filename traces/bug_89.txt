@@ -1,0 +1,12 @@
+src/medit/menus.c:156: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/menus.c:156:11: Write of unused value
+154.         else if ( mesh->dim == 3 ) {
+155.           if ( reftype == LTria )
+156.             ret = streamRefTria(sc,mesh);
+                 ^
+157.           else if ( reftype == LQuad )
+158.             ret = streamRefQuad(sc,mesh);

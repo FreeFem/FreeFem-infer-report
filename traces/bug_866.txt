@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:2908: error: DEAD_STORE
+  The value written to &ssdlab (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:2908:6: Write of unused value
+2906.   	    GeometricalEdge &eg = *Gh.subdomains[i].edge;
+2907.   	    subdomains[i].ref = Gh.subdomains[i].ref;
+2908.   	    int ssdlab = subdomains[i].ref;
+             ^
+2909.   	    // by carefull is not easy to find a edge create from a GeometricalEdge 
+2910.   	    // see routine MakeGeometricalEdgeToEdge

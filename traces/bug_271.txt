@@ -1,0 +1,12 @@
+examples++-load/ClosePoints.cpp:252: error: DEAD_STORE
+  The value written to &j (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ClosePoints.cpp:252:9: Write of unused value
+250.           if(verbosity>19 )
+251.               cout << i << " :: " << P(0,i) << " " << P(1,i) << endl;
+252.           int j= S.AddSimple(&P(0,i));
+               ^
+253.       }
+254.       KN<long>* pr= new KN<long>(Qm0);

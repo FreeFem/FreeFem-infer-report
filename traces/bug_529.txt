@@ -1,0 +1,12 @@
+src/medit/inout.c:726: error: DEAD_STORE
+  The value written to &iord (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/inout.c:726:11: Write of unused value
+724.             for (i=0; i<3; i++)  
+725.               mesh->sol[k].m[i] = m[i] = fbuf[off+i];
+726.             iord = eigen2(m,lambda,vp);
+                 ^
+727.             mesh->sol[k].bb = min(lambda[0],lambda[1]);
+728.             if ( mesh->sol[k].bb < mesh->bbmin )  mesh->bbmin = mesh->sol[k].bb;

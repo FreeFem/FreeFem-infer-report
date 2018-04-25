@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:2524: error: DEAD_STORE
+  The value written to &pa (type std::complex<double>*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:2524:11: Write of unused value
+2522.         for (npi=0;npi<FIb.n;npi++) // loop on the integration point
+2523.         {
+2524.             pa =a;
+                  ^
+2525.             QuadratureFormular1dPoint pi( FIb[npi]);
+2526.             double coef = le*pi.a;

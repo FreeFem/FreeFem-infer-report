@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:2268: error: DEAD_STORE
+  The value written to &ok (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:2268:5: Write of unused value
+2266.   fMPI_Comm* def_comm( fMPI_Comm* const & a,fMPI_Group* const & g)
+2267.   {
+2268.       int ok=MPI_Comm_create(MPI_COMM_WORLD,*g,*a); 
+            ^
+2269.       return a;
+2270.   }

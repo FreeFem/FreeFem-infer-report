@@ -1,0 +1,12 @@
+examples++-mpi/parmetis.cpp:98: error: DEAD_STORE
+  The value written to &nv (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/parmetis.cpp:98:9: Write of unused value
+96.           idx_t* xadg = new idx_t[loc + 1];
+97.           const Mesh& Th(*GetAny<const Mesh*>((*pTh)(stack)));
+98.           idx_t nv = Th.nv;
+               ^
+99.           idx_t nve = Mesh::Rd::d + 1;
+100.           std::vector<idx_t> adjncy;

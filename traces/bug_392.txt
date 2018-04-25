@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:473: error: DEAD_STORE
+  The value written to &s1 (type bamg::Vertex*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:473:9: Write of unused value
+471.   	     Icoor2  ll = Norme2_2 (C-I);
+472.   	     if (ll < l1) {  // the other vertex is neart 
+473.   	       s1=st;
+               ^
+474.   	       l1=ll;
+475.   	       er = edge;

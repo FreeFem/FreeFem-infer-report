@@ -1,0 +1,12 @@
+src/medit/inout_popenbinaire.c:901: error: DEAD_STORE
+  The value written to &natureread (type char*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/inout_popenbinaire.c:901:2: Write of unused value
+899.       if( mesh->dim == 2 && mesh->nq ){
+900.         if( KwdCod == GmfSolAtQuadrilaterals ){	
+901.   	natureread = "SolAtQuadrilaterals";
+        ^
+902.   	fread( (unsigned char *)&NulPos ,WrdSiz, 1, stdin);
+903.   	fread( (unsigned char *)&nel ,WrdSiz, 1, stdin);

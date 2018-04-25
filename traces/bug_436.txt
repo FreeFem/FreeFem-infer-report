@@ -1,0 +1,27 @@
+examples++-load/Element_P3.cpp:436: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P3_3d accesses global variable from a different translation unit: std::cout|.
+Showing all 3 steps of the trace
+
+
+examples++-load/Element_P3.cpp:436:1: initialization of Fem2D::P3_3d
+434.   static AddNewFE  P3Lagrange("P3",&P3LagrangeP3);
+435.       
+436. > static TypeOfFE_P3_3d  P3_3d;
+437.   GTypeOfFE<Mesh3> & Elm_P3_3d(P3_3d);
+438.       
+
+examples++-load/Element_P3.cpp:436:24: call to Fem2D::TypeOfFE_P3_3d_TypeOfFE_P3_3d
+434.   static AddNewFE  P3Lagrange("P3",&P3LagrangeP3);
+435.       
+436.   static TypeOfFE_P3_3d  P3_3d;
+                              ^
+437.   GTypeOfFE<Mesh3> & Elm_P3_3d(P3_3d);
+438.       
+
+examples++-load/Element_P3.cpp:297:17: access to std::cout|
+295.               bool dd = verbosity>5;
+296.               if(dd)
+297.                   cout << "\n +++ P3  : ndof : "<< n << " " <<this->PtInterpolation.N()  <<endl;
+                       ^
+298.               R3 *Pt= this->PtInterpolation;
+299.               // construction of interpolation ppoint

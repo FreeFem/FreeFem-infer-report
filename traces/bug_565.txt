@@ -1,0 +1,185 @@
+src/mpi/parallelempi.cpp:650: error: NULL_DEREFERENCE
+  pointer `mA` last assigned on line 649 could be null and is dereferenced at line 650, column 14.
+Showing all 24 steps of the trace
+
+
+src/mpi/parallelempi.cpp:645:3: start of procedure SendWMatd
+643.     int state;
+644.     int ldata[4];
+645.     SendWMatd(const MPIrank *mpirank,Mat * pm)
+         ^
+646.       : DoOnWaitMPI_Request(*mpirank),
+647.         pmat(pm),mA(0),state(0)
+
+src/mpi/parallelempi.cpp:646:7: 
+644.     int ldata[4];
+645.     SendWMatd(const MPIrank *mpirank,Mat * pm)
+646. >     : DoOnWaitMPI_Request(*mpirank),
+647.         pmat(pm),mA(0),state(0)
+648.     {
+
+src/mpi/parallelempi.cpp:269:8: start of procedure MPIrank
+  267.   
+  268.   
+  269.   struct MPIrank {
+                ^
+  270.     
+  271.     int who; 
+
+src/mpi/parallelempi.cpp:269:8: return from a call to MPIrank_MPIrank
+  267.   
+  268.   
+  269.   struct MPIrank {
+                ^
+  270.     
+  271.     int who; 
+
+src/mpi/parallelempi.cpp:508:5: start of procedure DoOnWaitMPI_Request
+  506.   public:
+  507.       bool sync;
+  508.       DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+             ^
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:508:42: 
+  506.   public:
+  507.       bool sync;
+  508. >     DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:269:8: start of procedure MPIrank
+    267.   
+    268.   
+    269.   struct MPIrank {
+                  ^
+    270.     
+    271.     int who; 
+
+src/mpi/parallelempi.cpp:269:8: return from a call to MPIrank_MPIrank
+    267.   
+    268.   
+    269.   struct MPIrank {
+                  ^
+    270.     
+    271.     int who; 
+
+src/mpi/parallelempi.cpp:508:61: Condition is false
+  506.   public:
+  507.       bool sync;
+  508.       DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+                                                                     ^
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:508:70: Condition is false
+  506.   public:
+  507.       bool sync;
+  508.       DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+                                                                              ^
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:508:61: 
+  506.   public:
+  507.       bool sync;
+  508. >     DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:508:55: 
+  506.   public:
+  507.       bool sync;
+  508. >     DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:508:92: return from a call to DoOnWaitMPI_Request_DoOnWaitMPI_Request
+  506.   public:
+  507.       bool sync;
+  508.       DoOnWaitMPI_Request( MPIrank  mpr) : MPIrank(mpr),sync((rq==0 || rq == Syncro_block)) {}
+                                                                                                    ^
+  509.       virtual  bool Do(MPI_Request *rrq) =0; // false -> end 
+  510.       bool  DoSR() { // do the  Send/Recv Op. 
+
+src/mpi/parallelempi.cpp:647:7: 
+645.     SendWMatd(const MPIrank *mpirank,Mat * pm)
+646.       : DoOnWaitMPI_Request(*mpirank),
+647. >       pmat(pm),mA(0),state(0)
+648.     {
+649.       mA=pmat->A->toMatriceMorse();
+
+src/mpi/parallelempi.cpp:647:16: 
+645.     SendWMatd(const MPIrank *mpirank,Mat * pm)
+646.       : DoOnWaitMPI_Request(*mpirank),
+647. >       pmat(pm),mA(0),state(0)
+648.     {
+649.       mA=pmat->A->toMatriceMorse();
+
+src/mpi/parallelempi.cpp:647:22: 
+645.     SendWMatd(const MPIrank *mpirank,Mat * pm)
+646.       : DoOnWaitMPI_Request(*mpirank),
+647. >       pmat(pm),mA(0),state(0)
+648.     {
+649.       mA=pmat->A->toMatriceMorse();
+
+src/mpi/parallelempi.cpp:649:5: 
+647.         pmat(pm),mA(0),state(0)
+648.     {
+649. >     mA=pmat->A->toMatriceMorse();
+650.       ldata[0]=mA->n;
+651.       ldata[1]=mA->m;
+
+src/femlib/RefCounter.hpp:96:3: start of procedure operator->
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+          ^
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:26: 
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96. >   T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:35: return from a call to CountPointer<MatriceCreuse<double>>_operator->
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+                                          ^
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/MatriceCreuse.hpp:397:3: start of procedure toMatriceMorse
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397.     virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+           ^
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/femlib/MatriceCreuse.hpp:397:88: 
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397. >   virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/femlib/MatriceCreuse.hpp:397:97: return from a call to MatriceCreuse<double>_toMatriceMorse
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397.     virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+                                                                                                         ^
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/mpi/parallelempi.cpp:650:5: 
+648.     {
+649.       mA=pmat->A->toMatriceMorse();
+650. >     ldata[0]=mA->n;
+651.       ldata[1]=mA->m;
+652.       ldata[2]=mA->nbcoef;

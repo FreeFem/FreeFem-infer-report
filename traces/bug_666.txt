@@ -1,0 +1,27 @@
+examples++-load/isolineP1.cpp:895: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/isolineP1.cpp:895:1: initialization of callDoLoadInit
+893.   }
+894.      
+895. > LOADFUNC(Load_Init)
+
+examples++-load/isolineP1.cpp:895:1: call to DoLoadInit
+893.   }
+894.      
+895. > LOADFUNC(Load_Init)
+
+examples++-load/isolineP1.cpp:895:1: call to addInitFunct
+  893.   }
+  894.      
+  895. > LOADFUNC(Load_Init)
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

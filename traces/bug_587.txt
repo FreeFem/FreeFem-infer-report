@@ -1,0 +1,12 @@
+src/fflib/lgfem.cpp:710: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgfem.cpp:710:8: Write of unused value
+708.        
+709.        virtual AnyType operator()(Stack stack)  const {
+710.          int ret=-1;
+              ^
+711.          E_StopGC<R> *stop=0;
+712.         // WhereStackOfPtr2Free(stack)=new StackOfPtr2Free(stack);// FH mars 2005   

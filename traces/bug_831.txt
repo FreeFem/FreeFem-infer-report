@@ -1,0 +1,20 @@
+examples++-load/Element_Mixte3d.cpp:2216: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::TypeOfFE_RT1_3d::QFtetra accesses global variable from a different translation unit: Fem2D::QuadratureFormular_Tet_2|.
+Showing all 2 steps of the trace
+
+
+examples++-load/Element_Mixte3d.cpp:2216:5: initialization of Fem2D::TypeOfFE_RT1_3d::QFtetra
+2214.       
+2215.       // Quadrature formula on the tetraedron
+2216.       const GQuadratureFormular<R3> TypeOfFE_RT1_3d:: QFtetra(QuadratureFormular_Tet_2);
+            ^
+2217.       
+2218.       
+
+examples++-load/Element_Mixte3d.cpp:2216:53: access to Fem2D::QuadratureFormular_Tet_2|
+2214.       
+2215.       // Quadrature formula on the tetraedron
+2216.       const GQuadratureFormular<R3> TypeOfFE_RT1_3d:: QFtetra(QuadratureFormular_Tet_2);
+                                                            ^
+2217.       
+2218.       

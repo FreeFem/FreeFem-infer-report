@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:2781: error: DEAD_STORE
+  The value written to &reftetra (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:2781:3: Write of unused value
+2779.     string * pffname= GetAny<string *>((*filename)(stack));
+2780.     bool swap = false;
+2781.     int reftetra=1; 
+          ^
+2782.     int reftri = 1;
+2783.     

@@ -1,0 +1,12 @@
+src/medit/stream.c:875: error: DEAD_STORE
+  The value written to &norm (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/stream.c:875:3: Write of unused value
+873.     k = locateTria(mesh,k,++mesh->mark,xp3,cb);
+874.     if ( !k )  return(0);
+875.     norm = field2DInterp(mesh,k,cb,v3);
+         ^
+876.     pt = &mesh->tria[k];
+877.     pt->cpt--;

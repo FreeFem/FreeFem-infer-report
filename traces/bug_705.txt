@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:1133: error: DEAD_STORE
+  The value written to &v1 (type bamg::Vertex*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:1133:5: Write of unused value
+1131.     while (v2 != &b) {
+1132.       TriangleAdjacent tc = Previous(Adj(tta));    
+1133.       v1 = v2; 
+            ^
+1134.       v2 = tc.EdgeVertex(0);
+1135.       det1 = det2;

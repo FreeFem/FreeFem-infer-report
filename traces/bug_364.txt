@@ -1,0 +1,509 @@
+src/medit/inout_morice.c:1046: error: NULL_DEREFERENCE
+  pointer `mesh->extra` last assigned on line 1042 could be null and is dereferenced at line 1046, column 7.
+Showing all 68 steps of the trace
+
+
+src/medit/inout_morice.c:322:1: start of procedure loadMesh_popen()
+320.   }
+321.   
+322. > int loadMesh_popen(pMesh mesh) {
+323.     pPoint      ppt;
+324.     pEdge       pr;
+
+src/medit/inout_morice.c:342:3: 
+340.     
+341.     /* parse keywords */
+342. >   mesh->np   = 0;
+343.     mesh->nt   = 0;
+344.     mesh->nq   = 0;
+
+src/medit/inout_morice.c:343:3: 
+341.     /* parse keywords */
+342.     mesh->np   = 0;
+343. >   mesh->nt   = 0;
+344.     mesh->nq   = 0;
+345.     mesh->ntet = 0;
+
+src/medit/inout_morice.c:344:3: 
+342.     mesh->np   = 0;
+343.     mesh->nt   = 0;
+344. >   mesh->nq   = 0;
+345.     mesh->ntet = 0;
+346.     mesh->nhex = 0;
+
+src/medit/inout_morice.c:345:3: 
+343.     mesh->nt   = 0;
+344.     mesh->nq   = 0;
+345. >   mesh->ntet = 0;
+346.     mesh->nhex = 0;
+347.     mesh->nc   = 0;
+
+src/medit/inout_morice.c:346:3: 
+344.     mesh->nq   = 0;
+345.     mesh->ntet = 0;
+346. >   mesh->nhex = 0;
+347.     mesh->nc   = 0;
+348.     mesh->nr   = 0;
+
+src/medit/inout_morice.c:347:3: 
+345.     mesh->ntet = 0;
+346.     mesh->nhex = 0;
+347. >   mesh->nc   = 0;
+348.     mesh->nr   = 0;
+349.     mesh->na   = 0;
+
+src/medit/inout_morice.c:348:3: 
+346.     mesh->nhex = 0;
+347.     mesh->nc   = 0;
+348. >   mesh->nr   = 0;
+349.     mesh->na   = 0;
+350.     mesh->nri  = 0;
+
+src/medit/inout_morice.c:349:3: 
+347.     mesh->nc   = 0;
+348.     mesh->nr   = 0;
+349. >   mesh->na   = 0;
+350.     mesh->nri  = 0;
+351.     mesh->nre  = 0;
+
+src/medit/inout_morice.c:350:3: 
+348.     mesh->nr   = 0;
+349.     mesh->na   = 0;
+350. >   mesh->nri  = 0;
+351.     mesh->nre  = 0;
+352.     mesh->nvn  = 0;
+
+src/medit/inout_morice.c:351:3: 
+349.     mesh->na   = 0;
+350.     mesh->nri  = 0;
+351. >   mesh->nre  = 0;
+352.     mesh->nvn  = 0;
+353.     mesh->ntg  = 0;
+
+src/medit/inout_morice.c:352:3: 
+350.     mesh->nri  = 0;
+351.     mesh->nre  = 0;
+352. >   mesh->nvn  = 0;
+353.     mesh->ntg  = 0;
+354.     mesh->ne = mesh->nt + mesh->nq + mesh->ntet + mesh->nhex;
+
+src/medit/inout_morice.c:353:3: 
+351.     mesh->nre  = 0;
+352.     mesh->nvn  = 0;
+353. >   mesh->ntg  = 0;
+354.     mesh->ne = mesh->nt + mesh->nq + mesh->ntet + mesh->nhex;
+355.   
+
+src/medit/inout_morice.c:354:3: 
+352.     mesh->nvn  = 0;
+353.     mesh->ntg  = 0;
+354. >   mesh->ne = mesh->nt + mesh->nq + mesh->ntet + mesh->nhex;
+355.   
+356.     //int tablecture[5];
+
+src/medit/inout_morice.c:358:3: 
+356.     //int tablecture[5];
+357.     //tablecture =
+358. >   loopdebug = -1;
+359.   
+360.     while( !feof(stdin) ){
+
+src/medit/inout_morice.c:360:11: Loop condition is true. Entering loop body
+358.     loopdebug = -1;
+359.   
+360.     while( !feof(stdin) ){
+                 ^
+361.       fgets(data,256,stdin);
+362.       tictac = strtok(data," \n");
+
+src/medit/inout_morice.c:361:5: 
+359.   
+360.     while( !feof(stdin) ){
+361. >     fgets(data,256,stdin);
+362.       tictac = strtok(data," \n");
+363.       
+
+src/medit/inout_morice.c:362:5: Skipping strtok(): function or method not found
+360.     while( !feof(stdin) ){
+361.       fgets(data,256,stdin);
+362.       tictac = strtok(data," \n");
+           ^
+363.       
+364.       loopdebug=loopdebug+1;
+
+src/medit/inout_morice.c:364:5: 
+362.       tictac = strtok(data," \n");
+363.       
+364. >     loopdebug=loopdebug+1;
+365.       //fprintf(stdout,"%i: data %s \n",loopdebug,data);
+366.       //fprintf(stdout,"%i: tictac %s \n",loopdebug,tictac);
+
+src/medit/inout_morice.c:370:8: Taking false branch
+368.       
+369.       //fprintf(stdout,"%s\n",tictac);
+370.       if(tictac == NULL) continue;
+              ^
+371.       
+372.       if( !strncmp(tictac,"MeshVersionFormatted",20) ){
+
+src/medit/inout_morice.c:372:10: Taking false branch
+370.       if(tictac == NULL) continue;
+371.       
+372.       if( !strncmp(tictac,"MeshVersionFormatted",20) ){
+                ^
+373.         /* read mesh format */
+374.         natureread="MeshVersionFormatted";
+
+src/medit/inout_morice.c:391:15: Taking false branch
+389.         */
+390.       }
+391.       else if( !strncmp(tictac,"Dimension",9) ){
+                     ^
+392.         /* read mesh dimension */
+393.         natureread="Dimension";
+
+src/medit/inout_morice.c:415:15: Taking false branch
+413.        
+414.       }
+415.       else if( !strncmp(tictac,"Vertices",8) ){
+                     ^
+416.         /* read mesh vetices */
+417.         natureread="Vertices";
+
+src/medit/inout_morice.c:458:15: Taking false branch
+456.      
+457.       }
+458.       else if( !strncmp(tictac,"Triangles",9) ){
+                     ^
+459.         natureread="Triangles";
+460.         getline_number( natureread, &(mesh->nt) );
+
+src/medit/inout_morice.c:520:15: Taking false branch
+518.         }
+519.       }
+520.       else if( !strncmp(tictac,"Quadrilaterals",14) ){
+                     ^
+521.         natureread="Quadrilaterals";
+522.         getline_number( natureread, &(mesh->nq) );
+
+src/medit/inout_morice.c:578:15: Taking false branch
+576.       }
+577.       
+578.       else if( !strncmp(tictac,"Tetrahedra",10) ){
+                     ^
+579.         natureread="Tetrahedra";
+580.         getline_number( natureread, &(mesh->ntet) );
+
+src/medit/inout_morice.c:638:15: Taking false branch
+636.       }
+637.       /* mesh hexahedra */
+638.       else if( !strncmp(tictac,"Hexahedra",9) ){
+                     ^
+639.         natureread="Hexahedra";
+640.         getline_number( natureread, &(mesh->nhex) );
+
+src/medit/inout_morice.c:700:15: Taking false branch
+698.       
+699.       /* mesh corners */
+700.       else if( !strncmp(tictac,"Corners",7) ){
+                     ^
+701.         natureread="Corners";
+702.         getline_number( natureread, &(mesh->nc) );
+
+src/medit/inout_morice.c:744:15: Taking false branch
+742.       }
+743.       /* required vertices */
+744.       else if( !strncmp(tictac,"RequiredVertices",12) ){
+                     ^
+745.         natureread="RequiredVertices";
+746.         getline_number( natureread, &(mesh->nr) );
+
+src/medit/inout_morice.c:788:15: Taking false branch
+786.       }
+787.       /* mesh edges */
+788.       else if( !strncmp(tictac,"Edges",5) ){
+                     ^
+789.         natureread = "Edges";
+790.         getline_number( natureread, &( mesh->na ));
+
+src/medit/inout_morice.c:834:15: Taking false branch
+832.       }
+833.       /* mesh ridges */
+834.       else if( !strcmp(tictac,"Ridges") ){
+                     ^
+835.         natureread = "Ridges";
+836.         getline_number( natureread, &(mesh->nri) );
+
+src/medit/inout_morice.c:858:15: Taking false branch
+856.   
+857.       /* required edges */
+858.       else if( !strncmp(tictac,"RequiredEdges",13) ){
+                     ^
+859.   
+860.         natureread = "RequiredEdges";
+
+src/medit/inout_morice.c:882:14: Taking false branch
+880.       }
+881.       /* mesh normals */
+882.       else if(!strncmp(tictac,"Normals",7)){
+                    ^
+883.         
+884.         natureread = "Normals";
+
+src/medit/inout_morice.c:928:15: Taking false branch
+926.         }
+927.       }
+928.       else if( !strncmp(tictac,"NormalAtVertices",16) ){
+                     ^
+929.         natureread ="NormalAtVertices";
+930.         if( !mesh->nvn ){
+
+src/medit/inout_morice.c:959:15: Taking false branch
+957.         }
+958.       }
+959.       else if( !strncmp(tictac,"NormalAtTriangleVertices",24) ){
+                     ^
+960.         natureread ="NormalAtTriangleVertices";
+961.         if( !mesh->nvn ){
+
+src/medit/inout_morice.c:997:15: Taking false branch
+995.         
+996.       /*normals at quadrilateral vertices */
+997.       else if( !strncmp(tictac,"NormalAtQuadrilateralVertices",19) ){
+                      ^
+998.         natureread ="NormalAtQuadrilateralVertices";
+999.         if( !mesh->nvn ){
+
+src/medit/inout_morice.c:1034:15: Taking true branch
+1032.       
+1033.       /*mesh tangents */
+1034.       else if( !strncmp(tictac,"Tangents",8) ){ 
+                      ^
+1035.       
+1036.         natureread = "Tangents";
+
+src/medit/inout_morice.c:1036:7: 
+1034.       else if( !strncmp(tictac,"Tangents",8) ){ 
+1035.       
+1036. >       natureread = "Tangents";
+1037.         getline_number( natureread, &(mesh->ntg) );
+1038.         
+
+src/medit/inout_morice.c:1037:7: 
+1035.       
+1036.         natureread = "Tangents";
+1037. >       getline_number( natureread, &(mesh->ntg) );
+1038.         
+1039.         /*****************/
+
+src/medit/inout_morice.c:6:1: start of procedure getline_number()
+  4.   #include "string.h"
+  5.   static  int debug=0;
+  6. > void getline_number(char *nature, int *nb){
+  7.     char    data[256];
+  8.     char   *tictac;
+
+src/medit/inout_morice.c:10:3: 
+  8.     char   *tictac;
+  9.    
+  10. >   fgets(data,256,stdin);
+  11.     tictac = strtok(data," \n");
+  12.     if(tictac == NULL){
+
+src/medit/inout_morice.c:11:3: Skipping strtok(): function or method not found
+  9.    
+  10.     fgets(data,256,stdin);
+  11.     tictac = strtok(data," \n");
+          ^
+  12.     if(tictac == NULL){
+  13.       printf("problem in reading the number of %s\n",nature);
+
+src/medit/inout_morice.c:12:6: Taking false branch
+  10.     fgets(data,256,stdin);
+  11.     tictac = strtok(data," \n");
+  12.     if(tictac == NULL){
+             ^
+  13.       printf("problem in reading the number of %s\n",nature);
+  14.       exit(1);
+
+src/medit/inout_morice.c:18:5: 
+  16.     else{
+  17.       //printf("tictac=%s\n",tictac);
+  18. >     *nb = atoi(tictac);
+  19.       if(debug) fprintf(stdout,"Number of %s %i \n",nature,*nb);
+  20.     }
+
+src/medit/inout_morice.c:19:8: Taking true branch
+  17.       //printf("tictac=%s\n",tictac);
+  18.       *nb = atoi(tictac);
+  19.       if(debug) fprintf(stdout,"Number of %s %i \n",nature,*nb);
+               ^
+  20.     }
+  21.   
+
+src/medit/inout_morice.c:19:15: 
+  17.       //printf("tictac=%s\n",tictac);
+  18.       *nb = atoi(tictac);
+  19. >     if(debug) fprintf(stdout,"Number of %s %i \n",nature,*nb);
+  20.     }
+  21.   
+
+src/medit/inout_morice.c:12:3: 
+  10.     fgets(data,256,stdin);
+  11.     tictac = strtok(data," \n");
+  12. >   if(tictac == NULL){
+  13.       printf("problem in reading the number of %s\n",nature);
+  14.       exit(1);
+
+src/medit/inout_morice.c:22:1: return from a call to getline_number
+  20.     }
+  21.   
+  22. > }
+  23.   
+  24.   void getline_1int(char *nature, int *nbint){
+
+src/medit/inout_morice.c:1041:13: Taking true branch
+1039.         /*****************/
+1040.         /*  allocation  */ 
+1041.         if ( !mesh->nvn ) {
+                    ^
+1042.   	mesh->extra = (pExtra)M_calloc(1,sizeof(Extra),"zaldy1.extra");
+1043.   	assert(mesh->extra);
+
+src/medit/inout_morice.c:1042:2: 
+1040.         /*  allocation  */ 
+1041.         if ( !mesh->nvn ) {
+1042. > 	mesh->extra = (pExtra)M_calloc(1,sizeof(Extra),"zaldy1.extra");
+1043.   	assert(mesh->extra);
+1044.         }
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+  128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130. >     for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is false. Leaving loop
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+                       ^
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:132:5: 
+  130.       for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132. >     cur   = 1;
+  133.       stack = 0;
+  134.     }
+
+src/libMesh/memory.c:133:5: 
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+  133. >     stack = 0;
+  134.     }
+  135.   
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+src/medit/inout_morice.c:1046:7: 
+1044.         }
+1045.        
+1046. >       mesh->extra->t = (float*)M_calloc(3*mesh->ntg+1,sizeof(float),"inmesh");
+1047.         assert(mesh->extra->t);
+1048.   
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking false branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 

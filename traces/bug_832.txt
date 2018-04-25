@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:2262: error: DEAD_STORE
+  The value written to &l1 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:2262:2: Write of unused value
+2260.     {
+2261.     	const Triangle3 & K = Th.be(i);	
+2262.   	int l0,l1=ChangeLab3D(mapface, l0= K.lab) ;
+         ^
+2263.   	nben++;
+2264.     }

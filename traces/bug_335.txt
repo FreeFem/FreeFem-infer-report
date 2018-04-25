@@ -1,0 +1,12 @@
+examples++-load/freeyams.cpp:310: error: DEAD_STORE
+  The value written to &mmax (type float) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/freeyams.cpp:310:3: Write of unused value
+308.     hmin =  FLT_MAX;
+309.     hmax = -FLT_MAX;
+310.     float vpmin=FLT_MAX, vpmax=-FLT_MAX, mmin=FLT_MAX,mmax=-FLT_MAX;
+         ^
+311.     
+312.     if(type == 1)

@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:786: error: DEAD_STORE
+  The value written to &ll (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:786:2: Write of unused value
+784.       if(0==state++ &&  l1>0 ) // send the second part 
+785.         {
+786.   	int ll=WSend(p+sizempibuf,l1,  who, tag+state,comm,rq);
+        ^
+787.   	return true;// Fini
+788.         }

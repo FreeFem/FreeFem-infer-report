@@ -1,0 +1,12 @@
+src/femlib/fem.cpp:456: error: DEAD_STORE
+  The value written to &id (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/fem.cpp:456:6: Write of unused value
+454.   					R2 AM(A,bmortars[im].to);
+455.   					AM = AM/Norme2(AM);
+456.   					int ig(im),id(jm);
+            ^
+457.   					if ( bmortars[im].sens <0) ig=jm,id=im;
+458.   					//SubMortar & mg(bmortars[ig]);

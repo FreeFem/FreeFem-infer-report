@@ -1,0 +1,345 @@
+src/libMesh/libmesh3.c:274: error: MEMORY_LEAK
+  memory dynamically allocated by call to `calloc()` at line 157, column 27 is not reachable after line 274, column 3.
+Showing all 47 steps of the trace
+
+
+src/libMesh/libmesh3.c:134:1: start of procedure LM_open_mesh()
+132.   /*----------------------------------------------------------*/
+133.   
+134. > int LM_open_mesh(const char *filename, int mode, LM_mesh_struct *mesh, ...)
+135.   {
+136.   	int i;
+
+src/libMesh/libmesh3.c:146:6: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is false. Leaving loop
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:157:2: 
+155.   	/* Allocate a string large enough to contain the full filename and path plus the ".meshb" extension. */
+156.   
+157. > 	mesh->filename = (char *)calloc((strlen(filename) + 7), sizeof(char));
+158.   	strcpy(mesh->filename, filename);
+159.   
+
+src/libMesh/libmesh3.c:158:2: 
+156.   
+157.   	mesh->filename = (char *)calloc((strlen(filename) + 7), sizeof(char));
+158. > 	strcpy(mesh->filename, filename);
+159.   
+160.   	/* Store the opening mode (read or write) and guess the filetype (binary or ascii) depending on the extension */
+
+src/libMesh/libmesh3.c:162:2: 
+160.   	/* Store the opening mode (read or write) and guess the filetype (binary or ascii) depending on the extension */
+161.   
+162. > 	mesh->mode = mode;
+163.   	mesh->current_kw = mesh->type = 0;
+164.   	mesh->endian = 1;
+
+src/libMesh/libmesh3.c:163:2: 
+161.   
+162.   	mesh->mode = mode;
+163. > 	mesh->current_kw = mesh->type = 0;
+164.   	mesh->endian = 1;
+165.   
+
+src/libMesh/libmesh3.c:164:2: 
+162.   	mesh->mode = mode;
+163.   	mesh->current_kw = mesh->type = 0;
+164. > 	mesh->endian = 1;
+165.   
+166.   	if(strstr(mesh->filename, ".meshb"))
+
+src/libMesh/libmesh3.c:166:5: Taking true branch
+164.   	mesh->endian = 1;
+165.   
+166.   	if(strstr(mesh->filename, ".meshb"))
+           ^
+167.   		mesh->type |= (LM_BINARY | LM_MESH);
+168.   	else if(strstr(mesh->filename, ".mesh"))
+
+src/libMesh/libmesh3.c:167:3: 
+165.   
+166.   	if(strstr(mesh->filename, ".meshb"))
+167. > 		mesh->type |= (LM_BINARY | LM_MESH);
+168.   	else if(strstr(mesh->filename, ".mesh"))
+169.   		mesh->type |= (LM_ASCII | LM_MESH);
+
+src/libMesh/libmesh3.c:179:5: Taking false branch
+177.   	/* Open the file in the required mode and initialyse the mesh structure */
+178.   
+179.   	if(mesh->mode == LM_READ)
+           ^
+180.   	{
+181.   
+
+src/libMesh/libmesh3.c:231:10: Taking true branch
+229.   		read_sol_headers(mesh);
+230.   	}
+231.   	else if(mesh->mode == LM_WRITE)
+                ^
+232.   	{
+233.   
+
+src/libMesh/libmesh3.c:240:3: 
+238.   		/* Check if the user provided a valid dimension */
+239.   
+240. > 		va_start(pa, mesh);
+241.   		mesh->dimension = va_arg(pa, int);
+242.   		va_end(pa);
+
+src/libMesh/libmesh3.c:241:3: 
+239.   
+240.   		va_start(pa, mesh);
+241. > 		mesh->dimension = va_arg(pa, int);
+242.   		va_end(pa);
+243.   
+
+src/libMesh/libmesh3.c:242:3: 
+240.   		va_start(pa, mesh);
+241.   		mesh->dimension = va_arg(pa, int);
+242. > 		va_end(pa);
+243.   
+244.   		if( (mesh->dimension != 2) && (mesh->dimension != 3) )
+
+src/libMesh/libmesh3.c:244:8: Taking false branch
+242.   		va_end(pa);
+243.   
+244.   		if( (mesh->dimension != 2) && (mesh->dimension != 3) )
+              ^
+245.   			return(0);
+246.   
+
+src/libMesh/libmesh3.c:249:8: Taking false branch
+247.   		/* If no extension has been provided, create a binary file */
+248.   
+249.   		if(!(mesh->handle = fopen(mesh->filename, "wb")))
+              ^
+250.   			return(0);
+251.   
+
+src/libMesh/libmesh3.c:259:3: 
+257.   		/* Initialyse the required fields. The kw will be stored afterward. */
+258.   
+259. > 		mesh->version = LM_MESH_VERSION;
+260.   		mesh->endian = 1;
+261.   
+
+src/libMesh/libmesh3.c:260:3: 
+258.   
+259.   		mesh->version = LM_MESH_VERSION;
+260. > 		mesh->endian = 1;
+261.   
+262.   		/* Write the mesh version */
+
+src/libMesh/libmesh3.c:264:6: Taking false branch
+262.   		/* Write the mesh version */
+263.   
+264.   		if(mesh->type & LM_ASCII)
+            ^
+265.   			LM_write_field(mesh, LM_MeshVersionFormatted, 1, &mesh->version);
+266.   		else
+
+src/libMesh/libmesh3.c:268:4: 
+266.   		else
+267.   		{
+268. > 			write_int(mesh, mesh->endian);
+269.   			write_int(mesh, mesh->version);
+270.   		}
+
+src/libMesh/libmesh3.c:814:1: start of procedure write_int()
+  812.   /*----------------------------------------------------------*/
+  813.   
+  814. > static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+
+src/libMesh/libmesh3.c:816:5: Taking true branch
+  814.   static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+             ^
+  817.   		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+
+src/libMesh/libmesh3.c:817:3: 
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+  817. > 		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+  819.   		fwrite(&integer, 4, 1, mesh->handle);
+
+src/libMesh/libmesh3.c:816:2: 
+  814.   static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816. > 	if(mesh->type & LM_ASCII)
+  817.   		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+
+src/libMesh/libmesh3.c:820:1: return from a call to write_int
+  818.   	else
+  819.   		fwrite(&integer, 4, 1, mesh->handle);
+  820. > }
+  821.   
+  822.   
+
+src/libMesh/libmesh3.c:269:4: 
+267.   		{
+268.   			write_int(mesh, mesh->endian);
+269. > 			write_int(mesh, mesh->version);
+270.   		}
+271.   
+
+src/libMesh/libmesh3.c:814:1: start of procedure write_int()
+  812.   /*----------------------------------------------------------*/
+  813.   
+  814. > static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+
+src/libMesh/libmesh3.c:816:5: Taking true branch
+  814.   static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+             ^
+  817.   		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+
+src/libMesh/libmesh3.c:817:3: 
+  815.   {
+  816.   	if(mesh->type & LM_ASCII)
+  817. > 		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+  819.   		fwrite(&integer, 4, 1, mesh->handle);
+
+src/libMesh/libmesh3.c:816:2: 
+  814.   static void write_int(LM_mesh_struct *mesh, int integer)
+  815.   {
+  816. > 	if(mesh->type & LM_ASCII)
+  817.   		fprintf(mesh->handle, "%d ", integer);
+  818.   	else
+
+src/libMesh/libmesh3.c:820:1: return from a call to write_int
+  818.   	else
+  819.   		fwrite(&integer, 4, 1, mesh->handle);
+  820. > }
+  821.   
+  822.   
+
+src/libMesh/libmesh3.c:274:3: Skipping LM_write_field(): function or method not found
+272.   		/* Write the mesh dimension */
+273.   
+274.   		LM_write_field(mesh, LM_Dimension, 1, &mesh->dimension);
+         ^
+275.   	}
+276.   	else

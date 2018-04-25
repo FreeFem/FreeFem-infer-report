@@ -1,0 +1,12 @@
+examples++-load/isolineP1.cpp:95: error: DEAD_STORE
+  The value written to &m (type Fem2D::Mesh*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isolineP1.cpp:95:3: Write of unused value
+93.     ffassert(pTh);
+94.     Mesh &Th=*pTh;
+95.     Mesh *m= pTh;   // question a quoi sert *m ??
+        ^
+96.     int nbv=Th.nv; // nombre de sommet 
+97.     int nbt=Th.nt; // nombre de triangles

@@ -1,0 +1,12 @@
+src/medit/medit.c:227: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/medit.c:227:7: Write of unused value
+225.   
+226.       if(dpopenbin) 
+227.         ret  = loadMesh_popen_bin(mesh);
+             ^
+228.       else
+229.         ret  = loadMesh_popen(mesh);

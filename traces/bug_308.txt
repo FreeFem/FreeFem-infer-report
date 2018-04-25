@@ -1,0 +1,12 @@
+examples++-load/ClosePoints.cpp:295: error: DEAD_STORE
+  The value written to &mp (type Fem2D::MeshPoint&) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ClosePoints.cpp:295:5: Write of unused value
+293.           cout << "     offset of 1 0 :  "<< offset10 << endl;
+294.       }
+295.       MeshPoint &mp= *MeshPointStack(stack); // the struct to get x,y, normal , value
+           ^
+296.       
+297.       double x0= P(0,':').min();

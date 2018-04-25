@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:1173: error: DEAD_STORE
+  The value written to &idl (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:1173:4: Write of unused value
+1171.   	
+1172.   	if(DiagMax1 > DiagMax2){  
+1173.   	  idl = 1; 
+           ^
+1174.         
+1175.   	  ijj[0] = tab_NumSommet[i_ind1]+i_recoll_1pp;

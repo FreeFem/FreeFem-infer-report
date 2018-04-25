@@ -1,0 +1,12 @@
+src/femlib/FESpace.cpp:1722: error: DEAD_STORE
+  The value written to &kk (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FESpace.cpp:1722:30: Write of unused value
+1720.                int  kk=FirstNodeOfElement[k]; //  begin   
+1721.                // lagrange  multiplicator one new node 
+1722.                 NodesOfElement[kk++] = lastnodenumber++;
+                                     ^
+1723.   /*                               
+1724.                int il = M.NbLeft();

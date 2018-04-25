@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:3699: error: DEAD_STORE
+  The value written to &nbex (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:3699:2: Write of unused value
+3697.   	//cout << " NbOfNewEdge" << NbOfNewEdge << " NbOfNewPoints " << NbOfNewPoints << endl;
+3698.   	edges = new Edge[NbOfNewEdge];
+3699.   	nbex = NbOfNewEdge;
+         ^
+3700.   	if(NbOfNewPoints) { // 
+3701.   	   VerticesOnGeomEdge = new VertexOnGeom[NbOfNewPoints];

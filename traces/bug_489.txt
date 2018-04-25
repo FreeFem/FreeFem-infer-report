@@ -1,0 +1,12 @@
+examples++-load/ClosePoints.cpp:508: error: DEAD_STORE
+  The value written to &q (type double*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ClosePoints.cpp:508:5: Write of unused value
+506.   
+507.       double *p= &P(0,0);
+508.       double *q= &Q(0,0);
+           ^
+509.       int offset01= P.step*P.shapej.step;;
+510.       int offset10= P.step*P.shapei.step;;

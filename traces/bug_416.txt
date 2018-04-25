@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:439: error: DEAD_STORE
+  The value written to &i2 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:439:8: Write of unused value
+437.   	      
+438.   	      //glColor3d(r,g,b);
+439.   	      int i0= Th(K[0]),  i1= Th(K[1]),   i2= Th(K[2]) ;    		
+              ^
+440.   	      glVertex3d(K[0].x,K[0].y,z2);
+441.   	      glVertex3d(K[1].x,K[1].y,z2);

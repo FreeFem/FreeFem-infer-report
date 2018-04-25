@@ -1,0 +1,12 @@
+src/femlib/GenericMesh.hpp:1274: error: DEAD_STORE
+  The value written to &nbef (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/GenericMesh.hpp:1274:3: Write of unused value
+1272.     const int nkt= T::nt;
+1273.     const int nbev= B::nv;
+1274.     const int nbef= B::nf;
+          ^
+1275.     const int nbee= B::ne;
+1276.     const int nk[]={nkv,nke,nkf,nkt};

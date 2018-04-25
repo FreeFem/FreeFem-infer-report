@@ -1,0 +1,12 @@
+examples++-load/Element_P1bl.cpp:93: error: DEAD_STORE
+  The value written to &d14 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_P1bl.cpp:93:9: Write of unused value
+91.           const R d1=d+1.;
+92.           const R d13=d1*d1*d1;
+93.           const R d14=d13*d1;
+              ^
+94.           int i0 = 0;
+95.           if( l[1] <l[i0]) i0=1;

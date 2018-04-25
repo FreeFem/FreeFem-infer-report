@@ -1,0 +1,126 @@
+examples++-mpi/parms_FreeFem.cpp:149: error: NULL_DEREFERENCE
+  pointer `prepar` last assigned on line 120 could be null and is dereferenced at line 149, column 5.
+Showing all 17 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:119:10: start of procedure parm_param
+117.   	
+118.   
+119.   	public: parm_param(){
+                ^
+120.   		PARMS_malloc(prepar,1,_PrePar);
+121.   		PARMS_malloc(ipar,1,_IterPar);  
+
+examples++-mpi/parms_FreeFem.cpp:120:3: 
+118.   
+119.   	public: parm_param(){
+120. > 		PARMS_malloc(prepar,1,_PrePar);
+121.   		PARMS_malloc(ipar,1,_IterPar);  
+122.   		/*----------------------------------------------------------------------  *
+
+examples++-mpi/parms_FreeFem.cpp:121:3: 
+119.   	public: parm_param(){
+120.   		PARMS_malloc(prepar,1,_PrePar);
+121. > 		PARMS_malloc(ipar,1,_IterPar);  
+122.   		/*----------------------------------------------------------------------  *
+123.   		 * This function  sets some default  parameters just to get  started with *
+
+examples++-mpi/parms_FreeFem.cpp:134:10: 
+132.   		  int i; 
+133.   		/*------------------------------------------------------------------------*/
+134. > 		  for (i=1; i<18; i++)
+135.   		    ipar->ipar[i] = 0;
+136.   		/* parameters to be set for the solver -- not all of these are used --  
+
+examples++-mpi/parms_FreeFem.cpp:134:15: Loop condition is true. Entering loop body
+132.   		  int i; 
+133.   		/*------------------------------------------------------------------------*/
+134.   		  for (i=1; i<18; i++)
+                     ^
+135.   		    ipar->ipar[i] = 0;
+136.   		/* parameters to be set for the solver -- not all of these are used --  
+
+examples++-mpi/parms_FreeFem.cpp:135:7: 
+133.   		/*------------------------------------------------------------------------*/
+134.   		  for (i=1; i<18; i++)
+135. > 		    ipar->ipar[i] = 0;
+136.   		/* parameters to be set for the solver -- not all of these are used --  
+137.   		     depending on the method selected -                                   */
+
+examples++-mpi/parms_FreeFem.cpp:134:21: 
+132.   		  int i; 
+133.   		/*------------------------------------------------------------------------*/
+134. > 		  for (i=1; i<18; i++)
+135.   		    ipar->ipar[i] = 0;
+136.   		/* parameters to be set for the solver -- not all of these are used --  
+
+examples++-mpi/parms_FreeFem.cpp:134:15: Loop condition is false. Leaving loop
+132.   		  int i; 
+133.   		/*------------------------------------------------------------------------*/
+134.   		  for (i=1; i<18; i++)
+                     ^
+135.   		    ipar->ipar[i] = 0;
+136.   		/* parameters to be set for the solver -- not all of these are used --  
+
+examples++-mpi/parms_FreeFem.cpp:139:5: 
+137.   		     depending on the method selected -                                   */
+138.   		/* parameters associated with various accelerators (inner/outer)          */
+139. > 		  ipar->ipar[0] = 3;       /* nlev in arms when used                      */
+140.   		  ipar->ipar[1] = 20;      /* block size in arms when used                */
+141.   		  ipar->ipar[5] = 30;      /* Outer iteration Krylov subs. dimension      */
+
+examples++-mpi/parms_FreeFem.cpp:140:5: 
+138.   		/* parameters associated with various accelerators (inner/outer)          */
+139.   		  ipar->ipar[0] = 3;       /* nlev in arms when used                      */
+140. > 		  ipar->ipar[1] = 20;      /* block size in arms when used                */
+141.   		  ipar->ipar[5] = 30;      /* Outer iteration Krylov subs. dimension      */
+142.   		  ipar->ipar[6] = 200;     /* Max. outer iterations                       */
+
+examples++-mpi/parms_FreeFem.cpp:141:5: 
+139.   		  ipar->ipar[0] = 3;       /* nlev in arms when used                      */
+140.   		  ipar->ipar[1] = 20;      /* block size in arms when used                */
+141. > 		  ipar->ipar[5] = 30;      /* Outer iteration Krylov subs. dimension      */
+142.   		  ipar->ipar[6] = 200;     /* Max. outer iterations                       */
+143.   		  ipar->ipar[3] = 3;       /* Inner iteration Krylov subs. dimension      */
+
+examples++-mpi/parms_FreeFem.cpp:142:5: 
+140.   		  ipar->ipar[1] = 20;      /* block size in arms when used                */
+141.   		  ipar->ipar[5] = 30;      /* Outer iteration Krylov subs. dimension      */
+142. > 		  ipar->ipar[6] = 200;     /* Max. outer iterations                       */
+143.   		  ipar->ipar[3] = 3;       /* Inner iteration Krylov subs. dimension      */
+144.   		  ipar->ipar[4] = 3;       /* Max. inner iterations  */
+
+examples++-mpi/parms_FreeFem.cpp:143:5: 
+141.   		  ipar->ipar[5] = 30;      /* Outer iteration Krylov subs. dimension      */
+142.   		  ipar->ipar[6] = 200;     /* Max. outer iterations                       */
+143. > 		  ipar->ipar[3] = 3;       /* Inner iteration Krylov subs. dimension      */
+144.   		  ipar->ipar[4] = 3;       /* Max. inner iterations  */
+145.   		  
+
+examples++-mpi/parms_FreeFem.cpp:144:5: 
+142.   		  ipar->ipar[6] = 200;     /* Max. outer iterations                       */
+143.   		  ipar->ipar[3] = 3;       /* Inner iteration Krylov subs. dimension      */
+144. > 		  ipar->ipar[4] = 3;       /* Max. inner iterations  */
+145.   		  
+146.   		  ipar->pgfpar[0] = 0.01;  /* tolerance for inner iteration when used     */
+
+examples++-mpi/parms_FreeFem.cpp:146:5: 
+144.   		  ipar->ipar[4] = 3;       /* Max. inner iterations  */
+145.   		  
+146. > 		  ipar->pgfpar[0] = 0.01;  /* tolerance for inner iteration when used     */
+147.   		  ipar->pgfpar[1] = 1.e-10;/* tolerance for outer iteration               */
+148.   		/* preconditioning parameters                                             */
+
+examples++-mpi/parms_FreeFem.cpp:147:5: 
+145.   		  
+146.   		  ipar->pgfpar[0] = 0.01;  /* tolerance for inner iteration when used     */
+147. > 		  ipar->pgfpar[1] = 1.e-10;/* tolerance for outer iteration               */
+148.   		/* preconditioning parameters                                             */
+149.   		  prepar->tolind = 0.1;    /* tolerance used for diag dom. filtration alg.*/
+
+examples++-mpi/parms_FreeFem.cpp:149:5: 
+147.   		  ipar->pgfpar[1] = 1.e-10;/* tolerance for outer iteration               */
+148.   		/* preconditioning parameters                                             */
+149. > 		  prepar->tolind = 0.1;    /* tolerance used for diag dom. filtration alg.*/
+150.   		  prepar->lfil[0] = 20;    /* lfil0 (ilut, iluk, and arms)                */
+151.   		  prepar->lfil[4] = 20;    /* lfil for Schur complement const.            */ 

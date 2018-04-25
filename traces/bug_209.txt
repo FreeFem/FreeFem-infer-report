@@ -1,0 +1,35 @@
+src/femlib/QuadratureFormular.cpp:165: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::QuadratureFormular_T_2_4P1 accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+src/femlib/QuadratureFormular.cpp:165:1: initialization of Fem2D::QuadratureFormular_T_2_4P1
+163.         };
+164.   
+165. > GQuadratureFormular<R2> const QuadratureFormular_T_2_4P1(2,9,P_QuadratureFormular_T_2_4P1);
+166.   // ----------------------------------------------------------------------
+167.   // STROUD page  314 
+
+src/femlib/QuadratureFormular.cpp:165:31: call to Fem2D::GQuadratureFormular<Fem2D::R2>_GQuadratureFormular
+163.         };
+164.   
+165.   GQuadratureFormular<R2> const QuadratureFormular_T_2_4P1(2,9,P_QuadratureFormular_T_2_4P1);
+                                     ^
+166.   // ----------------------------------------------------------------------
+167.   // STROUD page  314 
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R2>_Verification
+  83.     void Verification(); // for verification 
+  84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+  85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                          ^
+  86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+  87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

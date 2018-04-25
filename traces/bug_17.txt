@@ -1,0 +1,369 @@
+src/medit/gisfil.c:123: error: MEMORY_LEAK
+  memory dynamically allocated by call to `malloc()` at line 112, column 18 is not reachable after line 123, column 17.
+Showing all 50 steps of the trace
+
+
+src/medit/gisfil.c:7:1: start of procedure loadGIS()
+5.   #define FLOAT_MAX  1.e20
+6.   
+7. > int loadGIS(pMesh mesh) {
+8.     pQuad      pq;
+9.     pPoint     ppt;
+
+src/medit/gisfil.c:20:3: 
+18.   
+19.     /* default */
+20. >   strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+
+src/medit/gisfil.c:21:3: 
+19.     /* default */
+20.     strcpy(data,mesh->name);
+21. >   ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+
+src/medit/gisfil.c:22:9: Taking true branch
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+              ^
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:22:16: 
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".gis");
+22. >   if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+
+src/medit/gisfil.c:23:3: 
+21.     ptr = strstr(data,".gis");
+22.     if ( !ptr )  strcat(data,".gis");
+23. >   fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25.     fprintf(stdout,"  Reading %s\n",data);
+
+src/medit/gisfil.c:24:9: Taking false branch
+22.     if ( !ptr )  strcat(data,".gis");
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+              ^
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+
+src/medit/gisfil.c:25:3: 
+23.     fp = fopen(data,"rb");
+24.     if ( !fp )  return(0);
+25. >   fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+
+src/medit/gisfil.c:27:9: Taking false branch
+25.     fprintf(stdout,"  Reading %s\n",data);
+26.   
+27.     if ( !fgets(buf,sizeof(buf),fp) ) {
+              ^
+28.       fprintf(stderr,"  ## Invalid header.\n");
+29.       return(0);
+
+src/medit/gisfil.c:33:3: 
+31.   
+32.     /* remove leading spaces */
+33. >   pos = 0;
+34.     while ( (buf[0] == ' ') && (buf[0] != 0x0d) && (buf[0] != 0x0a) )
+35.       memmove(&buf[0],&buf[1],strlen(buf));
+
+src/medit/gisfil.c:34:12: Loop condition is false. Leaving loop
+32.     /* remove leading spaces */
+33.     pos = 0;
+34.     while ( (buf[0] == ' ') && (buf[0] != 0x0d) && (buf[0] != 0x0a) )
+                 ^
+35.       memmove(&buf[0],&buf[1],strlen(buf));
+36.   
+
+src/medit/gisfil.c:38:8: Taking false branch
+36.   
+37.     /* check header file */
+38.     if ( buf[0] != 'G' ) {
+             ^
+39.       fprintf(stderr,"  ## Invalid format.\n");
+40.       return(0);
+
+src/medit/gisfil.c:42:8: Taking false branch
+40.       return(0);
+41.     }
+42.     if ( buf[1] == '1' )       ityp = 1;
+             ^
+43.     else if ( buf[1] == '2' )  ityp = 2;
+44.     else {
+
+src/medit/gisfil.c:43:13: Taking true branch
+41.     }
+42.     if ( buf[1] == '1' )       ityp = 1;
+43.     else if ( buf[1] == '2' )  ityp = 2;
+                  ^
+44.     else {
+45.       fprintf(stderr,"  ## Invalid format ('G?' expected).\n");
+
+src/medit/gisfil.c:43:30: 
+41.     }
+42.     if ( buf[1] == '1' )       ityp = 1;
+43. >   else if ( buf[1] == '2' )  ityp = 2;
+44.     else {
+45.       fprintf(stderr,"  ## Invalid format ('G?' expected).\n");
+
+src/medit/gisfil.c:51:5: 
+49.     /* check and strip comments */
+50.     do {
+51. >     ret = fscanf(fp,"%s",buf);
+52.       if ( ret == EOF ) break;
+53.       if ( buf[0] == '#' )
+
+src/medit/gisfil.c:52:10: Taking true branch
+50.     do {
+51.       ret = fscanf(fp,"%s",buf);
+52.       if ( ret == EOF ) break;
+               ^
+53.       if ( buf[0] == '#' )
+54.         do
+
+src/medit/gisfil.c:62:3: 
+60.   
+61.     /* header */
+62. >   ret  = sscanf(buf,"%d",&sx);
+63.     ret += fscanf(fp,"%d",&sy);
+64.     ret += fscanf(fp,"%f %f %f",&cx,&cy,&cz);
+
+src/medit/gisfil.c:63:3: 
+61.     /* header */
+62.     ret  = sscanf(buf,"%d",&sx);
+63. >   ret += fscanf(fp,"%d",&sy);
+64.     ret += fscanf(fp,"%f %f %f",&cx,&cy,&cz);
+65.     ret += fscanf(fp,"%f",&gu);
+
+src/medit/gisfil.c:64:3: 
+62.     ret  = sscanf(buf,"%d",&sx);
+63.     ret += fscanf(fp,"%d",&sy);
+64. >   ret += fscanf(fp,"%f %f %f",&cx,&cy,&cz);
+65.     ret += fscanf(fp,"%f",&gu);
+66.     ret += fscanf(fp,"%f",&hu);
+
+src/medit/gisfil.c:65:3: 
+63.     ret += fscanf(fp,"%d",&sy);
+64.     ret += fscanf(fp,"%f %f %f",&cx,&cy,&cz);
+65. >   ret += fscanf(fp,"%f",&gu);
+66.     ret += fscanf(fp,"%f",&hu);
+67.     ret += fscanf(fp,"%f %f",&xmi,&ymi);
+
+src/medit/gisfil.c:66:3: 
+64.     ret += fscanf(fp,"%f %f %f",&cx,&cy,&cz);
+65.     ret += fscanf(fp,"%f",&gu);
+66. >   ret += fscanf(fp,"%f",&hu);
+67.     ret += fscanf(fp,"%f %f",&xmi,&ymi);
+68.     if ( ret != 9 ) {
+
+src/medit/gisfil.c:67:3: 
+65.     ret += fscanf(fp,"%f",&gu);
+66.     ret += fscanf(fp,"%f",&hu);
+67. >   ret += fscanf(fp,"%f %f",&xmi,&ymi);
+68.     if ( ret != 9 ) {
+69.       fprintf(stderr,"  ## Error loading terrain.\n");
+
+src/medit/gisfil.c:68:8: Taking false branch
+66.     ret += fscanf(fp,"%f",&hu);
+67.     ret += fscanf(fp,"%f %f",&xmi,&ymi);
+68.     if ( ret != 9 ) {
+             ^
+69.       fprintf(stderr,"  ## Error loading terrain.\n");
+70.       free(mesh);
+
+src/medit/gisfil.c:74:3: 
+72.     }
+73.   
+74. >   bitsize = mesh->np*sizeof(float);
+75.     if ( ddebug ) {
+76.       fprintf(stdout,"   header: sx  %7d   sy %7d\n",sx,sy);
+
+src/medit/gisfil.c:75:8: Taking true branch
+73.   
+74.     bitsize = mesh->np*sizeof(float);
+75.     if ( ddebug ) {
+             ^
+76.       fprintf(stdout,"   header: sx  %7d   sy %7d\n",sx,sy);
+77.       fprintf(stdout,"           cx  %7.2f   cy %7.2f  cz %7.2f\n",cx,cy,cz);
+
+src/medit/gisfil.c:76:5: 
+74.     bitsize = mesh->np*sizeof(float);
+75.     if ( ddebug ) {
+76. >     fprintf(stdout,"   header: sx  %7d   sy %7d\n",sx,sy);
+77.       fprintf(stdout,"           cx  %7.2f   cy %7.2f  cz %7.2f\n",cx,cy,cz);
+78.       fprintf(stdout,"        units: %7.2f  %7.2f\n",gu,hu);
+
+src/medit/gisfil.c:77:5: 
+75.     if ( ddebug ) {
+76.       fprintf(stdout,"   header: sx  %7d   sy %7d\n",sx,sy);
+77. >     fprintf(stdout,"           cx  %7.2f   cy %7.2f  cz %7.2f\n",cx,cy,cz);
+78.       fprintf(stdout,"        units: %7.2f  %7.2f\n",gu,hu);
+79.       fprintf(stdout,"          min: %7.3e  %7.3e\n",xmi,ymi);
+
+src/medit/gisfil.c:78:5: 
+76.       fprintf(stdout,"   header: sx  %7d   sy %7d\n",sx,sy);
+77.       fprintf(stdout,"           cx  %7.2f   cy %7.2f  cz %7.2f\n",cx,cy,cz);
+78. >     fprintf(stdout,"        units: %7.2f  %7.2f\n",gu,hu);
+79.       fprintf(stdout,"          min: %7.3e  %7.3e\n",xmi,ymi);
+80.       fprintf(stdout,"   terrain size: %dx%d  %ld bytes\n",sx,sy,(long)bitsize);
+
+src/medit/gisfil.c:79:5: 
+77.       fprintf(stdout,"           cx  %7.2f   cy %7.2f  cz %7.2f\n",cx,cy,cz);
+78.       fprintf(stdout,"        units: %7.2f  %7.2f\n",gu,hu);
+79. >     fprintf(stdout,"          min: %7.3e  %7.3e\n",xmi,ymi);
+80.       fprintf(stdout,"   terrain size: %dx%d  %ld bytes\n",sx,sy,(long)bitsize);
+81.     }
+
+src/medit/gisfil.c:80:5: 
+78.       fprintf(stdout,"        units: %7.2f  %7.2f\n",gu,hu);
+79.       fprintf(stdout,"          min: %7.3e  %7.3e\n",xmi,ymi);
+80. >     fprintf(stdout,"   terrain size: %dx%d  %ld bytes\n",sx,sy,(long)bitsize);
+81.     }
+82.   
+
+src/medit/gisfil.c:83:3: 
+81.     }
+82.   
+83. >   mesh->np = sx*sy;
+84.     mesh->nt = 0;
+85.     mesh->nq = (sx-1)*(sy-1);
+
+src/medit/gisfil.c:84:3: 
+82.   
+83.     mesh->np = sx*sy;
+84. >   mesh->nt = 0;
+85.     mesh->nq = (sx-1)*(sy-1);
+86.     mesh->ne = mesh->nq;
+
+src/medit/gisfil.c:85:3: 
+83.     mesh->np = sx*sy;
+84.     mesh->nt = 0;
+85. >   mesh->nq = (sx-1)*(sy-1);
+86.     mesh->ne = mesh->nq;
+87.   
+
+src/medit/gisfil.c:86:3: 
+84.     mesh->nt = 0;
+85.     mesh->nq = (sx-1)*(sy-1);
+86. >   mesh->ne = mesh->nq;
+87.   
+88.     /* memory allocation for mesh */
+
+src/medit/gisfil.c:89:9: Taking false branch
+87.   
+88.     /* memory allocation for mesh */
+89.     if ( !zaldy1(mesh) ) {
+              ^
+90.       fclose(fp);
+91.       return(0);
+
+src/medit/gisfil.c:95:8: Taking false branch
+93.   
+94.     /* read data */
+95.     if ( ityp == 1 ) {
+             ^
+96.       xxm = xmi / cx;
+97.       yym = ymi / cy;
+
+src/medit/gisfil.c:112:5: 
+110.     }
+111.     else {
+112. >     te = (float*)malloc(sx*sizeof(float));
+113.       if ( !te )  exit(1);
+114.       ni = 0;
+
+src/medit/gisfil.c:113:11: Taking false branch
+111.     else {
+112.       te = (float*)malloc(sx*sizeof(float));
+113.       if ( !te )  exit(1);
+                 ^
+114.       ni = 0;
+115.       xxm = xmi / cx;
+
+src/medit/gisfil.c:114:5: 
+112.       te = (float*)malloc(sx*sizeof(float));
+113.       if ( !te )  exit(1);
+114. >     ni = 0;
+115.       xxm = xmi / cx;
+116.       yym = ymi / cy;
+
+src/medit/gisfil.c:115:5: 
+113.       if ( !te )  exit(1);
+114.       ni = 0;
+115. >     xxm = xmi / cx;
+116.       yym = ymi / cy;
+117.       ggx = gu  / cx;
+
+src/medit/gisfil.c:116:5: 
+114.       ni = 0;
+115.       xxm = xmi / cx;
+116. >     yym = ymi / cy;
+117.       ggx = gu  / cx;
+118.       ggy = gu  / cy;
+
+src/medit/gisfil.c:117:5: 
+115.       xxm = xmi / cx;
+116.       yym = ymi / cy;
+117. >     ggx = gu  / cx;
+118.       ggy = gu  / cy;
+119.       hhz = hu  / cz;
+
+src/medit/gisfil.c:118:5: 
+116.       yym = ymi / cy;
+117.       ggx = gu  / cx;
+118. >     ggy = gu  / cy;
+119.       hhz = hu  / cz;
+120.       for (j=1; j<=sy; j++) {
+
+src/medit/gisfil.c:119:5: 
+117.       ggx = gu  / cx;
+118.       ggy = gu  / cy;
+119. >     hhz = hu  / cz;
+120.       for (j=1; j<=sy; j++) {
+121.         ret = fread(te,sizeof(int),sx,fp);
+
+src/medit/gisfil.c:120:10: 
+118.       ggy = gu  / cy;
+119.       hhz = hu  / cz;
+120. >     for (j=1; j<=sy; j++) {
+121.         ret = fread(te,sizeof(int),sx,fp);
+122.         if ( ret != sx ) {
+
+src/medit/gisfil.c:120:15: Loop condition is true. Entering loop body
+118.       ggy = gu  / cy;
+119.       hhz = hu  / cz;
+120.       for (j=1; j<=sy; j++) {
+                     ^
+121.         ret = fread(te,sizeof(int),sx,fp);
+122.         if ( ret != sx ) {
+
+src/medit/gisfil.c:121:7: 
+119.       hhz = hu  / cz;
+120.       for (j=1; j<=sy; j++) {
+121. >       ret = fread(te,sizeof(int),sx,fp);
+122.         if ( ret != sx ) {
+123.           fprintf(stderr,"  ## Error loading terrain.\n");
+
+src/medit/gisfil.c:122:12: Taking true branch
+120.       for (j=1; j<=sy; j++) {
+121.         ret = fread(te,sizeof(int),sx,fp);
+122.         if ( ret != sx ) {
+                  ^
+123.           fprintf(stderr,"  ## Error loading terrain.\n");
+124.           free(mesh->point);
+
+src/medit/gisfil.c:123:9: 
+121.         ret = fread(te,sizeof(int),sx,fp);
+122.         if ( ret != sx ) {
+123. >         fprintf(stderr,"  ## Error loading terrain.\n");
+124.           free(mesh->point);
+125.           free(mesh);

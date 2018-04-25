@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:5080: error: DEAD_STORE
+  The value written to &K (type Fem2D::Tet const &) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:5080:17: Write of unused value
+5078.               {
+5079.                   
+5080.                   const Mesh3::Element & K(ThI[t]);
+                        ^
+5081.                   if (all || setoflab.find(ThI[t].lab) != setoflab.end())
+5082.   

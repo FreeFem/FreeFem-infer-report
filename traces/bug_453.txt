@@ -1,0 +1,12 @@
+examples++-mpi/parms_FreeFem.cpp:496: error: DEAD_STORE
+  The value written to &ierr (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:496:3: Write of unused value
+494.   	comm= *mpicommw;
+495.   	// comm=MPI_COMM_WORLD;
+496.   	 ierr = MPI_Comm_rank(comm, &rk);
+         ^
+497.   	 ierr = MPI_Comm_size(comm, &size);
+498.   	 parm_param * pp;

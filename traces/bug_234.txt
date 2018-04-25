@@ -1,0 +1,215 @@
+examples++-load/ff-Ipopt.cpp:193: error: NULL_DEREFERENCE
+  pointer `A` last assigned on line 191 could be null and is dereferenced at line 193, column 27.
+Showing all 28 steps of the trace
+
+
+examples++-load/ff-Ipopt.cpp:185:5: start of procedure J
+183.       P1VectorFunc(const P1VectorFunc &f) : ffcalfunc<Rn>(f),M(f.M),b(f.b),vf(f.vf) {}
+184.       P1VectorFunc(Stack s,Expression _M,Expression _b,bool _vf=false) : ffcalfunc<Rn>(s),M(_M),b(_b),vf(_vf) {}
+185.       Rn J(Rn_ x) const
+           ^
+186.       {
+187.           Rn tmp(0);
+
+examples++-load/ff-Ipopt.cpp:187:9: 
+185.       Rn J(Rn_ x) const
+186.       {
+187. >         Rn tmp(0);
+188.           if(M)
+189.           {
+
+src/femlib/RNM.hpp:953:3: start of procedure KN
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953.     KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+           ^
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+src/femlib/RNM.hpp:953:17: 
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953. >   KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+src/femlib/RNM.hpp:571:3: start of procedure KN_
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571.     KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+             ^
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:571:21: 
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571. >   KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:320:3: start of procedure ShapeOfArray
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320.     ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+               ^
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:26: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:32: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:40: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:50: return from a call to ShapeOfArray_ShapeOfArray
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320.     ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+                                                              ^
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:571:38: 
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571. >   KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:571:43: return from a call to KN_<double>_KN_
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571.     KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+                                                     ^
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:953:47: return from a call to KN<double>_KN
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953.     KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+                                                       ^
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+examples++-load/ff-Ipopt.cpp:188:12: Taking true branch
+186.       {
+187.           Rn tmp(0);
+188.           if(M)
+                  ^
+189.           {
+190.               Matrice_Creuse<R> * a = GetAny<Matrice_Creuse<R> *>( (*M)(stack) );
+
+examples++-load/ff-Ipopt.cpp:190:13: Skipping operator(): function or method not found
+188.           if(M)
+189.           {
+190.               Matrice_Creuse<R> * a = GetAny<Matrice_Creuse<R> *>( (*M)(stack) );
+                   ^
+191.               MatriceMorse<R> *A = dynamic_cast<MatriceMorse<R> *>(&(*a->A));
+192.               assert(A);
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<Matrice_Creuse<double>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<Matrice_Creuse<double>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+examples++-load/ff-Ipopt.cpp:191:13: 
+189.           {
+190.               Matrice_Creuse<R> * a = GetAny<Matrice_Creuse<R> *>( (*M)(stack) );
+191. >             MatriceMorse<R> *A = dynamic_cast<MatriceMorse<R> *>(&(*a->A));
+192.               assert(A);
+193.               if(tmp.N() != A->n) {tmp.resize(A->n); tmp=0.;}
+
+src/femlib/RefCounter.hpp:95:3: start of procedure operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:25: 
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95. >   T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:35: return from a call to CountPointer<MatriceCreuse<double>>_operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+                                          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+examples++-load/ff-Ipopt.cpp:193:16: 
+191.               MatriceMorse<R> *A = dynamic_cast<MatriceMorse<R> *>(&(*a->A));
+192.               assert(A);
+193. >             if(tmp.N() != A->n) {tmp.resize(A->n); tmp=0.;}
+194.               tmp  = (*A)*x;
+195.           }
+
+src/femlib/RNM.hpp:391:3: start of procedure N
+  389.   public:
+  390.     typedef R K; // type of data 
+  391.     long N() const {return n;}
+           ^
+  392.     bool unset() const { return !v;}
+  393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:19: 
+  389.   public:
+  390.     typedef R K; // type of data 
+  391. >   long N() const {return n;}
+  392.     bool unset() const { return !v;}
+  393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:28: return from a call to KN_<double>_N
+  389.   public:
+  390.     typedef R K; // type of data 
+  391.     long N() const {return n;}
+                                    ^
+  392.     bool unset() const { return !v;}
+  393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}

@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:2281: error: DEAD_STORE
+  The value written to &ciii (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:2281:15: Write of unused value
+2279.   	      Int4 ii0 =  BeginNewPoint[j1];
+2280.   	      Int4 ii1 =  EndNewPoint[j1];	     
+2281.                 Real8 ciii=-1,cii0=-1,cii1=-1  ;
+                      ^
+2282.    	      if ( sss * ((cii0=vi0.m(D,(R2) vertices[ii0]))- c0) >0 )  
+2283.   		stack[kstack++] = ii0;//cout << " add+0 " << ii0;

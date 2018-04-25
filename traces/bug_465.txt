@@ -1,0 +1,209 @@
+examples++-mpi/parms_FreeFem.cpp:504: error: NULL_DEREFERENCE
+  pointer `meth[7]` last assigned on line 504 could be null and is dereferenced by call to `strcpy()` at line 504, column 114.
+Showing all 28 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:479:3: start of procedure dSolvePARMS
+477.   //Constructor construct the distribute matrix and also preconditionner
+478.   public:
+479.     dSolvePARMS(const MatriceMorse<double> &AA,string datafile,  KN<long> &param_int,  KN<double> &param_double,  MPI_Comm  * mpicommw)
+         ^
+480.   	{
+481.   	int n,i,job,nnz,ierr,tmp;
+
+examples++-mpi/parms_FreeFem.cpp:828:9: 
+826.   		 /* exit PARMS and MPI environment */
+827.   		 PARMS_Final();
+828. > 		 exit(1);
+829.   	 }	
+830.   	
+
+src/femlib/MatriceCreuse.hpp:589:8: start of procedure VirtualSolver
+  587.   
+  588.       
+  589.    class VirtualSolver :public RefCounter { 
+                ^
+  590.      friend class MatriceMorse;
+  591.      virtual void Solver(const MatriceMorse<R> &a,KN_<R> &x,const KN_<R> &b) const  =0;
+
+src/femlib/RefCounter.hpp:56:3: start of procedure RefCounter
+    54.     protected:
+    55.     virtual ~RefCounter() {}
+    56.     RefCounter() : count(0) {}
+            ^
+    57.     public:
+    58.     int destroy() const { 
+
+src/femlib/RefCounter.hpp:56:18: 
+    54.     protected:
+    55.     virtual ~RefCounter() {}
+    56. >   RefCounter() : count(0) {}
+    57.     public:
+    58.     int destroy() const { 
+
+src/femlib/RefCounter.hpp:56:28: return from a call to RefCounter_RefCounter
+    54.     protected:
+    55.     virtual ~RefCounter() {}
+    56.     RefCounter() : count(0) {}
+                                     ^
+    57.     public:
+    58.     int destroy() const { 
+
+src/femlib/MatriceCreuse.hpp:589:8: return from a call to MatriceMorse<double>::VirtualSolver_VirtualSolver
+  587.   
+  588.       
+  589.    class VirtualSolver :public RefCounter { 
+                ^
+  590.      friend class MatriceMorse;
+  591.      virtual void Solver(const MatriceMorse<R> &a,KN_<R> &x,const KN_<R> &b) const  =0;
+
+examples++-mpi/parms_FreeFem.cpp:479:3: Skipping basic_string: function or method not found
+477.   //Constructor construct the distribute matrix and also preconditionner
+478.   public:
+479.     dSolvePARMS(const MatriceMorse<double> &AA,string datafile,  KN<long> &param_int,  KN<double> &param_double,  MPI_Comm  * mpicommw)
+         ^
+480.   	{
+481.   	int n,i,job,nnz,ierr,tmp;
+
+examples++-mpi/parms_FreeFem.cpp:490:6: Taking false branch
+488.   	int 	 j,    node;
+489.   	/* Initialize PARMSARSLIB environment */
+490.   	 if(mpicommw==NULL){
+            ^
+491.   	comm=MPI_COMM_WORLD;
+492.   	}
+
+examples++-mpi/parms_FreeFem.cpp:494:2: 
+492.   	}
+493.   	else
+494. > 	comm= *mpicommw;
+495.   	// comm=MPI_COMM_WORLD;
+496.   	 ierr = MPI_Comm_rank(comm, &rk);
+
+examples++-mpi/parms_FreeFem.cpp:496:3: Skipping MPI_Comm_rank(): function or method not found
+494.   	comm= *mpicommw;
+495.   	// comm=MPI_COMM_WORLD;
+496.   	 ierr = MPI_Comm_rank(comm, &rk);
+         ^
+497.   	 ierr = MPI_Comm_size(comm, &size);
+498.   	 parm_param * pp;
+
+examples++-mpi/parms_FreeFem.cpp:497:3: Skipping MPI_Comm_size(): function or method not found
+495.   	// comm=MPI_COMM_WORLD;
+496.   	 ierr = MPI_Comm_rank(comm, &rk);
+497.   	 ierr = MPI_Comm_size(comm, &size);
+         ^
+498.   	 parm_param * pp;
+499.   	/*Differents preconditionners use*/
+
+examples++-mpi/parms_FreeFem.cpp:500:3: 
+498.   	 parm_param * pp;
+499.   	/*Differents preconditionners use*/
+500. > 	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+
+examples++-mpi/parms_FreeFem.cpp:500:43: 
+498.   	 parm_param * pp;
+499.   	/*Differents preconditionners use*/
+500. > 	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+
+examples++-mpi/parms_FreeFem.cpp:500:71: 
+498.   	 parm_param * pp;
+499.   	/*Differents preconditionners use*/
+500. > 	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+
+examples++-mpi/parms_FreeFem.cpp:500:111: 
+498.   	 parm_param * pp;
+499.   	/*Differents preconditionners use*/
+500. > 	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+
+examples++-mpi/parms_FreeFem.cpp:501:3: 
+499.   	/*Differents preconditionners use*/
+500.   	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501. > 	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+
+examples++-mpi/parms_FreeFem.cpp:501:43: 
+499.   	/*Differents preconditionners use*/
+500.   	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501. > 	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+
+examples++-mpi/parms_FreeFem.cpp:501:71: 
+499.   	/*Differents preconditionners use*/
+500.   	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501. > 	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+
+examples++-mpi/parms_FreeFem.cpp:501:111: 
+499.   	/*Differents preconditionners use*/
+500.   	 meth[0]=(char *)malloc(sizeof(char)*9); strcpy(meth[0],"add_ilu0"); meth[1]=(char *)malloc(sizeof(char)*9); strcpy(meth[1],"add_ilut"); 
+501. > 	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+
+examples++-mpi/parms_FreeFem.cpp:503:3: 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503. > 	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504.   	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+
+examples++-mpi/parms_FreeFem.cpp:503:44: 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503. > 	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504.   	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+
+examples++-mpi/parms_FreeFem.cpp:503:73: 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503. > 	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504.   	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+
+examples++-mpi/parms_FreeFem.cpp:503:114: 
+501.   	 meth[2]=(char *)malloc(sizeof(char)*9); strcpy(meth[2],"add_iluk"); meth[3]=(char *)malloc(sizeof(char)*9); strcpy(meth[3],"add_arms");
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503. > 	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504.   	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+
+examples++-mpi/parms_FreeFem.cpp:504:3: 
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504. > 	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+506.            meth[10]=(char *)malloc(sizeof(char)*10); strcpy(meth[10],"rsch_iluk"); meth[11]=(char *)malloc(sizeof(char)*10); strcpy(meth[11],"rsch_arms");
+
+examples++-mpi/parms_FreeFem.cpp:504:44: 
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504. > 	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+506.            meth[10]=(char *)malloc(sizeof(char)*10); strcpy(meth[10],"rsch_iluk"); meth[11]=(char *)malloc(sizeof(char)*10); strcpy(meth[11],"rsch_arms");
+
+examples++-mpi/parms_FreeFem.cpp:504:73: 
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504. > 	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+506.            meth[10]=(char *)malloc(sizeof(char)*10); strcpy(meth[10],"rsch_iluk"); meth[11]=(char *)malloc(sizeof(char)*10); strcpy(meth[11],"rsch_arms");
+
+examples++-mpi/parms_FreeFem.cpp:504:114: 
+502.   	 // FFCS - fixed "buffer overflow" warning by JHunt
+503.   	 meth[4]=(char *)malloc(sizeof(char)*10); strcpy(meth[4],"lsch_ilu0"); meth[5]=(char *)malloc(sizeof(char)*10); strcpy(meth[5],"lsch_ilut");  
+504. > 	 meth[6]=(char *)malloc(sizeof(char)*10); strcpy(meth[6],"lsch_iluk"); meth[7]=(char *)malloc(sizeof(char)*10); strcpy(meth[7],"lsch_arms"); 	
+505.   	 meth[8]=(char *)malloc(sizeof(char)*10); strcpy(meth[8],"rsch_ilu0"); meth[9]=(char *)malloc(sizeof(char)*10); strcpy(meth[9],"rsch_ilut");
+506.            meth[10]=(char *)malloc(sizeof(char)*10); strcpy(meth[10],"rsch_iluk"); meth[11]=(char *)malloc(sizeof(char)*10); strcpy(meth[11],"rsch_arms");

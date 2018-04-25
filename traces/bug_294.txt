@@ -1,0 +1,76 @@
+src/Graphics/ffglut.hpp:244: error: USE_AFTER_FREE
+  pointer `*returned by operator*` was freed by call to `delete()` at line 244, column 14 and is dereferenced or freed at line 244, column 14.
+Showing all 9 steps of the trace
+
+
+src/Graphics/ffglut.hpp:241:3: start of procedure __infer_inner_destructor_~ThePlot
+239.     
+240.     bool Change() const  { return changeViso||changeVarrow||changeColor||changeBorder||changeFill;}
+241.     ~ThePlot()
+         ^
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+
+src/Graphics/ffglut.hpp:243:10: Skipping _List_iterator: function or method not found
+241.     ~ThePlot()
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+                ^
+244.         if(*i) delete *i;
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+
+src/Graphics/ffglut.hpp:243:53: Loop condition is true. Entering loop body
+241.     ~ThePlot()
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+                                                           ^
+244.         if(*i) delete *i;
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+
+src/Graphics/ffglut.hpp:244:10: Taking true branch
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+244.         if(*i) delete *i;
+                ^
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+246.         if(*i) delete *i;
+
+src/Graphics/ffglut.hpp:244:14: Skipping operator*: function or method not found
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+244.         if(*i) delete *i;
+                    ^
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+246.         if(*i) delete *i;
+
+src/Graphics/ffglut.hpp:243:71: Skipping operator++: function or method not found
+241.     ~ThePlot()
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+                                                                             ^
+244.         if(*i) delete *i;
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+
+src/Graphics/ffglut.hpp:243:53: Loop condition is true. Entering loop body
+241.     ~ThePlot()
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+                                                           ^
+244.         if(*i) delete *i;
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+
+src/Graphics/ffglut.hpp:244:10: Taking true branch
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+244.         if(*i) delete *i;
+                ^
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+246.         if(*i) delete *i;
+
+src/Graphics/ffglut.hpp:244:14: Skipping operator*: function or method not found
+242.     {
+243.       for (list<OnePlot *>::iterator i= plots.begin();i != plots.end(); ++i)
+244.         if(*i) delete *i;
+                    ^
+245.       for (vector<Mesh *>::iterator i= Ths.begin();i != Ths.end(); ++i)
+246.         if(*i) delete *i;

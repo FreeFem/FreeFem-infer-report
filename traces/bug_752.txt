@@ -1,0 +1,28 @@
+examples++-load/Element_Mixte.cpp:1415: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::Elm_TypeOfFE_BDM1_2d accesses global variable from a different translation unit: Fem2D::QF_GaussLegendre2|.
+Showing all 3 steps of the trace
+
+
+examples++-load/Element_Mixte.cpp:1415:5: initialization of Fem2D::Elm_TypeOfFE_BDM1_2d
+1413.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2dOrtho(true);// RT1ortho
+1414.   
+1415.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2d(false);// BDM1
+            ^
+1416.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2dOrtho(true);// BDM1ortho  
+1417.       static TypeOfFE_TD_NNS0 Elm_TD_NNS;
+
+examples++-load/Element_Mixte.cpp:1415:29: call to Fem2D::TypeOfFE_BDM1_2d_TypeOfFE_BDM1_2d
+1413.       static TypeOfFE_RT2_2d Elm_TypeOfFE_RT2_2dOrtho(true);// RT1ortho
+1414.   
+1415.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2d(false);// BDM1
+                                    ^
+1416.       static TypeOfFE_BDM1_2d Elm_TypeOfFE_BDM1_2dOrtho(true);// BDM1ortho  
+1417.       static TypeOfFE_TD_NNS0 Elm_TD_NNS;
+
+examples++-load/Element_Mixte.cpp:1248:2: access to Fem2D::QF_GaussLegendre2|
+1246.   		 3*2, // nb P interpolation 
+1247.   		 0),
+1248.   	QFE(QF_GaussLegendre2),
+         ^
+1249.   	Ortho(ortho)
+1250.   	{  

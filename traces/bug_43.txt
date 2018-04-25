@@ -1,0 +1,25 @@
+src/libMesh/chrono.c:29: error: NULL_DEREFERENCE
+  pointer `ptm` last assigned on line 28 could be null and is dereferenced at line 29, column 9.
+Showing all 3 steps of the trace
+
+
+src/libMesh/chrono.c:23:1: start of procedure diftim()
+21.   
+22.   /* return elapsed time in secs. */
+23. > static double diftim(time_t t2,time_t t1) {
+24.     struct  tm  *ptm;
+25.     double  tim;
+
+src/libMesh/chrono.c:28:3: 
+26.     int     hh1,mm1,ss1,hh2,mm2,ss2;
+27.   
+28. >   ptm = localtime(&t1);
+29.     hh1 = ptm->tm_hour;
+30.     mm1 = ptm->tm_min;
+
+src/libMesh/chrono.c:29:3: 
+27.   
+28.     ptm = localtime(&t1);
+29. >   hh1 = ptm->tm_hour;
+30.     mm1 = ptm->tm_min;
+31.     ss1 = ptm->tm_sec;

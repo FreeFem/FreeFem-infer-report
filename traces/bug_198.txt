@@ -1,0 +1,44 @@
+examples++-load/Element_P1bl.cpp:153: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::P1blLagrange3d accesses global variable from a different translation unit: std::cout|.
+Showing all 5 steps of the trace
+
+
+examples++-load/Element_P1bl.cpp:153:5: initialization of Fem2D::P1blLagrange3d
+151.       }
+152.     
+153.       static TypeOfFE_P1blLagrange3d  P1blLagrange3d; //
+           ^
+154.       GTypeOfFE<Mesh3> & GP1blLagrange3d(P1blLagrange3d); //
+155.       static AddNewFE3 TypeOfFE_Edge1_3d("P1bl3d",&GP1blLagrange3d); //
+
+examples++-load/Element_P1bl.cpp:153:37: call to Fem2D::TypeOfFE_P1blLagrange3d_TypeOfFE_P1blLagrange3d
+151.       }
+152.     
+153.       static TypeOfFE_P1blLagrange3d  P1blLagrange3d; //
+                                           ^
+154.       GTypeOfFE<Mesh3> & GP1blLagrange3d(P1blLagrange3d); //
+155.       static AddNewFE3 TypeOfFE_Edge1_3d("P1bl3d",&GP1blLagrange3d); //
+
+examples++-load/Element_P1bl.cpp:85:36: call to Fem2D::TypeOfFE_Lagrange<Fem2D::Mesh3>_TypeOfFE_Lagrange
+  83.           typedef Mesh3 Mesh;
+  84.           typedef GFElement<Mesh3> FElement;
+  85.           TypeOfFE_P1blLagrange3d(): TypeOfFE_Lagrange<Mesh3>(-1) {  }
+                                           ^
+  86.           void FB(const What_d whatd,const Mesh & Th,const Mesh3::Element & K,const Rd &P, RNMK_ & val) const;
+  87.       } ;
+
+src/femlib/PkLagrange.hpp:115:5: call to Fem2D::SetPtPk<Fem2D::R3,_Fem2D::Tet>
+    113.       if(verbosity>9)    
+    114.       cout << "\n +++ P"<<k<<" : ndof : "<< n <<endl;
+    115.       SetPtPk<RdHat,Element> (this->PtInterpolation,this->ndfOn(),this->NbDoF);
+               ^
+    116.       if(verbosity>9)    cout << this->PtInterpolation<< endl;
+    117.       for (int i=0;i<n;i++) 
+
+src/femlib/PkLagrange.hpp:61:2: access to std::cout|
+    59.       if(nn != k)
+    60.         { 
+    61.   	cout << nn << " == " << k << " d = "<< d << " " << dfon[0]<< dfon[1]<<dfon[2]<<dfon[3]<<" "<< E::ne << endl;
+           ^
+    62.   	assert(nn==k); 
+    63.         }  

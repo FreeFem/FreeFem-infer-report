@@ -1,0 +1,12 @@
+src/medit/util.c:27: error: DEAD_STORE
+  The value written to &font_style (type void*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/util.c:27:7: Write of unused value
+25.         font_style = GLUT_BITMAP_HELVETICA_12;
+26.       else if (size == 18)
+27.         font_style = GLUT_BITMAP_HELVETICA_18;
+            ^
+28.     }
+29.     else if (strcmp(name, "times roman") == 0) {

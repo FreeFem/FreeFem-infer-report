@@ -1,0 +1,12 @@
+examples++-load/tetgen.cpp:1877: error: DEAD_STORE
+  The value written to &m (type Fem2D::Mesh3*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/tetgen.cpp:1877:5: Write of unused value
+1875.       ffassert( pTh );
+1876.       Mesh3 &Th=*pTh;
+1877.       Mesh3 *m= pTh;   // question a quoi sert *m ??
+            ^
+1878.       int nbv=Th.nv; // nombre de sommet
+1879.       int nbt=Th.nt; // nombre de triangles

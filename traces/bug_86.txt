@@ -1,0 +1,12 @@
+examples++-load/Element_P2pnc.cpp:97: error: DEAD_STORE
+  The value written to &l0 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_P2pnc.cpp:97:13: Write of unused value
+95.           {
+96.               double w=QFK[p].a;
+97.               R l1=QFK[p].x,l2= QFK[p].y, l0 = 1-l1-l2;
+                   ^
+98.               R b = 1;//2-3*(l0*l0+l1*l1+l2*l2);
+99.               v[k++]=b*w;

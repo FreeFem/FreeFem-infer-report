@@ -1,0 +1,12 @@
+examples++-load/isoline.cpp:435: error: DEAD_STORE
+  The value written to &Uvp (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isoline.cpp:435:17: Write of unused value
+433.                   if(ddd1) cout << "\t\t"<< iv << " " <<Uv << endl;
+434.                   assert(Uv>=Uvp);// verif piority queue
+435.                   Uvp = Uv;
+                       ^
+436.                   for(int p=head[iv]; p >=0; p=next[p]) // lpour les triangle autour de iv
+437.                   {

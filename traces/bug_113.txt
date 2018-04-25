@@ -1,0 +1,12 @@
+examples++-load/mshmet.cpp:143: error: DEAD_STORE
+  The value written to &h3 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/mshmet.cpp:143:7: Write of unused value
+141.         ux = p2->c[0] - p1->c[0];
+142.         uy = p2->c[1] - p1->c[1];
+143.         h3 = sqrt(ux*ux + uy*uy);
+             ^
+144.         /*
+145.         pe        = 0.5 * (h1 + h2 + h3);

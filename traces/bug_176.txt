@@ -1,0 +1,63 @@
+src/medit/path.c:141: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired by call to `fopen()` at line 140, column 8 is not released after line 141, column 9.
+Showing all 8 steps of the trace
+
+
+src/medit/path.c:131:1: start of procedure pathLoad()
+129.   }
+130.   
+131. > int pathLoad(char *file,pScene sc) {
+132.     FILE      *in;
+133.     char      *ptr,data[256];
+
+src/medit/path.c:135:3: 
+133.     char      *ptr,data[256];
+134.   
+135. >   strcpy(data,file);
+136.     ptr = (char *)strstr(data,".mesh");
+137.     if ( ptr )  *ptr = '\0';
+
+src/medit/path.c:136:3: 
+134.   
+135.     strcpy(data,file);
+136. >   ptr = (char *)strstr(data,".mesh");
+137.     if ( ptr )  *ptr = '\0';
+138.     if ( !strstr(data,".path") )
+
+src/medit/path.c:137:8: Taking false branch
+135.     strcpy(data,file);
+136.     ptr = (char *)strstr(data,".mesh");
+137.     if ( ptr )  *ptr = '\0';
+              ^
+138.     if ( !strstr(data,".path") )
+139.       strcat(data,".path");
+
+src/medit/path.c:138:9: Taking true branch
+136.     ptr = (char *)strstr(data,".mesh");
+137.     if ( ptr )  *ptr = '\0';
+138.     if ( !strstr(data,".path") )
+               ^
+139.       strcat(data,".path");
+140.     in = fopen(data,"r");
+
+src/medit/path.c:139:5: 
+137.     if ( ptr )  *ptr = '\0';
+138.     if ( !strstr(data,".path") )
+139. >     strcat(data,".path");
+140.     in = fopen(data,"r");
+141.     if ( !in ) {
+
+src/medit/path.c:140:3: 
+138.     if ( !strstr(data,".path") )
+139.       strcat(data,".path");
+140. >   in = fopen(data,"r");
+141.     if ( !in ) {
+142.       sscanf(data,"DEFAULT.path");
+
+src/medit/path.c:141:9: Taking false branch
+139.       strcat(data,".path");
+140.     in = fopen(data,"r");
+141.     if ( !in ) {
+               ^
+142.       sscanf(data,"DEFAULT.path");
+143.       in = fopen(data,"r");

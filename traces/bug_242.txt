@@ -1,0 +1,12 @@
+examples++-load/dfft.cpp:219: error: DEAD_STORE
+  The value written to &jj (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/dfft.cpp:219:27: Write of unused value
+217.                int ii=i, jj=j;
+218.                if( ii > n2) ii=i-n;
+219.                if( jj > m2) jj=j-n;            
+                                 ^
+220.                R2 P(i*ki+ki0 ,j*kj+kj0);
+221.                mp->set(P.x,P.y);

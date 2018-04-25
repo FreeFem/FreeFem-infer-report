@@ -1,0 +1,44 @@
+examples++-load/Element_Mixte3d.cpp:2564: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::TypeOfFE_Edge1_3d accesses global variable from a different translation unit: map_type|.
+Showing all 5 steps of the trace
+
+
+examples++-load/Element_Mixte3d.cpp:2564:5: initialization of Fem2D::TypeOfFE_Edge1_3d
+2562.       static TypeOfFE_Edge1_3d  Edge1_3d; // TypeOfFE_Edge1_3d is the name of the class we defined
+2563.       GTypeOfFE<Mesh3> & GEdge13d(Edge1_3d); // GTypeOfFE<Mesh3> is the mother class
+2564.       static AddNewFE3 TypeOfFE_Edge1_3d("Edge13d",&GEdge13d); // Edge13d will be the name used by the user
+            ^
+2565.       
+2566.       static TypeOfFE_Edge2_3d  Edge2_3d;
+
+examples++-load/Element_Mixte3d.cpp:2564:22: call to AddNewFE3_AddNewFE3
+2562.       static TypeOfFE_Edge1_3d  Edge1_3d; // TypeOfFE_Edge1_3d is the name of the class we defined
+2563.       GTypeOfFE<Mesh3> & GEdge13d(Edge1_3d); // GTypeOfFE<Mesh3> is the mother class
+2564.       static AddNewFE3 TypeOfFE_Edge1_3d("Edge13d",&GEdge13d); // Edge13d will be the name used by the user
+                             ^
+2565.       
+2566.       static TypeOfFE_Edge2_3d  Edge2_3d;
+
+src/fflib/AddNewFE.h:101:36: call to atype<Fem2D::GTypeOfFE<Fem2D::Mesh3>_*>
+  99.       {
+  100.         ffassert(tfe); // check 
+  101.         Global.New(FEname, Type_Expr(atype<Fem2D::TypeOfFE3*>() ,new  EConstantTypeOfFE3(tfe)));
+                                            ^
+  102.         if(FEname2 && strlen(FEname2))
+  103.   	  TEF2dto3d[FindFE2(FEname2)]=tfe;
+
+src/fflib/AFunction.hpp:339:14: call to ShowType
+    337.    // basicForEachType * r=map_type[];
+    338.     if (ir == map_type.end()) { cerr << "Error: aType  '" << typeid(T).name() << "', doesn't exist\n";
+    339.                ShowType(cerr);
+                        ^
+    340.               throw(ErrorExec("exit",1));}
+    341.     return ir->second;}
+
+src/fflib/AFunction2.cpp:708:10: access to map_type|
+    706.    
+    707.      map<const string,basicForEachType *>::const_iterator i;
+    708.      for(i=map_type.begin();i!=map_type.end();i++)
+                    ^
+    709.        {
+    710.          f << " --"<< i->first <<" = " ; 

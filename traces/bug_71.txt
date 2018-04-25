@@ -1,0 +1,12 @@
+src/medit/medit.c:57: error: DEAD_STORE
+  The value written to &win (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/medit.c:57:3: Write of unused value
+55.     GLint      i,win;
+56.   
+57.     win = glutCreateWindow("Info");
+        ^
+58.     fprintf(stdout,"Graphic info:\n");
+59.     fprintf(stdout," GL Vendor:\t%s\n",glGetString(GL_VENDOR));

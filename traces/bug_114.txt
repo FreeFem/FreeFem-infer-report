@@ -1,0 +1,105 @@
+examples++-load/mshmet.cpp:93: error: NULL_DEREFERENCE
+  pointer `meshMSHMET` last assigned on line 91 could be null and is dereferenced at line 93, column 3.
+Showing all 14 steps of the trace
+
+
+examples++-load/mshmet.cpp:89:1: start of procedure mesh_to_MSHMET_pMesh()
+87.      }
+88.   
+89. > MSHMET_pMesh mesh_to_MSHMET_pMesh( const Mesh &Th ){
+90.     MSHMET_pMesh meshMSHMET;
+91.     meshMSHMET = (MSHMET_pMesh)M_calloc(1,sizeof(MSHMET_Mesh),"mesh2") ;
+
+examples++-load/mshmet.cpp:91:3: 
+89.   MSHMET_pMesh mesh_to_MSHMET_pMesh( const Mesh &Th ){
+90.     MSHMET_pMesh meshMSHMET;
+91. >   meshMSHMET = (MSHMET_pMesh)M_calloc(1,sizeof(MSHMET_Mesh),"mesh2") ;
+92.     
+93.     meshMSHMET->dim = 2;
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+  128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130. >     for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is false. Leaving loop
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+                       ^
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:132:5: 
+  130.       for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132. >     cur   = 1;
+  133.       stack = 0;
+  134.     }
+
+src/libMesh/memory.c:133:5: 
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+  133. >     stack = 0;
+  134.     }
+  135.   
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+examples++-load/mshmet.cpp:93:3: 
+91.     meshMSHMET = (MSHMET_pMesh)M_calloc(1,sizeof(MSHMET_Mesh),"mesh2") ;
+92.     
+93. >   meshMSHMET->dim = 2;
+94.     meshMSHMET->np = Th.nv;
+95.     meshMSHMET->nt = Th.nt;

@@ -1,0 +1,12 @@
+src/fflib/glumesh2D.cpp:288: error: DEAD_STORE
+  The value written to &vv (type Fem2D::TVertex<Fem2D::R2>*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/glumesh2D.cpp:288:3: Write of unused value
+286.     BoundaryEdge *b= new BoundaryEdge[nebn];
+287.     // generation des nouveaux sommets 
+288.     Vertex *vv=v;
+         ^
+289.     // copie des anciens sommets (remarque il n'y a pas operateur de copy des sommets)
+290.     for (int i=0;i<nbv;i++)

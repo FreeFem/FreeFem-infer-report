@@ -1,0 +1,12 @@
+examples++-load/mmg3d-v4.0.cpp:392: error: DEAD_STORE
+  The value written to &cc (type char) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/mmg3d-v4.0.cpp:392:38: Write of unused value
+390.       for(int i=0;i<args.N();cc=args[i++])
+391.         {
+392.   	if (isspace(args[i]) &&  cc!='\\' ) cc=args[i]='\0';		
+                                            ^
+393.   	else if ( !cc ) argv[argc++]=& args[i];	
+394.   	ffassert(argc<1000);

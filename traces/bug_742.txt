@@ -1,0 +1,12 @@
+src/femlib/Mesh3dn.cpp:1403: error: DEAD_STORE
+  The value written to &nve (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/Mesh3dn.cpp:1403:5: Write of unused value
+1401.       typedef R3 Rd;
+1402.       const Mesh3::Element & T(Th[it]);
+1403.       const int nve = 4;
+            ^
+1404.       const Rd  Q[nve]={(const R3) T[0],(const R3) T[1],(const R3) T[2],(const R3) T[3]};
+1405.       

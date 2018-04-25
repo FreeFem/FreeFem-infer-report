@@ -1,0 +1,12 @@
+src/Eigen/eigenvalue.cpp:516: error: DEAD_STORE
+  The value written to &mymode (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Eigen/eigenvalue.cpp:516:5: Write of unused value
+514.       double sigma=0;
+515.       int driver = 4; //
+516.       int mymode = -1;// unset
+           ^
+517.       KN<double> * evalue=0;
+518.       KN<double> * evaluei=0;

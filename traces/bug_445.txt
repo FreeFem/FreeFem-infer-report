@@ -1,0 +1,12 @@
+src/bamglib/MeshRead.cpp:459: error: DEAD_STORE
+  The value written to &l (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshRead.cpp:459:3: Write of unused value
+457.     IFortranUnFormattedFile f_in(ff);
+458.   
+459.     Int4  l=f_in.Record();
+         ^
+460.     assert(l==2*sizeof(Int4));
+461.     f_in >> nbv >> nbt ;

@@ -1,0 +1,12 @@
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:533: error: DEAD_STORE
+  The value written to &ldb (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:533:5: Write of unused value
+531.       SuperLUStat_t  stat;
+532.       //int            iam;
+533.       int            info=0, ldb=m, nrhs=1;
+           ^
+534.       int            i;
+535.       double*        berr;

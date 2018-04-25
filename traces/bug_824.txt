@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:2306: error: DEAD_STORE
+  The value written to &kstack (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:2306:12: Write of unused value
+2304.   	    }
+2305.   	    
+2306.   	    stack[kstack++] = -1; // to stop
+                   ^
+2307.   	    Int4 i1;
+2308.   	    kstack =0; 

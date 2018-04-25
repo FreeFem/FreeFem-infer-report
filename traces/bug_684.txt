@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1230: error: DEAD_STORE
+  The value written to &bbff (type Fem2D::TBoundaryEdge<Fem2D::R2>*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1230:3: Write of unused value
+1228.       	  iv[j-firstCell[i]] = IntCells[j];
+1229.   	}
+1230.   	(bbff++)->set(vff, iv[0], iv[1], label);
+          ^
+1231.   	break;
+1232.         case 5:  // Triangle

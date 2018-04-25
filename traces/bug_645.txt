@@ -1,0 +1,117 @@
+examples++-mpi/parms_FreeFem.cpp:849: error: NULL_DEREFERENCE
+  pointer `rhsb` last assigned on line 848 could be null and is dereferenced at line 849, column 20.
+Showing all 15 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:832:2: start of procedure Solver
+830.   	
+831.   }
+832.   	void Solver(const MatriceMorse<double> &AA,KN_<double> &x,const KN_<double> &b) const  {
+        ^
+833.   	/* Vec structure
+834.   	 rhs -- right hand side,
+
+examples++-mpi/parms_FreeFem.cpp:843:3: 
+841.   	 double res1;
+842.   	 double 	dnnz_pre, dgprec_nnz;
+843. > 	 nnz=AA.nbcoef;	
+844.   
+845.   	 CreateVec(&rhs);
+
+examples++-mpi/parms_FreeFem.cpp:845:3: Skipping CreateVec(): function or method not found
+843.   	 nnz=AA.nbcoef;	
+844.   
+845.   	 CreateVec(&rhs);
+         ^
+846.   	 CreateVec(&sol);
+847.   	 n=AA.n;
+
+examples++-mpi/parms_FreeFem.cpp:846:3: Skipping CreateVec(): function or method not found
+844.   
+845.   	 CreateVec(&rhs);
+846.   	 CreateVec(&sol);
+         ^
+847.   	 n=AA.n;
+848.   	  double * rhsb=(double *)malloc(sizeof(double)*n);
+
+examples++-mpi/parms_FreeFem.cpp:847:3: 
+845.   	 CreateVec(&rhs);
+846.   	 CreateVec(&sol);
+847. > 	 n=AA.n;
+848.   	  double * rhsb=(double *)malloc(sizeof(double)*n);
+849.   	 for(i=0;i<n;i++) rhsb[i]=b[i];
+
+examples++-mpi/parms_FreeFem.cpp:848:4: 
+846.   	 CreateVec(&sol);
+847.   	 n=AA.n;
+848. > 	  double * rhsb=(double *)malloc(sizeof(double)*n);
+849.   	 for(i=0;i<n;i++) rhsb[i]=b[i];
+850.   	 /* Copy communication structure to Vec */
+
+examples++-mpi/parms_FreeFem.cpp:849:7: 
+847.   	 n=AA.n;
+848.   	  double * rhsb=(double *)malloc(sizeof(double)*n);
+849. > 	 for(i=0;i<n;i++) rhsb[i]=b[i];
+850.   	 /* Copy communication structure to Vec */
+851.   	 CopyComm(dm,rhs);
+
+examples++-mpi/parms_FreeFem.cpp:849:11: Loop condition is true. Entering loop body
+847.   	 n=AA.n;
+848.   	  double * rhsb=(double *)malloc(sizeof(double)*n);
+849.   	 for(i=0;i<n;i++) rhsb[i]=b[i];
+                 ^
+850.   	 /* Copy communication structure to Vec */
+851.   	 CopyComm(dm,rhs);
+
+examples++-mpi/parms_FreeFem.cpp:849:20: 
+847.   	 n=AA.n;
+848.   	  double * rhsb=(double *)malloc(sizeof(double)*n);
+849. > 	 for(i=0;i<n;i++) rhsb[i]=b[i];
+850.   	 /* Copy communication structure to Vec */
+851.   	 CopyComm(dm,rhs);
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:404:32: 
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404. >   R & operator[](int i) const {return v[index(i)];}
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+    335.     long last()      const      { return (n-1)*step;}
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+             ^
+    338.              return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338. >            return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338.              return step*k;}
+                                    ^
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<double>_operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+                                                           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   

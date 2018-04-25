@@ -1,0 +1,12 @@
+examples++-load/isoline.cpp:275: error: DEAD_STORE
+  The value written to &nxx (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isoline.cpp:275:9: Write of unused value
+273.       int next(int k0,multimap<int,int> & L,int rm=0)
+274.       {
+275.           int nxx=-1;
+               ^
+276.           if(nx>=0) {
+277.               nxx=nx;

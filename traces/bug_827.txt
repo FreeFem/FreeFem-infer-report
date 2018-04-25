@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:2185: error: DEAD_STORE
+  The value written to &mp (type Fem2D::MeshPoint*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:2185:19: Write of unused value
+2183.       //    ffassert(0);
+2184.       typedef  FElement3::Element Element;
+2185.       MeshPoint mp= *MeshPointStack(stack);
+                          ^
+2186.       R ** copt = Stack_Ptr<R*>(stack,ElemMatPtrOffset);
+2187.       

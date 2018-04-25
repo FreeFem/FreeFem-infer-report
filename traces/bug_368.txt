@@ -1,0 +1,12 @@
+examples++-mpi/MUMPS.cpp:336: error: DEAD_STORE
+  The value written to &mat (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/MUMPS.cpp:336:3: Write of unused value
+334.     if(ds.lparams.N()>1) matrank = ds.lparams[1];// <0 => distri mat ..
+335.     if( ! strategy) strategy=3;
+336.     int mat = mpirank == matrank || matrank < 0; 
+         ^
+337.     if(A)
+338.       return new SolverMumps<R>(*A, ds.lparams, ds.dparams, pcw,strategy,matrank,ds.rinfo,ds.info);

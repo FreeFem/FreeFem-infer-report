@@ -1,0 +1,12 @@
+examples++-load/lapack.cpp:215: error: DEAD_STORE
+  The value written to &lw (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/lapack.cpp:215:3: Write of unused value
+213.     KNM<Complex> vr(n,n),vl(n,n);
+214.     KNM<Complex> mat(*A);
+215.     intblas info,lw=-1;
+         ^
+216.     KN<Complex> wk(1);
+217.     KN<double> rwk(2*n);

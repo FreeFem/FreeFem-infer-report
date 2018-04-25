@@ -1,0 +1,35 @@
+src/femlib/QuadratureFormular.cpp:335: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::QF_GaussLegendre3 accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+src/femlib/QuadratureFormular.cpp:335:1: initialization of Fem2D::QF_GaussLegendre3
+333.   const R gauss1_n5_b=  sqrt(245.+14.*sqrt(70.))/21.;
+334.   
+335. > const QuadratureFormular1d QF_GaussLegendre3(5,
+336.                     QuadratureFormular1d::QP(pgauss_n3_0,gauss_n3_0),
+337.                     QuadratureFormular1d::QP(pgauss_n3_1,gauss_n3_1),
+
+src/femlib/QuadratureFormular.cpp:335:28: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+333.   const R gauss1_n5_b=  sqrt(245.+14.*sqrt(70.))/21.;
+334.   
+335.   const QuadratureFormular1d QF_GaussLegendre3(5,
+                                  ^
+336.                     QuadratureFormular1d::QP(pgauss_n3_0,gauss_n3_0),
+337.                     QuadratureFormular1d::QP(pgauss_n3_1,gauss_n3_1),
+
+src/femlib/QuadratureFormular.hpp:94:81: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+  92.       : exact(ex),n(4),size(n),p(new QP[4]) ,clean(true){ p[0]=p0,p[1]=p1,p[2]=p2;p[3]=p3;Verification();}
+  93.     GQuadratureFormular(int ex,QP p0,QP p1,QP p2) 
+  94.       : exact(ex),n(3),size(n),p(new QP[3]),clean(true) { p[0]=p0,p[1]=p1,p[2]=p2;Verification();}
+                                                                                        ^
+  95.     GQuadratureFormular(int ex,QP p0,QP p1) 
+  96.       : exact(ex),n(2),size(n),p(new QP[2]),clean(true) { p[0]=p0,p[1]=p1;Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

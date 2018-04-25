@@ -1,0 +1,12 @@
+src/medit/vector.c:662: error: DEAD_STORE
+  The value written to &scalemax (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/vector.c:662:3: Write of unused value
+660.   
+661.     scalemin = sc->dmax * SCALV;
+662.     scalemax = 15*scalemin;
+         ^
+663.     mesh->mark++;
+664.     glLineWidth(2.0);

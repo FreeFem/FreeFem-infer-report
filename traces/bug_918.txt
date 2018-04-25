@@ -1,0 +1,73 @@
+src/fflib/lgfem.cpp:6194: error: NULL_DEREFERENCE
+  pointer `b` last assigned on line 6192 could be null and is dereferenced at line 6194, column 14.
+Showing all 9 steps of the trace
+
+
+src/fflib/lgfem.cpp:6189:2: start of procedure code
+6187.   }
+6188.    
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+         ^
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+
+src/fflib/lgfem.cpp:6190:8: 
+6188.    
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+6190. >        E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+
+src/fflib/lgfem.cpp:6191:7: Skipping LeftValue: function or method not found
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+              ^
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+6193.         int na=a.size();
+
+src/fflib/lgfem.cpp:6192:7: Skipping LeftValue: function or method not found
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+              ^
+6193.         int na=a.size();
+6194.         int nb=b.size();
+
+src/fflib/lgfem.cpp:6193:7: 
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+6193. >       int na=a.size();
+6194.         int nb=b.size();
+6195.         if (na != nb ) 
+
+src/fflib/AFunction.hpp:1643:2: start of procedure size
+  1641.        return  Nothing;}
+  1642.    const C_F0 & operator [] (int i) const {throwassert(v );return (*v)[i];}
+  1643.    int size() const {return v->size();}
+           ^
+  1644.    size_t nbitem() const {return v->size();}
+  1645.    void map(C_F0 (*mapping)(const C_F0 & )) const 
+
+src/fflib/AFunction.hpp:1643:20: Skipping size: function or method not found
+  1641.        return  Nothing;}
+  1642.    const C_F0 & operator [] (int i) const {throwassert(v );return (*v)[i];}
+  1643.    int size() const {return v->size();}
+                             ^
+  1644.    size_t nbitem() const {return v->size();}
+  1645.    void map(C_F0 (*mapping)(const C_F0 & )) const 
+
+src/fflib/AFunction.hpp:1643:37: return from a call to E_Array_size
+  1641.        return  Nothing;}
+  1642.    const C_F0 & operator [] (int i) const {throwassert(v );return (*v)[i];}
+  1643.    int size() const {return v->size();}
+                                              ^
+  1644.    size_t nbitem() const {return v->size();}
+  1645.    void map(C_F0 (*mapping)(const C_F0 & )) const 
+
+src/fflib/lgfem.cpp:6194:7: 
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+6193.         int na=a.size();
+6194. >       int nb=b.size();
+6195.         if (na != nb ) 
+6196.           CompileError("Copy of Array with incompatible size!");

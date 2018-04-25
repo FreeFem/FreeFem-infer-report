@@ -1,0 +1,12 @@
+src/femlib/FESpace.cpp:688: error: DEAD_STORE
+  The value written to &NbDfOnSommet (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FESpace.cpp:688:3: Write of unused value
+686.     const TypeOfFE & TFE(*TFEs[0]);
+687.     int nbdfe=TFE.NbDoF; 
+688.     int NbDfOnSommet=TFE.NbDfOnVertex;
+         ^
+689.     int NbDfOnEdge=TFE.NbDfOnEdge;
+690.     int NbDfOnElement=TFE.NbDfOnElement;

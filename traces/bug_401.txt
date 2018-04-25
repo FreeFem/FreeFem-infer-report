@@ -1,0 +1,12 @@
+src/bamglib/MeshQuad.cpp:389: error: DEAD_STORE
+  The value written to &newNbOfQuad (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshQuad.cpp:389:2: Write of unused value
+387.     Int4 newnbt=0,newnbv=0;
+388.     Int4 * kedge = 0;
+389.    Int4 newNbOfQuad=NbOfQuad;
+        ^
+390.     Int4 * ksplit= 0, * ksplitarray=0;
+391.     Int4 kkk=0;

@@ -1,0 +1,35 @@
+examples++-mpi/MUMPS_FreeFem.cpp:2605: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of FFinit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-mpi/MUMPS_FreeFem.cpp:2605:1: initialization of FFinit
+2603.   }
+2604.   #include "InitFunct.hpp"
+2605. > addingInitFunct FFinit(100,ffinit,"MUMPS_FreeFem");
+2606.   
+2607.   LOADFUNC(Load_Init);
+
+examples++-mpi/MUMPS_FreeFem.cpp:2605:17: call to addingInitFunct_addingInitFunct
+2603.   }
+2604.   #include "InitFunct.hpp"
+2605.   addingInitFunct FFinit(100,ffinit,"MUMPS_FreeFem");
+                        ^
+2606.   
+2607.   LOADFUNC(Load_Init);
+
+src/fflib/InitFunct.hpp:42:5: call to addInitFunct
+  40.     addingInitFunct(int i,void  (* f)(),const char *name="") {
+  41.       // [[file:~/ff/src/fflib/InitFunct.cpp::addInitFunct]]
+  42.       addInitFunct(i,f,name);
+            ^
+  43.     }
+  44.   } ;
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

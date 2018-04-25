@@ -1,0 +1,12 @@
+examples++-hpddm/hpddm_substructuring.cpp:521: error: DEAD_STORE
+  The value written to &t (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/hpddm_substructuring.cpp:521:9: Write of unused value
+519.       if(timing) {
+520.           (*timing)[1] = MPI_Wtime() - t;
+521.           t = MPI_Wtime();
+               ^
+522.       }
+523.   

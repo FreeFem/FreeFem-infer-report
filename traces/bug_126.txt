@@ -1,0 +1,35 @@
+examples++-load/shell.cpp:103: error: MEMORY_LEAK
+  memory dynamically allocated by call to `malloc()` at line 101, column 31 is not reachable after line 103, column 5.
+Showing all 4 steps of the trace
+
+
+examples++-load/shell.cpp:99:1: start of procedure ffsetenv()
+97.   }
+98.   
+99. > long  ffsetenv(string * const & k,string * const & v)
+100.   {
+101.       char * vv = strcpy((char*)malloc(v->size()+2),v->c_str());
+
+examples++-load/shell.cpp:101:5: Skipping c_str: function or method not found
+99.   long  ffsetenv(string * const & k,string * const & v)
+100.   {
+101.       char * vv = strcpy((char*)malloc(v->size()+2),v->c_str());
+           ^
+102.       char * kk = strcpy((char*)malloc(k->size()+2),k->c_str());
+103.       long r= setenv(vv,kk,1);
+
+examples++-load/shell.cpp:102:5: Skipping c_str: function or method not found
+100.   {
+101.       char * vv = strcpy((char*)malloc(v->size()+2),v->c_str());
+102.       char * kk = strcpy((char*)malloc(k->size()+2),k->c_str());
+           ^
+103.       long r= setenv(vv,kk,1);
+104.       return r ;
+
+examples++-load/shell.cpp:103:5: Skipping setenv(): function or method not found
+101.       char * vv = strcpy((char*)malloc(v->size()+2),v->c_str());
+102.       char * kk = strcpy((char*)malloc(k->size()+2),k->c_str());
+103.       long r= setenv(vv,kk,1);
+           ^
+104.       return r ;
+105.   }

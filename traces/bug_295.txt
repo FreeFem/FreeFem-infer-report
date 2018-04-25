@@ -1,0 +1,197 @@
+examples++-load/mshmet.cpp:253: error: NULL_DEREFERENCE
+  pointer `sol->met` last assigned on line 249 could be null and is dereferenced at line 253, column 7.
+Showing all 26 steps of the trace
+
+
+examples++-load/mshmet.cpp:242:1: start of procedure metric_mshmet()
+240.   }
+241.   
+242. > void metric_mshmet( MSHMET_pSol sol, MSHMET_Info *info, const KN<double> &metric){
+243.     static const int wrapperMetric[6]={0,1,3,2,4,5};
+244.     int k,ia,i;
+
+examples++-load/mshmet.cpp:243:3: 
+241.   
+242.   void metric_mshmet( MSHMET_pSol sol, MSHMET_Info *info, const KN<double> &metric){
+243. >   static const int wrapperMetric[6]={0,1,3,2,4,5};
+244.     int k,ia,i;
+245.     
+
+examples++-load/mshmet.cpp:246:3: Skipping operator<<: function or method not found
+244.     int k,ia,i;
+245.     
+246.     cout << " info->iso " << info->iso << endl;
+         ^
+247.     if( info->iso == 1 ){
+248.       cout << " info->iso 11 " << info->iso << endl;
+
+examples++-load/mshmet.cpp:247:7: Taking true branch
+245.     
+246.     cout << " info->iso " << info->iso << endl;
+247.     if( info->iso == 1 ){
+             ^
+248.       cout << " info->iso 11 " << info->iso << endl;
+249.       sol->met = (double*)M_calloc(sol->np+1,sizeof(double),"sol->met");
+
+examples++-load/mshmet.cpp:248:5: Skipping operator<<: function or method not found
+246.     cout << " info->iso " << info->iso << endl;
+247.     if( info->iso == 1 ){
+248.       cout << " info->iso 11 " << info->iso << endl;
+           ^
+249.       sol->met = (double*)M_calloc(sol->np+1,sizeof(double),"sol->met");
+250.       assert(sol->met);
+
+examples++-load/mshmet.cpp:249:5: 
+247.     if( info->iso == 1 ){
+248.       cout << " info->iso 11 " << info->iso << endl;
+249. >     sol->met = (double*)M_calloc(sol->np+1,sizeof(double),"sol->met");
+250.       assert(sol->met);
+251.       // isotrope
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+  121.      elsize bytes, and initializes the space to zeros.  
+  122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+  123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+  124.     int    i;
+  125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+  125.   
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+                 ^
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+  126.     /* check if first call */
+  127.     if ( !mstack ) {
+  128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130. >     for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is false. Leaving loop
+  128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+  129.       assert(mstack);
+  130.       for (i=1; i<MAXMEM; i++)
+                       ^
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+
+src/libMesh/memory.c:132:5: 
+  130.       for (i=1; i<MAXMEM; i++)
+  131.         mstack[i].nxt    = i+1;
+  132. >     cur   = 1;
+  133.       stack = 0;
+  134.     }
+
+src/libMesh/memory.c:133:5: 
+  131.         mstack[i].nxt    = i+1;
+  132.       cur   = 1;
+  133. >     stack = 0;
+  134.     }
+  135.   
+
+src/libMesh/memory.c:137:8: Taking false branch
+  135.   
+  136.     /* store pointer, size */
+  137.     if ( stack < MAXMEM ) {
+                ^
+  138.       mstack[cur].ptr  = calloc(nelem,elsize);
+  139.       if ( !mstack[cur].ptr )  return(0);
+
+src/libMesh/memory.c:156:5: 
+  154.     }
+  155.     else {
+  156. >     fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158.       return(0);
+
+src/libMesh/memory.c:158:5: 
+  156.       fprintf(stderr,"M_calloc: unable to allocate %10zd bytes. table full\n",
+  157.   	    nelem*elsize);
+  158. >     return(0);
+  159.     }
+  160.   }
+
+src/libMesh/memory.c:160:1: return from a call to M_calloc
+  158.       return(0);
+  159.     }
+  160. > }
+  161.   
+  162.   /* Changes the size of the block pointed to by ptr to size bytes 
+
+examples++-load/mshmet.cpp:252:10: 
+250.       assert(sol->met);
+251.       // isotrope
+252. >     for (k=1; k<=sol->np; k++) {
+253.         sol->met[k] = metric[ k-1 ]; 
+254.       }
+
+examples++-load/mshmet.cpp:252:15: Loop condition is true. Entering loop body
+250.       assert(sol->met);
+251.       // isotrope
+252.       for (k=1; k<=sol->np; k++) {
+                     ^
+253.         sol->met[k] = metric[ k-1 ]; 
+254.       }
+
+examples++-load/mshmet.cpp:253:7: 
+251.       // isotrope
+252.       for (k=1; k<=sol->np; k++) {
+253. >       sol->met[k] = metric[ k-1 ]; 
+254.       }
+255.     }
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:404:32: 
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404. >   R & operator[](int i) const {return v[index(i)];}
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+    335.     long last()      const      { return (n-1)*step;}
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+             ^
+    338.              return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338. >            return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338.              return step*k;}
+                                    ^
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<double>_operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+                                                           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   

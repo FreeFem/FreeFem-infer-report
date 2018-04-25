@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:1690: error: DEAD_STORE
+  The value written to &th0 (type Fem2D::Mesh3 const *) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:1690:7: Write of unused value
+1688.         kk++;
+1689.         const Mesh3 &Th3(**i);  // definis ???
+1690.         th0=&Th3;
+              ^
+1691.         if(verbosity>1)  cout << " determination of hmin : GluMesh3D + "<< Th3.nv << " " << Th3.nt << " "<< Th3.nbe << endl;
+1692.         

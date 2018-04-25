@@ -1,0 +1,178 @@
+src/fflib/lgmat.cpp:564: error: NULL_DEREFERENCE
+  pointer `op` last assigned on line 562 could be null and is dereferenced at line 564, column 21.
+Showing all 23 steps of the trace
+
+
+src/fflib/lgmat.cpp:557:8: start of procedure SetMatrix_Op
+555.   
+556.          public:
+557.          SetMatrix_Op(const basicAC_F0 &  args,Expression aa) : a(aa) {
+              ^
+558.            args.SetNameParam(n_name_param,name_param,nargs);
+559.            precon = 0; //  a changer 
+
+src/fflib/lgmat.cpp:564:64: Skipping E_F0mps: function or method not found
+562.              const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3]);
+563.              assert(op);
+564.              precon = op->Find("(",ArrayOfaType(atype<KN<R>* >(),false)); // strange bug in g++ is R become a double
+                                                                      ^
+565.             }
+566.            
+
+src/fflib/lgmat.cpp:557:63: 
+555.   
+556.          public:
+557. >        SetMatrix_Op(const basicAC_F0 &  args,Expression aa) : a(aa) {
+558.            args.SetNameParam(n_name_param,name_param,nargs);
+559.            precon = 0; //  a changer 
+
+src/fflib/lgmat.cpp:558:10: 
+556.          public:
+557.          SetMatrix_Op(const basicAC_F0 &  args,Expression aa) : a(aa) {
+558. >          args.SetNameParam(n_name_param,name_param,nargs);
+559.            precon = 0; //  a changer 
+560.            if ( nargs[3])
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking true branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:15: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                        ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+src/fflib/lgmat.cpp:559:10: 
+557.          SetMatrix_Op(const basicAC_F0 &  args,Expression aa) : a(aa) {
+558.            args.SetNameParam(n_name_param,name_param,nargs);
+559. >          precon = 0; //  a changer 
+560.            if ( nargs[3])
+561.             {
+
+src/fflib/lgmat.cpp:560:15: Taking true branch
+558.            args.SetNameParam(n_name_param,name_param,nargs);
+559.            precon = 0; //  a changer 
+560.            if ( nargs[3])
+                     ^
+561.             {
+562.              const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3]);
+
+src/fflib/lgmat.cpp:562:12: 
+560.            if ( nargs[3])
+561.             {
+562. >            const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3]);
+563.              assert(op);
+564.              precon = op->Find("(",ArrayOfaType(atype<KN<R>* >(),false)); // strange bug in g++ is R become a double
+
+src/fflib/lgmat.cpp:564:12: 
+562.              const  Polymorphic * op=  dynamic_cast<const  Polymorphic *>(nargs[3]);
+563.              assert(op);
+564. >            precon = op->Find("(",ArrayOfaType(atype<KN<R>* >(),false)); // strange bug in g++ is R become a double
+565.             }
+566.            

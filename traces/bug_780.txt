@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:1676: error: DEAD_STORE
+  The value written to &pThdi (type Fem2D::Mesh const *) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:1676:9: Write of unused value
+1674.           
+1675.           const CDomainOfIntegration & di= *b->di;
+1676.           const Mesh * pThdi = GetAny<pmesh>( (* di.Th)(stack));
+                ^
+1677.           SHOWVERB(cout << " FormBilinear () " << endl);
+1678.           //MatriceElementaireSymetrique<R> *mates =0;

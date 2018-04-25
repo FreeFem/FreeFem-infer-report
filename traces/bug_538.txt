@@ -1,0 +1,12 @@
+examples++-load/medit.cpp:585: error: DEAD_STORE
+  The value written to &nbe (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/medit.cpp:585:3: Write of unused value
+583.     int nt = Th.nt;
+584.     int nv = Th.nv;
+585.     int nbe = Th.nbe;
+         ^
+586.     int nbtype=l.size();
+587.     int nbsol;

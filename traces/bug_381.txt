@@ -1,0 +1,35 @@
+src/femlib/QuadratureFormular.cpp:344: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::QF_GaussLegendre1 accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+src/femlib/QuadratureFormular.cpp:344:1: initialization of Fem2D::QF_GaussLegendre1
+342.                     QuadratureFormular1d::QP(0.5,gauss_n2_2)); 
+343.   
+344. > const QuadratureFormular1d QF_GaussLegendre1(1,QuadratureFormular1d::QP(1,0.5)); 
+345.   
+346.   const QuadratureFormular1d QF_LumpP1_1D(1,
+
+src/femlib/QuadratureFormular.cpp:344:28: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+342.                     QuadratureFormular1d::QP(0.5,gauss_n2_2)); 
+343.   
+344.   const QuadratureFormular1d QF_GaussLegendre1(1,QuadratureFormular1d::QP(1,0.5)); 
+                                  ^
+345.   
+346.   const QuadratureFormular1d QF_LumpP1_1D(1,
+
+src/femlib/QuadratureFormular.hpp:98:65: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+  96.       : exact(ex),n(2),size(n),p(new QP[2]),clean(true) { p[0]=p0,p[1]=p1;Verification();}
+  97.     GQuadratureFormular(int ex,QP p0) 
+  98.       : exact(ex),n(1),size(n),p(new QP[1]),clean(true) { p[0]=p0;Verification();}
+                                                                         ^
+  99.     // bluid a empty GQuadratureFormular
+  100.     GQuadratureFormular(int ssize):exact(0),n(0),size(ssize),p(new QP[size]),clean(true) {}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

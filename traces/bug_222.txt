@@ -1,0 +1,48 @@
+examples++-mpi/parms_FreeFem.cpp:180: error: NULL_DEREFERENCE
+  pointer `ipar` last assigned on line 178 could be null and is dereferenced at line 180, column 4.
+Showing all 6 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:174:10: start of procedure parm_param
+172.   		/*-------------------- done  */                       
+173.   	}
+174.   	public: parm_param(const KN<long> &param_int, const KN<double> &param_double)
+                ^
+175.   	{
+176.   		 int i; 
+
+examples++-mpi/parms_FreeFem.cpp:177:3: 
+175.   	{
+176.   		 int i; 
+177. > 		PARMS_malloc(prepar,1,_PrePar);
+178.   		PARMS_malloc(ipar,1,_IterPar);  
+179.   		for (i=1; i<18; i++)
+
+examples++-mpi/parms_FreeFem.cpp:178:3: 
+176.   		 int i; 
+177.   		PARMS_malloc(prepar,1,_PrePar);
+178. > 		PARMS_malloc(ipar,1,_IterPar);  
+179.   		for (i=1; i<18; i++)
+180.   		 ipar->ipar[i] = 0;
+
+examples++-mpi/parms_FreeFem.cpp:179:8: 
+177.   		PARMS_malloc(prepar,1,_PrePar);
+178.   		PARMS_malloc(ipar,1,_IterPar);  
+179. > 		for (i=1; i<18; i++)
+180.   		 ipar->ipar[i] = 0;
+181.   		
+
+examples++-mpi/parms_FreeFem.cpp:179:13: Loop condition is true. Entering loop body
+177.   		PARMS_malloc(prepar,1,_PrePar);
+178.   		PARMS_malloc(ipar,1,_IterPar);  
+179.   		for (i=1; i<18; i++)
+                   ^
+180.   		 ipar->ipar[i] = 0;
+181.   		
+
+examples++-mpi/parms_FreeFem.cpp:180:4: 
+178.   		PARMS_malloc(ipar,1,_IterPar);  
+179.   		for (i=1; i<18; i++)
+180. > 		 ipar->ipar[i] = 0;
+181.   		
+182.   		if(param_int.N()>0){if((param_int[0]<0)||(param_int[0]>2)) 

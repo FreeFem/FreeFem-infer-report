@@ -1,0 +1,12 @@
+examples++-hpddm/hpddm.cpp:766: error: DEAD_STORE
+  The value written to &ds (type char) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/hpddm.cpp:766:5: Write of unused value
+764.       const char ds = 'G';
+765.   #else
+766.       const char ds = 'S';
+           ^
+767.   #endif
+768.       const char zs = 'G';

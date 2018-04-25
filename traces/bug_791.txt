@@ -1,0 +1,158 @@
+src/medit/stream.c:1788: error: MEMORY_LEAK
+  memory dynamically allocated to `return` by call to `calloc()` at line 1767, column 17 is not reachable after line 1788, column 22.
+Showing all 21 steps of the trace
+
+
+src/medit/stream.c:1755:1: start of procedure createStream()
+1753.   
+1754.   
+1755. > pStream createStream(pScene sc,pMesh mesh) {
+1756.     pStream    st;
+1757.   
+
+src/medit/stream.c:1759:8: Taking false branch
+1757.   
+1758.     /* hash simplices */
+1759.     if ( mesh->dim == 2 ) {
+               ^
+1760.       if ( mesh->nt && !hashTria(mesh) )    return(0);
+1761.     }
+
+src/medit/stream.c:1763:10: Taking true branch
+1761.     }
+1762.     else {
+1763.       if ( mesh->ntet && !hashTetra(mesh) ) return(0);
+                 ^
+1764.       if ( mesh->nhex && !hashHexa(mesh) )  return(0);
+1765.     }
+
+src/medit/stream.c:1763:25: Taking false branch
+1761.     }
+1762.     else {
+1763.       if ( mesh->ntet && !hashTetra(mesh) ) return(0);
+                                ^
+1764.       if ( mesh->nhex && !hashHexa(mesh) )  return(0);
+1765.     }
+
+src/medit/stream.c:1764:10: Taking true branch
+1762.     else {
+1763.       if ( mesh->ntet && !hashTetra(mesh) ) return(0);
+1764.       if ( mesh->nhex && !hashHexa(mesh) )  return(0);
+                 ^
+1765.     }
+1766.   
+
+src/medit/stream.c:1764:25: Taking false branch
+1762.     else {
+1763.       if ( mesh->ntet && !hashTetra(mesh) ) return(0);
+1764.       if ( mesh->nhex && !hashHexa(mesh) )  return(0);
+                                ^
+1765.     }
+1766.   
+
+src/medit/stream.c:1767:3: 
+1765.     }
+1766.   
+1767. >   st = (pStream)calloc(1,sizeof(struct sstream));
+1768.     if ( !st )  return(0);
+1769.   
+
+src/medit/stream.c:1768:9: Taking false branch
+1766.   
+1767.     st = (pStream)calloc(1,sizeof(struct sstream));
+1768.     if ( !st )  return(0);
+                ^
+1769.   
+1770.     /*st->typtrack = Euler;*/
+
+src/medit/stream.c:1771:3: 
+1769.   
+1770.     /*st->typtrack = Euler;*/
+1771. >   st->typtrack = RK4;
+1772.     st->stnp     = 0;
+1773.     st->nbstl    = 0;
+
+src/medit/stream.c:1772:3: 
+1770.     /*st->typtrack = Euler;*/
+1771.     st->typtrack = RK4;
+1772. >   st->stnp     = 0;
+1773.     st->nbstl    = 0;
+1774.   
+
+src/medit/stream.c:1773:3: 
+1771.     st->typtrack = RK4;
+1772.     st->stnp     = 0;
+1773. >   st->nbstl    = 0;
+1774.   
+1775.     /* bounding box */
+
+src/medit/stream.c:1776:3: 
+1774.   
+1775.     /* bounding box */
+1776. >   st->xmin = mesh->xmin - mesh->xtra;
+1777.     st->ymin = mesh->ymin - mesh->ytra;
+1778.     st->zmin = mesh->zmin - mesh->ztra;
+
+src/medit/stream.c:1777:3: 
+1775.     /* bounding box */
+1776.     st->xmin = mesh->xmin - mesh->xtra;
+1777. >   st->ymin = mesh->ymin - mesh->ytra;
+1778.     st->zmin = mesh->zmin - mesh->ztra;
+1779.     st->xmax = mesh->xmax - mesh->xtra;
+
+src/medit/stream.c:1778:3: 
+1776.     st->xmin = mesh->xmin - mesh->xtra;
+1777.     st->ymin = mesh->ymin - mesh->ytra;
+1778. >   st->zmin = mesh->zmin - mesh->ztra;
+1779.     st->xmax = mesh->xmax - mesh->xtra;
+1780.     st->ymax = mesh->ymax - mesh->ytra;
+
+src/medit/stream.c:1779:3: 
+1777.     st->ymin = mesh->ymin - mesh->ytra;
+1778.     st->zmin = mesh->zmin - mesh->ztra;
+1779. >   st->xmax = mesh->xmax - mesh->xtra;
+1780.     st->ymax = mesh->ymax - mesh->ytra;
+1781.     st->zmax = mesh->zmax - mesh->ztra;
+
+src/medit/stream.c:1780:3: 
+1778.     st->zmin = mesh->zmin - mesh->ztra;
+1779.     st->xmax = mesh->xmax - mesh->xtra;
+1780. >   st->ymax = mesh->ymax - mesh->ytra;
+1781.     st->zmax = mesh->zmax - mesh->ztra;
+1782.   
+
+src/medit/stream.c:1781:3: 
+1779.     st->xmax = mesh->xmax - mesh->xtra;
+1780.     st->ymax = mesh->ymax - mesh->ytra;
+1781. >   st->zmax = mesh->zmax - mesh->ztra;
+1782.   
+1783.     /* init list */
+
+src/medit/stream.c:1784:3: 
+1782.   
+1783.     /* init list */
+1784. >   st->listp = (float*)malloc((MAX_LST*3+1)*sizeof(float));
+1785.     assert(st->listp);
+1786.   
+
+src/medit/stream.c:1787:3: 
+1785.     assert(st->listp);
+1786.   
+1787. >   sc->slist = (GLuint*)calloc(MAX_LST,sizeof(GLuint));
+1788.     if ( !sc->slist )  return(0);
+1789.   
+
+src/medit/stream.c:1788:9: Taking true branch
+1786.   
+1787.     sc->slist = (GLuint*)calloc(MAX_LST,sizeof(GLuint));
+1788.     if ( !sc->slist )  return(0);
+                ^
+1789.   
+1790.     return(st);
+
+src/medit/stream.c:1788:22: 
+1786.   
+1787.     sc->slist = (GLuint*)calloc(MAX_LST,sizeof(GLuint));
+1788. >   if ( !sc->slist )  return(0);
+1789.   
+1790.     return(st);

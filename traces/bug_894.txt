@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:4023: error: DEAD_STORE
+  The value written to &NbVerticesOnGeomEdge0 (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:4023:8: Write of unused value
+4021.         assert(VerticesOnGeomEdge || NbVerticesOnGeomEdge0 ==0);
+4022.           // do the vertex on a geometrical vertex
+4023.          NbVerticesOnGeomEdge0 = NbVerticesOnGeomEdge;       
+               ^
+4024.        }
+4025.        else 

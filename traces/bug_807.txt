@@ -1,0 +1,179 @@
+src/fflib/AFunction.cpp:1860: error: NULL_DEREFERENCE
+  pointer `tea` last assigned on line 1857 could be null and is dereferenced at line 1860, column 31.
+Showing all 23 steps of the trace
+
+
+src/fflib/AFunction.cpp:1844:1: start of procedure code2
+1842.   static addingInitFunct TheaddingInitFunct(-10000,Init_map_type); 
+1843.   
+1844. > C_F0  opVI::code2(const basicAC_F0 &args) const
+1845.   {
+1846.       Expression p=args[1];
+
+src/fflib/AFunction.cpp:1846:5: Skipping operator_E_F0_*: function or method not found
+1844.   C_F0  opVI::code2(const basicAC_F0 &args) const
+1845.   {
+1846.       Expression p=args[1];
+            ^
+1847.       if ( ! p->EvaluableWithOutStack() )
+1848.       {
+
+src/fflib/AFunction.cpp:1847:12: 
+1845.   {
+1846.       Expression p=args[1];
+1847. >     if ( ! p->EvaluableWithOutStack() )
+1848.       {
+1849.           bool bb=p->EvaluableWithOutStack();
+
+src/fflib/AFunction.hpp:380:5: start of procedure EvaluableWithOutStack
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+             ^
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.hpp:380:49: 
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380. >     virtual bool EvaluableWithOutStack() const {return false;} // 
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.hpp:380:62: return from a call to E_F0_EvaluableWithOutStack
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+                                                                      ^
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.cpp:1847:12: Taking true branch
+1845.   {
+1846.       Expression p=args[1];
+1847.       if ( ! p->EvaluableWithOutStack() )
+                   ^
+1848.       {
+1849.           bool bb=p->EvaluableWithOutStack();
+
+src/fflib/AFunction.cpp:1849:9: 
+1847.       if ( ! p->EvaluableWithOutStack() )
+1848.       {
+1849. >         bool bb=p->EvaluableWithOutStack();
+1850.           //cout << bb << " " <<  * p <<  endl;
+1851.           CompileError(" [...][p], The p must be a constant , sorry");
+
+src/fflib/AFunction.hpp:380:5: start of procedure EvaluableWithOutStack
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+             ^
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.hpp:380:49: 
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380. >     virtual bool EvaluableWithOutStack() const {return false;} // 
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.hpp:380:62: return from a call to E_F0_EvaluableWithOutStack
+  378.     //  virtual const E_F0 * Parameter(Stack ) const {return this;}
+  379.       virtual size_t nbitem() const {return 1;}
+  380.       virtual bool EvaluableWithOutStack() const {return false;} // 
+                                                                      ^
+  381.       virtual bool MeshIndependent() const {return true;} // 
+  382.       virtual bool Zero() const {return false;} //
+
+src/fflib/AFunction.cpp:1851:9: Skipping CompileError(): function or method not found
+1849.           bool bb=p->EvaluableWithOutStack();
+1850.           //cout << bb << " " <<  * p <<  endl;
+1851.           CompileError(" [...][p], The p must be a constant , sorry");
+                ^
+1852.       }
+1853.       int pv = GetAny<long>((*p)(NullStack));
+
+src/fflib/AFunction.cpp:1853:5: Skipping operator(): function or method not found
+1851.           CompileError(" [...][p], The p must be a constant , sorry");
+1852.       }
+1853.       int pv = GetAny<long>((*p)(NullStack));
+            ^
+1854.       bool ta =args[0].left()==atype<TransE_Array>();
+1855.       const TransE_Array * tea=0;
+
+src/fflib/AnyType.hpp:198:2: start of procedure GetAny<long>()
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+  197.    { return x.r;} 
+  198.    template<>  inline const long& GetAny<long>(const AnyTypeWithOutCheck & x)
+          ^
+  199.    { return x.l;} 
+  200.    template<>  inline const bool& GetAny<bool>(const AnyTypeWithOutCheck & x)
+
+src/fflib/AnyType.hpp:199:4: 
+  197.    { return x.r;} 
+  198.    template<>  inline const long& GetAny<long>(const AnyTypeWithOutCheck & x)
+  199. >  { return x.l;} 
+  200.    template<>  inline const bool& GetAny<bool>(const AnyTypeWithOutCheck & x)
+  201.    { return x.b;} 
+
+src/fflib/AnyType.hpp:199:15: return from a call to GetAny<long>
+  197.    { return x.r;} 
+  198.    template<>  inline const long& GetAny<long>(const AnyTypeWithOutCheck & x)
+  199.    { return x.l;} 
+                       ^
+  200.    template<>  inline const bool& GetAny<bool>(const AnyTypeWithOutCheck & x)
+  201.    { return x.b;} 
+
+src/fflib/AFunction.cpp:1854:14: Condition is true
+1852.       }
+1853.       int pv = GetAny<long>((*p)(NullStack));
+1854.       bool ta =args[0].left()==atype<TransE_Array>();
+                     ^
+1855.       const TransE_Array * tea=0;
+1856.       const E_Array * ea=0;
+
+src/fflib/AFunction.cpp:1854:5: 
+1852.       }
+1853.       int pv = GetAny<long>((*p)(NullStack));
+1854. >     bool ta =args[0].left()==atype<TransE_Array>();
+1855.       const TransE_Array * tea=0;
+1856.       const E_Array * ea=0;
+
+src/fflib/AFunction.cpp:1855:5: 
+1853.       int pv = GetAny<long>((*p)(NullStack));
+1854.       bool ta =args[0].left()==atype<TransE_Array>();
+1855. >     const TransE_Array * tea=0;
+1856.       const E_Array * ea=0;
+1857.       if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+
+src/fflib/AFunction.cpp:1856:5: 
+1854.       bool ta =args[0].left()==atype<TransE_Array>();
+1855.       const TransE_Array * tea=0;
+1856. >     const E_Array * ea=0;
+1857.       if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+1858.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+
+src/fflib/AFunction.cpp:1857:9: Taking true branch
+1855.       const TransE_Array * tea=0;
+1856.       const E_Array * ea=0;
+1857.       if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+                ^
+1858.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+1859.       assert( ea || tea );
+
+src/fflib/AFunction.cpp:1857:14: Skipping operator_E_F0_*: function or method not found
+1855.       const TransE_Array * tea=0;
+1856.       const E_Array * ea=0;
+1857.       if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+                     ^
+1858.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+1859.       assert( ea || tea );
+
+src/fflib/AFunction.cpp:1860:25: Condition is true
+1858.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+1859.       assert( ea || tea );
+1860.       const E_Array & a=  ta ? *tea->v : *ea;
+                                ^
+1861.       // cout << " pv =" << pv << " size = "<< a.size() << endl;
+1862.       

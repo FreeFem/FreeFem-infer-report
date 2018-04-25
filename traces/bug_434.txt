@@ -1,0 +1,12 @@
+src/medit/inout.c:462: error: DEAD_STORE
+  The value written to &ref (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/inout.c:462:5: Write of unused value
+460.       ppt = &mesh->point[k];
+461.       if ( ppt->tag & M_UNUSED )  continue;
+462.       ref = ppt->ref;
+           ^
+463.       if ( mesh->dim == 2 ) {
+464.         fp1 = ppt->c[0] + mesh->xtra;

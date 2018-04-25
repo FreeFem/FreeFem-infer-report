@@ -1,0 +1,51 @@
+src/fflib/AFunction.hpp:1672: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 1671 could be null and is dereferenced at line 1672, column 13.
+Showing all 6 steps of the trace
+
+
+src/fflib/AFunction.hpp:1665:5: start of procedure Cas
+1663.      const E_BorderN * next;
+1664.       
+1665.       static   int Cas(C_F0  nn)
+            ^
+1666.       {
+1667.           if( atype<long>()->CastingFrom(nn.left())) return 0;
+
+src/fflib/AFunction.hpp:1667:13: Taking false branch
+1665.       static   int Cas(C_F0  nn)
+1666.       {
+1667.           if( atype<long>()->CastingFrom(nn.left())) return 0;
+                    ^
+1668.           else if(atype<KN_<long> >()->CastingFrom(nn.left())) return 1;
+1669.           else if( atype< const E_Array * >()->CastingFrom(nn.left())  )
+
+src/fflib/AFunction.hpp:1668:17: Taking false branch
+1666.       {
+1667.           if( atype<long>()->CastingFrom(nn.left())) return 0;
+1668.           else if(atype<KN_<long> >()->CastingFrom(nn.left())) return 1;
+                        ^
+1669.           else if( atype< const E_Array * >()->CastingFrom(nn.left())  )
+1670.           {
+
+src/fflib/AFunction.hpp:1669:18: Taking true branch
+1667.           if( atype<long>()->CastingFrom(nn.left())) return 0;
+1668.           else if(atype<KN_<long> >()->CastingFrom(nn.left())) return 1;
+1669.           else if( atype< const E_Array * >()->CastingFrom(nn.left())  )
+                         ^
+1670.           {
+1671.               E_Array & a =  *dynamic_cast< E_Array *>((Expression) nn);
+
+src/fflib/AFunction.hpp:1671:13: Skipping operator_E_F0_*: function or method not found
+1669.           else if( atype< const E_Array * >()->CastingFrom(nn.left())  )
+1670.           {
+1671.               E_Array & a =  *dynamic_cast< E_Array *>((Expression) nn);
+                    ^
+1672.               ffassert(a);
+1673.               a.map(::to<long>);
+
+src/fflib/AFunction.hpp:1672:13: 
+1670.           {
+1671.               E_Array & a =  *dynamic_cast< E_Array *>((Expression) nn);
+1672. >             ffassert(a);
+1673.               a.map(::to<long>);
+1674.               //   a[i]=CastTo<long>(a[i]);

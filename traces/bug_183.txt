@@ -1,0 +1,290 @@
+src/libMesh/libmesh3.c:158: error: NULL_DEREFERENCE
+  pointer `mesh->filename` last assigned on line 157 could be null and is dereferenced by call to `strcpy()` at line 158, column 2.
+Showing all 40 steps of the trace
+
+
+src/libMesh/libmesh3.c:134:1: start of procedure LM_open_mesh()
+132.   /*----------------------------------------------------------*/
+133.   
+134. > int LM_open_mesh(const char *filename, int mode, LM_mesh_struct *mesh, ...)
+135.   {
+136.   	int i;
+
+src/libMesh/libmesh3.c:146:6: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is true. Entering loop body
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:148:3: 
+146.   	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148. > 		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+
+src/libMesh/libmesh3.c:149:3: 
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+149. > 		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+
+src/libMesh/libmesh3.c:150:3: 
+148.   		mesh->kw_counters[i] = 0;
+149.   		mesh->kw_pos[i][0] = 0;
+150. > 		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+
+src/libMesh/libmesh3.c:151:3: 
+149.   		mesh->kw_pos[i][0] = 0;
+150.   		mesh->kw_pos[i][1] = 0;
+151. > 		mesh->kw_pos[i][2] = 0;
+152.   		mesh->sol_headers[i] = NULL;
+153.   	}
+
+src/libMesh/libmesh3.c:152:3: 
+150.   		mesh->kw_pos[i][1] = 0;
+151.   		mesh->kw_pos[i][2] = 0;
+152. > 		mesh->sol_headers[i] = NULL;
+153.   	}
+154.   
+
+src/libMesh/libmesh3.c:146:21: 
+144.   	/* Init the kw table */
+145.   
+146. > 	for(i=0;i<=LM_NBKW;i++)
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:146:10: Loop condition is false. Leaving loop
+144.   	/* Init the kw table */
+145.   
+146.   	for(i=0;i<=LM_NBKW;i++)
+                ^
+147.   	{
+148.   		mesh->kw_counters[i] = 0;
+
+src/libMesh/libmesh3.c:157:2: 
+155.   	/* Allocate a string large enough to contain the full filename and path plus the ".meshb" extension. */
+156.   
+157. > 	mesh->filename = (char *)calloc((strlen(filename) + 7), sizeof(char));
+158.   	strcpy(mesh->filename, filename);
+159.   
+
+src/libMesh/libmesh3.c:158:2: 
+156.   
+157.   	mesh->filename = (char *)calloc((strlen(filename) + 7), sizeof(char));
+158. > 	strcpy(mesh->filename, filename);
+159.   
+160.   	/* Store the opening mode (read or write) and guess the filetype (binary or ascii) depending on the extension */

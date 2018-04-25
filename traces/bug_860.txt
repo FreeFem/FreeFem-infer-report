@@ -1,0 +1,44 @@
+examples++-load/Element_Mixte3d.cpp:2572: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::TypeOfFE_RT1_3d accesses global variable from a different translation unit: map_type|.
+Showing all 5 steps of the trace
+
+
+examples++-load/Element_Mixte3d.cpp:2572:5: initialization of Fem2D::TypeOfFE_RT1_3d
+2570.       static TypeOfFE_RT1_3d  RT1_3d;
+2571.       GTypeOfFE<Mesh3> & RT13d(RT1_3d);
+2572.       static AddNewFE3 TypeOfFE_RT1_3d("RT13d",&RT13d);
+            ^
+2573.    
+2574.       
+
+examples++-load/Element_Mixte3d.cpp:2572:22: call to AddNewFE3_AddNewFE3
+2570.       static TypeOfFE_RT1_3d  RT1_3d;
+2571.       GTypeOfFE<Mesh3> & RT13d(RT1_3d);
+2572.       static AddNewFE3 TypeOfFE_RT1_3d("RT13d",&RT13d);
+                             ^
+2573.    
+2574.       
+
+src/fflib/AddNewFE.h:101:36: call to atype<Fem2D::GTypeOfFE<Fem2D::Mesh3>_*>
+  99.       {
+  100.         ffassert(tfe); // check 
+  101.         Global.New(FEname, Type_Expr(atype<Fem2D::TypeOfFE3*>() ,new  EConstantTypeOfFE3(tfe)));
+                                            ^
+  102.         if(FEname2 && strlen(FEname2))
+  103.   	  TEF2dto3d[FindFE2(FEname2)]=tfe;
+
+src/fflib/AFunction.hpp:339:14: call to ShowType
+    337.    // basicForEachType * r=map_type[];
+    338.     if (ir == map_type.end()) { cerr << "Error: aType  '" << typeid(T).name() << "', doesn't exist\n";
+    339.                ShowType(cerr);
+                        ^
+    340.               throw(ErrorExec("exit",1));}
+    341.     return ir->second;}
+
+src/fflib/AFunction2.cpp:708:10: access to map_type|
+    706.    
+    707.      map<const string,basicForEachType *>::const_iterator i;
+    708.      for(i=map_type.begin();i!=map_type.end();i++)
+                    ^
+    709.        {
+    710.          f << " --"<< i->first <<" = " ; 

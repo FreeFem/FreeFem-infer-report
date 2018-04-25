@@ -1,0 +1,256 @@
+src/medit/tiles.c:93: error: MEMORY_LEAK
+  memory dynamically allocated by call to `calloc()` at line 80, column 22 is not reachable after line 93, column 13.
+Showing all 35 steps of the trace
+
+
+src/medit/tiles.c:26:1: start of procedure imgTiling()
+24.   
+25.   /* dump big image */
+26. > int imgTiling(pScene sc,char *data,char key) {
+27.     FILE     *out;
+28.     pCamera   c = sc->camera;
+
+src/medit/tiles.c:28:3: 
+26.   int imgTiling(pScene sc,char *data,char key) {
+27.     FILE     *out;
+28. >   pCamera   c = sc->camera;
+29.     GLubyte  *tile,*buffer,*rowPtr;
+30.     GLint     matmode,viewport[4];
+
+src/medit/tiles.c:39:3: 
+37.     char     *ptr,name[256];
+38.     ubyte     bckbyte;
+39. >   static GLfloat up[3] = { 0.0, 1.0, 0.0};
+40.   
+41.     glPixelStorei(GL_PACK_ALIGNMENT, 1);
+
+src/medit/tiles.c:41:3: Skipping glPixelStorei(): function or method not found
+39.     static GLfloat up[3] = { 0.0, 1.0, 0.0};
+40.   
+41.     glPixelStorei(GL_PACK_ALIGNMENT, 1);
+        ^
+42.   
+43.     bckbyte = (ubyte)(255*(0.30*sc->par.back[0] + 
+
+src/medit/tiles.c:43:3: 
+41.     glPixelStorei(GL_PACK_ALIGNMENT, 1);
+42.   
+43. >   bckbyte = (ubyte)(255*(0.30*sc->par.back[0] + 
+44.                            0.59*sc->par.back[1] + 
+45.                            0.11*sc->par.back[2])+ 0.5);
+
+src/medit/tiles.c:48:3: 
+46.   
+47.     /* compute image size */
+48. >   ratio = (double)sc->par.xs/(double)sc->par.ys;
+49.     ymax  = 0.1f*sc->dmax * tan(sc->persp->fovy * M_PI/360.0);
+50.     ymin  = -ymax;
+
+src/medit/tiles.c:49:3: 
+47.     /* compute image size */
+48.     ratio = (double)sc->par.xs/(double)sc->par.ys;
+49. >   ymax  = 0.1f*sc->dmax * tan(sc->persp->fovy * M_PI/360.0);
+50.     ymin  = -ymax;
+51.     xmin  = ymin * ratio;
+
+src/medit/tiles.c:50:3: 
+48.     ratio = (double)sc->par.xs/(double)sc->par.ys;
+49.     ymax  = 0.1f*sc->dmax * tan(sc->persp->fovy * M_PI/360.0);
+50. >   ymin  = -ymax;
+51.     xmin  = ymin * ratio;
+52.     xmax  = ymax * ratio;
+
+src/medit/tiles.c:51:3: 
+49.     ymax  = 0.1f*sc->dmax * tan(sc->persp->fovy * M_PI/360.0);
+50.     ymin  = -ymax;
+51. >   xmin  = ymin * ratio;
+52.     xmax  = ymax * ratio;
+53.   
+
+src/medit/tiles.c:52:3: 
+50.     ymin  = -ymax;
+51.     xmin  = ymin * ratio;
+52. >   xmax  = ymax * ratio;
+53.   
+54.     bitsPixel  = 3 * sizeof(GLubyte);
+
+src/medit/tiles.c:54:3: 
+52.     xmax  = ymax * ratio;
+53.   
+54. >   bitsPixel  = 3 * sizeof(GLubyte);
+55.     imgWidth   = (int)(sc->par.dpi*CM2IN*sc->par.cm+0.5);
+56.     imgHeight  = (int)((double)imgWidth / ratio +0.5);
+
+src/medit/tiles.c:55:3: 
+53.   
+54.     bitsPixel  = 3 * sizeof(GLubyte);
+55. >   imgWidth   = (int)(sc->par.dpi*CM2IN*sc->par.cm+0.5);
+56.     imgHeight  = (int)((double)imgWidth / ratio +0.5);
+57.     imgRowSize = imgWidth * bitsPixel;
+
+src/medit/tiles.c:56:3: 
+54.     bitsPixel  = 3 * sizeof(GLubyte);
+55.     imgWidth   = (int)(sc->par.dpi*CM2IN*sc->par.cm+0.5);
+56. >   imgHeight  = (int)((double)imgWidth / ratio +0.5);
+57.     imgRowSize = imgWidth * bitsPixel;
+58.   
+
+src/medit/tiles.c:57:3: 
+55.     imgWidth   = (int)(sc->par.dpi*CM2IN*sc->par.cm+0.5);
+56.     imgHeight  = (int)((double)imgWidth / ratio +0.5);
+57. >   imgRowSize = imgWidth * bitsPixel;
+58.   
+59.     tileWidth    = sc->par.xs;
+
+src/medit/tiles.c:59:3: 
+57.     imgRowSize = imgWidth * bitsPixel;
+58.   
+59. >   tileWidth    = sc->par.xs;
+60.     tileHeight   = sc->par.ys;
+61.     border       = sc->mode & S_BDRY ? 1 : 0;
+
+src/medit/tiles.c:60:3: 
+58.   
+59.     tileWidth    = sc->par.xs;
+60. >   tileHeight   = sc->par.ys;
+61.     border       = sc->mode & S_BDRY ? 1 : 0;
+62.     tileWidthNB  = tileWidth  - 2*border;
+
+src/medit/tiles.c:61:18: Condition is false
+59.     tileWidth    = sc->par.xs;
+60.     tileHeight   = sc->par.ys;
+61.     border       = sc->mode & S_BDRY ? 1 : 0;
+                       ^
+62.     tileWidthNB  = tileWidth  - 2*border;
+63.     tileHeightNB = tileHeight - 2*border;
+
+src/medit/tiles.c:61:3: 
+59.     tileWidth    = sc->par.xs;
+60.     tileHeight   = sc->par.ys;
+61. >   border       = sc->mode & S_BDRY ? 1 : 0;
+62.     tileWidthNB  = tileWidth  - 2*border;
+63.     tileHeightNB = tileHeight - 2*border;
+
+src/medit/tiles.c:62:3: 
+60.     tileHeight   = sc->par.ys;
+61.     border       = sc->mode & S_BDRY ? 1 : 0;
+62. >   tileWidthNB  = tileWidth  - 2*border;
+63.     tileHeightNB = tileHeight - 2*border;
+64.   
+
+src/medit/tiles.c:63:3: 
+61.     border       = sc->mode & S_BDRY ? 1 : 0;
+62.     tileWidthNB  = tileWidth  - 2*border;
+63. >   tileHeightNB = tileHeight - 2*border;
+64.   
+65.     if ( ddebug ) {
+
+src/medit/tiles.c:65:8: Taking true branch
+63.     tileHeightNB = tileHeight - 2*border;
+64.   
+65.     if ( ddebug ) {
+             ^
+66.       fprintf(stdout,"   Generating %d by %d image\n",imgWidth,imgHeight);
+67.       fprintf(stdout,"   tile %d x %d\n",tileWidth,tileHeight);
+
+src/medit/tiles.c:66:5: 
+64.   
+65.     if ( ddebug ) {
+66. >     fprintf(stdout,"   Generating %d by %d image\n",imgWidth,imgHeight);
+67.       fprintf(stdout,"   tile %d x %d\n",tileWidth,tileHeight);
+68.       fprintf(stdout,"   image size %f x %f cm\n",
+
+src/medit/tiles.c:67:5: 
+65.     if ( ddebug ) {
+66.       fprintf(stdout,"   Generating %d by %d image\n",imgWidth,imgHeight);
+67. >     fprintf(stdout,"   tile %d x %d\n",tileWidth,tileHeight);
+68.       fprintf(stdout,"   image size %f x %f cm\n",
+69.               sc->par.cm,(double)imgHeight/sc->par.dpi/CM2IN);
+
+src/medit/tiles.c:68:5: 
+66.       fprintf(stdout,"   Generating %d by %d image\n",imgWidth,imgHeight);
+67.       fprintf(stdout,"   tile %d x %d\n",tileWidth,tileHeight);
+68. >     fprintf(stdout,"   image size %f x %f cm\n",
+69.               sc->par.cm,(double)imgHeight/sc->par.dpi/CM2IN);
+70.     }
+
+src/medit/tiles.c:73:3: 
+71.   
+72.     /* buffer to store one tile */
+73. >   tile = (GLubyte*)calloc(tileWidthNB*tileHeightNB,bitsPixel);
+74.     if ( !tile ) {
+75.       fprintf(stderr,"  ## Unable to store buffer!\n");
+
+src/medit/tiles.c:74:9: Taking false branch
+72.     /* buffer to store one tile */
+73.     tile = (GLubyte*)calloc(tileWidthNB*tileHeightNB,bitsPixel);
+74.     if ( !tile ) {
+              ^
+75.       fprintf(stderr,"  ## Unable to store buffer!\n");
+76.       return(0);
+
+src/medit/tiles.c:80:3: 
+78.     
+79.     /* buffer for a row of tiles */
+80. >   buffer = (GLubyte*)calloc(imgWidth*tileHeightNB,bitsPixel);
+81.     if ( !buffer ) {
+82.       free(tile);
+
+src/medit/tiles.c:81:9: Taking false branch
+79.     /* buffer for a row of tiles */
+80.     buffer = (GLubyte*)calloc(imgWidth*tileHeightNB,bitsPixel);
+81.     if ( !buffer ) {
+              ^
+82.       free(tile);
+83.       fprintf(stderr,"  ## Unable to store a row of tiles!\n");
+
+src/medit/tiles.c:88:3: 
+86.     
+87.     /* open EPS file */
+88. >   strcpy(name,data);
+89.     ptr  = (char*)strstr(name,".ps");
+90.     if ( !ptr ) strcat(name,".ps");
+
+src/medit/tiles.c:89:3: 
+87.     /* open EPS file */
+88.     strcpy(name,data);
+89. >   ptr  = (char*)strstr(name,".ps");
+90.     if ( !ptr ) strcat(name,".ps");
+91.     out = fopen(name,"w");
+
+src/medit/tiles.c:90:9: Taking true branch
+88.     strcpy(name,data);
+89.     ptr  = (char*)strstr(name,".ps");
+90.     if ( !ptr ) strcat(name,".ps");
+              ^
+91.     out = fopen(name,"w");
+92.     if ( !out ) {
+
+src/medit/tiles.c:90:15: 
+88.     strcpy(name,data);
+89.     ptr  = (char*)strstr(name,".ps");
+90. >   if ( !ptr ) strcat(name,".ps");
+91.     out = fopen(name,"w");
+92.     if ( !out ) {
+
+src/medit/tiles.c:91:3: 
+89.     ptr  = (char*)strstr(name,".ps");
+90.     if ( !ptr ) strcat(name,".ps");
+91. >   out = fopen(name,"w");
+92.     if ( !out ) {
+93.       fprintf(stderr,"  ## Unable to open file %s.\n",name);
+
+src/medit/tiles.c:92:9: Taking true branch
+90.     if ( !ptr ) strcat(name,".ps");
+91.     out = fopen(name,"w");
+92.     if ( !out ) {
+              ^
+93.       fprintf(stderr,"  ## Unable to open file %s.\n",name);
+94.       free(tile);
+
+src/medit/tiles.c:93:5: 
+91.     out = fopen(name,"w");
+92.     if ( !out ) {
+93. >     fprintf(stderr,"  ## Unable to open file %s.\n",name);
+94.       free(tile);
+95.       return(0);

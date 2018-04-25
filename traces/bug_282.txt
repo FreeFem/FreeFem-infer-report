@@ -1,0 +1,12 @@
+src/femlib/FQuadTree.cpp:247: error: DEAD_STORE
+  The value written to &h (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/FQuadTree.cpp:247:3: Write of unused value
+245.     int l=0; // level
+246.     QuadTreeBox * b;
+247.     long h=MaxISize;
+         ^
+248.     long hb =  MaxISize;
+249.     //long i0=0,j0=0;

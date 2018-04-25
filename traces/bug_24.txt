@@ -1,0 +1,204 @@
+examples++-load/mat_psi.cpp:19: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 18 could be null and is dereferenced at line 19, column 9.
+Showing all 26 steps of the trace
+
+
+examples++-load/mat_psi.cpp:11:3: start of procedure MatrixUpWind0
+9.     typedef Matrice_Creuse<R> * Result;
+10.     Expression emat,expTh,expc,expu1,expu2; 
+11.     MatrixUpWind0(const basicAC_F0 & args) 
+        ^
+12.     {   
+13.       
+
+examples++-load/mat_psi.cpp:22:32: Skipping E_F0: function or method not found
+20.       int err =0;
+21.       expu1= CastTo<double>((*a)[0]);
+22.       expu2= CastTo<double>((*a)[1]);
+                                     ^
+23.       
+24.     }
+
+examples++-load/mat_psi.cpp:14:5: 
+12.     {   
+13.       
+14. >     args.SetNameParam();
+15.       emat =args[0];
+16.       expTh= to<pmesh>(args[1]);
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking true branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1004:14: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                       ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+examples++-load/mat_psi.cpp:15:5: Skipping operator_E_F0_*: function or method not found
+13.       
+14.       args.SetNameParam();
+15.       emat =args[0];
+          ^
+16.       expTh= to<pmesh>(args[1]);
+17.       expc = CastTo<double>(args[2]);
+
+examples++-load/mat_psi.cpp:16:5: Skipping operator_E_F0_*: function or method not found
+14.       args.SetNameParam();
+15.       emat =args[0];
+16.       expTh= to<pmesh>(args[1]);
+          ^
+17.       expc = CastTo<double>(args[2]);
+18.       const E_Array * a= dynamic_cast<const E_Array*>((Expression) args[3]);
+
+examples++-load/mat_psi.cpp:17:5: Skipping operator[]: function or method not found
+15.       emat =args[0];
+16.       expTh= to<pmesh>(args[1]);
+17.       expc = CastTo<double>(args[2]);
+          ^
+18.       const E_Array * a= dynamic_cast<const E_Array*>((Expression) args[3]);
+19.       if (a->size() != 2) CompileError("syntax:  MatrixUpWind0(Th,rhi,[u1,u2])");
+
+src/fflib/lgmesh3.hpp:28:1: start of procedure CastTo<double>()
+  26.   
+  27.   template<class Result>
+  28. > inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:44: Skipping operator_E_F0_*: function or method not found
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                   ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:78: return from a call to CastTo<double>
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                                                     ^
+  29.   
+  30.   // <<BCastTo>>
+
+examples++-load/mat_psi.cpp:18:5: Skipping operator_E_F0_*: function or method not found
+16.       expTh= to<pmesh>(args[1]);
+17.       expc = CastTo<double>(args[2]);
+18.       const E_Array * a= dynamic_cast<const E_Array*>((Expression) args[3]);
+          ^
+19.       if (a->size() != 2) CompileError("syntax:  MatrixUpWind0(Th,rhi,[u1,u2])");
+20.       int err =0;
+
+examples++-load/mat_psi.cpp:19:9: 
+17.       expc = CastTo<double>(args[2]);
+18.       const E_Array * a= dynamic_cast<const E_Array*>((Expression) args[3]);
+19. >     if (a->size() != 2) CompileError("syntax:  MatrixUpWind0(Th,rhi,[u1,u2])");
+20.       int err =0;
+21.       expu1= CastTo<double>((*a)[0]);

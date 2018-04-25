@@ -1,0 +1,140 @@
+src/mpi/parallelempi.cpp:459: error: NULL_DEREFERENCE
+  pointer `mA` last assigned on line 458 could be null and is dereferenced at line 459, column 17.
+Showing all 18 steps of the trace
+
+
+src/mpi/parallelempi.cpp:448:3: start of procedure Bcast<double>
+446.     
+447.     template<class R>
+448.     const MPIrank & Bcast(Matrice_Creuse<R> &  a) const
+         ^
+449.       {
+450.         if(verbosity>100) 
+
+src/mpi/parallelempi.cpp:450:10: Taking false branch
+448.     const MPIrank & Bcast(Matrice_Creuse<R> &  a) const
+449.       {
+450.         if(verbosity>100) 
+                ^
+451.   	cout << mpirank <<  ":  MPI Bcast " << who << "  (Matrice_Creuse &) " << &a << " " << a.A << endl;
+452.         MatriceMorse<R> *mA=0;
+
+src/mpi/parallelempi.cpp:452:7: 
+450.         if(verbosity>100) 
+451.   	cout << mpirank <<  ":  MPI Bcast " << who << "  (Matrice_Creuse &) " << &a << " " << a.A << endl;
+452. >       MatriceMorse<R> *mA=0;
+453.         int ldata[4]={0,0,0,0};
+454.         if(  who == mpirank)  
+
+src/mpi/parallelempi.cpp:453:7: 
+451.   	cout << mpirank <<  ":  MPI Bcast " << who << "  (Matrice_Creuse &) " << &a << " " << a.A << endl;
+452.         MatriceMorse<R> *mA=0;
+453. >       int ldata[4]={0,0,0,0};
+454.         if(  who == mpirank)  
+455.   	{
+
+src/mpi/parallelempi.cpp:454:12: Taking true branch
+452.         MatriceMorse<R> *mA=0;
+453.         int ldata[4]={0,0,0,0};
+454.         if(  who == mpirank)  
+                  ^
+455.   	{
+456.   	  if(a.A)
+
+src/mpi/parallelempi.cpp:456:7: 
+454.         if(  who == mpirank)  
+455.   	{
+456. > 	  if(a.A)
+457.   	    {
+458.   	      mA= a.A->toMatriceMorse();
+
+src/femlib/RefCounter.hpp:93:2: start of procedure operator_MatriceCreuse<double>_*
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93.    operator  T * ()   const { return c;}
+         ^
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:29: 
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93. >  operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:38: return from a call to CountPointer<MatriceCreuse<double>>_operator_MatriceCreuse<double>_*
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93.    operator  T * ()   const { return c;}
+                                             ^
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/mpi/parallelempi.cpp:456:7: Taking true branch
+454.         if(  who == mpirank)  
+455.   	{
+456.   	  if(a.A)
+             ^
+457.   	    {
+458.   	      mA= a.A->toMatriceMorse();
+
+src/mpi/parallelempi.cpp:458:8: 
+456.   	  if(a.A)
+457.   	    {
+458. > 	      mA= a.A->toMatriceMorse();
+459.   	      ldata[0]=mA->n;
+460.   	      ldata[1]=mA->m;
+
+src/femlib/RefCounter.hpp:96:3: start of procedure operator->
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+          ^
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:26: 
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96. >   T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/RefCounter.hpp:96:35: return from a call to CountPointer<MatriceCreuse<double>>_operator->
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+                                          ^
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+  98.    bool operator!=(const  CountPointer & n) const {return  n.c !=c;}
+
+src/femlib/MatriceCreuse.hpp:397:3: start of procedure toMatriceMorse
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397.     virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+           ^
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/femlib/MatriceCreuse.hpp:397:88: 
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397. >   virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/femlib/MatriceCreuse.hpp:397:97: return from a call to MatriceCreuse<double>_toMatriceMorse
+  395.     virtual R * pij(int i,int j) const =0; // Add FH 
+  396.     virtual  void  resize(int n,int m)  {AFAIRE("MatriceCreuse::resize");}  // a faire dans les classe derive ... // add march 2009  FH 
+  397.     virtual MatriceMorse<R> *toMatriceMorse(bool transpose=false,bool copy=false) const {return 0;} // not 
+                                                                                                         ^
+  398.     virtual bool addMatTo(R coef,std::map< pair<int,int>, R> &mij,bool trans=false,int ii00=0,int jj00=0,bool cnj=false,double threshold=0.,const bool keepSym=false)=0;
+  399.     // Add FH april 2005
+
+src/mpi/parallelempi.cpp:459:8: 
+457.   	    {
+458.   	      mA= a.A->toMatriceMorse();
+459. > 	      ldata[0]=mA->n;
+460.   	      ldata[1]=mA->m;
+461.   	      ldata[2]=mA->nbcoef;

@@ -1,0 +1,12 @@
+src/femlib/RNM.hpp:1273: error: DEAD_STORE
+  The value written to &lso (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/RNM.hpp:1273:5: Write of unused value
+1271.       long kk=nn*mm;
+1272.         
+1273.       long lso = this->size();
+            ^
+1274.       long n = this->shapei.n;
+1275.       long m = this->shapej.n;

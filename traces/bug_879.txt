@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:3648: error: DEAD_STORE
+  The value written to &PreviousNewEdge (type bamg::Edge*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:3648:23: Write of unused value
+3646.                         if (PreviousNewEdge)
+3647.   			PreviousNewEdge->adj[1] =  e;
+3648.                         PreviousNewEdge = e;
+                              ^
+3649.   		      //		      cout << "Last new edge " << nbe << " " << " on " << Gh.Number(pe->on) 
+3650.   		      //   << " of curve =" <<pe->on->CurveNumber <<endl;

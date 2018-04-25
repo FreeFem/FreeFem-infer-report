@@ -1,0 +1,12 @@
+src/femlib/Drawing.cpp:517: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/Drawing.cpp:517:14: Write of unused value
+515.               f[k++]=PQ[i].x,f[k++]=PQ[i].y;
+516.              f[k++]=f[0];
+517.              f[k++]=f[1];
+                    ^
+518.              
+519.              couleur(3+l);

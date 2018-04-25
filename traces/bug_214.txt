@@ -1,0 +1,12 @@
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:512: error: DEAD_STORE
+  The value written to &nrhs (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:512:2: Write of unused value
+510.   	SUPERLU_FREE( B );
+511.   	options.Fact = FACTORED; /* Indicate the factored form of A is supplied. */
+512.   	nrhs=1;
+        ^
+513.   	SUPERLU_FREE(berr);  	
+514.         

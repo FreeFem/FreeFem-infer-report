@@ -1,0 +1,12 @@
+examples++-load/medit.cpp:1821: error: DEAD_STORE
+  The value written to &nttmp (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/medit.cpp:1821:5: Write of unused value
+1819.     for(size_t i=0; i<l.size();i=i+offset){
+1820.       int nvtmp  = iv;
+1821.       int nttmp  = it;
+            ^
+1822.       int nbetmp = ibe;
+1823.         

@@ -1,0 +1,25 @@
+examples++-load/libff-mmap-semaphore.c:14: error: NULL_DEREFERENCE
+  pointer `p` last assigned on line 13 could be null and is dereferenced by call to `strcpy()` at line 14, column 5.
+Showing all 3 steps of the trace
+
+
+examples++-load/libff-mmap-semaphore.c:12:1: start of procedure newstringcpy()
+10.   
+11.   void (* libf_HandleError)(const char *,int err) =0;
+12. > static char *newstringcpy(const char *nm)
+13.   {  char *p= (char*) malloc(strlen(nm)+1);
+14.       strcpy(p,nm);
+
+examples++-load/libff-mmap-semaphore.c:13:4: 
+11.   void (* libf_HandleError)(const char *,int err) =0;
+12.   static char *newstringcpy(const char *nm)
+13. > {  char *p= (char*) malloc(strlen(nm)+1);
+14.       strcpy(p,nm);
+15.       return p;
+
+examples++-load/libff-mmap-semaphore.c:14:5: 
+12.   static char *newstringcpy(const char *nm)
+13.   {  char *p= (char*) malloc(strlen(nm)+1);
+14. >     strcpy(p,nm);
+15.       return p;
+16.   }

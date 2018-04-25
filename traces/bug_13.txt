@@ -1,0 +1,69 @@
+src/medit/inout.c:26: error: NULL_DEREFERENCE
+  pointer `ptr` last assigned on line 25 could be null and is dereferenced at line 26, column 7.
+Showing all 9 steps of the trace
+
+
+src/medit/inout.c:6:1: start of procedure loadMesh()
+4.   
+5.   
+6. > int loadMesh(pMesh mesh) {
+7.     pPoint      ppt;
+8.     pEdge       pr;
+
+src/medit/inout.c:18:3: 
+16.     char       *ptr,data[256];
+17.   
+18. >   printf("use loadMesh\n");
+19.     /* default */
+20.     strcpy(data,mesh->name);
+
+src/medit/inout.c:20:3: 
+18.     printf("use loadMesh\n");
+19.     /* default */
+20. >   strcpy(data,mesh->name);
+21.     ptr = strstr(data,".mesh");
+22.     if ( !ptr ) {
+
+src/medit/inout.c:21:3: 
+19.     /* default */
+20.     strcpy(data,mesh->name);
+21. >   ptr = strstr(data,".mesh");
+22.     if ( !ptr ) {
+23.       strcat(data,".meshb");
+
+src/medit/inout.c:22:9: Taking true branch
+20.     strcpy(data,mesh->name);
+21.     ptr = strstr(data,".mesh");
+22.     if ( !ptr ) {
+              ^
+23.       strcat(data,".meshb");
+24.       if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {
+
+src/medit/inout.c:23:5: 
+21.     ptr = strstr(data,".mesh");
+22.     if ( !ptr ) {
+23. >     strcat(data,".meshb");
+24.       if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {
+25.         ptr = strstr(data,".mesh");
+
+src/medit/inout.c:24:12: Taking true branch
+22.     if ( !ptr ) {
+23.       strcat(data,".meshb");
+24.       if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {
+                 ^
+25.         ptr = strstr(data,".mesh");
+26.         *ptr = '\0';
+
+src/medit/inout.c:25:7: 
+23.       strcat(data,".meshb");
+24.       if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {
+25. >       ptr = strstr(data,".mesh");
+26.         *ptr = '\0';
+27.         strcat(data,".mesh");
+
+src/medit/inout.c:26:7: 
+24.       if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {
+25.         ptr = strstr(data,".mesh");
+26. >       *ptr = '\0';
+27.         strcat(data,".mesh");
+28.         if ( !(inm = GmfOpenMesh(data,GmfRead,&mesh->ver,&mesh->dim)) ) {

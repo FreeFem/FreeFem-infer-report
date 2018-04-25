@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:561: error: DEAD_STORE
+  The value written to &ifirst (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:561:5: Write of unused value
+559.       t=tbegin=lIntTria[ilast=(Size-1)].t;
+560.       if (tbegin->det>=0) 
+561.       ifirst = ilast;}  
+           ^
+562.     else {// not optimisation 
+563.       init();

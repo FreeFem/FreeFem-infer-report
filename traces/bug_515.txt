@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:568: error: DEAD_STORE
+  The value written to &ilast (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:568:7: Write of unused value
+566.       //		  << " " << Real8(deta[2])/t->det << endl;
+567.       if( t->det>=0)
+568.         ilast=NewItem(t,Real8(deta[0])/t->det,Real8(deta[1])/t->det,Real8(deta[2])/t->det);
+             ^
+569.       else 
+570.        {// find the nearest boundary edge  of the vertex A

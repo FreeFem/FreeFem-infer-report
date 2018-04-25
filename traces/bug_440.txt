@@ -1,0 +1,12 @@
+src/bamglib/MeshWrite.cpp:463: error: DEAD_STORE
+  The value written to &j (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/MeshWrite.cpp:463:10: Write of unused value
+461.   	f << x << y ;
+462.         }
+463.       for (j=i=0;i<nbt;i++) 
+                ^
+464.         if (reft[i]>=0)
+465.   	f << subdomains[reft[i]].ref;

@@ -1,0 +1,27 @@
+examples++-mpi/MUMPS.cpp:387: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-mpi/MUMPS.cpp:387:1: initialization of callDoLoadInit
+385.   
+386.   
+387. > LOADFUNC(initMUMPS);
+
+examples++-mpi/MUMPS.cpp:387:1: call to DoLoadInit
+385.   
+386.   
+387. > LOADFUNC(initMUMPS);
+
+examples++-mpi/MUMPS.cpp:387:1: call to addInitFunct
+  385.   
+  386.   
+  387. > LOADFUNC(initMUMPS);
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

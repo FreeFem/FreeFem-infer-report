@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:1565: error: DEAD_STORE
+  The value written to &shiny_obj (type unsigned char) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:1565:7: Write of unused value
+1563.         GLfloat diffuse[] = {ccd,ccd,ccd,1.0f};
+1564.         GLfloat specular_reflexion[] = {ccs,ccs,ccs,1.0f};
+1565.         GLubyte shiny_obj = 128;
+              ^
+1566.         glLightModeli(GL_LIGHT_MODEL_TWO_SIDE,1);
+1567.         glEnable(GL_LIGHTING);//positionnement de la lumi�re avec

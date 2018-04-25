@@ -1,0 +1,12 @@
+examples++-load/MetricKuate.cpp:270: error: DEAD_STORE
+  The value written to &condition (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/MetricKuate.cpp:270:4: Write of unused value
+268.   	     if(abs(LiXY)>=precision)
+269.   	       {
+270.   		 condition=1;
+          ^
+271.   		 
+272.   		 if(Xi*X0>0)

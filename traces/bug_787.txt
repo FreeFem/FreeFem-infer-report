@@ -1,0 +1,162 @@
+src/fflib/lgmat.cpp:1753: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 1750 could be null and is dereferenced at line 1753, column 55.
+Showing all 21 steps of the trace
+
+
+src/fflib/lgmat.cpp:1749:1: start of procedure get_element2mc<double>()
+1747.   
+1748.   template<class R>
+1749. > R  get_element2mc(Matrice_Creuse<R> * const  & ac,const long & b,const long & c){
+1750.       MatriceCreuse<R> * a= ac ? ac->A:0 ;
+1751.       R r=R();
+
+src/fflib/lgmat.cpp:1750:27: Condition is true
+1748.   template<class R>
+1749.   R  get_element2mc(Matrice_Creuse<R> * const  & ac,const long & b,const long & c){
+1750.       MatriceCreuse<R> * a= ac ? ac->A:0 ;
+                                  ^
+1751.       R r=R();
+1752.       if(  !a || a->n <= b || c<0 || a->m <= c  )
+
+src/femlib/RefCounter.hpp:89:2: start of procedure CountPointer
+  87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+  88.    CountPointer(  T & a) :c(&a) { add(c);}
+  89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+         ^
+  90.    ~CountPointer()  { destroyPtr(c);c=0;}
+  91.    //void destroy() const { destroyPtr(c);}
+
+src/femlib/RefCounter.hpp:89:53: 
+  87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+  88.    CountPointer(  T & a) :c(&a) { add(c);}
+  89. >  CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+  90.    ~CountPointer()  { destroyPtr(c);c=0;}
+  91.    //void destroy() const { destroyPtr(c);}
+
+src/femlib/RefCounter.hpp:45:7: start of procedure baseCountPointer
+    43.   // ruse pour utiliser le prive c RefCounter de 
+    44.   //  pas de syntaxe pour des friends template 
+    45.   class baseCountPointer { protected:
+                ^
+    46.    void  add(const  RefCounter * c)  const; 
+    47.    void  destroyPtr(const RefCounter *  c)  const;
+
+src/femlib/RefCounter.hpp:45:7: return from a call to baseCountPointer_baseCountPointer
+    43.   // ruse pour utiliser le prive c RefCounter de 
+    44.   //  pas de syntaxe pour des friends template 
+    45.   class baseCountPointer { protected:
+                ^
+    46.    void  add(const  RefCounter * c)  const; 
+    47.    void  destroyPtr(const RefCounter *  c)  const;
+
+src/femlib/RefCounter.hpp:89:40: 
+  87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+  88.    CountPointer(  T & a) :c(&a) { add(c);}
+  89. >  CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+  90.    ~CountPointer()  { destroyPtr(c);c=0;}
+  91.    //void destroy() const { destroyPtr(c);}
+
+src/femlib/RefCounter.hpp:89:49: 
+  87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+  88.    CountPointer(  T & a) :c(&a) { add(c);}
+  89. >  CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+  90.    ~CountPointer()  { destroyPtr(c);c=0;}
+  91.    //void destroy() const { destroyPtr(c);}
+
+src/femlib/RefCounter.hpp:77:1: start of procedure add
+    75.   };
+    76.   
+    77. > inline void baseCountPointer::add(const RefCounter * c)  const 
+    78.      { if (c) c->count++;}    
+    79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+
+src/femlib/RefCounter.hpp:78:10: Taking true branch
+    76.   
+    77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+    78.      { if (c) c->count++;}    
+                   ^
+    79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+    80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:78:13: 
+    76.   
+    77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+    78. >    { if (c) c->count++;}    
+    79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+    80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:78:6: 
+    76.   
+    77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+    78. >    { if (c) c->count++;}    
+    79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+    80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:78:24: return from a call to baseCountPointer_add
+    76.   
+    77.   inline void baseCountPointer::add(const RefCounter * c)  const 
+    78.      { if (c) c->count++;}    
+                                 ^
+    79.   inline void baseCountPointer::destroyPtr(const RefCounter *   c)  const 
+    80.      { if (c) c->destroy();}    
+
+src/femlib/RefCounter.hpp:89:56: return from a call to CountPointer<MatriceCreuse<double>>_CountPointer
+  87.    CountPointer( T * a,bool mmaster=false) :c(a) { if(!mmaster) add(c);} 
+  88.    CountPointer(  T & a) :c(&a) { add(c);}
+  89.    CountPointer(const CountPointer & a) :c(a.c) { add(c);}
+                                                               ^
+  90.    ~CountPointer()  { destroyPtr(c);c=0;}
+  91.    //void destroy() const { destroyPtr(c);}
+
+src/fflib/lgmat.cpp:1750:5: 
+1748.   template<class R>
+1749.   R  get_element2mc(Matrice_Creuse<R> * const  & ac,const long & b,const long & c){
+1750. >     MatriceCreuse<R> * a= ac ? ac->A:0 ;
+1751.       R r=R();
+1752.       if(  !a || a->n <= b || c<0 || a->m <= c  )
+
+src/femlib/RefCounter.hpp:93:2: start of procedure operator_MatriceCreuse<double>_*
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93.    operator  T * ()   const { return c;}
+         ^
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:29: 
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93. >  operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/femlib/RefCounter.hpp:93:38: return from a call to CountPointer<MatriceCreuse<double>>_operator_MatriceCreuse<double>_*
+  91.    //void destroy() const { destroyPtr(c);}
+  92.    void destroy()  { destroyPtr(c);c=0;}
+  93.    operator  T * ()   const { return c;}
+                                             ^
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+
+src/fflib/lgmat.cpp:1751:5: 
+1749.   R  get_element2mc(Matrice_Creuse<R> * const  & ac,const long & b,const long & c){
+1750.       MatriceCreuse<R> * a= ac ? ac->A:0 ;
+1751. >     R r=R();
+1752.       if(  !a || a->n <= b || c<0 || a->m <= c  )
+1753.       { cerr << " Out of bound  0 <=" << b << " < "  << a->n << ",  0 <= " << c << " < "  << a->m
+
+src/fflib/lgmat.cpp:1752:11: Taking true branch
+1750.       MatriceCreuse<R> * a= ac ? ac->A:0 ;
+1751.       R r=R();
+1752.       if(  !a || a->n <= b || c<0 || a->m <= c  )
+                  ^
+1753.       { cerr << " Out of bound  0 <=" << b << " < "  << a->n << ",  0 <= " << c << " < "  << a->m
+1754.           << " Matrix type = " << typeid(ac).name() << endl;
+
+src/fflib/lgmat.cpp:1753:7: Skipping std::operator<<<std::char_traits<char>_>(): function or method not found
+1751.       R r=R();
+1752.       if(  !a || a->n <= b || c<0 || a->m <= c  )
+1753.       { cerr << " Out of bound  0 <=" << b << " < "  << a->n << ",  0 <= " << c << " < "  << a->m
+              ^
+1754.           << " Matrix type = " << typeid(ac).name() << endl;
+1755.           cerr << ac << " " << a << endl;

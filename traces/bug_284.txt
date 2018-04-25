@@ -1,0 +1,12 @@
+src/medit/vector.c:250: error: DEAD_STORE
+  The value written to &clip (type clip*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/vector.c:250:3: Write of unused value
+248.   
+249.     sc   = cv.scene[currentScene()];
+250.     clip = sc->clip;
+         ^
+251.     if ( egal(sc->iso.val[0],sc->iso.val[MAXISO-1]) )  return(0);
+252.   

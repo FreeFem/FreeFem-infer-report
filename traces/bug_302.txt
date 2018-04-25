@@ -1,0 +1,215 @@
+src/medit/sftcpy.c:282: error: RESOURCE_LEAK
+  resource of type `_IO_FILE` acquired to `return` by call to `fopen()` at line 269, column 10 is not released after line 282, column 7.
+Showing all 29 steps of the trace
+
+
+src/medit/sftcpy.c:249:1: start of procedure sftcpy()
+247.   
+248.   
+249. > int sftcpy(pScene sc,pMesh mesh) {
+250.     FILE     *file;
+251.     GLfloat  *fbbuffer;
+
+src/medit/sftcpy.c:255:3: 
+253.     GLsizei   size;
+254.     char     *ptr,data[128];
+255. >   static int nfree=0;
+256.   
+257.     /* default */
+
+src/medit/sftcpy.c:258:8: Taking true branch
+256.   
+257.     /* default */
+258.     if ( ddebug ) printf("soft copy\n");
+              ^
+259.   
+260.     /* get file name */
+
+src/medit/sftcpy.c:258:17: 
+256.   
+257.     /* default */
+258. >   if ( ddebug ) printf("soft copy\n");
+259.   
+260.     /* get file name */
+
+src/medit/sftcpy.c:261:3: 
+259.   
+260.     /* get file name */
+261. >   strcpy(data,mesh->name);
+262.     ptr = (char*)strstr(data,".mesh");
+263.     if ( ptr ) *ptr = '\0';
+
+src/medit/sftcpy.c:262:3: 
+260.     /* get file name */
+261.     strcpy(data,mesh->name);
+262. >   ptr = (char*)strstr(data,".mesh");
+263.     if ( ptr ) *ptr = '\0';
+264.     nfree = filnum(data,nfree,"ps");
+
+src/medit/sftcpy.c:263:8: Taking false branch
+261.     strcpy(data,mesh->name);
+262.     ptr = (char*)strstr(data,".mesh");
+263.     if ( ptr ) *ptr = '\0';
+              ^
+264.     nfree = filnum(data,nfree,"ps");
+265.     if ( nfree == -1 )  return(0);
+
+src/medit/sftcpy.c:264:3: 
+262.     ptr = (char*)strstr(data,".mesh");
+263.     if ( ptr ) *ptr = '\0';
+264. >   nfree = filnum(data,nfree,"ps");
+265.     if ( nfree == -1 )  return(0);
+266.   
+
+src/medit/util.c:262:1: start of procedure filnum()
+  260.     printf("---------------------------------\n");
+  261.   }
+  262. > int filnum(char *data,int numdep,char *ext) {
+  263.     FILE  *in;
+  264.     char   tmpstr[256];
+
+src/medit/util.c:267:5: 
+  265.   
+  266.     do {
+  267. >     sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268.       in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+
+src/medit/util.c:268:5: 
+  266.     do {
+  267.       sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268. >     in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+  270.       fclose(in);
+
+src/medit/util.c:269:11: Taking false branch
+  267.       sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268.       in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+                   ^
+  270.       fclose(in);
+  271.     }
+
+src/medit/util.c:270:5: 
+  268.       in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+  270. >     fclose(in);
+  271.     }
+  272.     while ( ++numdep < 999 );
+
+src/medit/util.c:272:11: Loop condition is true. Entering loop body
+  270.       fclose(in);
+  271.     }
+  272.     while ( ++numdep < 999 );
+                   ^
+  273.     return(-1);
+  274.   }
+
+src/medit/util.c:267:5: 
+  265.   
+  266.     do {
+  267. >     sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268.       in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+
+src/medit/util.c:268:5: 
+  266.     do {
+  267.       sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268. >     in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+  270.       fclose(in);
+
+src/medit/util.c:269:11: Taking true branch
+  267.       sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268.       in = fopen(tmpstr,"r");
+  269.       if ( !in ) return(numdep);
+                   ^
+  270.       fclose(in);
+  271.     }
+
+src/medit/util.c:269:16: 
+  267.       sprintf(tmpstr,"%s.%.3d.%s",data,numdep,ext);
+  268.       in = fopen(tmpstr,"r");
+  269. >     if ( !in ) return(numdep);
+  270.       fclose(in);
+  271.     }
+
+src/medit/util.c:274:1: return from a call to filnum
+  272.     while ( ++numdep < 999 );
+  273.     return(-1);
+  274. > }
+  275.   
+  276.   #ifdef __cplusplus
+
+src/medit/sftcpy.c:265:8: Taking false branch
+263.     if ( ptr ) *ptr = '\0';
+264.     nfree = filnum(data,nfree,"ps");
+265.     if ( nfree == -1 )  return(0);
+              ^
+266.   
+267.     /* open PS file */
+
+src/medit/sftcpy.c:268:3: 
+266.   
+267.     /* open PS file */
+268. >   sprintf(data,"%s.%.3d.ps",data,nfree);
+269.     file = fopen(data,"w");
+270.     if ( !file ) {
+
+src/medit/sftcpy.c:269:3: 
+267.     /* open PS file */
+268.     sprintf(data,"%s.%.3d.ps",data,nfree);
+269. >   file = fopen(data,"w");
+270.     if ( !file ) {
+271.       fprintf(stdout,"  Unable to open %s\n",data);
+
+src/medit/sftcpy.c:270:9: Taking false branch
+268.     sprintf(data,"%s.%.3d.ps",data,nfree);
+269.     file = fopen(data,"w");
+270.     if ( !file ) {
+               ^
+271.       fprintf(stdout,"  Unable to open %s\n",data);
+272.       return(0);
+
+src/medit/sftcpy.c:276:3: 
+274.   
+275.     /* size for feedback buffer */
+276. >   size    =  0;
+277.     nvalues = -1;
+278.     do {
+
+src/medit/sftcpy.c:277:3: 
+275.     /* size for feedback buffer */
+276.     size    =  0;
+277. >   nvalues = -1;
+278.     do {
+279.       size += 1024*1024;
+
+src/medit/sftcpy.c:279:5: 
+277.     nvalues = -1;
+278.     do {
+279. >     size += 1024*1024;
+280.       fbbuffer = (GLfloat *)calloc(1+size,sizeof(GLfloat));
+281.       if ( !fbbuffer ) {
+
+src/medit/sftcpy.c:280:5: 
+278.     do {
+279.       size += 1024*1024;
+280. >     fbbuffer = (GLfloat *)calloc(1+size,sizeof(GLfloat));
+281.       if ( !fbbuffer ) {
+282.         return(0);
+
+src/medit/sftcpy.c:281:11: Taking true branch
+279.       size += 1024*1024;
+280.       fbbuffer = (GLfloat *)calloc(1+size,sizeof(GLfloat));
+281.       if ( !fbbuffer ) {
+                 ^
+282.         return(0);
+283.       }
+
+src/medit/sftcpy.c:282:7: 
+280.       fbbuffer = (GLfloat *)calloc(1+size,sizeof(GLfloat));
+281.       if ( !fbbuffer ) {
+282. >       return(0);
+283.       }
+284.       if ( ddebug ) printf("feedback pointer = %p\n",fbbuffer);

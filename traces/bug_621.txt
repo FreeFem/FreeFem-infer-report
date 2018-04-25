@@ -1,0 +1,36 @@
+examples++-load/Element_Mixte3d.cpp:791: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::TypeOfFE_Edge2_3d::QFe accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/Element_Mixte3d.cpp:791:5: initialization of Fem2D::TypeOfFE_Edge2_3d::QFe
+789.       
+790.       // Quadrature formula on an edge, exact for degree 5 (ok: int_e (deg3*t *lambda*lambda))
+791.       const GQuadratureFormular<R1> TypeOfFE_Edge2_3d:: QFe(2*3-1,3,GaussLegendre(3),true);
+           ^
+792.       // arguments: exact, num of integration pts, integration pts, clean (~GQuadratureFormular() {if(clean) delete [] p;})
+793.       // GaussLegendre defined in QuadratureFormular.cpp
+
+examples++-load/Element_Mixte3d.cpp:791:55: call to Fem2D::GQuadratureFormular<Fem2D::R1>_GQuadratureFormular
+789.       
+790.       // Quadrature formula on an edge, exact for degree 5 (ok: int_e (deg3*t *lambda*lambda))
+791.       const GQuadratureFormular<R1> TypeOfFE_Edge2_3d:: QFe(2*3-1,3,GaussLegendre(3),true);
+                                                             ^
+792.       // arguments: exact, num of integration pts, integration pts, clean (~GQuadratureFormular() {if(clean) delete [] p;})
+793.       // GaussLegendre defined in QuadratureFormular.cpp
+
+src/femlib/QuadratureFormular.hpp:85:51: call to Fem2D::GQuadratureFormular<Fem2D::R1>_Verification
+  83.     void Verification(); // for verification 
+  84.     GQuadratureFormular (int e,int NbOfNodes,QuadraturePoint *pp,bool c=false)
+  85.    :exact(e), n(NbOfNodes),size(n),p(pp),clean(c)  {Verification();}
+                                                          ^
+  86.     GQuadratureFormular (int e,int NbOfNodes,const QuadraturePoint *pp,bool c=false)
+  87.    :exact(e),n(NbOfNodes),p(pp),clean(c)   {Verification();}
+
+src/femlib/QuadratureFormular.cpp:665:4: access to std::cout|
+  663.         if (err>tol)
+  664.   	{
+  665.   	  cerr << " d= " << d << "T Ordre= " << k << " d!k!/(d+k)!= " << se << " " ;
+            ^
+  666.   	  for(int l=0;l<=d;++l)
+  667.   	    cerr << sa[l] << " ";

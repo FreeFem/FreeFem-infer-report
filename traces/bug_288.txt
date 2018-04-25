@@ -1,0 +1,12 @@
+examples++-load/VTK_writer_3d.cpp:241: error: DEAD_STORE
+  The value written to &mps (type Fem2D::MeshPoint*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/VTK_writer_3d.cpp:241:45: Write of unused value
+239.   AnyType Vtkwritesol_Op::operator()(Stack stack)  const 
+240.   { 
+241.    MeshPoint *mp(MeshPointStack(stack)) , mps=*mp;
+                                                   ^
+242.    VtkWriter &dx=*(GetAny<VtkWriter *>((*edx)(stack)));
+243.    string &name=*(GetAny<string *>((*ename)(stack)));

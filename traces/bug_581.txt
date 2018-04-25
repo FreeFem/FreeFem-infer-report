@@ -1,0 +1,12 @@
+examples++-load/ff-NLopt.cpp:687: error: DEAD_STORE
+  The value written to &n (type long) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ff-NLopt.cpp:687:6: Write of unused value
+685.   					WhereStackOfPtr2Free(stack)=new StackOfPtr2Free(stack);// FH mars 2005 
+686.   					Rn &x = *GetAny<Rn *>((*X)(stack));	
+687.   					long n=x.N();	
+            ^
+688.   					
+689.   					const bool  gradient = nargs[0] ? dynamic_cast<const Polymorphic *>(nargs[0]) : 0,

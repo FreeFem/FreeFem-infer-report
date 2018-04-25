@@ -1,0 +1,12 @@
+src/femlib/Mesh2dn.cpp:146: error: DEAD_STORE
+  The value written to &bin (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/Mesh2dn.cpp:146:5: Write of unused value
+144.     strcat(fileb,".meshb");
+145.     if( (inm=GmfOpenMesh(pfile=fileb, GmfRead,&ver,&dim)) ) 
+146.       bin=true;
+           ^
+147.     else if( (inm=GmfOpenMesh(pfile=filef, GmfRead,&ver,&dim)) ) 
+148.       bin=false;

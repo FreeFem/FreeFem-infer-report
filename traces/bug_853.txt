@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:2726: error: DEAD_STORE
+  The value written to &ttff (type Fem2D::Tet*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:2726:5: Write of unused value
+2724.       Tet *tff;
+2725.       if( nt >0) tff = new Tet[nt];
+2726.       Tet *ttff = tff;
+            ^
+2727.   
+2728.       Triangle3 *bff  = new Triangle3[nbe];

@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:565: error: DEAD_STORE
+  The value written to &kk (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:565:3: Write of unused value
+563.   	  }
+564.       }
+565.     kk++;
+         ^
+566.     ShowGlerror("end Mesh plot");
+567.     

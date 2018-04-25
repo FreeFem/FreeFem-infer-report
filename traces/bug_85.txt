@@ -1,0 +1,12 @@
+examples++-load/bmo.cpp:168: error: DEAD_STORE
+  The value written to &f0 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/bmo.cpp:168:8: Write of unused value
+166.   		
+167.   	      v0=v;
+168.   	      f0 = f;
+              ^
+169.   	    }
+170.   	  if(debug)

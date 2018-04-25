@@ -1,0 +1,205 @@
+examples++-load/MetricKuate.cpp:563: error: NULL_DEREFERENCE
+  pointer `ma` last assigned on line 561 could be null and is dereferenced at line 563, column 9.
+Showing all 26 steps of the trace
+
+
+examples++-load/MetricKuate.cpp:551:3: start of procedure MetricKuate
+549.     Expression px,py;
+550.     
+551.     MetricKuate(const basicAC_F0 & args)
+         ^
+552.     {
+553.   
+
+examples++-load/MetricKuate.cpp:570:33: Skipping E_F0mps: function or method not found
+568.       m22= CastTo<KN<double> * >((*ma)[2]); // second exp of the array (must be a  double)
+569.       px= CastTo<double * >((*mp)[0]); // fist exp of the array (must be a  double)
+570.       py= CastTo<double * >((*mp)[1]); // second exp of the array (must be a  double)
+                                       ^
+571.     }
+572.   
+
+examples++-load/MetricKuate.cpp:554:5: 
+552.     {
+553.   
+554. >     args.SetNameParam();
+555.       expTh= to<pmesh>(args[0]);  // a the expression to get the mesh
+556.       expnp= to<long>(args[1]);  // a the expression to get the mesh
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking true branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1004:14: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                       ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+examples++-load/MetricKuate.cpp:555:5: Skipping operator_E_F0_*: function or method not found
+553.   
+554.       args.SetNameParam();
+555.       expTh= to<pmesh>(args[0]);  // a the expression to get the mesh
+           ^
+556.       expnp= to<long>(args[1]);  // a the expression to get the mesh
+557.       exphmin= to<double>(args[2]);  // a the expression to get the mesh
+
+examples++-load/MetricKuate.cpp:556:5: Skipping operator_E_F0_*: function or method not found
+554.       args.SetNameParam();
+555.       expTh= to<pmesh>(args[0]);  // a the expression to get the mesh
+556.       expnp= to<long>(args[1]);  // a the expression to get the mesh
+           ^
+557.       exphmin= to<double>(args[2]);  // a the expression to get the mesh
+558.       exphmax= to<double>(args[3]);  // a the expression to get the mesh
+
+examples++-load/MetricKuate.cpp:557:5: Skipping operator_E_F0_*: function or method not found
+555.       expTh= to<pmesh>(args[0]);  // a the expression to get the mesh
+556.       expnp= to<long>(args[1]);  // a the expression to get the mesh
+557.       exphmin= to<double>(args[2]);  // a the expression to get the mesh
+           ^
+558.       exphmax= to<double>(args[3]);  // a the expression to get the mesh
+559.       experr= to<double>(args[4]);  // a the expression to get the mesh
+
+examples++-load/MetricKuate.cpp:558:5: Skipping operator_E_F0_*: function or method not found
+556.       expnp= to<long>(args[1]);  // a the expression to get the mesh
+557.       exphmin= to<double>(args[2]);  // a the expression to get the mesh
+558.       exphmax= to<double>(args[3]);  // a the expression to get the mesh
+           ^
+559.       experr= to<double>(args[4]);  // a the expression to get the mesh
+560.       //  a array expression [ a, b]
+
+examples++-load/MetricKuate.cpp:559:5: Skipping operator_E_F0_*: function or method not found
+557.       exphmin= to<double>(args[2]);  // a the expression to get the mesh
+558.       exphmax= to<double>(args[3]);  // a the expression to get the mesh
+559.       experr= to<double>(args[4]);  // a the expression to get the mesh
+           ^
+560.       //  a array expression [ a, b]
+561.       const E_Array * ma= dynamic_cast<const E_Array*>((Expression) args[5]);
+
+examples++-load/MetricKuate.cpp:561:5: Skipping operator_E_F0_*: function or method not found
+559.       experr= to<double>(args[4]);  // a the expression to get the mesh
+560.       //  a array expression [ a, b]
+561.       const E_Array * ma= dynamic_cast<const E_Array*>((Expression) args[5]);
+           ^
+562.       const E_Array * mp= dynamic_cast<const E_Array*>((Expression) args[6]);
+563.       if (ma->size() != 3) CompileError("syntax: MetricKuate(Th,np,o,err,[m11,m12,m22],[xx,yy])");
+
+examples++-load/MetricKuate.cpp:562:5: Skipping operator_E_F0_*: function or method not found
+560.       //  a array expression [ a, b]
+561.       const E_Array * ma= dynamic_cast<const E_Array*>((Expression) args[5]);
+562.       const E_Array * mp= dynamic_cast<const E_Array*>((Expression) args[6]);
+           ^
+563.       if (ma->size() != 3) CompileError("syntax: MetricKuate(Th,np,o,err,[m11,m12,m22],[xx,yy])");
+564.       if (mp->size() != 2) CompileError("syntax: MetricKuate(Th,np,o,err,[m11,m12,m22],[xx,yy])");
+
+examples++-load/MetricKuate.cpp:563:9: 
+561.       const E_Array * ma= dynamic_cast<const E_Array*>((Expression) args[5]);
+562.       const E_Array * mp= dynamic_cast<const E_Array*>((Expression) args[6]);
+563. >     if (ma->size() != 3) CompileError("syntax: MetricKuate(Th,np,o,err,[m11,m12,m22],[xx,yy])");
+564.       if (mp->size() != 2) CompileError("syntax: MetricKuate(Th,np,o,err,[m11,m12,m22],[xx,yy])");
+565.       int err =0;

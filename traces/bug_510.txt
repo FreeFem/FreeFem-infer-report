@@ -1,0 +1,12 @@
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:553: error: DEAD_STORE
+  The value written to &R_SLU (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/real_SuperLU_DIST_FreeFem.cpp:553:7: Write of unused value
+551.         epsr = (eps < 0) ? (epsr >0 ? -epsr : -eps ) : eps ;
+552.         
+553.         Dtype_t R_SLU = SuperLUmpiDISTDriver<R>::R_SLU_T(); 
+             ^
+554.         nrhs= 1;
+555.         

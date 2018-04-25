@@ -1,0 +1,12 @@
+examples++-load/medit.cpp:361: error: DEAD_STORE
+  The value written to &mps (type Fem2D::MeshPoint*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/medit.cpp:361:46: Write of unused value
+359.   AnyType datasolMesh2_Op::operator()(Stack stack)  const 
+360.   { 
+361.     MeshPoint *mp(MeshPointStack(stack)) , mps=*mp;
+                                                    ^
+362.     Mesh * pTh= GetAny<Mesh *>((*eTh)(stack));
+363.     string * ffname= GetAny<string *>( (*filename)(stack) );

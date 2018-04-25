@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1211: error: DEAD_STORE
+  The value written to &ttff (type Fem2D::TTriangle<Fem2D::R2>*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1211:5: Write of unused value
+1209.       Mesh::Triangle *tff; 
+1210.       if(nt>0) tff = new Mesh::Triangle[nt];
+1211.       Mesh::Triangle *ttff = tff;
+            ^
+1212.       
+1213.       Mesh::BorderElement *bff;

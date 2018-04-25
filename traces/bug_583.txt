@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:709: error: DEAD_STORE
+  The value written to &ll (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:709:5: Write of unused value
+707.       if(verbosity>99)
+708.         cout << " -- RevcWMeshd   " << rq << " " << comm << " " << p << endl;
+709.       int ll=WRecv(p, sizempibuf,  who, tag,comm,rq); // wait first part Warning async => not wait.
+           ^
+710.      }
+711.     

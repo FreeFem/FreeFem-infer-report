@@ -1,0 +1,12 @@
+src/bamglib/Meshio.cpp:196: error: DEAD_STORE
+  The value written to &b (type char*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Meshio.cpp:196:3: Write of unused value
+194.     static char buf[1025];
+195.     int  instr=0,k=0;
+196.     char * b=buf, bb=0, *bend=buf+1023;
+         ^
+197.     
+198.     for (b=buf;b<bend &&  in.get(*b);instr && b++)

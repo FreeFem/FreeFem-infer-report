@@ -1,0 +1,12 @@
+examples++-hpddm/hpddm_substructuring.cpp:435: error: DEAD_STORE
+  The value written to &timer (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/hpddm_substructuring.cpp:435:5: Write of unused value
+433.       if(!excluded && timing && mpisize > 1)
+434.           (*timing)[timing->n - 1] += MPI_Wtime() - timer;
+435.       timer = MPI_Wtime();
+           ^
+436.       int rank;
+437.       MPI_Comm_rank(ptA->getCommunicator(), &rank);

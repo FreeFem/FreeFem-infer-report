@@ -1,0 +1,12 @@
+examples++-load/isoline.cpp:407: error: DEAD_STORE
+  The value written to &Gl (type Fem2D::R2[3*16](*)) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isoline.cpp:407:8: Write of unused value
+405.       int nmin=0;
+406.       KN<long> sm(nbv);
+407.       R2 Gl[3];
+              ^
+408.       long rkm=0;// Numero de region
+409.       while (!lvm.empty())

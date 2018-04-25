@@ -1,0 +1,64 @@
+src/fflib/AFunction.cpp:791: error: NULL_DEREFERENCE
+  pointer `tea` last assigned on line 788 could be null and is dereferenced at line 791, column 31.
+Showing all 8 steps of the trace
+
+
+src/fflib/AFunction.cpp:783:1: start of procedure formalMatTrace()
+781.   }
+782.   
+783. > C_F0  formalMatTrace(const basicAC_F0 &args)       
+784.   {
+785.       bool ta =args[0].left()==atype<TransE_Array>();
+
+src/fflib/AFunction.cpp:785:14: Condition is true
+783.   C_F0  formalMatTrace(const basicAC_F0 &args)       
+784.   {
+785.       bool ta =args[0].left()==atype<TransE_Array>();
+                    ^
+786.       const TransE_Array * tea=0;
+787.       const E_Array * ea=0;
+
+src/fflib/AFunction.cpp:785:5: 
+783.   C_F0  formalMatTrace(const basicAC_F0 &args)       
+784.   {
+785. >     bool ta =args[0].left()==atype<TransE_Array>();
+786.       const TransE_Array * tea=0;
+787.       const E_Array * ea=0;
+
+src/fflib/AFunction.cpp:786:5: 
+784.   {
+785.       bool ta =args[0].left()==atype<TransE_Array>();
+786. >     const TransE_Array * tea=0;
+787.       const E_Array * ea=0;
+788.   	if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+
+src/fflib/AFunction.cpp:787:5: 
+785.       bool ta =args[0].left()==atype<TransE_Array>();
+786.       const TransE_Array * tea=0;
+787. >     const E_Array * ea=0;
+788.   	if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+789.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+
+src/fflib/AFunction.cpp:788:6: Taking true branch
+786.       const TransE_Array * tea=0;
+787.       const E_Array * ea=0;
+788.   	if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+            ^
+789.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+790.       assert( ea || tea );
+
+src/fflib/AFunction.cpp:788:11: Skipping operator_E_F0_*: function or method not found
+786.       const TransE_Array * tea=0;
+787.       const E_Array * ea=0;
+788.   	if( ta)  tea = dynamic_cast<const TransE_Array*>((Expression) args[0]);
+                 ^
+789.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+790.       assert( ea || tea );
+
+src/fflib/AFunction.cpp:791:25: Condition is true
+789.       else ea = dynamic_cast<const E_Array*>((Expression) args[0]);
+790.       assert( ea || tea );
+791.       const E_Array & a=  ta ? *tea->v : *ea;
+                               ^
+792.       int ma =1;
+793.       int na=a.size();

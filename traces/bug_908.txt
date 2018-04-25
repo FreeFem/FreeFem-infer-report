@@ -1,0 +1,81 @@
+src/fflib/problem.cpp:5494: error: NULL_DEREFERENCE
+  pointer `bb` last assigned on line 5493 could be null and is dereferenced at line 5494, column 55.
+Showing all 10 steps of the trace
+
+
+src/fflib/problem.cpp:5480:1: start of procedure isSameMesh()
+5478.   
+5479.   
+5480. > bool isSameMesh(const list<C_F0> & largs,const void * Thu,const void * Thv,Stack stack)  // true => VF type of Matrix   
+5481.   {
+5482.     if( Thv != Thu ) return false;
+
+src/fflib/problem.cpp:5482:7: Taking false branch
+5480.   bool isSameMesh(const list<C_F0> & largs,const void * Thu,const void * Thv,Stack stack)  // true => VF type of Matrix   
+5481.   {
+5482.     if( Thv != Thu ) return false;
+              ^
+5483.     list<C_F0>::const_iterator ii,ib=largs.begin(),
+5484.       ie=largs.end();
+
+src/fflib/problem.cpp:5483:3: Skipping _List_const_iterator: function or method not found
+5481.   {
+5482.     if( Thv != Thu ) return false;
+5483.     list<C_F0>::const_iterator ii,ib=largs.begin(),
+          ^
+5484.       ie=largs.end();
+5485.       
+
+src/fflib/problem.cpp:5487:8: Skipping operator=: function or method not found
+5485.       
+5486.     // bool VVF =false;   
+5487.     for (ii=ib;ii != ie;ii++)
+               ^
+5488.       {
+5489.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:5487:14: Loop condition is true. Entering loop body
+5485.       
+5486.     // bool VVF =false;   
+5487.     for (ii=ib;ii != ie;ii++)
+                     ^
+5488.       {
+5489.         Expression e=ii->LeftValue();
+
+src/fflib/problem.cpp:5489:7: Skipping LeftValue: function or method not found
+5487.     for (ii=ib;ii != ie;ii++)
+5488.       {
+5489.         Expression e=ii->LeftValue();
+              ^
+5490.         aType r = ii->left();
+5491.         if (r==atype<const  FormBilinear *>()) 
+
+src/fflib/problem.cpp:5490:7: Skipping left: function or method not found
+5488.       {
+5489.         Expression e=ii->LeftValue();
+5490.         aType r = ii->left();
+              ^
+5491.         if (r==atype<const  FormBilinear *>()) 
+5492.           {
+
+src/fflib/problem.cpp:5491:11: Taking true branch
+5489.         Expression e=ii->LeftValue();
+5490.         aType r = ii->left();
+5491.         if (r==atype<const  FormBilinear *>()) 
+                  ^
+5492.           {
+5493.             const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+
+src/fflib/problem.cpp:5493:11: 
+5491.         if (r==atype<const  FormBilinear *>()) 
+5492.           {
+5493. >           const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+5494.             const void *  Thbf = GetAny<const void *>((*bb->di->Th)(stack));
+5495.             if (Thbf != Thu) return false;
+
+src/fflib/problem.cpp:5494:11: 
+5492.           {
+5493.             const  FormBilinear * bb=dynamic_cast<const  FormBilinear *>(e);
+5494. >           const void *  Thbf = GetAny<const void *>((*bb->di->Th)(stack));
+5495.             if (Thbf != Thu) return false;
+5496.             }

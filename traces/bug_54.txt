@@ -1,0 +1,12 @@
+src/femlib/InvIntFunc.cpp:48: error: DEAD_STORE
+  The value written to &Fi (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/InvIntFunc.cpp:48:34: Write of unused value
+46.         // cout << i<< j << k << " " << (l < Fj)  << " : "; 
+47.         if( l < Fj ) { k=j; Fk=Fj;}
+48.         else if ( l > Fj  ) { i=j; Fi=Fj;}
+                                       ^
+49.         else { i=j;}      
+50.         // cout <<  "                ** " << l << " : " << i<< " "<< j << " "<< k << " : Fi  " << Fi << " " << Fj << " "<< Fk << endl;

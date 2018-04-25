@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:2468: error: DEAD_STORE
+  The value written to &pa (type double*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:2468:9: Write of unused value
+2466.           R coef = mes *pi.a;
+2467.           R2 Pt(pi);
+2468.           pa =a;
+                ^
+2469.           Ku.BF(Dop,Pt,fu);
+2470.   	MeshPointStack(stack)->set(T(Pt),Pt,Kv);

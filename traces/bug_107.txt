@@ -1,0 +1,12 @@
+examples++-load/isolineP1.cpp:501: error: DEAD_STORE
+  The value written to &xf (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/isolineP1.cpp:501:7: Write of unused value
+499.         double fi = tff[j0bid];
+500.         double fj = tff[j1bid];
+501.         double xf = isovalue;
+             ^
+502.   
+503.         // sens fi -> fj (same as local triangle) 

@@ -1,0 +1,12 @@
+examples++-load/ff-NLopt.cpp:696: error: DEAD_STORE
+  The value written to &iprint (type long) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ff-NLopt.cpp:696:6: Write of unused value
+694.   											
+695.   					
+696.   					long iprint = verbosity;	
+            ^
+697.   					ffcalfunc<double> ffJ(stack,JJ,theparam);
+698.   					

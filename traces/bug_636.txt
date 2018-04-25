@@ -1,0 +1,35 @@
+src/femlib/Element_RT.cpp:817: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of Fem2D::The_TypeOfFE_P1ttdc accesses global variable from a different translation unit: Fem2D::TypeOfFE_P1ttdc::G|.
+Showing all 4 steps of the trace
+
+
+src/femlib/Element_RT.cpp:817:1: initialization of Fem2D::The_TypeOfFE_P1ttdc
+815.   static TypeOfFE_RT The_TypeOfFE_RT;
+816.   static TypeOfFE_P0 The_TypeOfFE_P0;
+817. > static TypeOfFE_P1ttdc The_TypeOfFE_P1ttdc;
+818.   static TypeOfFE_P2ttdc The_TypeOfFE_P2ttdc;
+819.   static TypeOfFE_RTmodif The_TypeOfFE_RTmodif;
+
+src/femlib/Element_RT.cpp:817:24: call to Fem2D::TypeOfFE_P1ttdc_TypeOfFE_P1ttdc
+815.   static TypeOfFE_RT The_TypeOfFE_RT;
+816.   static TypeOfFE_P0 The_TypeOfFE_P0;
+817.   static TypeOfFE_P1ttdc The_TypeOfFE_P1ttdc;
+                              ^
+818.   static TypeOfFE_P2ttdc The_TypeOfFE_P2ttdc;
+819.   static TypeOfFE_RTmodif The_TypeOfFE_RTmodif;
+
+src/femlib/Element_RT.cpp:598:25: call to Fem2D::TypeOfFE_P1ttdc_Shrink
+  596.       
+  597.      TypeOfFE_P1ttdc(): TypeOfFE(0,0,3,1,Data,1,1,3,3,Pi_h_coef)
+  598.       { const R2 Pt[] = { Shrink(R2(0,0)), Shrink(R2(1,0)), Shrink(R2(0,1)) }; 
+                                 ^
+  599.         for (int i=0;i<NbDoF;i++) {
+  600.          pij_alpha[i]= IPJ(i,i,0);
+
+src/femlib/Element_RT.cpp:594:43: access to Fem2D::TypeOfFE_P1ttdc::G|
+  592.       //  (1 -1/3)*
+  593.       
+  594.       static R2 Shrink(const R2& P){ return (P-G)*cshrink+G;}
+                                                   ^
+  595.       static R2 Shrink1(const R2& P){ return (P-G)*cshrink1+G;}
+  596.       

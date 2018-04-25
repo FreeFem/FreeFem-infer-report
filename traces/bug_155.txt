@@ -1,0 +1,27 @@
+examples++-load/splitmesh4.cpp:117: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of callDoLoadInit accesses global variable from a different translation unit: std::cout|.
+Showing all 4 steps of the trace
+
+
+examples++-load/splitmesh4.cpp:117:1: initialization of callDoLoadInit
+115.       Global.Add("splitmesh4","(",new OneOperator1s_<Mesh3 const *,Mesh3 const *>(SplitMesh4));
+116.   }
+117. > LOADFUNC(Load_Init)
+
+examples++-load/splitmesh4.cpp:117:1: call to DoLoadInit
+115.       Global.Add("splitmesh4","(",new OneOperator1s_<Mesh3 const *,Mesh3 const *>(SplitMesh4));
+116.   }
+117. > LOADFUNC(Load_Init)
+
+examples++-load/splitmesh4.cpp:117:1: call to addInitFunct
+  115.       Global.Add("splitmesh4","(",new OneOperator1s_<Mesh3 const *,Mesh3 const *>(SplitMesh4));
+  116.   }
+  117. > LOADFUNC(Load_Init)
+
+src/fflib/InitFunct.cpp:80:23: access to std::cout|
+  78.        ){ 
+  79.       getInitFunctlist()->push_back(make_pair(i,f));
+  80.       if(verbosity>9)   cout << " -- addInitFunct: " << i << " " << f 
+                              ^
+  81.   			   << " " <<  (name ? name : "" ) <<endl; 
+  82.     }

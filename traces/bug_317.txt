@@ -1,0 +1,12 @@
+examples++-mpi/mpi-cmaes.cpp:290: error: DEAD_STORE
+  The value written to &cost (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/mpi-cmaes.cpp:290:6: Write of unused value
+288.   				virtual AnyType operator()(Stack stack)  const
+289.   				{
+290.   					double cost = 1e100;
+            ^
+291.   					WhereStackOfPtr2Free(stack)=new StackOfPtr2Free(stack);// FH mars 2005 
+292.   					Kn &x = *GetAny<Kn *>((*X)(stack));	

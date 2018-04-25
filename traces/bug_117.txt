@@ -1,0 +1,12 @@
+src/medit/sftcpy.c:238: error: DEAD_STORE
+  The value written to &ptr (type float*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/sftcpy.c:238:7: Write of unused value
+236.       case GL_POINT_TOKEN:
+237.         v = (Feedback3Dcolor *)ptr;
+238.         ptr += 7;
+             ^
+239.         break; 
+240.       default:

@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:492: error: DEAD_STORE
+  The value written to &z1 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:492:3: Write of unused value
+490.     glPolygonMode(GL_FRONT_AND_BACK,GL_LINE); 
+491.     
+492.     R z1= plot.z0;
+         ^
+493.     R z2= plot.z0;
+494.     

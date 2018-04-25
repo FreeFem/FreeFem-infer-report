@@ -1,0 +1,12 @@
+examples++-load/Element_P3.cpp:326: error: DEAD_STORE
+  The value written to &k (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_P3.cpp:326:13: Write of unused value
+324.               for(int i=0; i< n;++i)
+325.                   M.p[i]=i;
+326.               int k=10;
+                   ^
+327.               if(verbosity>9) cout << " P3  set:";
+328.               int dof= 4;

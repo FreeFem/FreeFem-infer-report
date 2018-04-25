@@ -1,0 +1,12 @@
+examples++-load/metis.cpp:103: error: DEAD_STORE
+  The value written to &etype (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/metis.cpp:103:5: Write of unused value
+101.       idx_t nparts=lparts;
+102.       idx_t edgecut;
+103.       idx_t etype =nve-2; // triangle
+           ^
+104.   #ifdef  METIS_VER_MAJOR    
+105.       printf("  %d-way Edge-Cut: %7d, Balance: %5.2f\n", nparts, nve, libmetis__ComputeElementBalance(nt, nparts, epart));

@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:413: error: DEAD_STORE
+  The value written to &cas (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:413:16: Write of unused value
+411.                  l0 = BCBC;
+412.                  l1 = ACAC;
+413.                  cas = 1;
+                      ^
+414.                  s = s1;
+415.                }

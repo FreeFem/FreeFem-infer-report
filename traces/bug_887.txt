@@ -1,0 +1,12 @@
+src/fflib/lgfem.cpp:4096: error: DEAD_STORE
+  The value written to &dimplot (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/lgfem.cpp:4096:3: Write of unused value
+4094.     }
+4095.     if (nargs[16]) drawborder= GetAny<bool>((*nargs[16])(s));
+4096.     int   dimplot=2;
+          ^
+4097.     if (nargs[17]) dimplot= GetAny<long>((*nargs[17])(s));
+4098.     bool addtoplot=false, keepPV=false;

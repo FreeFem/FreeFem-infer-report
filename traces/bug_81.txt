@@ -1,0 +1,92 @@
+examples++-load/exactpartition.cpp:79: error: NULL_DEREFERENCE
+  pointer `vi` last assigned on line 75 could be null and is dereferenced at line 79, column 15.
+Showing all 12 steps of the trace
+
+
+examples++-load/exactpartition.cpp:68:1: start of procedure exactpartition()
+66.       return 0;
+67.   }
+68. > long exactpartition( FEbaseArrayKn<double> * const & p, KN<long> *const &pj)
+69.   {
+70.       int n = p->N,m=0;
+
+examples++-load/exactpartition.cpp:70:5: 
+68.   long exactpartition( FEbaseArrayKn<double> * const & p, KN<long> *const &pj)
+69.   {
+70. >     int n = p->N,m=0;
+71.       double ** v= new double *[n];
+72.       int kerr=0;
+
+examples++-load/exactpartition.cpp:71:5: 
+69.   {
+70.       int n = p->N,m=0;
+71. >     double ** v= new double *[n];
+72.       int kerr=0;
+73.       for(int i=0;i<n; ++i)
+
+examples++-load/exactpartition.cpp:72:5: 
+70.       int n = p->N,m=0;
+71.       double ** v= new double *[n];
+72. >     int kerr=0;
+73.       for(int i=0;i<n; ++i)
+74.       {
+
+examples++-load/exactpartition.cpp:73:9: 
+71.       double ** v= new double *[n];
+72.       int kerr=0;
+73. >     for(int i=0;i<n; ++i)
+74.       {
+75.           KN<double> *vi=p->get(i);
+
+examples++-load/exactpartition.cpp:73:17: Loop condition is true. Entering loop body
+71.       double ** v= new double *[n];
+72.       int kerr=0;
+73.       for(int i=0;i<n; ++i)
+                      ^
+74.       {
+75.           KN<double> *vi=p->get(i);
+
+examples++-load/exactpartition.cpp:75:9: Skipping get: function or method not found
+73.       for(int i=0;i<n; ++i)
+74.       {
+75.           KN<double> *vi=p->get(i);
+              ^
+76.           int mi = vi ? vi->N() : 0;
+77.           if(m==0) m = mi;
+
+examples++-load/exactpartition.cpp:76:18: Condition is false
+74.       {
+75.           KN<double> *vi=p->get(i);
+76.           int mi = vi ? vi->N() : 0;
+                       ^
+77.           if(m==0) m = mi;
+78.           else if (m != mi ) kerr++;
+
+examples++-load/exactpartition.cpp:76:9: 
+74.       {
+75.           KN<double> *vi=p->get(i);
+76. >         int mi = vi ? vi->N() : 0;
+77.           if(m==0) m = mi;
+78.           else if (m != mi ) kerr++;
+
+examples++-load/exactpartition.cpp:77:12: Taking true branch
+75.           KN<double> *vi=p->get(i);
+76.           int mi = vi ? vi->N() : 0;
+77.           if(m==0) m = mi;
+                 ^
+78.           else if (m != mi ) kerr++;
+79.           v[i]= *vi;
+
+examples++-load/exactpartition.cpp:77:18: 
+75.           KN<double> *vi=p->get(i);
+76.           int mi = vi ? vi->N() : 0;
+77. >         if(m==0) m = mi;
+78.           else if (m != mi ) kerr++;
+79.           v[i]= *vi;
+
+examples++-load/exactpartition.cpp:79:9: 
+77.           if(m==0) m = mi;
+78.           else if (m != mi ) kerr++;
+79. >         v[i]= *vi;
+80.       }
+81.       ffassert(kerr==0);

@@ -1,0 +1,12 @@
+src/fflib/glumesh2D.cpp:105: error: DEAD_STORE
+  The value written to &nbv0 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/glumesh2D.cpp:105:2: Write of unused value
+103.   	if(!*i) continue;
+104.   	if(verbosity>1)  cout << " GluMesh + "<< Th.nv << " " << Th.nt << endl;
+105.   	int nbv0 = nbv;
+        ^
+106.   	
+107.   	for (int ii=0;ii<Th.nv;ii++)

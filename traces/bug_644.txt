@@ -1,0 +1,12 @@
+examples++-mpi/parms_FreeFem.cpp:923: error: DEAD_STORE
+  The value written to &i (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/parms_FreeFem.cpp:923:3: Write of unused value
+921.   	 
+922.   	 /*----find the norm of the solution error */
+923.   	 i=1;
+         ^
+924.   	 t3 = -1.0;
+925.   	 int j;

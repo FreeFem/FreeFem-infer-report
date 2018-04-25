@@ -1,0 +1,12 @@
+src/bamglib/QuadTree.cpp:252: error: DEAD_STORE
+  The value written to &h (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/QuadTree.cpp:252:3: Write of unused value
+250.      int l=0; // level
+251.      QuadTreeBox * b;
+252.     Icoor1 h=MaxISize;
+         ^
+253.     Icoor1 hb =  MaxISize;
+254.     Icoor1 i0=0,j0=0;

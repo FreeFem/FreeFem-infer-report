@@ -1,0 +1,12 @@
+src/medit/sftcpy.c:208: error: DEAD_STORE
+  The value written to &ptr (type float*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/sftcpy.c:208:7: Write of unused value
+206.         fprintf(file,"%g %g %g stc\n",v[0].r,v[0].g,v[0].b);
+207.         fprintf(file,"%g %g %g %g sgm\n",v[0].x,v[0].y,v[1].x,v[1].y);
+208.         ptr += 14;
+             ^
+209.         break;
+210.   

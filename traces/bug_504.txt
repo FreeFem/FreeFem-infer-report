@@ -1,0 +1,318 @@
+examples++-load/medit.cpp:539: error: NULL_DEREFERENCE
+  pointer `a0` last assigned on line 537 could be null and is dereferenced at line 539, column 8.
+Showing all 41 steps of the trace
+
+
+examples++-load/medit.cpp:510:3: start of procedure datasolMesh3_Op
+508.    
+509.   public:
+510.     datasolMesh3_Op(const basicAC_F0 &  args) : l( args.size()-2 )
+         ^
+511.     {
+512.       int nbofsol;
+
+src/fflib/AFunction.hpp:115:42: Skipping E_F0mps: function or method not found
+113.    int  FindType(const char * name) ; 
+114.     void lgerror (const char* s) ;  
+115.    void CompileError(string msg="",aType r=0);
+                                                ^
+116.    void ExecError(string msg="");
+117.    
+
+examples++-load/medit.cpp:510:47: Skipping vector: function or method not found
+508.    
+509.   public:
+510.     datasolMesh3_Op(const basicAC_F0 &  args) : l( args.size()-2 )
+                                                     ^
+511.     {
+512.       int nbofsol;
+
+examples++-load/medit.cpp:513:5: 
+511.     {
+512.       int nbofsol;
+513. >     int ddim=3;
+514.       int stsize=6;
+515.       //cout << "construction data medit solution avec datasolMesh3_Op" << args << endl;
+
+examples++-load/medit.cpp:514:5: 
+512.       int nbofsol;
+513.       int ddim=3;
+514. >     int stsize=6;
+515.       //cout << "construction data medit solution avec datasolMesh3_Op" << args << endl;
+516.       args.SetNameParam(n_name_param,name_param,nargs); 
+
+examples++-load/medit.cpp:516:5: 
+514.       int stsize=6;
+515.       //cout << "construction data medit solution avec datasolMesh3_Op" << args << endl;
+516. >     args.SetNameParam(n_name_param,name_param,nargs); 
+517.   
+518.       //if (BCastTo<string *>(args[0])){
+
+src/fflib/AFunction2.cpp:1001:1: start of procedure SetNameParam
+  999.   }
+  1000.   
+  1001. > void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003.    int k=0;
+
+src/fflib/AFunction2.cpp:1003:2: 
+  1001.   void basicAC_F0::SetNameParam(int n,name_and_type *l , Expression * e) const 
+  1002.   {
+  1003. >  int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+
+src/fflib/AFunction2.cpp:1004:8: Taking false branch
+  1002.   {
+  1003.    int k=0;
+  1004.    if ( !n && !named_parameter)  return;
+                 ^
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1006:8: 
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006. >   for (int i=0;i<n;i++)
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1006:16: Loop condition is false. Leaving loop
+  1004.    if ( !n && !named_parameter)  return;
+  1005.    
+  1006.     for (int i=0;i<n;i++)
+                         ^
+  1007.     {
+  1008.        C_F0  ce=find(l[i].name) ;
+
+src/fflib/AFunction2.cpp:1027:7: Taking false branch
+  1025.     }
+  1026.     
+  1027.    if (!named_parameter) return;
+                ^
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+
+src/fflib/AFunction2.cpp:1029:7: Taking true branch
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+                ^
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1031:7: Skipping operator<<: function or method not found
+  1029.     if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+                ^
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+  1033.          {
+
+src/fflib/AFunction2.cpp:1032:11: Skipping _Rb_tree_const_iterator: function or method not found
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                    ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1032:55: Loop condition is false. Leaving loop
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+  1032.         for(const_iterator ii=named_parameter->begin(); ii != named_parameter->end();ii++)
+                                                                ^
+  1033.          {
+  1034.           for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:10: Taking true branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                   ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1040:15: Taking false branch
+  1038.           L1:;
+  1039.          }
+  1040.       if ( n && mpirank==0) {
+                        ^
+  1041.       cerr << " The named parameter can be " << endl;
+  1042.       for (int i=0;i<n;i++)
+
+src/fflib/AFunction2.cpp:1045:5: Skipping CompileError(): function or method not found
+  1043.          cerr << "\t" << l[i].name << " =  <" << l[i].type->name() << ">\n";
+  1044.       }
+  1045.       CompileError("Unused named parameter");  
+              ^
+  1046.      }
+  1047.   }
+
+src/fflib/AFunction2.cpp:1029:3: 
+  1027.    if (!named_parameter) return;
+  1028.     
+  1029. >   if ((size_t) k!=  named_parameter->size()) 
+  1030.      {
+  1031.         cout << " Sorry some name parameter are not used!  found" <<  k << " == " << named_parameter->size() <<endl;
+
+src/fflib/AFunction2.cpp:1047:1: return from a call to basicAC_F0_SetNameParam
+  1045.       CompileError("Unused named parameter");  
+  1046.      }
+  1047. > }
+  1048.   
+  1049.   
+
+examples++-load/medit.cpp:519:7: Skipping operator[]: function or method not found
+517.   
+518.       //if (BCastTo<string *>(args[0])){
+519.         filename = CastTo<string *>(args[0]);
+             ^
+520.         // }
+521.         //if (BCastTo<pmesh3>(args[1])){
+
+src/fflib/lgmesh3.hpp:28:1: start of procedure CastTo<std::basic_string<char>_*>()
+  26.   
+  27.   template<class Result>
+  28. > inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:44: Skipping operator_E_F0_*: function or method not found
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                   ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:78: return from a call to CastTo<std::basic_string<char>_*>
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                                                     ^
+  29.   
+  30.   // <<BCastTo>>
+
+examples++-load/medit.cpp:522:7: Skipping operator[]: function or method not found
+520.         // }
+521.         //if (BCastTo<pmesh3>(args[1])){
+522.         eTh= CastTo<pmesh3>(args[1]);
+             ^
+523.         // }
+524.       nbofsol = l.size();
+
+src/fflib/lgmesh3.hpp:28:1: start of procedure CastTo<const_Fem2D::Mesh3_*>()
+  26.   
+  27.   template<class Result>
+  28. > inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:44: Skipping operator_E_F0_*: function or method not found
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                   ^
+  29.   
+  30.   // <<BCastTo>>
+
+src/fflib/lgmesh3.hpp:28:78: return from a call to CastTo<const_Fem2D::Mesh3_*>
+  26.   
+  27.   template<class Result>
+  28.   inline Expression CastTo(const C_F0 & f) { return atype<Result>()->CastTo(f);}
+                                                                                     ^
+  29.   
+  30.   // <<BCastTo>>
+
+examples++-load/medit.cpp:524:5: Skipping size: function or method not found
+522.         eTh= CastTo<pmesh3>(args[1]);
+523.         // }
+524.       nbofsol = l.size();
+           ^
+525.       for (size_t i=2;i<args.size();i++){
+526.         size_t jj=i-2;
+
+examples++-load/medit.cpp:525:10: 
+523.         // }
+524.       nbofsol = l.size();
+525. >     for (size_t i=2;i<args.size();i++){
+526.         size_t jj=i-2;
+527.   
+
+examples++-load/medit.cpp:525:21: Loop condition is true. Entering loop body
+523.         // }
+524.       nbofsol = l.size();
+525.       for (size_t i=2;i<args.size();i++){
+                           ^
+526.         size_t jj=i-2;
+527.   
+
+examples++-load/medit.cpp:526:7: 
+524.       nbofsol = l.size();
+525.       for (size_t i=2;i<args.size();i++){
+526. >       size_t jj=i-2;
+527.   
+528.         if ( BCastTo<double>(args[i]))
+
+examples++-load/medit.cpp:528:12: Skipping operator[]: function or method not found
+526.         size_t jj=i-2;
+527.   
+528.         if ( BCastTo<double>(args[i]))
+                  ^
+529.   	{
+530.   	  l[jj].what=1;
+
+src/fflib/lgmesh3.hpp:32:1: start of procedure BCastTo<double>()
+  30.   // <<BCastTo>>
+  31.   template<class Result>
+  32. > inline bool BCastTo(const C_F0 & f) { return atype<Result>()->CastingFrom(f.left());}
+  33.   
+  34.   inline void Check(bool  v,const char * mess)
+
+src/fflib/lgmesh3.hpp:32:39: Skipping CastingFrom: function or method not found
+  30.   // <<BCastTo>>
+  31.   template<class Result>
+  32.   inline bool BCastTo(const C_F0 & f) { return atype<Result>()->CastingFrom(f.left());}
+                                              ^
+  33.   
+  34.   inline void Check(bool  v,const char * mess)
+
+src/fflib/lgmesh3.hpp:32:85: return from a call to BCastTo<double>
+  30.   // <<BCastTo>>
+  31.   template<class Result>
+  32.   inline bool BCastTo(const C_F0 & f) { return atype<Result>()->CastingFrom(f.left());}
+                                                                                            ^
+  33.   
+  34.   inline void Check(bool  v,const char * mess)
+
+examples++-load/medit.cpp:528:12: Taking false branch
+526.         size_t jj=i-2;
+527.   
+528.         if ( BCastTo<double>(args[i]))
+                  ^
+529.   	{
+530.   	  l[jj].what=1;
+
+examples++-load/medit.cpp:535:17: Taking true branch
+533.   	  
+534.   	}
+535.         else if ( args[i].left()==atype<E_Array>() )
+                       ^
+536.   	{
+537.   	  const E_Array * a0  = dynamic_cast<const E_Array *>( args[i].LeftValue() );
+
+examples++-load/medit.cpp:537:4: Skipping LeftValue: function or method not found
+535.         else if ( args[i].left()==atype<E_Array>() )
+536.   	{
+537.   	  const E_Array * a0  = dynamic_cast<const E_Array *>( args[i].LeftValue() );
+          ^
+538.   	  //cout << "taille" << a0->size() << endl;
+539.   	  if (a0->size() != ddim && a0->size() != stsize) 
+
+examples++-load/medit.cpp:539:8: 
+537.   	  const E_Array * a0  = dynamic_cast<const E_Array *>( args[i].LeftValue() );
+538.   	  //cout << "taille" << a0->size() << endl;
+539. > 	  if (a0->size() != ddim && a0->size() != stsize) 
+540.   	    CompileError("savesol in 3D: vector solution is 3 composant, vector solution is 6 composant");
+541.   

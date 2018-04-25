@@ -1,0 +1,12 @@
+examples++-hpddm/PETSc-code.hpp:743: error: DEAD_STORE
+  The value written to &timing (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-hpddm/PETSc-code.hpp:743:13: Write of unused value
+741.           void solve(U out) const {
+742.               Vec x, y;
+743.               double timing = MPI_Wtime();
+                   ^
+744.               MatCreateVecs((*t)._petsc, &x, &y);
+745.               PetscScalar* ptr;

@@ -1,0 +1,121 @@
+examples++-load/gmsh.cpp:285: error: NULL_DEREFERENCE
+  pointer `fp` last assigned on line 283 could be null and is dereferenced by call to `feof()` at line 285, column 13.
+Showing all 16 steps of the trace
+
+
+examples++-load/gmsh.cpp:105:1: start of procedure GMSH_Load()
+103.   };
+104.   
+105. > Mesh * GMSH_Load(const string & filename)
+106.     {
+107.       // variable freefem++
+
+examples++-load/gmsh.cpp:108:5: 
+106.     {
+107.       // variable freefem++
+108. >     int nv, nt=0, nbe=0;
+109.       Mesh::Vertex   *vff;
+110.       map<int,int> mapnumv;
+
+examples++-load/gmsh.cpp:110:5: Skipping map: function or method not found
+108.       int nv, nt=0, nbe=0;
+109.       Mesh::Vertex   *vff;
+110.       map<int,int> mapnumv;
+           ^
+111.   
+112.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+
+examples++-load/gmsh.cpp:113:5: 
+111.   
+112.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+113. >     char str[256]  = "ZZZ";
+114.       double version = 2.0;
+115.       bool binary = false, swap = false, postpro = false;
+
+examples++-load/gmsh.cpp:114:5: 
+112.       // loading mesh and reading mesh in gmsh are in the file GModelIO_Mesh.cpp (directory Geo) 
+113.       char str[256]  = "ZZZ";
+114. >     double version = 2.0;
+115.       bool binary = false, swap = false, postpro = false;
+116.       
+
+examples++-load/gmsh.cpp:115:5: 
+113.       char str[256]  = "ZZZ";
+114.       double version = 2.0;
+115. >     bool binary = false, swap = false, postpro = false;
+116.       
+117.       FILE *fp = fopen(filename.c_str(), "rb");
+
+examples++-load/gmsh.cpp:117:5: Skipping c_str: function or method not found
+115.       bool binary = false, swap = false, postpro = false;
+116.       
+117.       FILE *fp = fopen(filename.c_str(), "rb");
+           ^
+118.       if(!fp){
+119.         cerr << "Unable to open file " << filename.c_str() << endl;
+
+examples++-load/gmsh.cpp:118:9: Taking false branch
+116.       
+117.       FILE *fp = fopen(filename.c_str(), "rb");
+118.       if(!fp){
+               ^
+119.         cerr << "Unable to open file " << filename.c_str() << endl;
+120.         exit(1);
+
+examples++-load/gmsh.cpp:123:13: Loop condition is false. Leaving loop
+121.       }
+122.       
+123.       while( !feof(fp) ){
+                   ^
+124.         fgets(str, sizeof(str), fp);  
+125.         if( str[0] == '$'){
+
+examples++-load/gmsh.cpp:274:5: 
+272.         }
+273.       }
+274. >     fclose(fp);
+275.       
+276.       Mesh::Triangle *tff  = new Mesh::Triangle[nt];
+
+examples++-load/gmsh.cpp:276:5: 
+274.       fclose(fp);
+275.       
+276. >     Mesh::Triangle *tff  = new Mesh::Triangle[nt];
+277.       Mesh::Triangle *ttff = tff;
+278.   
+
+examples++-load/gmsh.cpp:277:5: 
+275.       
+276.       Mesh::Triangle *tff  = new Mesh::Triangle[nt];
+277. >     Mesh::Triangle *ttff = tff;
+278.   
+279.       Mesh::BorderElement *bff  = new Mesh::BorderElement[nbe];
+
+examples++-load/gmsh.cpp:279:5: 
+277.       Mesh::Triangle *ttff = tff;
+278.   
+279. >     Mesh::BorderElement *bff  = new Mesh::BorderElement[nbe];
+280.       Mesh::BorderElement *bbff = bff;
+281.   
+
+examples++-load/gmsh.cpp:280:5: 
+278.   
+279.       Mesh::BorderElement *bff  = new Mesh::BorderElement[nbe];
+280. >     Mesh::BorderElement *bbff = bff;
+281.   
+282.       // second reading
+
+examples++-load/gmsh.cpp:283:5: Skipping c_str: function or method not found
+281.   
+282.       // second reading
+283.       fp = fopen(filename.c_str(), "rb");
+           ^
+284.       
+285.       while( !feof(fp) ){
+
+examples++-load/gmsh.cpp:285:13: 
+283.       fp = fopen(filename.c_str(), "rb");
+284.       
+285. >     while( !feof(fp) ){
+286.         fgets(str, sizeof(str), fp);  
+287.         if( str[0] == '$'){

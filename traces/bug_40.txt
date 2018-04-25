@@ -1,0 +1,12 @@
+src/medit/critip.c:26: error: DEAD_STORE
+  The value written to &pt (type striangle*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/critip.c:26:3: Write of unused value
+24.     ubyte      voy;
+25.   
+26.     pt   = &mesh->tria[depart];
+        ^
+27.     voy  = idir[i+1];
+28.     iadr = 3*(depart-1)+1;

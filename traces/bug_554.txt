@@ -1,0 +1,12 @@
+src/medit/scene.c:632: error: DEAD_STORE
+  The value written to &c (type camera*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/scene.c:632:3: Write of unused value
+630.     view = sc->view;
+631.     p    = sc->persp;
+632.     c    = sc->camera;
+         ^
+633.   
+634.     if ( stereoMode == MONO || !hasStereo ) {

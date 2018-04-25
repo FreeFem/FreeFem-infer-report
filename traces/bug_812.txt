@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:1919: error: DEAD_STORE
+  The value written to &nbtold (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:1919:3: Write of unused value
+1917.   void  Triangles::NewPoints(Triangles & Bh,int KeepBackVertex)
+1918.   { // Triangles::NewPoints
+1919.     Int4 nbtold(nbt),nbvold(nbv);
+          ^
+1920.     if (verbosity>2) 
+1921.       cout << "  -- Triangles::NewPoints ";

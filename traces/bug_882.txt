@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:3678: error: DEAD_STORE
+  The value written to &bid0 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:3678:5: Write of unused value
+3676.   	 for(int itab=0; itab<4; itab++){
+3677.   	   char newvalue[sizeof(int)];
+3678.   	   int bid0= sprintf(newvalue,"%s", (char*)&tab[itab]);
+            ^
+3679.   	   fwrite( &newvalue, sizeof(unsigned char), 1, fp);
+3680.   	 }

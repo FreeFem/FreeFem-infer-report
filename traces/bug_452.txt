@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:493: error: DEAD_STORE
+  The value written to &z2 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:493:3: Write of unused value
+491.     
+492.     R z1= plot.z0;
+493.     R z2= plot.z0;
+         ^
+494.     
+495.     double r=0,g=0,b=0;

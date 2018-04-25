@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:477: error: DEAD_STORE
+  The value written to &s1 (type bamg::Vertex*) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:477:4: Write of unused value
+475.   	       er = edge;
+476.   	       if(ll<l0) { // change of direction --
+477.   		 s1=s;
+          ^
+478.   		 l1=l0;
+479.   		 s=st;

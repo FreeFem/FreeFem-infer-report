@@ -1,0 +1,12 @@
+src/femlib/InvIntFunc.cpp:40: error: DEAD_STORE
+  The value written to &Fi (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/InvIntFunc.cpp:40:3: Write of unused value
+38.     // inverse la function F 
+39.     int i=0,j,k=l;
+40.     int Fi=F(i),Fj,Fk=F(k);
+        ^
+41.     while (1)
+42.       {

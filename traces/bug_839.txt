@@ -1,0 +1,12 @@
+src/mpi/parallelempi.cpp:2311: error: DEAD_STORE
+  The value written to &err (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/mpi/parallelempi.cpp:2311:5: Write of unused value
+2309.   {
+2310.       int err;
+2311.       err=MPI_Intercomm_create(p1.comm, p1.who, p2.comm,p2.who,tag, *a);     
+            ^
+2312.       return a;	
+2313.   }

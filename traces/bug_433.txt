@@ -1,0 +1,12 @@
+src/femlib/BamgFreeFem.cpp:756: error: DEAD_STORE
+  The value written to &s (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/BamgFreeFem.cpp:756:6: Write of unused value
+754.   			  int iold = Gh->Number( (*ge)[0] );
+755.   			  int jold = Gh->Number( (*ge)[1] );
+756.   			  int s = on->abscisse;
+            ^
+757.   			  
+758.   			  // cout << " error bizarre " << ge << endl;

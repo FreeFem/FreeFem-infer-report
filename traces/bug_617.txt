@@ -1,0 +1,12 @@
+src/medit/mlists.c:992: error: DEAD_STORE
+  The value written to &cy (type float) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/mlists.c:992:13: Write of unused value
+990.               
+991.               cx = (p0->c[0] + p1->c[0] + p3->c[0]) / 3.0;
+992.               cy = (p0->c[1] + p1->c[1] + p3->c[1]) / 3.0;
+                   ^
+993.               cz = ps1->bb;
+994.   

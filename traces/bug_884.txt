@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:3505: error: DEAD_STORE
+  The value written to &longmini_box (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:3505:3: Write of unused value
+3503.       bmax.z = max(bmax.z,tab_ZZ[ii]);
+3504.     }
+3505.     double longmini_box=1e10;
+          ^
+3506.   		
+3507.     longmini_box = pow(bmax.x-bmin.x,2)+pow(bmax.y-bmin.y,2)+ pow(bmax.z-bmin.z,2);

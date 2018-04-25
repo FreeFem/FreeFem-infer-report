@@ -1,0 +1,12 @@
+src/fflib/array_tlp.hpp:1244: error: DEAD_STORE
+  The value written to &knrp (type basicForEachType*) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/array_tlp.hpp:1244:6: Write of unused value
+1242.        Dcl_Type< Resize<KN<K> > > ();
+1243.        Dcl_Type< Resize<KNM<K> > > ();
+1244.        aType knrp = atype<KN<K> *>();
+             ^
+1245.        aType knr_ = atype<KN_<K> >();
+1246.      //-  typedef KN<Z> ZN;

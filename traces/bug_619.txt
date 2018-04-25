@@ -1,0 +1,12 @@
+src/medit/picking.c:797: error: DEAD_STORE
+  The value written to &clip (type clip*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/picking.c:797:3: Write of unused value
+795.     refmat  = -1;
+796.     mesh    = cv.mesh[sc->idmesh];
+797.     clip    = sc->clip;
+         ^
+798.   
+799.     if ( !getColorRange(&c,mesh) )  return(dlist);

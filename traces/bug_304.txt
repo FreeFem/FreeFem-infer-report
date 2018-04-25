@@ -1,0 +1,12 @@
+examples++-load/bmo.cpp:312: error: DEAD_STORE
+  The value written to &xmod0 (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/bmo.cpp:312:3: Write of unused value
+310.   	 }
+311.          if (igr == 1) 
+312.   	 xmod0 = xmod;
+         ^
+313.          
+314.          

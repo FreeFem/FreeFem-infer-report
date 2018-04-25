@@ -1,0 +1,48 @@
+src/libMesh/memory.c:131: error: NULL_DEREFERENCE
+  pointer `mstack` last assigned on line 128 could be null and is dereferenced at line 131, column 7.
+Showing all 6 steps of the trace
+
+
+src/libMesh/memory.c:123:1: start of procedure M_calloc()
+121.      elsize bytes, and initializes the space to zeros.  
+122.      Actual amount of space allocated is >=  nelem * elsize bytes. */
+123. > void *M_calloc(size_t nelem, size_t elsize,char *call) {
+124.     int    i;
+125.   
+
+src/libMesh/memory.c:127:9: Taking true branch
+125.   
+126.     /* check if first call */
+127.     if ( !mstack ) {
+               ^
+128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+129.       assert(mstack);
+
+src/libMesh/memory.c:128:5: 
+126.     /* check if first call */
+127.     if ( !mstack ) {
+128. >     mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+129.       assert(mstack);
+130.       for (i=1; i<MAXMEM; i++)
+
+src/libMesh/memory.c:130:10: 
+128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+129.       assert(mstack);
+130. >     for (i=1; i<MAXMEM; i++)
+131.         mstack[i].nxt    = i+1;
+132.       cur   = 1;
+
+src/libMesh/memory.c:130:15: Loop condition is true. Entering loop body
+128.       mstack = (Memstack *)calloc((1+MAXMEM),sizeof(Memstack));
+129.       assert(mstack);
+130.       for (i=1; i<MAXMEM; i++)
+                     ^
+131.         mstack[i].nxt    = i+1;
+132.       cur   = 1;
+
+src/libMesh/memory.c:131:7: 
+129.       assert(mstack);
+130.       for (i=1; i<MAXMEM; i++)
+131. >       mstack[i].nxt    = i+1;
+132.       cur   = 1;
+133.       stack = 0;

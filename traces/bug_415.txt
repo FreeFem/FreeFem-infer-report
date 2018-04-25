@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:463: error: DEAD_STORE
+  The value written to &i1 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:463:3: Write of unused value
+461.   		const  typename  Mesh::Element  & K(Th[i]);
+462.   		plot.color(fill? 1 : 1+abs(K.lab));
+463.   		int i0= Th(K[0]),  i1= Th(K[1]),   i2= Th(K[2]) ;    
+         ^
+464.   		glVertex3d(K[0].x,K[0].y,z1);
+465.   		glVertex3d(K[1].x,K[1].y,z1);

@@ -1,0 +1,12 @@
+src/medit/items.c:194: error: DEAD_STORE
+  The value written to &y2 (type float) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/items.c:194:3: Write of unused value
+192.     z1 = cube->cmi[2] - mesh->ztra;
+193.     x2 = cube->cma[0] - mesh->xtra;
+194.     y2 = cube->cma[1] - mesh->ytra;
+         ^
+195.     z2 = cube->cma[2] - mesh->ztra;
+196.     xd = cube->cma[0] - cube->cmi[0];

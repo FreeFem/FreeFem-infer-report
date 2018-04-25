@@ -1,0 +1,501 @@
+examples++-load/ff-Ipopt.cpp:699: error: NULL_DEREFERENCE
+  pointer `MM` last assigned on line 698 could be null and is dereferenced at line 699, column 23.
+Showing all 66 steps of the trace
+
+
+examples++-load/ff-Ipopt.cpp:679:1: start of procedure eval_jac_g
+677.       return true;
+678.   }
+679. > bool ffNLP::eval_jac_g(Index n, const Number* x, bool new_x,Index m, Index nele_jac, Index* iRow, Index *jCol,Number* values)
+680.   {
+681.       assert(n==xstart->N());
+
+examples++-load/ff-Ipopt.cpp:682:5: 
+680.   {
+681.       assert(n==xstart->N());
+682. >     Rn X(n);
+683.       if(x) KnFromPtr(X,x); else X=*xstart;
+684.       
+
+src/femlib/RNM.hpp:953:3: start of procedure KN
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953.     KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+           ^
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+src/femlib/RNM.hpp:953:17: 
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953. >   KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+src/femlib/RNM.hpp:571:3: start of procedure KN_
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571.     KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+             ^
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:571:21: 
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571. >   KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:320:3: start of procedure ShapeOfArray
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320.     ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+               ^
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:26: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:32: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:40: 
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320. >   ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:320:50: return from a call to ShapeOfArray_ShapeOfArray
+      318.                 // a counter of destruction  (use in frefem++)
+      319.     ShapeOfArray(const ShapeOfArray & s,long nn): n(s.n),step(s.n),next(nn) {}              
+      320.     ShapeOfArray(long nn): n(nn),step(1),next(-1) {}
+                                                              ^
+      321.     
+      322.     ShapeOfArray(long nn,long s): n(nn),step(s),next(-1) {}
+
+src/femlib/RNM.hpp:571:38: 
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571. >   KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:571:43: return from a call to KN_<double>_KN_
+    569.     KN_(R *u,long nn,long s):ShapeOfArray(nn,s),v(u){}
+    570.     KN_(R *u,long nn,long s,long nextt):ShapeOfArray(nn,s,nextt),v(u){}
+    571.     KN_(R *u,long nn):ShapeOfArray(nn),v(u){}
+                                                     ^
+    572.   
+    573.   
+
+src/femlib/RNM.hpp:953:47: return from a call to KN<double>_KN
+  951.    // explicit  KN(const R & u):KN_<R>(new R(uu),1,0) {}
+  952.     KN() : KN_<R>(0,0) {}
+  953.     KN(long nn) : KN_<R>(new R[nn],nn)         {} 
+                                                       ^
+  954.     KN(long nn, R * p) : KN_<R>(new R[nn],nn)  
+  955.       { KN_<R>::operator=(KN_<R>(p,nn));}
+
+examples++-load/ff-Ipopt.cpp:683:8: Taking true branch
+681.       assert(n==xstart->N());
+682.       Rn X(n);
+683.       if(x) KnFromPtr(X,x); else X=*xstart;
+              ^
+684.       
+685.       if(values==0)
+
+examples++-load/ff-Ipopt.cpp:683:11: 
+681.       assert(n==xstart->N());
+682.       Rn X(n);
+683. >     if(x) KnFromPtr(X,x); else X=*xstart;
+684.       
+685.       if(values==0)
+
+examples++-load/ff-Ipopt.cpp:471:31: start of procedure KnFromPtr<double,_double>
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471.       template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+                                       ^
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:79: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:87: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+src/femlib/RNM.hpp:391:3: start of procedure N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+             ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:19: 
+    389.   public:
+    390.     typedef R K; // type of data 
+    391. >   long N() const {return n;}
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:28: return from a call to KN_<double>_N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+                                      ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+examples++-load/ff-Ipopt.cpp:471:87: Loop condition is true. Entering loop body
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471.       template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+                                                                                               ^
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:100: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404.     R & operator[](int i) const {return v[index(i)];}
+             ^
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+src/femlib/RNM.hpp:404:32: 
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404. >   R & operator[](int i) const {return v[index(i)];}
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+      335.     long last()      const      { return (n-1)*step;}
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+               ^
+      338.              return step*k;}
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+      338. >            return step*k;}
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+      340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+      338.              return step*k;}
+                                      ^
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+      340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<double>_operator[]
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404.     R & operator[](int i) const {return v[index(i)];}
+                                                             ^
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+examples++-load/ff-Ipopt.cpp:471:95: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:87: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+src/femlib/RNM.hpp:391:3: start of procedure N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+             ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:19: 
+    389.   public:
+    390.     typedef R K; // type of data 
+    391. >   long N() const {return n;}
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:28: return from a call to KN_<double>_N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+                                      ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+examples++-load/ff-Ipopt.cpp:471:87: Loop condition is true. Entering loop body
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471.       template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+                                                                                               ^
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:100: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404.     R & operator[](int i) const {return v[index(i)];}
+             ^
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+src/femlib/RNM.hpp:404:32: 
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404. >   R & operator[](int i) const {return v[index(i)];}
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+      335.     long last()      const      { return (n-1)*step;}
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+               ^
+      338.              return step*k;}
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+      338. >            return step*k;}
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+      340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+      336.     long constant()  const { return step==0;}
+      337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+      338.              return step*k;}
+                                      ^
+      339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+      340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<double>_operator[]
+    402.     R & operator[](long i) const {return v[index(i)];}
+    403.     R & operator()(long i) const {return v[index(i)];}
+    404.     R & operator[](int i) const {return v[index(i)];}
+                                                             ^
+    405.     R & operator()(int i) const {return v[index(i)];}
+    406.   
+
+examples++-load/ff-Ipopt.cpp:471:95: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:87: 
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471. >     template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+src/femlib/RNM.hpp:391:3: start of procedure N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+             ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:19: 
+    389.   public:
+    390.     typedef R K; // type of data 
+    391. >   long N() const {return n;}
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+src/femlib/RNM.hpp:391:28: return from a call to KN_<double>_N
+    389.   public:
+    390.     typedef R K; // type of data 
+    391.     long N() const {return n;}
+                                      ^
+    392.     bool unset() const { return !v;}
+    393.     void set(R * vv,int nn,int st=1,int nx=-1) {v=vv;n=nn;step=st;next=nx;}
+
+examples++-load/ff-Ipopt.cpp:471:87: Loop condition is false. Leaving loop
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471.       template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+                                                                                               ^
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:471:110: return from a call to ffNLP_KnFromPtr<double,_double>
+  469.       //some static functions...
+  470.       template<class A,class B> static void KnToPtr(const KN<A> &a,B *b) {for(int i=0;i<a.N();++i) b[i]=a[i];} //Fill a pointer with a KN
+  471.       template<class A,class B> static void KnFromPtr(KN<A> &a,B const *b) {for(int i=0;i<a.N();++i) a[i]=b[i];}//Fill a KN with a pointer <-- to avoid the use of const_cast
+                                                                                                                      ^
+  472.       static int FindIndex(const KN<int> &irow,const KN<int> & jrow,int i,int j,int kmin,int kmax);
+  473.   };
+
+examples++-load/ff-Ipopt.cpp:685:8: Taking false branch
+683.       if(x) KnFromPtr(X,x); else X=*xstart;
+684.       
+685.       if(values==0)
+              ^
+686.       {
+687.           int k=0;
+
+examples++-load/ff-Ipopt.cpp:695:13: Taking true branch
+693.           }
+694.       }
+695.       else if(dconstraints)
+                   ^
+696.       {
+697.           Matrice_Creuse<R>* M = dconstraints->J(X);
+
+examples++-load/ff-Ipopt.cpp:697:9: 
+695.       else if(dconstraints)
+696.       {
+697. >         Matrice_Creuse<R>* M = dconstraints->J(X);
+698.           MatriceMorse<R> *MM = dynamic_cast<MatriceMorse<R>* >(&(*M->A));  //ugly!
+699.           for(int i=0;i<MM->N;++i)
+
+src/femlib/RNM.hpp:397:3: start of procedure KN_
+  395.     long size() const{return step?n*step:n;}
+  396.     operator R *() const {return v;}
+  397.     KN_(const KN_<R> & u) :ShapeOfArray(u),v(u.v){} 
+           ^
+  398.     KN_(const KN_<R> & U,const SubArray & sa)  : ShapeOfArray(U,sa),v(U.v + U.index(sa.start)) {}
+  399.   
+
+src/femlib/RNM.hpp:397:26: 
+  395.     long size() const{return step?n*step:n;}
+  396.     operator R *() const {return v;}
+  397. >   KN_(const KN_<R> & u) :ShapeOfArray(u),v(u.v){} 
+  398.     KN_(const KN_<R> & U,const SubArray & sa)  : ShapeOfArray(U,sa),v(U.v + U.index(sa.start)) {}
+  399.   
+
+src/femlib/RNM.hpp:311:7: start of procedure ShapeOfArray
+    309.   
+    310.   
+    311.   class ShapeOfArray{ protected:
+                 ^
+    312.     public:
+    313.   
+
+src/femlib/RNM.hpp:311:7: return from a call to ShapeOfArray_ShapeOfArray
+    309.   
+    310.   
+    311.   class ShapeOfArray{ protected:
+                 ^
+    312.     public:
+    313.   
+
+src/femlib/RNM.hpp:397:42: 
+  395.     long size() const{return step?n*step:n;}
+  396.     operator R *() const {return v;}
+  397. >   KN_(const KN_<R> & u) :ShapeOfArray(u),v(u.v){} 
+  398.     KN_(const KN_<R> & U,const SubArray & sa)  : ShapeOfArray(U,sa),v(U.v + U.index(sa.start)) {}
+  399.   
+
+src/femlib/RNM.hpp:397:49: return from a call to KN_<double>_KN_
+  395.     long size() const{return step?n*step:n;}
+  396.     operator R *() const {return v;}
+  397.     KN_(const KN_<R> & u) :ShapeOfArray(u),v(u.v){} 
+                                                         ^
+  398.     KN_(const KN_<R> & U,const SubArray & sa)  : ShapeOfArray(U,sa),v(U.v + U.index(sa.start)) {}
+  399.   
+
+examples++-load/ff-Ipopt.cpp:697:9: Skipping J: function or method not found
+695.       else if(dconstraints)
+696.       {
+697.           Matrice_Creuse<R>* M = dconstraints->J(X);
+               ^
+698.           MatriceMorse<R> *MM = dynamic_cast<MatriceMorse<R>* >(&(*M->A));  //ugly!
+699.           for(int i=0;i<MM->N;++i)
+
+examples++-load/ff-Ipopt.cpp:698:9: 
+696.       {
+697.           Matrice_Creuse<R>* M = dconstraints->J(X);
+698. >         MatriceMorse<R> *MM = dynamic_cast<MatriceMorse<R>* >(&(*M->A));  //ugly!
+699.           for(int i=0;i<MM->N;++i)
+700.           {
+
+src/femlib/RefCounter.hpp:95:3: start of procedure operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:25: 
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95. >   T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:35: return from a call to CountPointer<MatriceCreuse<double>>_operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+                                          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+examples++-load/ff-Ipopt.cpp:699:13: 
+697.           Matrice_Creuse<R>* M = dconstraints->J(X);
+698.           MatriceMorse<R> *MM = dynamic_cast<MatriceMorse<R>* >(&(*M->A));  //ugly!
+699. >         for(int i=0;i<MM->N;++i)
+700.           {
+701.               for(int k=MM->lg[i]; k < MM->lg[i+1]; ++k)
+
+examples++-load/ff-Ipopt.cpp:699:21: 
+697.           Matrice_Creuse<R>* M = dconstraints->J(X);
+698.           MatriceMorse<R> *MM = dynamic_cast<MatriceMorse<R>* >(&(*M->A));  //ugly!
+699. >         for(int i=0;i<MM->N;++i)
+700.           {
+701.               for(int k=MM->lg[i]; k < MM->lg[i+1]; ++k)

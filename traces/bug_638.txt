@@ -1,0 +1,12 @@
+examples++-load/Element_Mixte.cpp:867: error: DEAD_STORE
+  The value written to &dd (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Element_Mixte.cpp:867:12: Write of unused value
+865.              // cout << " B= " << B[0] << " " << B[1] << endl;
+866.               double CK=0.5;//  dof U= [u1,u2] > |K| int_K ( B_i.U )
+867.              R dd=9, hd=-3;
+                  ^
+868.               R ll[3],lo[3];
+869.               for (int p=0;p<QFK.n;++p)

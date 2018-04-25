@@ -1,0 +1,12 @@
+examples++-load/aniso.cpp:105: error: DEAD_STORE
+  The value written to &lmin (type double) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/aniso.cpp:105:5: Write of unused value
+103.       long ns = m.N()/k;
+104.       ffassert( ns*k== m.N());
+105.       double lmin = sqrt(animax);
+           ^
+106.       ffassert( k==3 || k==6);
+107.       int err=0;

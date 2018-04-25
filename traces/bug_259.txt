@@ -1,0 +1,12 @@
+src/medit/clip.c:215: error: DEAD_STORE
+  The value written to &view (type transform*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/clip.c:215:3: Write of unused value
+213.     /* default */
+214.     if ( ddebug ) printf("drawClip\n");
+215.     view   = sc->view;
+         ^
+216.     cliptr = clip->cliptr;
+217.   

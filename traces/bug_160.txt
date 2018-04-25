@@ -1,0 +1,12 @@
+src/fflib/string_def.cpp:124: error: DEAD_STORE
+  The value written to &l (type unsigned long) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/string_def.cpp:124:58: Write of unused value
+122.      // clean begin end for win32 file 
+123.      if( l) { if((**s)[0] == '\r') { (**s).erase(0,1); l--;}}
+124.      if( l) { if((**s)[l-1] == '\r') { (**s).erase(l-1,1); l--;}}
+                                                                ^
+125.      return f;
+126.      }

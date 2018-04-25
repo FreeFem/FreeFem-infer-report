@@ -1,0 +1,12 @@
+src/Graphics/ffglut.cpp:136: error: DEAD_STORE
+  The value written to &c2 (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/Graphics/ffglut.cpp:136:9: Write of unused value
+134.   	  int c1 =getc(fp);//
+135.         if(c1==13)	  
+136.           int c2 =getc(fp);//	
+               ^
+137.   
+138.   

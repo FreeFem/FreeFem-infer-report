@@ -1,0 +1,12 @@
+src/medit/sftcpy.c:277: error: DEAD_STORE
+  The value written to &nvalues (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/sftcpy.c:277:3: Write of unused value
+275.     /* size for feedback buffer */
+276.     size    =  0;
+277.     nvalues = -1;
+         ^
+278.     do {
+279.       size += 1024*1024;

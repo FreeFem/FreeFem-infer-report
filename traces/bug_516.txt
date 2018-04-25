@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:573: error: DEAD_STORE
+  The value written to &ilast (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:573:7: Write of unused value
+571.         // find a edge or such normal projection a the edge IJ is on the edge
+572.         //   <=> IJ.IA >=0 && IJ.AJ >=0
+573.         ilast=ifirst;
+             ^
+574.         double ba,bb;
+575.         TriangleAdjacent edge=CloseBoundaryEdge(a,t,ba,bb);

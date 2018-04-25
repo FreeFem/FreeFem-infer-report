@@ -1,0 +1,12 @@
+examples++-load/Curvature.cpp:549: error: DEAD_STORE
+  The value written to &nv (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/Curvature.cpp:549:5: Write of unused value
+547.       double l[3];
+548.       double m[3]={a11,a12,a22};
+549.       int nv=eigen2(m,l,vp);
+           ^
+550.       l[2]=0;
+551.       double s1 = l[1]-l[0];

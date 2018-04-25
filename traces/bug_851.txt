@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:2747: error: DEAD_STORE
+  The value written to &bbff (type Fem2D::Triangle3*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:2747:3: Write of unused value
+2745.       	  ivb[j-firstCell[i]] = IntCells[j];
+2746.   	}
+2747.   	(bbff++)->set(vff, ivb, label);
+          ^
+2748.   	break;   
+2749.         case 10: // Tetrah�dre

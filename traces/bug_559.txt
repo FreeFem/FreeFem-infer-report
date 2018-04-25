@@ -1,0 +1,12 @@
+src/femlib/P012_3d.cpp:643: error: DEAD_STORE
+  The value written to &e (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/P012_3d.cpp:643:22: Write of unused value
+641.   	     //  for (int p=0;p<3;p++)
+642.   		 {
+643.                        int e= f; //dgeface[f][p] ;
+                            ^
+644.   		     for (int c=0;c<3;c++,i++) 
+645.   			 

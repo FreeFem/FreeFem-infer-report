@@ -1,0 +1,12 @@
+examples++-load/tetgen.cpp:1635: error: DEAD_STORE
+  The value written to &testp (type unsigned long) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/tetgen.cpp:1635:9: Write of unused value
+1633.           
+1634.           testr = strcspn(test_tetgen,"r");
+1635.           testp = strcspn(test_tetgen,"p");
+                ^
+1636.           
+1637.           if( testr == strlen(test_tetgen) )

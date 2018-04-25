@@ -1,0 +1,12 @@
+examples++-load/iohdf5.cpp:569: error: DEAD_STORE
+  The value written to &trans (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iohdf5.cpp:569:3: Write of unused value
+567.     ffassert(pTh);
+568.     const  Mesh3 &Th=*pTh;
+569.     int trans=-1;
+         ^
+570.     int nt = Th.nt;
+571.     int nv = Th.nv;

@@ -1,0 +1,12 @@
+examples++-load/ClosePoints.cpp:225: error: DEAD_STORE
+  The value written to &Pn0 (type long) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/ClosePoints.cpp:225:5: Write of unused value
+223.   KN<long>* CloseTo2(Stack stack,double const & eps,KNM_<double> const &  P,KNM_<double>  const &  Q)
+224.   {
+225.       long Pn0=P.N();
+           ^
+226.       long Pm0=P.M();
+227.       long Qn0=Q.N();

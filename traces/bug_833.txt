@@ -1,0 +1,12 @@
+examples++-load/msh3.cpp:2357: error: DEAD_STORE
+  The value written to &nben (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/msh3.cpp:2357:3: Write of unused value
+2355.       if(nrmf && verbosity > 2) cout << "   change  mesh3 : number of removed  internal faces " << nrmf << " == " << nbe - (bb-b) << endl;
+2356.       
+2357.     nben -= nrmf;
+          ^
+2358.     nbe -= nrmf;
+2359.     assert(nben==bb-b);

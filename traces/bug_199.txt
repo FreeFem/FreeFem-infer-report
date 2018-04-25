@@ -1,0 +1,12 @@
+src/medit/parsop.c:286: error: DEAD_STORE
+  The value written to &ret (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/parsop.c:286:9: Write of unused value
+284.   
+285.         for (k=0; k<MAXISO; k++)
+286.           ret = fscanf(in,"%f",&sc->iso.val[k]);
+               ^
+287.         if ( sc->iso.val[MAXISO-1] < sc->iso.val[0] ) sc->iso.palette = 0;
+288.       }

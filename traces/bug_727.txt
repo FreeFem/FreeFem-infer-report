@@ -1,0 +1,12 @@
+src/femlib/GenericMesh.hpp:1299: error: DEAD_STORE
+  The value written to &nkeys (type int) is never used.
+Showing all 1 steps of the trace
+
+
+src/femlib/GenericMesh.hpp:1299:3: Write of unused value
+1297.    
+1298.     assert(maxndf>0);
+1299.     const int nkeys=4+6+4+1;
+          ^
+1300.     assert(nnodeK<= nkeys);
+1301.     

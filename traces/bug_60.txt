@@ -1,0 +1,19 @@
+examples++-load/GeometryQA.cpp:45: error: STATIC_INITIALIZATION_ORDER_FIASCO
+  Initializer of mir::coutMath accesses global variable from a different translation unit: std::cout|.
+Showing all 2 steps of the trace
+
+
+examples++-load/GeometryQA.cpp:45:1: initialization of mir::coutMath
+43.   #include "Geometry.hpp"
+44.   
+45. > ostream_math coutMath= cout << Mathematica;
+46.   
+47.   template<> const string R2::name = "R2";
+
+examples++-load/GeometryQA.cpp:45:24: access to std::cout|
+43.   #include "Geometry.hpp"
+44.   
+45.   ostream_math coutMath= cout << Mathematica;
+                             ^
+46.   
+47.   template<> const string R2::name = "R2";

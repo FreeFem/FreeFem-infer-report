@@ -1,0 +1,340 @@
+src/fflib/lgfem.cpp:1936: error: NULL_DEREFERENCE
+  pointer `ipp` last assigned on line 1934 could be null and is dereferenced at line 1936, column 76.
+Showing all 44 steps of the trace
+
+
+src/fflib/lgfem.cpp:1928:1: start of procedure set_feoX_1()
+1926.       return SetAny<FEbase<R,v_fes>*>(&fe); 
+1927.     }
+1928. > AnyType set_feoX_1 (Stack s,Expression ppfeX_1, Expression e)
+1929.     { // inutile 
+1930.       // m�me chose que  v(X1,X2);
+
+src/fflib/lgfem.cpp:1931:7: Skipping WhereStackOfPtr2Free(): function or method not found
+1929.     { // inutile 
+1930.       // m�me chose que  v(X1,X2);
+1931.         StackOfPtr2Free * sptr = WhereStackOfPtr2Free(s);
+              ^
+1932.       typedef const interpolate_f_X_1<R>::CODE * code;
+1933.       MeshPoint mp= *MeshPointStack(s); 
+
+src/fflib/lgfem.cpp:1933:5: 
+1931.         StackOfPtr2Free * sptr = WhereStackOfPtr2Free(s);
+1932.       typedef const interpolate_f_X_1<R>::CODE * code;
+1933. >     MeshPoint mp= *MeshPointStack(s); 
+1934.       code ipp = dynamic_cast<code>(ppfeX_1);
+1935.       
+
+src/femlib/MeshPoint.hpp:471:1: start of procedure Fem2D::MeshPointStack()
+  469.   
+  470.   ostream & operator << ( ostream &,const  MeshPoint & )  ;    
+  471. > inline static MeshPoint* MeshPointStack(Stack s) {void * p= static_cast<void **>(s)[MeshPointStackOffset];throwassert(p); return static_cast<MeshPoint*>( p);}
+  472.   inline static void MeshPointStack(Stack s,MeshPoint* mp) {*static_cast<MeshPoint**>(static_cast<void *>(s)) = mp;}
+  473.   #ifdef NEWFFSTACK
+
+src/femlib/MeshPoint.hpp:471:51: 
+  469.   
+  470.   ostream & operator << ( ostream &,const  MeshPoint & )  ;    
+  471. > inline static MeshPoint* MeshPointStack(Stack s) {void * p= static_cast<void **>(s)[MeshPointStackOffset];throwassert(p); return static_cast<MeshPoint*>( p);}
+  472.   inline static void MeshPointStack(Stack s,MeshPoint* mp) {*static_cast<MeshPoint**>(static_cast<void *>(s)) = mp;}
+  473.   #ifdef NEWFFSTACK
+
+src/femlib/MeshPoint.hpp:471:123: 
+  469.   
+  470.   ostream & operator << ( ostream &,const  MeshPoint & )  ;    
+  471. > inline static MeshPoint* MeshPointStack(Stack s) {void * p= static_cast<void **>(s)[MeshPointStackOffset];throwassert(p); return static_cast<MeshPoint*>( p);}
+  472.   inline static void MeshPointStack(Stack s,MeshPoint* mp) {*static_cast<MeshPoint**>(static_cast<void *>(s)) = mp;}
+  473.   #ifdef NEWFFSTACK
+
+src/femlib/MeshPoint.hpp:471:158: return from a call to Fem2D::MeshPointStack
+  469.   
+  470.   ostream & operator << ( ostream &,const  MeshPoint & )  ;    
+  471.   inline static MeshPoint* MeshPointStack(Stack s) {void * p= static_cast<void **>(s)[MeshPointStackOffset];throwassert(p); return static_cast<MeshPoint*>( p);}
+                                                                                                                                                                      ^
+  472.   inline static void MeshPointStack(Stack s,MeshPoint* mp) {*static_cast<MeshPoint**>(static_cast<void *>(s)) = mp;}
+  473.   #ifdef NEWFFSTACK
+
+src/femlib/MeshPoint.hpp:373:7: start of procedure MeshPoint
+  371.     // --------  
+  372.   };
+  373.   class MeshPoint : public MeshPointBase { public:
+               ^
+  374.     MeshPointBase other;
+  375.     void unset() {  MeshPointBase::unset(); other.unset();}
+
+src/femlib/MeshPoint.hpp:15:7: start of procedure MeshPointBase
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15.   class MeshPointBase { public:
+                ^
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:19:3: start of procedure 
+      17.     R3 P;
+      18.     R3 PHat;
+      19.     union {
+              ^
+      20.     const Mesh * Th;  
+      21.     const Mesh3 * Th3;  
+
+src/femlib/MeshPoint.hpp:19:3: return from a call to Fem2D::MeshPointBase::anonymous_union_._.._femlib_MeshPoint.hpp:19:3_
+      17.     R3 P;
+      18.     R3 PHat;
+      19.     union {
+              ^
+      20.     const Mesh * Th;  
+      21.     const Mesh3 * Th3;  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:23:3: start of procedure 
+      21.     const Mesh3 * Th3;  
+      22.     };
+      23.     union{
+              ^
+      24.     const Triangle * T;
+      25.     const Tet * T3;
+
+src/femlib/MeshPoint.hpp:23:3: return from a call to Fem2D::MeshPointBase::anonymous_union_._.._femlib_MeshPoint.hpp:23:3_
+      21.     const Mesh3 * Th3;  
+      22.     };
+      23.     union{
+              ^
+      24.     const Triangle * T;
+      25.     const Tet * T3;
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: return from a call to Fem2D::MeshPointBase_MeshPointBase
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15.   class MeshPointBase { public:
+                ^
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:373:7: 
+  371.     // --------  
+  372.   };
+  373. > class MeshPoint : public MeshPointBase { public:
+  374.     MeshPointBase other;
+  375.     void unset() {  MeshPointBase::unset(); other.unset();}
+
+src/femlib/MeshPoint.hpp:15:7: start of procedure MeshPointBase
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15.   class MeshPointBase { public:
+                ^
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:19:3: start of procedure 
+      17.     R3 P;
+      18.     R3 PHat;
+      19.     union {
+              ^
+      20.     const Mesh * Th;  
+      21.     const Mesh3 * Th3;  
+
+src/femlib/MeshPoint.hpp:19:3: return from a call to Fem2D::MeshPointBase::anonymous_union_._.._femlib_MeshPoint.hpp:19:3_
+      17.     R3 P;
+      18.     R3 PHat;
+      19.     union {
+              ^
+      20.     const Mesh * Th;  
+      21.     const Mesh3 * Th3;  
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:23:3: start of procedure 
+      21.     const Mesh3 * Th3;  
+      22.     };
+      23.     union{
+              ^
+      24.     const Triangle * T;
+      25.     const Tet * T3;
+
+src/femlib/MeshPoint.hpp:23:3: return from a call to Fem2D::MeshPointBase::anonymous_union_._.._femlib_MeshPoint.hpp:23:3_
+      21.     const Mesh3 * Th3;  
+      22.     };
+      23.     union{
+              ^
+      24.     const Triangle * T;
+      25.     const Tet * T3;
+
+src/femlib/MeshPoint.hpp:15:7: 
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15. > class MeshPointBase { public:
+    16.     
+    17.     R3 P;
+
+src/femlib/R3.hpp:38:7: start of procedure R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/R3.hpp:38:7: return from a call to Fem2D::R3_R3
+      36.   #include "R2.hpp" 
+      37.   
+      38.   class R3  {
+                  ^
+      39.   
+      40.   public:  
+
+src/femlib/MeshPoint.hpp:15:7: return from a call to Fem2D::MeshPointBase_MeshPointBase
+    13.   const long notaregion=LONG_MIN;
+    14.   const double doublenotset = -123e100;
+    15.   class MeshPointBase { public:
+                ^
+    16.     
+    17.     R3 P;
+
+src/femlib/MeshPoint.hpp:373:7: return from a call to Fem2D::MeshPoint_MeshPoint
+  371.     // --------  
+  372.   };
+  373.   class MeshPoint : public MeshPointBase { public:
+               ^
+  374.     MeshPointBase other;
+  375.     void unset() {  MeshPointBase::unset(); other.unset();}
+
+src/fflib/lgfem.cpp:1934:5: 
+1932.       typedef const interpolate_f_X_1<R>::CODE * code;
+1933.       MeshPoint mp= *MeshPointStack(s); 
+1934. >     code ipp = dynamic_cast<code>(ppfeX_1);
+1935.       
+1936.       pair<FEbase<R,v_fes> *,int>  pp=GetAny<pair<FEbase<R,v_fes> *,int> >((*ipp->f)(s));
+
+src/fflib/lgfem.cpp:1936:5: 
+1934.       code ipp = dynamic_cast<code>(ppfeX_1);
+1935.       
+1936. >     pair<FEbase<R,v_fes> *,int>  pp=GetAny<pair<FEbase<R,v_fes> *,int> >((*ipp->f)(s));
+1937.       FEbase<R,v_fes> & fe(*pp.first);
+1938.       const  FESpace & Vh(*fe.newVh());

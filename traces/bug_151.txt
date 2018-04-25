@@ -1,0 +1,12 @@
+examples++-mpi/MUMPS.cpp:122: error: DEAD_STORE
+  The value written to &master (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/MUMPS.cpp:122:5: Write of unused value
+120.       if(pcomm) MPI_Comm_dup(comm,&comm);
+121.       MPI_Comm_rank(comm, &mpirank);
+122.       int master = mpirank==matrank;  
+           ^
+123.   
+124.       _id->job = JOB_INIT;

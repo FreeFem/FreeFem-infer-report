@@ -1,0 +1,12 @@
+src/bamglib/Mesh2.cpp:3478: error: DEAD_STORE
+  The value written to &ei (type bamg::Edge&) is never used.
+Showing all 1 steps of the trace
+
+
+src/bamglib/Mesh2.cpp:3478:8: Write of unused value
+3476.                 int jedge=bcurve[icurve]%2;
+3477.                 if( ! Gh.curves[icurve].master) continue; // we skip all equi curve
+3478.   	      Edge & ei = BTh.edges[iedge];
+               ^
+3479.   	      // warning: ei.on->Mark() can be change in
+3480.   	      // loop for(jedge=0;jedge<2;jedge++) 

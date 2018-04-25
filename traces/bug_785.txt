@@ -1,0 +1,12 @@
+examples++-load/iovtk.cpp:1753: error: DEAD_STORE
+  The value written to &nbofsol (type int) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-load/iovtk.cpp:1753:5: Write of unused value
+1751.       if (BCastTo<pmesh>(args[1])) eTh= CastTo<pmesh>(args[1]);
+1752.     
+1753.       nbofsol = l.size();
+            ^
+1754.       for (size_t i=2;i<args.size();i++){
+1755.         size_t jj=i-2;

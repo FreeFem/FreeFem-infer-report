@@ -1,0 +1,12 @@
+src/medit/ilists.c:446: error: DEAD_STORE
+  The value written to &p0 (type spoint*) is never used.
+Showing all 1 steps of the trace
+
+
+src/medit/ilists.c:446:11: Write of unused value
+444.           nbpos = nbneg = nbnul = 0;
+445.           for (l=0; l<4; l++) {
+446.             p0  = &mesh->point[pt->v[l]];
+                 ^
+447.             ps0 = &mesh->sol[pt->v[l]];
+448.             

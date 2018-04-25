@@ -1,0 +1,12 @@
+examples++-mpi/hips_FreeFem.cpp:145: error: DEAD_STORE
+  The value written to &kr (type double*) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/hips_FreeFem.cpp:145:2: Write of unused value
+143.        |--------------------------------------*/
+144.       for (i=0; i<n; i++) {
+145.   	kr = &(AAv[pr[i]]);
+        ^
+146.   	ki = &(pr[i]);
+147.   	if (nrm == 0) {

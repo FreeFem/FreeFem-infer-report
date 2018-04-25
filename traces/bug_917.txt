@@ -1,0 +1,42 @@
+src/fflib/lgfem.cpp:6193: error: NULL_DEREFERENCE
+  pointer `a` last assigned on line 6191 could be null and is dereferenced at line 6193, column 14.
+Showing all 5 steps of the trace
+
+
+src/fflib/lgfem.cpp:6189:2: start of procedure code
+6187.   }
+6188.    
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+         ^
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+
+src/fflib/lgfem.cpp:6190:8: 
+6188.    
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+6190. >        E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+
+src/fflib/lgfem.cpp:6191:7: Skipping LeftValue: function or method not found
+6189.    E_F0 * Op_CopyArray::code(const basicAC_F0 & args) const  {
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+              ^
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+6193.         int na=a.size();
+
+src/fflib/lgfem.cpp:6192:7: Skipping LeftValue: function or method not found
+6190.          E_F0 * ret=0;
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+              ^
+6193.         int na=a.size();
+6194.         int nb=b.size();
+
+src/fflib/lgfem.cpp:6193:7: 
+6191.         const E_Array & a= *dynamic_cast<const E_Array*>(args[0].LeftValue());
+6192.         const E_Array & b= *dynamic_cast<const E_Array*>(args[1].LeftValue());
+6193. >       int na=a.size();
+6194.         int nb=b.size();
+6195.         if (na != nb ) 

@@ -1,0 +1,25 @@
+src/medit/tiles.c:16: error: NULL_DEREFERENCE
+  pointer `out2` last assigned on line 15 could be null and is dereferenced by call to `fprintf()` at line 16, column 3.
+Showing all 3 steps of the trace
+
+
+src/medit/tiles.c:12:1: start of procedure dumpTile()
+10.   
+11.   
+12. > void dumpTile(char *data,int width,int height,GLubyte *buffer) {
+13.     FILE *out2; 
+14.   
+
+src/medit/tiles.c:15:3: 
+13.     FILE *out2; 
+14.   
+15. >   out2 = fopen(data,"w");
+16.     fprintf(out2,"P6\n");
+17.     fprintf(out2,"# Created using medit %s %s, (c) INRIA\n",ME_VER,ME_REL);
+
+src/medit/tiles.c:16:3: 
+14.   
+15.     out2 = fopen(data,"w");
+16. >   fprintf(out2,"P6\n");
+17.     fprintf(out2,"# Created using medit %s %s, (c) INRIA\n",ME_VER,ME_REL);
+18.     fprintf(out2,"%d %d\n",width,height);

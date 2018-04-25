@@ -1,0 +1,12 @@
+examples++-mpi/mpi-cmaes.cpp:312: error: DEAD_STORE
+  The value written to &iprint (type long) is never used.
+Showing all 1 steps of the trace
+
+
+examples++-mpi/mpi-cmaes.cpp:312:6: Write of unused value
+310.   					//long mu = arg(8,stack,popsize/2);
+311.   					
+312.   					long iprint = verbosity;	
+            ^
+313.   					ffcalfunc ffJ(stack,JJ,theparam);
+314.   					

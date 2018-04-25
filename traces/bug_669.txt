@@ -1,0 +1,12 @@
+src/Eigen/eigenvalue.cpp:926: error: DEAD_STORE
+  The value written to &nbev (type long) is never used.
+Showing all 1 steps of the trace
+
+
+src/Eigen/eigenvalue.cpp:926:5: Write of unused value
+924.       double tol=1e-6;
+925.       long nconv=0;
+926.       long nbev=1;
+           ^
+927.       long ncv =0;  // the number of Arnoldi vectors generated
+928.       long maxit=0;  // the maximum number of Arnoldi iterations

@@ -1,0 +1,407 @@
+examples++-hpddm/hpddm_substructuring.cpp:73: error: NULL_DEREFERENCE
+  pointer `comm` last assigned on line 44 could be null and is dereferenced at line 73, column 67.
+Showing all 53 steps of the trace
+
+
+examples++-hpddm/hpddm_substructuring.cpp:39:1: start of procedure operator()
+37.           }
+38.   };
+39. > AnyType Skeleton_Op::operator()(Stack stack) const {
+40.       KN<double>* in = GetAny<KN<double>*>((*interface)(stack));
+41.       KN<KN<long> >* out = GetAny<KN<KN<long> >*>((*outInterface)(stack));
+
+examples++-hpddm/hpddm_substructuring.cpp:40:5: Skipping operator(): function or method not found
+38.   };
+39.   AnyType Skeleton_Op::operator()(Stack stack) const {
+40.       KN<double>* in = GetAny<KN<double>*>((*interface)(stack));
+          ^
+41.       KN<KN<long> >* out = GetAny<KN<KN<long> >*>((*outInterface)(stack));
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<KN<double>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<KN<double>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+examples++-hpddm/hpddm_substructuring.cpp:41:5: Skipping operator(): function or method not found
+39.   AnyType Skeleton_Op::operator()(Stack stack) const {
+40.       KN<double>* in = GetAny<KN<double>*>((*interface)(stack));
+41.       KN<KN<long> >* out = GetAny<KN<KN<long> >*>((*outInterface)(stack));
+          ^
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<KN<KN<long>_>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<KN<KN<long>_>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+examples++-hpddm/hpddm_substructuring.cpp:42:5: Skipping operator(): function or method not found
+40.       KN<double>* in = GetAny<KN<double>*>((*interface)(stack));
+41.       KN<KN<long> >* out = GetAny<KN<KN<long> >*>((*outInterface)(stack));
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+          ^
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+44.       MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<KN<long>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<KN<long>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+examples++-hpddm/hpddm_substructuring.cpp:43:5: Skipping operator(): function or method not found
+41.       KN<KN<long> >* out = GetAny<KN<KN<long> >*>((*outInterface)(stack));
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+          ^
+44.       MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+45.       unsigned short n = arrayNeighbor->n;
+
+src/fflib/AnyType.hpp:190:23: start of procedure GetAny<KN<Matrice_Creuse<double>_>_*>()
+  188.   
+  189.   
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+                               ^
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+
+src/fflib/AnyType.hpp:192:2: Skipping CheckSize: function or method not found
+  190.    template<typename T> inline  const T& GetAny(const AnyTypeWithOutCheck & x)
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+          ^
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+
+src/fflib/AnyType.hpp:193:2: 
+  191.   { 
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193. >  return *static_cast<const T*>(static_cast<const void*>(&x));
+  194.   }
+  195.   
+
+src/fflib/AnyType.hpp:194:1: return from a call to GetAny<KN<Matrice_Creuse<double>_>_*>
+  192.    CheckSize<T,sizeof(T)<= sizeof(AnyData) >();
+  193.    return *static_cast<const T*>(static_cast<const void*>(&x));
+  194. > }
+  195.   
+  196.    template<> inline const double& GetAny<double>(const AnyTypeWithOutCheck & x)
+
+examples++-hpddm/hpddm_substructuring.cpp:44:22: Condition is false
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+44.       MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+                           ^
+45.       unsigned short n = arrayNeighbor->n;
+46.       MPI_Request* rq = new MPI_Request[2 * n];
+
+examples++-hpddm/hpddm_substructuring.cpp:44:5: 
+42.       KN<long>* arrayNeighbor = GetAny<KN<long>*>((*index)(stack));
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+44. >     MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+45.       unsigned short n = arrayNeighbor->n;
+46.       MPI_Request* rq = new MPI_Request[2 * n];
+
+examples++-hpddm/hpddm_substructuring.cpp:45:5: 
+43.       KN<Matrice_Creuse<double> >* interpolation = GetAny<KN<Matrice_Creuse<double> >*>((*restriction)(stack));
+44.       MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+45. >     unsigned short n = arrayNeighbor->n;
+46.       MPI_Request* rq = new MPI_Request[2 * n];
+47.       std::vector<unsigned char*> send(n);
+
+examples++-hpddm/hpddm_substructuring.cpp:46:5: 
+44.       MPI_Comm* comm = nargs[0] ? (MPI_Comm*)GetAny<pcommworld>((*nargs[0])(stack)) : 0;
+45.       unsigned short n = arrayNeighbor->n;
+46. >     MPI_Request* rq = new MPI_Request[2 * n];
+47.       std::vector<unsigned char*> send(n);
+48.       std::vector<unsigned char*> recv(n);
+
+examples++-hpddm/hpddm_substructuring.cpp:47:5: Skipping vector: function or method not found
+45.       unsigned short n = arrayNeighbor->n;
+46.       MPI_Request* rq = new MPI_Request[2 * n];
+47.       std::vector<unsigned char*> send(n);
+          ^
+48.       std::vector<unsigned char*> recv(n);
+49.       unsigned short neighborAfter = 0;
+
+examples++-hpddm/hpddm_substructuring.cpp:48:5: Skipping vector: function or method not found
+46.       MPI_Request* rq = new MPI_Request[2 * n];
+47.       std::vector<unsigned char*> send(n);
+48.       std::vector<unsigned char*> recv(n);
+          ^
+49.       unsigned short neighborAfter = 0;
+50.       if(out->n != n)
+
+examples++-hpddm/hpddm_substructuring.cpp:49:5: 
+47.       std::vector<unsigned char*> send(n);
+48.       std::vector<unsigned char*> recv(n);
+49. >     unsigned short neighborAfter = 0;
+50.       if(out->n != n)
+51.           out->resize(n);
+
+examples++-hpddm/hpddm_substructuring.cpp:50:8: Taking true branch
+48.       std::vector<unsigned char*> recv(n);
+49.       unsigned short neighborAfter = 0;
+50.       if(out->n != n)
+             ^
+51.           out->resize(n);
+52.       for(unsigned short i = 0; i < n; ++i) {
+
+examples++-hpddm/hpddm_substructuring.cpp:51:9: Skipping resize: function or method not found
+49.       unsigned short neighborAfter = 0;
+50.       if(out->n != n)
+51.           out->resize(n);
+              ^
+52.       for(unsigned short i = 0; i < n; ++i) {
+53.           MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+
+examples++-hpddm/hpddm_substructuring.cpp:52:9: 
+50.       if(out->n != n)
+51.           out->resize(n);
+52. >     for(unsigned short i = 0; i < n; ++i) {
+53.           MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+54.           send[i] = new unsigned char[pt->n];
+
+examples++-hpddm/hpddm_substructuring.cpp:52:31: Loop condition is true. Entering loop body
+50.       if(out->n != n)
+51.           out->resize(n);
+52.       for(unsigned short i = 0; i < n; ++i) {
+                                    ^
+53.           MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+54.           send[i] = new unsigned char[pt->n];
+
+examples++-hpddm/hpddm_substructuring.cpp:53:9: 
+51.           out->resize(n);
+52.       for(unsigned short i = 0; i < n; ++i) {
+53. >         MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+54.           send[i] = new unsigned char[pt->n];
+55.           recv[i] = new unsigned char[pt->n];
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:404:32: 
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404. >   R & operator[](int i) const {return v[index(i)];}
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+    335.     long last()      const      { return (n-1)*step;}
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+             ^
+    338.              return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338. >            return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338.              return step*k;}
+                                    ^
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<Matrice_Creuse<double>>_operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+                                                           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RefCounter.hpp:95:3: start of procedure operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:25: 
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95. >   T& operator*() const {return *c;}
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+src/femlib/RefCounter.hpp:95:35: return from a call to CountPointer<MatriceCreuse<double>>_operator*
+  93.    operator  T * ()   const { return c;}
+  94.    operator   T & () const  {return *c;}
+  95.     T& operator*() const {return *c;}
+                                          ^
+  96.     T* operator->() const {return c;}
+  97.    bool operator==(const  CountPointer & n) const {return  n.c ==c;}
+
+examples++-hpddm/hpddm_substructuring.cpp:54:9: Skipping operator[]: function or method not found
+52.       for(unsigned short i = 0; i < n; ++i) {
+53.           MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+54.           send[i] = new unsigned char[pt->n];
+              ^
+55.           recv[i] = new unsigned char[pt->n];
+56.           unsigned int dest = arrayNeighbor->operator[](i);
+
+examples++-hpddm/hpddm_substructuring.cpp:55:9: Skipping operator[]: function or method not found
+53.           MatriceMorse<double>* pt = static_cast<MatriceMorse<double>*>(&(*interpolation->operator[](i).A));
+54.           send[i] = new unsigned char[pt->n];
+55.           recv[i] = new unsigned char[pt->n];
+              ^
+56.           unsigned int dest = arrayNeighbor->operator[](i);
+57.           if(dest < mpirank) {
+
+examples++-hpddm/hpddm_substructuring.cpp:56:9: 
+54.           send[i] = new unsigned char[pt->n];
+55.           recv[i] = new unsigned char[pt->n];
+56. >         unsigned int dest = arrayNeighbor->operator[](i);
+57.           if(dest < mpirank) {
+58.               unsigned int col = 0;
+
+src/femlib/RNM.hpp:404:3: start of procedure operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:404:32: 
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404. >   R & operator[](int i) const {return v[index(i)];}
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+src/femlib/RNM.hpp:337:3: start of procedure index
+    335.     long last()      const      { return (n-1)*step;}
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+             ^
+    338.              return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+
+src/femlib/RNM.hpp:338:12: 
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338. >            return step*k;}
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:338:26: return from a call to ShapeOfArray_index
+    336.     long constant()  const { return step==0;}
+    337.     long index(long k) const { K_throwassert( (k>=0) && ( (k <n) || !step) );
+    338.              return step*k;}
+                                    ^
+    339.     ShapeOfArray operator*(long stepp) const {return  ShapeOfArray(n,step*stepp,next);}  
+    340.     bool SameShape(const ShapeOfArray & a) const 
+
+src/femlib/RNM.hpp:404:51: return from a call to KN_<long>_operator[]
+  402.     R & operator[](long i) const {return v[index(i)];}
+  403.     R & operator()(long i) const {return v[index(i)];}
+  404.     R & operator[](int i) const {return v[index(i)];}
+                                                           ^
+  405.     R & operator()(int i) const {return v[index(i)];}
+  406.   
+
+examples++-hpddm/hpddm_substructuring.cpp:57:12: Taking false branch
+55.           recv[i] = new unsigned char[pt->n];
+56.           unsigned int dest = arrayNeighbor->operator[](i);
+57.           if(dest < mpirank) {
+                 ^
+58.               unsigned int col = 0;
+59.               for(unsigned int j = 0; j < pt->n; ++j) {
+
+examples++-hpddm/hpddm_substructuring.cpp:73:13: Skipping operator[]: function or method not found
+71.           }
+72.           else
+73.               MPI_Irecv(recv[i], pt->n, MPI_UNSIGNED_CHAR, dest, 0, *comm, rq + i);
+                  ^
+74.       }
+75.       for(unsigned short i = 0; i < neighborAfter; ++i) {

@@ -1,0 +1,12 @@
+src/fflib/problem.cpp:5389: error: DEAD_STORE
+  The value written to &Q (type Fem2D::R2[4*16](*)) is never used.
+Showing all 1 steps of the trace
+
+
+src/fflib/problem.cpp:5389:16: Write of unused value
+5387.               QuadratureFormular FITM(FIT);
+5388.               double uset = HUGE_VAL;
+5389.               R2 Q[4];
+                       ^
+5390.               KN<double> phi(Th.nv);phi=uset;
+5391.               double f[3];
